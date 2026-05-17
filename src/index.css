@@ -1,0 +1,327 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+@import "tailwindcss";
+
+/* ============================================
+   TAILWIND V4: DARK MODE
+============================================ */
+@variant dark (&:where(.dark, .dark *));
+
+/* ============================================
+   XPAND BHARAT — BRAND TOKENS
+============================================ */
+:root {
+  --navy:          #0D1B3E;
+  --navy-dark:     #070F23;
+  --navy-light:    #1A2F5C;
+  --orange:        #F07920;
+  --orange-light:  #F59340;
+  --orange-pale:   #FDF0E4;
+  --cream:         #F5F2EC;
+  --cream-light:   #FAF8F4;
+  --white:         #FFFFFF;
+  --charcoal:      #1A1A1A;
+  --gray:          #6B7280;
+  --gray-light:    #E5E7EB;
+  --border:        #E5E2DC;
+}
+
+/* ============================================
+   BASE
+============================================ */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Outfit', sans-serif;
+  background-color: var(--cream-light);
+  color: var(--charcoal);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+#root {
+  width: 100%;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+/* ============================================
+   TYPOGRAPHY UTILITIES
+============================================ */
+.font-heading {
+  font-family: 'Playfair Display', serif;
+}
+
+.font-body {
+  font-family: 'Outfit', sans-serif;
+}
+
+/* ============================================
+   SCROLLBAR
+============================================ */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: var(--cream);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--orange);
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--orange-light);
+}
+
+/* ============================================
+   SCROLL ANIMATION — RISING PANEL
+============================================ */
+.hero-wrapper {
+  position: relative;
+  height: 170vh;
+}
+
+.hero-sticky {
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  width: 100%;
+  overflow: hidden;
+  z-index: 1;
+}
+
+.rising-panel {
+  position: relative;
+  z-index: 10;
+  background: var(--cream-light);
+  border-radius: 60px 60px 0 0;
+  margin-top: -60px;
+}
+
+/* ============================================
+   PAGE HERO (inner pages)
+============================================ */
+.page-hero {
+  background-color: var(--navy);
+  min-height: 480px;
+  display: flex;
+  align-items: flex-end;
+  padding-bottom: 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* ============================================
+   BUTTONS
+============================================ */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--orange);
+  color: #fff;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 16px 36px;
+  border-radius: 4px;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.2s ease;
+  text-decoration: none;
+}
+.btn-primary:hover {
+  background: var(--orange-light);
+  transform: translateY(-1px);
+}
+
+.btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--white);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 15px 36px;
+  border-radius: 4px;
+  border: 2px solid rgba(255,255,255,0.6);
+  cursor: pointer;
+  transition: border-color 0.3s ease, background 0.3s ease;
+  text-decoration: none;
+}
+.btn-outline:hover {
+  border-color: var(--white);
+  background: rgba(255,255,255,0.08);
+}
+
+.btn-outline-dark {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: transparent;
+  color: var(--charcoal);
+  font-family: 'Outfit', sans-serif;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 15px 36px;
+  border-radius: 4px;
+  border: 2px solid var(--charcoal);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  text-decoration: none;
+}
+.btn-outline-dark:hover {
+  background: var(--charcoal);
+  color: var(--white);
+}
+
+/* ============================================
+   SECTION LABELS
+============================================ */
+.section-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--orange);
+  margin-bottom: 20px;
+}
+.section-label::before {
+  content: '';
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--orange);
+}
+
+/* ============================================
+   CARDS
+============================================ */
+.card {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 40px 36px;
+  border: 1px solid var(--border);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+}
+.card:hover {
+  box-shadow: 0 20px 60px rgba(0,0,0,0.08);
+  transform: translateY(-4px);
+}
+
+.card-dark {
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: 12px;
+  padding: 40px 36px;
+  transition: background 0.3s ease;
+}
+.card-dark:hover {
+  background: rgba(255,255,255,0.07);
+}
+
+/* ============================================
+   FORM
+============================================ */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.form-label {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+
+.form-input {
+  width: 100%;
+  padding: 14px 18px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-family: 'Outfit', sans-serif;
+  font-size: 15px;
+  color: var(--charcoal);
+  background: var(--white);
+  outline: none;
+  transition: border-color 0.2s ease;
+}
+.form-input:focus {
+  border-color: var(--orange);
+}
+.form-input::placeholder {
+  color: #aaa;
+}
+
+textarea.form-input {
+  resize: vertical;
+  min-height: 120px;
+}
+
+/* ============================================
+   DIVIDER
+============================================ */
+.divider {
+  width: 60px;
+  height: 3px;
+  background: var(--orange);
+  margin-bottom: 32px;
+}
+
+/* ============================================
+   FADE IN ANIMATION
+============================================ */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-up {
+  animation: fadeUp 0.8s ease forwards;
+}
+
+/* ============================================
+   PILL TAG
+============================================ */
+.pill {
+  display: inline-block;
+  background: var(--orange-pale);
+  color: var(--orange);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  padding: 6px 14px;
+  border-radius: 100px;
+}
+
+/* ============================================
+   NAV TRANSITION
+============================================ */
+.navbar-scrolled {
+  background: rgba(13,27,62,0.97) !important;
+  backdrop-filter: blur(20px);
+  box-shadow: 0 2px 40px rgba(0,0,0,0.3);
+}
