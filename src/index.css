@@ -292,6 +292,16 @@ textarea.form-input {
 }
 
 /* ============================================
+   PHOTO GRID RESPONSIVE
+============================================ */
+@media (max-width: 900px) {
+  .xb-photo-grid { grid-template-columns: repeat(2, 1fr) !important; }
+}
+@media (max-width: 520px) {
+  .xb-photo-grid { grid-template-columns: 1fr !important; }
+}
+
+/* ============================================
    FADE IN ANIMATION
 ============================================ */
 @keyframes fadeUp {

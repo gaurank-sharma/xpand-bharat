@@ -34,24 +34,6 @@ const STATS = [
   { number: '25+', label: 'Expert Team' },
 ];
 
-function useInView(ref, threshold = 0.15) {
-  useEffect(() => {
-    const el = ref.current;
-    if (!el) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          el.style.opacity = '1';
-          el.style.transform = 'translateY(0)';
-          obs.disconnect();
-        }
-      },
-      { threshold }
-    );
-    obs.observe(el);
-    return () => obs.disconnect();
-  }, [ref, threshold]);
-}
 
 function FadeSection({ children, delay = 0, style = {} }) {
   const ref = useRef(null);
@@ -259,6 +241,110 @@ export default function Home() {
               ))}
             </FadeSection>
           </div>
+        </div>
+
+        {/* ── PREMIUM PHOTO CARD GRID ── */}
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', width: '100%' }} className="xb-photo-grid">
+          {[
+            {
+              tag: 'For Brands',
+              title: 'Expand with Structure',
+              sub: 'Franchise & market expansion',
+              img: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=700&q=80',
+              to: '/for-brands',
+            },
+            {
+              tag: 'For Investors',
+              title: 'Invest with Clarity',
+              sub: 'Curated business opportunities',
+              img: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=700&q=80',
+              to: '/for-investors',
+            },
+            {
+              tag: 'Opportunities',
+              title: 'Growth at Scale',
+              sub: 'Scalable business models',
+              img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=700&q=80',
+              to: '/growth-opportunities',
+            },
+            {
+              tag: 'Our Approach',
+              title: 'Structured Execution',
+              sub: 'Five-stage growth framework',
+              img: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=700&q=80',
+              to: '/our-approach',
+            },
+          ].map((card, i) => (
+            <Link key={card.tag} to={card.to} style={{
+              position: 'relative',
+              height: '520px',
+              overflow: 'hidden',
+              display: 'flex',
+              flexDirection: 'column',
+              justifyContent: 'space-between',
+              padding: '32px',
+              backgroundImage: `url("${card.img}")`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              textDecoration: 'none',
+              borderRight: i < 3 ? '1px solid rgba(255,255,255,0.08)' : 'none',
+            }}
+              onMouseEnter={e => {
+                e.currentTarget.querySelector('.xb-img-scale').style.transform = 'scale(1.06)';
+                e.currentTarget.querySelector('.xb-card-arrow').style.opacity = '1';
+                e.currentTarget.querySelector('.xb-card-arrow').style.transform = 'translateX(0)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.querySelector('.xb-img-scale').style.transform = 'scale(1)';
+                e.currentTarget.querySelector('.xb-card-arrow').style.opacity = '0';
+                e.currentTarget.querySelector('.xb-card-arrow').style.transform = 'translateX(-8px)';
+              }}
+            >
+              {/* Image layer (for scale animation) */}
+              <div className="xb-img-scale" style={{
+                position: 'absolute', inset: 0,
+                backgroundImage: `url("${card.img}")`,
+                backgroundSize: 'cover', backgroundPosition: 'center',
+                transition: 'transform 0.6s ease',
+                zIndex: 0,
+              }} />
+              {/* Dark gradient overlay */}
+              <div style={{
+                position: 'absolute', inset: 0, zIndex: 1,
+                background: 'linear-gradient(to top, rgba(0,0,0,0.88) 0%, rgba(0,0,0,0.4) 50%, rgba(0,0,0,0.25) 100%)',
+              }} />
+
+              {/* Tag */}
+              <div style={{ position: 'relative', zIndex: 2 }}>
+                <span style={{
+                  display: 'inline-block',
+                  border: '1px solid rgba(240,121,32,0.7)',
+                  color: 'var(--orange)',
+                  background: 'rgba(240,121,32,0.1)',
+                  fontSize: '10px', fontWeight: 700,
+                  letterSpacing: '0.2em', textTransform: 'uppercase',
+                  padding: '6px 14px', borderRadius: '2px',
+                }}>{card.tag}</span>
+              </div>
+
+              {/* Bottom content */}
+              <div style={{ position: 'relative', zIndex: 2 }}>
+                <h3 style={{
+                  fontFamily: "'Playfair Display', serif",
+                  fontSize: 'clamp(20px, 1.8vw, 26px)', fontWeight: 600,
+                  color: '#fff', margin: '0 0 8px', lineHeight: 1.25,
+                }}>{card.title}</h3>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '13px', margin: 0 }}>{card.sub}</p>
+                  <span className="xb-card-arrow" style={{
+                    color: 'var(--orange)', fontSize: '20px',
+                    opacity: 0, transform: 'translateX(-8px)',
+                    transition: 'all 0.3s ease', flexShrink: 0,
+                  }}>→</span>
+                </div>
+              </div>
+            </Link>
+          ))}
         </div>
 
         {/* "Built for serious business" section */}
