@@ -40,7 +40,7 @@ export default function Footer() {
     <footer style={{ background: '#F5F2EC', borderTop: '1px solid #E5E2DC', fontFamily: "'Outfit', sans-serif" }}>
 
       {/* Top CTA strip */}
-      <div style={{ borderBottom: '1px solid #E5E2DC', padding: '80px 40px' }}>
+      <div className="xb-footer-cta" style={{ borderBottom: '1px solid #E5E2DC', padding: '80px 40px' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '32px' }}>
           <div>
             <div className="section-label" style={{ marginBottom: '12px' }}>Ready to move?</div>
@@ -56,12 +56,12 @@ export default function Footer() {
       </div>
 
       {/* Main footer body */}
-      <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '72px 40px 40px' }}>
+      <div className="xb-footer-body" style={{ maxWidth: '1440px', margin: '0 auto', padding: '72px 40px 40px' }}>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '56px', marginBottom: '72px' }}>
 
           {/* Brand column */}
           <div>
-            <img src="/logo.png" alt="Xpand Bharat" style={{ height: '40px', width: 'auto', objectFit: 'contain', marginBottom: '24px', display: 'block' }} />
+            <img src="/logo.png" alt="Xpand Bharat" style={{ height: 'auto', width: '80%', objectFit: 'contain', marginBottom: '6px', display: 'block' }} />
             <p style={{ color: 'var(--gray)', fontSize: '14px', lineHeight: 1.8, maxWidth: '280px', marginBottom: '32px' }}>
               A premium business expansion platform focused on structured growth, investor alignment, and execution-led business movement.
             </p>

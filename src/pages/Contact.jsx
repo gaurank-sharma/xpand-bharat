@@ -2,7 +2,7 @@ import { useRef, useEffect, useState } from 'react';
 
 const INFO = [
   { label: 'Email Address', value: 'info@xpandbharat.com', href: 'mailto:info@xpandbharat.com', icon: '✉' },
-  { label: 'Phone Number', value: '+91 XXXXX XXXXX', href: 'tel:+91XXXXXXXXXX', icon: '✆' },
+  { label: 'WhatsApp / Phone', value: 'Available on request', href: null, icon: '✆' },
   { label: 'Office Address', value: 'Gurgaon, Haryana, India', href: null, icon: '⊕' },
 ];
 
@@ -36,7 +36,7 @@ function ContactForm() {
   );
 
   return (
-    <form onSubmit={submit} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+    <form onSubmit={submit} className="xb-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
       {[
         { name: 'name', label: 'Full Name', placeholder: 'Your full name' },
         { name: 'company', label: 'Company Name', placeholder: 'Your company or brand name' },
@@ -67,7 +67,7 @@ export default function Contact() {
   return (
     <div style={{ background: 'var(--cream-light)' }}>
       {/* HERO */}
-      <div style={{ background: 'var(--navy)', backgroundImage: 'url("https://images.unsplash.com/photo-1497366754035-f200968a677a?auto=format&fit=crop&w=1600&q=80")', backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '440px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
+      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: 'url("https://images.unsplash.com/photo-1497366754035-f200968a677a?auto=format&fit=crop&w=1600&q=80")', backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '500px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.86) 0%, rgba(13,27,62,0.72) 100%)' }} />
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)`, backgroundSize: '80px 80px' }} />
         <div style={{ position: 'absolute', bottom: '-10%', right: '10%', width: '500px', height: '500px', background: 'radial-gradient(circle,rgba(240,121,32,0.09) 0%,transparent 70%)', pointerEvents: 'none' }} />
@@ -85,7 +85,7 @@ export default function Contact() {
 
       {/* MAIN CONTENT */}
       <div style={{ padding: '100px 40px', background: 'var(--cream-light)' }}>
-        <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '80px', alignItems: 'start' }}>
+        <div className="xb-grid-2col" style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 2fr', gap: '80px', alignItems: 'start' }}>
 
           {/* Contact info column */}
           <FadeSection>

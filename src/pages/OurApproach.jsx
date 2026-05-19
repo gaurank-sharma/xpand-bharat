@@ -65,7 +65,7 @@ function ApproachForm() {
   );
 
   return (
-    <form onSubmit={submit} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+    <form onSubmit={submit} className="xb-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
       {[
         { name: 'name', label: 'Full Name', placeholder: 'Your full name' },
         { name: 'company', label: 'Company Name', placeholder: 'Your company name' },
@@ -95,7 +95,7 @@ export default function OurApproach() {
   return (
     <div style={{ background: 'var(--cream-light)' }}>
       {/* HERO */}
-      <div style={{ background: 'var(--navy)', backgroundImage: 'url("https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1600&q=80")', backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '500px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
+      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: 'url("https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1600&q=80")', backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '500px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.86) 0%, rgba(13,27,62,0.72) 100%)' }} />
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)`, backgroundSize: '80px 80px' }} />
         <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '500px', height: '500px', background: 'radial-gradient(circle,rgba(240,121,32,0.09) 0%,transparent 70%)', pointerEvents: 'none' }} />
@@ -106,7 +106,7 @@ export default function OurApproach() {
             <span style={{ color: 'var(--orange)' }}>Disciplined execution.</span>
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '18px', lineHeight: 1.7, maxWidth: '560px' }}>
-            A practical and execution-focused approach designed to help brands, investors, and opportunities move with stronger alignment, commercial clarity, and operational structure.
+            A practical, execution-focused approach designed to help brands and investors move with sharper direction, commercial clarity, and the operational structure that serious growth demands.
           </p>
         </div>
       </div>
@@ -183,7 +183,7 @@ export default function OurApproach() {
               Tell us about your business goals, expansion plans, or investment interests. Our team will connect with you to discuss the next stage of growth.
             </p>
           </FadeSection>
-          <div style={{ background: 'var(--white)', borderRadius: '16px', padding: '56px', border: '1px solid var(--border)' }}>
+          <div className="xb-form-wrap" style={{ background: 'var(--white)', borderRadius: '16px', padding: '56px', border: '1px solid var(--border)' }}>
             <ApproachForm />
           </div>
         </div>

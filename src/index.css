@@ -292,13 +292,86 @@ textarea.form-input {
 }
 
 /* ============================================
-   PHOTO GRID RESPONSIVE
+   PHOTO GRID BASE
 ============================================ */
-@media (max-width: 900px) {
-  .xb-photo-grid { grid-template-columns: repeat(2, 1fr) !important; }
+.xb-photo-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  width: 100%;
 }
+
+/* ============================================
+   PAGE HERO — INNER PAGES  (mobile overrides)
+============================================ */
+@media (max-width: 768px) {
+  .page-hero-section {
+    padding: 100px 20px 52px !important;
+    min-height: 380px !important;
+  }
+  .page-hero-section h1 {
+    font-size: clamp(26px, 7vw, 40px) !important;
+    max-width: 100% !important;
+  }
+  .page-hero-section > div:last-child > p {
+    font-size: 15px !important;
+    margin-bottom: 28px !important;
+  }
+}
+
+/* ============================================
+   SHARED LAYOUT HELPERS
+============================================ */
+/* 2-column content grids */
+.xb-grid-2col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+/* Form grids */
+.xb-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+/* Form container */
+.xb-form-wrap {
+  background: var(--white);
+  border-radius: 16px;
+  padding: 56px;
+  border: 1px solid var(--border);
+}
+
+/* Section vertical padding */
+.xb-section-pad { padding: 100px 40px; }
+
+/* Footer */
+.xb-footer-cta { padding: 80px 40px; }
+.xb-footer-body { padding: 72px 40px 40px; }
+
+@media (max-width: 768px) {
+  .xb-grid-2col {
+    grid-template-columns: 1fr !important;
+    gap: 40px !important;
+  }
+  .xb-form-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .xb-form-wrap {
+    padding: 28px 20px !important;
+  }
+  .xb-section-pad { padding: 60px 20px !important; }
+  .xb-footer-cta { padding: 48px 20px !important; }
+  .xb-footer-body { padding: 48px 20px 28px !important; }
+}
+
 @media (max-width: 520px) {
-  .xb-photo-grid { grid-template-columns: 1fr !important; }
+  .page-hero-section {
+    padding: 90px 16px 44px !important;
+  }
+  .xb-section-pad { padding: 48px 16px !important; }
 }
 
 /* ============================================

@@ -82,7 +82,7 @@ function OppForm() {
   );
 
   return (
-    <form onSubmit={submit} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+    <form onSubmit={submit} className="xb-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
       {[
         { name: 'name', label: 'Full Name', placeholder: 'Your full name' },
         { name: 'company', label: 'Company Name', placeholder: 'Your company name' },
@@ -113,7 +113,7 @@ export default function GrowthOpportunities() {
   return (
     <div style={{ background: 'var(--cream-light)' }}>
       {/* HERO */}
-      <div style={{ background: 'var(--navy)', backgroundImage: 'url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80")', backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '500px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
+      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: 'url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80")', backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '500px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.86) 0%, rgba(13,27,62,0.72) 100%)' }} />
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)`, backgroundSize: '80px 80px' }} />
         <div style={{ position: 'absolute', top: '-10%', right: '5%', width: '600px', height: '600px', background: 'radial-gradient(circle,rgba(240,121,32,0.08) 0%,transparent 70%)', pointerEvents: 'none' }} />
@@ -162,11 +162,11 @@ export default function GrowthOpportunities() {
 
       {/* DIFFERENTIATORS */}
       <div style={{ background: 'var(--navy)', padding: '100px 40px' }}>
-        <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
+        <div className="xb-grid-2col" style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
           <FadeSection>
             <div className="section-label">What Makes These Different</div>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 3vw, 44px)', fontWeight: 700, color: '#fff', marginBottom: '24px', lineHeight: 1.2 }}>
-              Built for serious business movement.
+              Built for serious, scalable business growth.
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '16px', lineHeight: 1.8, marginBottom: '40px' }}>
               XPANDBHARAT focuses on opportunities backed by stronger structure, clearer growth direction, and commercially intelligent expansion thinking.
@@ -193,10 +193,10 @@ export default function GrowthOpportunities() {
               Let's explore the right opportunity.
             </h2>
             <p style={{ color: 'var(--gray)', fontSize: '16px', lineHeight: 1.7 }}>
-              Tell us about your business interests, preferred sectors, and growth goals. Our team will connect to take the conversation forward.
+              Tell us about your business interests, preferred sectors, and growth goals. We will match you with the right opportunities within 24 hours.
             </p>
           </FadeSection>
-          <div style={{ background: 'var(--white)', borderRadius: '16px', padding: '56px', border: '1px solid var(--border)' }}>
+          <div className="xb-form-wrap" style={{ background: 'var(--white)', borderRadius: '16px', padding: '56px', border: '1px solid var(--border)' }}>
             <OppForm />
           </div>
         </div>

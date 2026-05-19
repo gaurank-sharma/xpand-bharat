@@ -2,20 +2,50 @@ import { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
 const SERVICES = [
-  { icon: '◈', title: 'Franchise Expansion', desc: 'Structured franchise expansion designed for scalable and sustainable business growth.' },
-  { icon: '◎', title: 'Territory Planning', desc: 'Identifying the right cities, markets, and growth opportunities for disciplined expansion.' },
-  { icon: '◉', title: 'Channel Development', desc: 'Building organised channel and distribution growth frameworks for stronger market presence.' },
-  { icon: '⬡', title: 'Partner Acquisition', desc: 'Helping brands connect with commercially aligned franchise and business partners.' },
-  { icon: '△', title: 'Expansion Strategy', desc: 'Creating growth-focused expansion plans built around scalability and operational clarity.' },
-  { icon: '◇', title: 'Rollout Support', desc: 'Supporting onboarding, coordination, and execution during expansion movement.' },
+  {
+    title: 'Franchise Expansion',
+    desc: 'Structured franchise expansion designed for scalable and sustainable business growth across India.',
+    img: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=300&q=80',
+    tag: 'Franchise Ready', tagDark: false,
+  },
+  {
+    title: 'Territory Planning',
+    desc: 'Identifying the right cities, markets, and geographies for disciplined, data-backed expansion.',
+    img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=300&q=80',
+    tag: 'Market Mapping', tagDark: true,
+  },
+  {
+    title: 'Channel Development',
+    desc: 'Building organised channel and distribution frameworks for stronger market reach and brand presence.',
+    img: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=300&q=80',
+    tag: 'Multi-Channel', tagDark: false,
+  },
+  {
+    title: 'Partner Acquisition',
+    desc: 'Connecting brands with commercially aligned franchise and business partners across tier-1 and tier-2 cities.',
+    img: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=300&q=80',
+    tag: 'Partner Network', tagDark: true,
+  },
+  {
+    title: 'Expansion Strategy',
+    desc: 'Growth-focused expansion plans built around real scalability, unit economics, and operational clarity.',
+    img: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=300&q=80',
+    tag: 'Growth Planning', tagDark: false,
+  },
+  {
+    title: 'Rollout Support',
+    desc: 'End-to-end support for onboarding, coordination, and execution from day one through full rollout.',
+    img: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=300&q=80',
+    tag: 'Full Support', tagDark: true,
+  },
 ];
 
 const WHY = [
-  'Structured expansion approach',
-  'Commercial clarity at every stage',
-  'Execution-focused support',
-  'Organised growth movement',
-  'Long-term scalability mindset',
+  { title: 'Structured expansion approach', desc: 'We build frameworks that hold when markets get complicated — not just plans that look good on paper.' },
+  { title: 'Commercial clarity at every stage', desc: 'Every decision is grounded in real business logic. No guesswork, no assumptions.' },
+  { title: 'Execution-focused support', desc: 'We stay involved until the work moves forward. Strategy without execution is noise.' },
+  { title: 'Pan-India expansion reach', desc: 'Proven networks across tier-1 and tier-2 cities with on-ground partner and channel access.' },
+  { title: 'Long-term scalability mindset', desc: 'We build for the next five years, not just the next quarter. Sustainable growth over quick wins.' },
 ];
 
 function FadeSection({ children, delay = 0, style = {} }) {
@@ -51,7 +81,7 @@ function ContactForm() {
   );
 
   return (
-    <form onSubmit={submit} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
+    <form onSubmit={submit} className="xb-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
       {[
         { name: 'name', label: 'Full Name', placeholder: 'Your full name', full: false },
         { name: 'brand', label: 'Brand / Company Name', placeholder: 'Brand name', full: false },
@@ -84,40 +114,88 @@ function ContactForm() {
 export default function ForBrands() {
   return (
     <div style={{ background: 'var(--cream-light)' }}>
-      {/* PAGE HERO */}
-      <div style={{ background: 'var(--navy)', backgroundImage: 'url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1600&q=80")', backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '500px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.86) 0%, rgba(13,27,62,0.72) 100%)' }} />
-        <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)`, backgroundSize: '80px 80px' }} />
-        <div style={{ position: 'absolute', top: '-20%', right: '-5%', width: '500px', height: '500px', background: 'radial-gradient(circle,rgba(240,121,32,0.1) 0%,transparent 70%)', pointerEvents: 'none' }} />
-        <div style={{ maxWidth: '1440px', margin: '0 auto', width: '100%', position: 'relative', zIndex: 1 }}>
-          <div className="section-label">For Brands</div>
-          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '700px' }}>
-            Expand with structure.<br />
-            <span style={{ color: 'var(--orange)' }}>Scale with clarity.</span>
-          </h1>
-          <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '18px', lineHeight: 1.7, maxWidth: '560px', marginBottom: '40px' }}>
-            XPANDBHARAT helps brands grow through strategic expansion planning, market alignment, operational structure, and execution-focused business support.
-          </p>
-          <Link to="/contact" className="btn-primary">Discuss Your Requirement</Link>
+      {/* ── SPLIT HERO ── */}
+      <div className="fb-hero">
+        {/* Left content */}
+        <div className="fb-hero-left">
+          <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px)`, backgroundSize: '80px 80px', pointerEvents: 'none' }} />
+          <div style={{ position: 'relative', zIndex: 1 }}>
+            <div className="section-label" style={{ marginBottom: '32px' }}>For Brands</div>
+            <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(36px, 4.5vw, 68px)', fontWeight: 700, color: '#fff', lineHeight: 1.08, margin: '0 0 28px' }}>
+              Expand with{' '}
+              <span style={{ background: 'var(--orange)', color: '#fff', padding: '2px 14px', borderRadius: '4px', display: 'inline-block' }}>structure.</span>
+              <br />Scale with clarity.
+            </h1>
+            <p style={{ color: 'rgba(255,255,255,0.62)', fontSize: 'clamp(15px, 1.5vw, 18px)', lineHeight: 1.75, maxWidth: '480px', marginBottom: '48px' }}>
+              XPANDBHARAT helps brands grow through strategic expansion planning, market alignment, operational structure, and on-ground execution support.
+            </p>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '40px', flexWrap: 'wrap' }}>
+              <Link to="/contact" className="btn-primary">Start Expanding →</Link>
+              <div style={{ display: 'flex', gap: '32px' }}>
+                {[{ n: '250+', l: 'Brands Supported' }, { n: '15+', l: 'Years Experience' }].map(s => (
+                  <div key={s.l}>
+                    <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(24px, 2.5vw, 32px)', fontWeight: 700, color: '#fff', lineHeight: 1 }}>{s.n}</div>
+                    <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.45)', marginTop: '5px', letterSpacing: '0.05em' }}>{s.l}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Right image panel */}
+        <div className="fb-hero-right">
+          <img
+            src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80"
+            alt="Brand expansion"
+            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
+          />
+          <div className="fb-hero-grad" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to right, var(--navy-dark) 0%, rgba(7,15,35,0.4) 60%, rgba(7,15,35,0.5) 100%)' }} />
+          {/* Floating metric card */}
+          <div className="fb-float-card" style={{ position: 'absolute', bottom: '48px', right: '40px', background: 'rgba(255,255,255,0.07)', backdropFilter: 'blur(24px)', WebkitBackdropFilter: 'blur(24px)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '16px', padding: '28px 36px', zIndex: 1 }}>
+            <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '42px', fontWeight: 700, color: '#fff', lineHeight: 1 }}>180+</div>
+            <div style={{ color: 'rgba(255,255,255,0.55)', fontSize: '13px', marginTop: '10px', lineHeight: 1.6 }}>Active franchise partners<br />across 30+ cities in India</div>
+            <div style={{ marginTop: '16px', height: '2px', width: '40px', background: 'var(--orange)', borderRadius: '2px' }} />
+          </div>
         </div>
       </div>
 
-      {/* SERVICES GRID */}
+      {/* ── SIX PILLARS — Horizontal cards ── */}
       <div style={{ padding: '100px 40px', background: 'var(--cream-light)' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
           <FadeSection style={{ marginBottom: '64px' }}>
             <div className="section-label">What We Offer</div>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(30px, 3.5vw, 48px)', fontWeight: 700, color: 'var(--navy)', maxWidth: '500px', lineHeight: 1.2 }}>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 3.5vw, 48px)', fontWeight: 700, color: 'var(--navy)', maxWidth: '520px', lineHeight: 1.15, marginBottom: '0' }}>
               Six pillars of brand expansion.
             </h2>
           </FadeSection>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '24px' }}>
+          <div className="fb-pillars-grid">
             {SERVICES.map((s, i) => (
-              <FadeSection key={s.title} delay={i * 80}>
-                <div className="card" style={{ height: '100%' }}>
-                  <div style={{ fontSize: '32px', color: 'var(--orange)', marginBottom: '20px' }}>{s.icon}</div>
-                  <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', fontWeight: 600, color: 'var(--navy)', marginBottom: '12px' }}>{s.title}</h3>
-                  <p style={{ color: 'var(--gray)', fontSize: '14px', lineHeight: 1.7, margin: 0 }}>{s.desc}</p>
+              <FadeSection key={s.title} delay={i * 70}>
+                <div className="fb-pillar-card">
+                  {/* Left image */}
+                  <div className="fb-pillar-img">
+                    <img src={s.img} alt={s.title} style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                  </div>
+                  {/* Right content */}
+                  <div className="fb-pillar-body">
+                    <div style={{ flex: 1 }}>
+                      <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '18px', fontWeight: 700, color: 'var(--navy)', marginBottom: '10px', lineHeight: 1.3 }}>{s.title}</h3>
+                      <p style={{ color: 'var(--gray)', fontSize: '13.5px', lineHeight: 1.75, margin: 0 }}>{s.desc}</p>
+                    </div>
+                    <div style={{ marginTop: '20px', display: 'flex', alignItems: 'center', gap: '12px' }}>
+                      <span style={{
+                        display: 'inline-block',
+                        padding: '5px 14px',
+                        borderRadius: '100px',
+                        fontSize: '11px', fontWeight: 700,
+                        letterSpacing: '0.06em',
+                        background: s.tagDark ? 'var(--navy)' : 'var(--orange)',
+                        color: '#fff',
+                      }}>{s.tag}</span>
+                      <span style={{ fontSize: '11px', color: 'var(--gray)', fontWeight: 500 }}>· Core Service</span>
+                    </div>
+                  </div>
                 </div>
               </FadeSection>
             ))}
@@ -125,24 +203,153 @@ export default function ForBrands() {
         </div>
       </div>
 
+      <style>{`
+        /* ── Hero ── */
+        .fb-hero {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          min-height: 680px;
+          background: var(--navy-dark);
+          overflow: hidden;
+        }
+        .fb-hero-left {
+          padding: 160px 56px 80px 40px;
+          position: relative;
+          display: flex;
+          align-items: center;
+          background: var(--navy-dark);
+        }
+        .fb-hero-right {
+          position: relative;
+          min-height: 480px;
+        }
+
+        /* ── Pillars ── */
+        .fb-pillars-grid {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 20px;
+        }
+        .fb-pillar-card {
+          display: flex;
+          gap: 0;
+          background: var(--white);
+          border: 1px solid var(--border);
+          border-radius: 16px;
+          overflow: hidden;
+          transition: box-shadow 0.3s ease, transform 0.3s ease;
+        }
+        .fb-pillar-card:hover {
+          box-shadow: 0 12px 48px rgba(0,0,0,0.08);
+          transform: translateY(-3px);
+        }
+        .fb-pillar-img {
+          width: 140px;
+          flex-shrink: 0;
+          overflow: hidden;
+        }
+        .fb-pillar-img img {
+          transition: transform 0.5s ease;
+        }
+        .fb-pillar-card:hover .fb-pillar-img img {
+          transform: scale(1.06);
+        }
+        .fb-pillar-body {
+          flex: 1;
+          padding: 28px 28px 24px;
+          display: flex;
+          flex-direction: column;
+        }
+
+        /* ── Tablet + Mobile ≤ 900px: image becomes background ── */
+        @media (max-width: 900px) {
+          .fb-hero {
+            display: block;
+            position: relative;
+            min-height: 100vh;
+          }
+          /* Image panel fills the whole hero as background */
+          .fb-hero-right {
+            position: absolute;
+            inset: 0;
+            z-index: 0;
+          }
+          /* Override gradient to dark overall (not left-to-right) */
+          .fb-hero-grad {
+            background: linear-gradient(
+              180deg,
+              rgba(7,15,35,0.55) 0%,
+              rgba(7,15,35,0.92) 100%
+            ) !important;
+          }
+          /* Content sits on top */
+          .fb-hero-left {
+            position: relative;
+            z-index: 1;
+            background: transparent !important;
+            padding: 110px 24px 72px;
+            min-height: 100vh;
+            display: flex;
+            align-items: flex-end;
+          }
+          .fb-float-card { display: none; }
+          .fb-pillars-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ── Mobile ≤ 600px ── */
+        @media (max-width: 600px) {
+          .fb-hero-left { padding: 90px 16px 56px; }
+
+          /* Stack pillar card: image on top, content below */
+          .fb-pillar-card { flex-direction: column; }
+          .fb-pillar-img { width: 100%; height: 180px; }
+          .fb-pillar-body { padding: 20px 20px 18px; }
+        }
+      `}</style>
+
       {/* WHY SECTION */}
-      <div style={{ background: 'var(--navy)', padding: '100px 40px' }}>
-        <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '80px', alignItems: 'center' }}>
+      <div style={{ background: 'var(--navy)', padding: '100px 40px', position: 'relative', overflow: 'hidden' }}>
+        {/* Large watermark number */}
+        <div style={{ position: 'absolute', right: '-40px', top: '50%', transform: 'translateY(-50%)', fontFamily: "'Playfair Display', serif", fontSize: '320px', fontWeight: 700, color: 'rgba(255,255,255,0.02)', lineHeight: 1, pointerEvents: 'none', userSelect: 'none' }}>05</div>
+
+        <div className="xb-grid-2col" style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '100px', alignItems: 'start' }}>
+          {/* Left */}
           <FadeSection>
             <div className="section-label">Why Us</div>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 3vw, 44px)', fontWeight: 700, color: '#fff', marginBottom: '32px', lineHeight: 1.2 }}>
-              Why brands work with XPANDBHARAT.
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(32px, 3.5vw, 52px)', fontWeight: 700, color: '#fff', marginBottom: '24px', lineHeight: 1.1 }}>
+              Why brands work with<br />
+              <span style={{ color: 'var(--orange)' }}>XPANDBHARAT.</span>
             </h2>
-            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '16px', lineHeight: 1.8, marginBottom: '40px' }}>
-              Built for brands serious about growth. We focus on helping businesses expand through stronger planning, operational discipline, and execution-led growth support.
+            <div style={{ width: '48px', height: '2px', background: 'var(--orange)', margin: '28px 0' }} />
+            <p style={{ color: 'rgba(255,255,255,0.52)', fontSize: '16px', lineHeight: 1.85, marginBottom: '48px', maxWidth: '380px' }}>
+              Built for brands serious about growth — not brands looking for shortcuts. We bring structure, discipline, and real execution to every engagement.
             </p>
             <Link to="/contact" className="btn-primary">Start the Conversation</Link>
+
+            {/* Small credibility stat */}
+            <div style={{ marginTop: '56px', padding: '24px 28px', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', display: 'inline-block' }}>
+              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '36px', fontWeight: 700, color: '#fff', lineHeight: 1 }}>95%</div>
+              <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: '12px', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: '6px' }}>Client retention rate</div>
+            </div>
           </FadeSection>
-          <FadeSection delay={200} style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+
+          {/* Right — numbered list */}
+          <FadeSection delay={150}>
             {WHY.map((item, i) => (
-              <div key={item} style={{ display: 'flex', alignItems: 'center', gap: '16px', padding: '20px 24px', background: 'rgba(255,255,255,0.04)', borderRadius: '8px', border: '1px solid rgba(255,255,255,0.08)' }}>
-                <div style={{ width: '8px', height: '8px', borderRadius: '50%', background: 'var(--orange)', flexShrink: 0 }} />
-                <span style={{ color: 'rgba(255,255,255,0.85)', fontSize: '15px', fontWeight: 500 }}>{item}</span>
+              <div key={item.title} style={{
+                display: 'flex', gap: '28px', alignItems: 'flex-start',
+                padding: '28px 0',
+                borderBottom: i < WHY.length - 1 ? '1px solid rgba(255,255,255,0.07)' : 'none',
+              }}>
+                {/* Number */}
+                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '42px', fontWeight: 700, color: 'var(--orange)', lineHeight: 0.9, flexShrink: 0, width: '56px', opacity: 0.9 }}>
+                  {String(i + 1).padStart(2, '0')}
+                </div>
+                {/* Content */}
+                <div style={{ paddingTop: '6px' }}>
+                  <h4 style={{ color: '#fff', fontSize: '16px', fontWeight: 600, marginBottom: '8px', lineHeight: 1.3 }}>{item.title}</h4>
+                  <p style={{ color: 'rgba(255,255,255,0.42)', fontSize: '14px', lineHeight: 1.75, margin: 0 }}>{item.desc}</p>
+                </div>
               </div>
             ))}
           </FadeSection>
@@ -158,10 +365,10 @@ export default function ForBrands() {
               Let's discuss your expansion plans.
             </h2>
             <p style={{ color: 'var(--gray)', fontSize: '16px', lineHeight: 1.7 }}>
-              Tell us about your brand, expansion goals, and preferred markets. Our team will connect with you to take the conversation forward.
+              Tell us about your brand, expansion goals, and preferred markets. Our team will reach out within 24 hours.
             </p>
           </FadeSection>
-          <div style={{ background: 'var(--white)', borderRadius: '16px', padding: '56px', border: '1px solid var(--border)' }}>
+          <div className="xb-form-wrap" style={{ background: 'var(--white)', borderRadius: '16px', padding: '56px', border: '1px solid var(--border)' }}>
             <ContactForm />
           </div>
         </div>

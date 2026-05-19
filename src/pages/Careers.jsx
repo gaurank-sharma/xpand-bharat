@@ -94,8 +94,8 @@ export default function Careers() {
           </h1>
           <p className="max-w-2xl mx-auto text-sm md:text-base leading-relaxed
             text-gray-500 dark:text-gray-400">
-            We're always looking for passionate, creative individuals to join the WebMobHut family.
-            Explore open roles and become part of a team that shapes unforgettable experiences.
+            We are always looking for driven, commercially minded people to join the XPANDBHARAT team.
+            Help serious brands and investors build structured, disciplined, long-term business growth across India.
           </p>
         </div>
       </section>
@@ -105,10 +105,10 @@ export default function Careers() {
         border-gray-100 dark:border-neutral-900">
         <div className="container mx-auto max-w-5xl grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
           {[
-            { value: '10+',  label: 'Years of Excellence' },
-            { value: '500+', label: 'Events Delivered' },
-            { value: '50+',  label: 'Team Members' },
-            { value: '2',    label: 'Office Locations' },
+            { value: '15+',  label: 'Years of Experience' },
+            { value: '250+', label: 'Projects Supported' },
+            { value: '25+',  label: 'Team Members' },
+            { value: '180+', label: 'Satisfied Partners' },
           ].map(({ value, label }) => (
             <div key={label}>
               <p className="text-3xl font-bold text-[#2eaff0]">{value}</p>

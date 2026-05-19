@@ -1,14 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-const TOPICS = [
-  { icon: '◈', label: 'Business Expansion', desc: 'Growth strategies, expansion planning, and scalable market movement.' },
-  { icon: '◉', label: 'Franchise Growth', desc: 'Franchise models, territory planning, and expansion frameworks.' },
-  { icon: '◎', label: 'Investor Perspectives', desc: 'Business opportunities, investment alignment, and growth sectors.' },
-  { icon: '⬡', label: 'Market Trends', desc: 'Emerging industries, growth sectors, and changing business opportunities.' },
-  { icon: '△', label: 'Execution & Governance', desc: 'Operational discipline, process structure, and scalable business systems.' },
-];
-
 const ARTICLES = [
   {
     tag: 'Franchise Growth',
@@ -16,6 +8,7 @@ const ARTICLES = [
     excerpt: 'Most franchise failures stem not from poor products but from poor systems. The difference between a brand that scales and one that stalls is almost always structural.',
     readTime: '6 min read',
     date: 'May 2025',
+    img: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80',
   },
   {
     tag: 'Business Expansion',
@@ -23,6 +16,7 @@ const ARTICLES = [
     excerpt: 'Not every business that wants to scale is ready to scale. Before expansion, a brand must pass five critical readiness tests that determine whether growth will be sustainable.',
     readTime: '5 min read',
     date: 'April 2025',
+    img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
   },
   {
     tag: 'Investor Perspectives',
@@ -30,29 +24,41 @@ const ARTICLES = [
     excerpt: 'Investment in franchise businesses has surged, but so have the failures. Here is what distinguishes the opportunities worth backing from the ones worth walking away from.',
     readTime: '7 min read',
     date: 'April 2025',
+    img: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80',
   },
   {
     tag: 'Market Trends',
     title: 'Tier-2 India: the next frontier for brand expansion.',
-    excerpt: 'The story of India\'s consumption growth is no longer just a metro story. Brands that are still ignoring tier-2 and tier-3 cities are missing the most significant opportunity of this decade.',
+    excerpt: "The story of India's consumption growth is no longer just a metro story. Brands still ignoring tier-2 and tier-3 cities are missing the most significant opportunity of this decade.",
     readTime: '8 min read',
     date: 'March 2025',
+    img: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80',
   },
   {
     tag: 'Execution & Governance',
     title: 'Building operational systems that scale without breaking.',
-    excerpt: 'Operational systems are the backbone of every scalable business. Most businesses reach a growth ceiling not because of market limitations but because of internal system limitations.',
+    excerpt: 'Operational systems are the backbone of every scalable business. Most businesses hit a ceiling not because of market limits but because of internal system limits.',
     readTime: '5 min read',
     date: 'March 2025',
+    img: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=800&q=80',
   },
   {
     tag: 'Business Expansion',
     title: 'Commercial clarity: the most underrated competitive advantage.',
-    excerpt: 'When businesses have genuine commercial clarity — about their model, their margins, their unit economics, and their customer — expansion becomes a structured movement, not a gamble.',
+    excerpt: 'When businesses have genuine commercial clarity — about their model, margins, unit economics, and customer — expansion becomes a structured movement, not a gamble.',
     readTime: '6 min read',
     date: 'February 2025',
+    img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
   },
 ];
+
+const TAG_COLORS = {
+  'Franchise Growth':      { bg: 'rgba(240,121,32,0.15)', color: 'var(--orange)' },
+  'Business Expansion':    { bg: 'rgba(13,27,62,0.5)',    color: '#fff' },
+  'Investor Perspectives': { bg: 'rgba(240,121,32,0.15)', color: 'var(--orange)' },
+  'Market Trends':         { bg: 'rgba(13,27,62,0.5)',    color: '#fff' },
+  'Execution & Governance':{ bg: 'rgba(13,27,62,0.5)',    color: '#fff' },
+};
 
 function FadeSection({ children, delay = 0, style = {} }) {
   const ref = useRef(null);
@@ -61,18 +67,28 @@ function FadeSection({ children, delay = 0, style = {} }) {
     if (!el) return;
     el.style.opacity = '0'; el.style.transform = 'translateY(40px)';
     el.style.transition = `opacity 0.8s ease ${delay}ms, transform 0.8s ease ${delay}ms`;
-    const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; obs.disconnect(); } }, { threshold: 0.1 });
+    const obs = new IntersectionObserver(([e]) => {
+      if (e.isIntersecting) { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; obs.disconnect(); }
+    }, { threshold: 0.1 });
     obs.observe(el); return () => obs.disconnect();
   }, [delay]);
   return <div ref={ref} style={style}>{children}</div>;
 }
 
 export default function Insights() {
+  const sliderRef = useRef(null);
+
+  const scroll = (dir) => {
+    if (!sliderRef.current) return;
+    sliderRef.current.scrollBy({ left: dir * 420, behavior: 'smooth' });
+  };
+
   return (
     <div style={{ background: 'var(--cream-light)' }}>
+
       {/* HERO */}
-      <div style={{ background: 'var(--navy)', backgroundImage: 'url("https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1600&q=80")', backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '500px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.86) 0%, rgba(13,27,62,0.72) 100%)' }} />
+      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: 'url("https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1600&q=80")', backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '500px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.88) 0%, rgba(13,27,62,0.72) 100%)' }} />
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)`, backgroundSize: '80px 80px' }} />
         <div style={{ position: 'absolute', top: '10%', right: '5%', width: '500px', height: '500px', background: 'radial-gradient(circle,rgba(240,121,32,0.09) 0%,transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '1440px', margin: '0 auto', width: '100%', position: 'relative', zIndex: 1 }}>
@@ -82,83 +98,149 @@ export default function Insights() {
             <span style={{ color: 'var(--orange)' }}>expansion & execution.</span>
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '18px', lineHeight: 1.7, maxWidth: '540px' }}>
-            Business expansion insights, market trends, franchise growth articles, investor perspectives, and strategic content for growth-focused professionals.
+            Franchise growth, market trends, investor perspectives, and strategic content for serious business professionals.
           </p>
         </div>
       </div>
 
-      {/* TOPICS */}
-      <div style={{ background: 'var(--navy)', padding: '0 40px', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-        <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'flex', gap: '0', overflowX: 'auto' }}>
-          {TOPICS.map((t, i) => (
-            <div key={t.label} style={{
-              padding: '32px 40px', borderRight: i < TOPICS.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none',
-              minWidth: '200px', cursor: 'pointer', transition: 'background 0.2s',
-              flexShrink: 0,
-            }}>
-              <div style={{ fontSize: '20px', color: 'var(--orange)', marginBottom: '8px' }}>{t.icon}</div>
-              <div style={{ color: '#fff', fontSize: '13px', fontWeight: 600, marginBottom: '4px' }}>{t.label}</div>
-              <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: '12px', lineHeight: 1.5 }}>{t.desc}</div>
+      {/* ── ARTICLES SLIDER ── */}
+      <div style={{ background: 'var(--cream-light)', padding: '50px 15px' }}>
+        <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 40px' }}>
+
+          {/* Header row */}
+          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: '56px', flexWrap: 'wrap', gap: '24px' }}>
+            <FadeSection>
+              <p style={{
+                fontSize: '11px', fontWeight: 700, letterSpacing: '0.22em',
+                textTransform: 'uppercase', color: 'var(--gray)', marginBottom: '18px', margin: '0 0 18px',
+              }}>
+                INSIGHTS&nbsp;
+                <span style={{ color: 'var(--orange)', fontFamily: 'monospace' }}>({ARTICLES.length})</span>
+              </p>
+              <h2 style={{
+                fontFamily: "'Playfair Display', serif",
+                fontSize: 'clamp(30px, 4vw, 52px)',
+                fontWeight: 700, color: 'var(--navy)',
+                lineHeight: 1.1, margin: 0,
+              }}>
+                Stay ahead of<br />what's next.
+              </h2>
+            </FadeSection>
+
+            {/* Arrow buttons */}
+            <div style={{ display: 'flex', gap: '12px', flexShrink: 0 }}>
+              <button
+                onClick={() => scroll(-1)}
+                aria-label="Previous"
+                style={{
+                  width: '48px', height: '48px', borderRadius: '6px',
+                  border: '1px solid #D5D2CC', background: '#fff',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  cursor: 'pointer', fontSize: '16px', color: 'var(--navy)',
+                  transition: 'all 0.2s ease',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--navy)'; e.currentTarget.style.background = 'var(--navy)'; e.currentTarget.style.color = '#fff'; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = '#D5D2CC'; e.currentTarget.style.background = '#fff'; e.currentTarget.style.color = 'var(--navy)'; }}
+              >←</button>
+              <button
+                onClick={() => scroll(1)}
+                aria-label="Next"
+                style={{
+                  width: '48px', height: '48px', borderRadius: '6px',
+                  border: '1px solid #D5D2CC', background: '#fff',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center',
+                  cursor: 'pointer', fontSize: '16px', color: 'var(--navy)',
+                  transition: 'all 0.2s ease',
+                }}
+                onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--navy)'; e.currentTarget.style.background = 'var(--navy)'; e.currentTarget.style.color = '#fff'; }}
+                onMouseLeave={e => { e.currentTarget.style.borderColor = '#D5D2CC'; e.currentTarget.style.background = '#fff'; e.currentTarget.style.color = 'var(--navy)'; }}
+              >→</button>
+            </div>
+          </div>
+        </div>
+
+        {/* Scrollable cards */}
+        <div
+          ref={sliderRef}
+          style={{
+            display: 'flex',
+            gap: '20px',
+            overflowX: 'auto',
+            scrollSnapType: 'x mandatory',
+            scrollbarWidth: 'none',
+            WebkitOverflowScrolling: 'touch',
+            padding: '0 40px 12px',
+          }}
+        >
+          <style>{`.ins-slider::-webkit-scrollbar { display: none; }`}</style>
+
+          {ARTICLES.map((article, i) => (
+            <div
+              key={article.title}
+              style={{
+                width: '380px', flexShrink: 0,
+                scrollSnapAlign: 'start',
+                cursor: 'pointer',
+              }}
+              onMouseEnter={e => {
+                e.currentTarget.querySelector('.ins-img').style.transform = 'scale(1.05)';
+                e.currentTarget.querySelector('.ins-read').style.color = 'var(--orange)';
+              }}
+              onMouseLeave={e => {
+                e.currentTarget.querySelector('.ins-img').style.transform = 'scale(1)';
+                e.currentTarget.querySelector('.ins-read').style.color = 'var(--navy)';
+              }}
+            >
+              {/* Thumbnail */}
+              <div style={{ borderRadius: '4px', overflow: 'hidden', height: '248px', marginBottom: '24px', position: 'relative' }}>
+                <img
+                  className="ins-img"
+                  src={article.img}
+                  alt={article.title}
+                  style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block', transition: 'transform 0.6s ease' }}
+                />
+                <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(7,15,35,0.75) 0%, rgba(7,15,35,0.08) 60%)' }} />
+                <div style={{ position: 'absolute', bottom: '18px', left: '18px' }}>
+                  <span style={{
+                    fontSize: '9px', fontWeight: 700, letterSpacing: '0.22em',
+                    textTransform: 'uppercase', padding: '5px 12px',
+                    border: '1px solid rgba(220,168,60,0.5)',
+                    color: 'rgba(230,178,70,0.92)',
+                  }}>{article.tag}</span>
+                </div>
+              </div>
+
+              {/* Text */}
+              <div style={{ padding: '0 6px' }}>
+              <h3 style={{
+                fontFamily: "'Playfair Display', serif",
+                fontSize: '19px', fontWeight: 700,
+                color: 'var(--navy)', lineHeight: 1.35,
+                marginBottom: '12px',
+                display: '-webkit-box', WebkitLineClamp: 2,
+                WebkitBoxOrient: 'vertical', overflow: 'hidden',
+              }}>{article.title}</h3>
+
+              <p style={{
+                color: 'var(--gray)', fontSize: '14px', lineHeight: 1.7,
+                marginBottom: '20px',
+                display: '-webkit-box', WebkitLineClamp: 3,
+                WebkitBoxOrient: 'vertical', overflow: 'hidden',
+              }}>{article.excerpt}</p>
+
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--border)', paddingTop: '16px' }}>
+                <span style={{ color: 'var(--gray)', fontSize: '12px' }}>{article.date} · {article.readTime}</span>
+                <span
+                  className="ins-read"
+                  style={{ fontSize: '13px', fontWeight: 600, color: 'var(--navy)', transition: 'color 0.2s' }}
+                >Read →</span>
+              </div>
+              </div>
             </div>
           ))}
-        </div>
-      </div>
 
-      {/* FEATURED ARTICLE */}
-      <div style={{ padding: '100px 40px', background: 'var(--cream-light)' }}>
-        <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
-          <FadeSection style={{ marginBottom: '64px' }}>
-            <div className="section-label">Featured</div>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 3vw, 40px)', fontWeight: 700, color: 'var(--navy)' }}>
-              Latest thinking from XPANDBHARAT.
-            </h2>
-          </FadeSection>
-
-          {/* Featured big card */}
-          <FadeSection style={{ marginBottom: '40px' }}>
-            <div style={{
-              background: 'var(--navy)', borderRadius: '20px', padding: '64px',
-              display: 'grid', gridTemplateColumns: '1fr auto', gap: '48px', alignItems: 'end',
-              position: 'relative', overflow: 'hidden',
-            }}>
-              <div style={{ position: 'absolute', top: '-20%', right: '-5%', width: '400px', height: '400px', background: 'radial-gradient(circle,rgba(240,121,32,0.08) 0%,transparent 70%)', pointerEvents: 'none' }} />
-              <div style={{ position: 'relative', zIndex: 1 }}>
-                <span className="pill" style={{ background: 'rgba(240,121,32,0.15)', color: 'var(--orange)', marginBottom: '24px', display: 'inline-block' }}>{ARTICLES[0].tag}</span>
-                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(24px, 2.5vw, 36px)', fontWeight: 700, color: '#fff', marginBottom: '20px', lineHeight: 1.25 }}>
-                  {ARTICLES[0].title}
-                </h3>
-                <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '16px', lineHeight: 1.7, maxWidth: '600px', marginBottom: '32px' }}>{ARTICLES[0].excerpt}</p>
-                <div style={{ display: 'flex', gap: '24px', color: 'rgba(255,255,255,0.35)', fontSize: '13px' }}>
-                  <span>{ARTICLES[0].date}</span>
-                  <span>{ARTICLES[0].readTime}</span>
-                </div>
-              </div>
-              <div style={{ position: 'relative', zIndex: 1, flexShrink: 0 }}>
-                <button style={{ background: 'var(--orange)', color: '#fff', border: 'none', padding: '14px 28px', borderRadius: '4px', fontWeight: 600, fontSize: '13px', letterSpacing: '0.06em', textTransform: 'uppercase', cursor: 'pointer' }}>
-                  Read Article →
-                </button>
-              </div>
-            </div>
-          </FadeSection>
-
-          {/* Article grid */}
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '24px' }}>
-            {ARTICLES.slice(1).map((article, i) => (
-              <FadeSection key={article.title} delay={i * 80}>
-                <div className="card" style={{ height: '100%', cursor: 'pointer' }}>
-                  <span className="pill" style={{ marginBottom: '20px', display: 'inline-block' }}>{article.tag}</span>
-                  <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', fontWeight: 600, color: 'var(--navy)', marginBottom: '14px', lineHeight: 1.35 }}>
-                    {article.title}
-                  </h3>
-                  <p style={{ color: 'var(--gray)', fontSize: '14px', lineHeight: 1.7, marginBottom: '28px' }}>{article.excerpt}</p>
-                  <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--border)', paddingTop: '20px' }}>
-                    <span style={{ color: 'var(--gray)', fontSize: '12px' }}>{article.date} · {article.readTime}</span>
-                    <span style={{ color: 'var(--orange)', fontWeight: 600, fontSize: '13px' }}>Read →</span>
-                  </div>
-                </div>
-              </FadeSection>
-            ))}
-          </div>
+          {/* trailing spacer */}
+          <div style={{ width: '20px', flexShrink: 0 }} />
         </div>
       </div>
 
@@ -171,7 +253,7 @@ export default function Insights() {
               Built around practical business thinking.
             </h2>
             <p style={{ color: 'var(--gray)', fontSize: '16px', lineHeight: 1.7, marginBottom: '40px' }}>
-              XPANDBHARAT focuses on insights that support commercially intelligent and execution-focused business movement.
+              XPANDBHARAT produces insights that help brands, investors, and operators make smarter, faster, and more structured business decisions.
             </p>
             <Link to="/contact" className="btn-primary">Start a Conversation</Link>
           </FadeSection>

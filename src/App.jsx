@@ -1,7 +1,9 @@
+import { useState, useCallback } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
+import Preloader from './components/Preloader';
 
 import Home from './pages/Home';
 import ForBrands from './pages/ForBrands';
@@ -17,10 +19,24 @@ import Terms from './pages/Terms';
 import Disclaimer from './pages/Disclaimer';
 
 function App() {
+  const [loading, setLoading] = useState(
+    () => !sessionStorage.getItem('xb-loaded')
+  );
+
+  const handleComplete = useCallback(() => {
+    sessionStorage.setItem('xb-loaded', '1');
+    setLoading(false);
+  }, []);
+
   return (
     <Router>
+      {loading && <Preloader onComplete={handleComplete} />}
       <ScrollToTop />
-      <div style={{ minHeight: '100vh', display: 'flex', flexDirection: 'column' }}>
+      <div style={{
+        minHeight: '100vh', display: 'flex', flexDirection: 'column',
+        opacity: loading ? 0 : 1,
+        transition: 'opacity 0.4s ease 0.1s',
+      }}>
         <Navbar />
         <main style={{ flex: 1 }}>
           <Routes>
