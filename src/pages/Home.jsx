@@ -38,7 +38,7 @@ const PHOTO_CARDS = [
   {
     tag: 'For Brands',
     title: 'Expand with Structure',
-    sub: 'Franchise & market expansion',
+    sub: 'Franchise and market expansion',
     img: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=700&q=80',
     to: '/for-brands',
   },

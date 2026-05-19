@@ -95,7 +95,7 @@ export default function Insights() {
           <div className="section-label">Growth Insights</div>
           <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '720px' }}>
             Perspectives on growth,<br />
-            <span style={{ color: 'var(--orange)' }}>expansion & execution.</span>
+            <span style={{ color: 'var(--orange)' }}>expansion and execution.</span>
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '18px', lineHeight: 1.7, maxWidth: '540px' }}>
             Franchise growth, market trends, investor perspectives, and strategic content for serious business professionals.
