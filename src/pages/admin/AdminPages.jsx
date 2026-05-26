@@ -24,6 +24,25 @@ const SECTION_LABELS = {
 
 const EMPTY_ITEM = { badge: '', tag: '', title: '', subtitle: '', description: '', metrics: '', imageUrl: '', link: '', order: 0 };
 
+const SECTION_CONFIG = {
+  stats:           { show: ['title','subtitle'],                        labels: { title: 'Number (e.g. 250+)', subtitle: 'Label (e.g. Projects Supported)' } },
+  pillars:         { show: ['title','description'],                     labels: { title: 'Pillar Name', description: 'Description' } },
+  offerings:       { show: ['badge','title','description'],             labels: { badge: 'Icon (◈ ◉ ◎)', description: 'Description' } },
+  'photo-cards':   { show: ['tag','title','subtitle','image','link'],   labels: { tag: 'Category Tag', subtitle: 'Sub-label', link: 'Page Link (e.g. /for-brands)' } },
+  services:        { show: ['tag','title','description','image'],       labels: { tag: 'Badge (e.g. Franchise Ready)', description: 'Description' } },
+  'why-us':        { show: ['badge','title','description'],             labels: { badge: 'Number (01, 02…)', description: 'Supporting text' } },
+  categories:      { show: ['tag','title','description','image'],       labels: { tag: 'Sector Tag', description: 'Description' } },
+  differentiators: { show: ['badge','title','description'],             labels: { badge: 'Number (01, 02…)', description: 'Supporting text' } },
+  steps:           { show: ['badge','title','description'],             labels: { badge: 'Step Number (01–05)', description: 'Step description' } },
+  principles:      { show: ['title','description'],                     labels: { title: 'Principle Name', description: 'One-line description' } },
+  sectors:         { show: ['badge','title','subtitle','description','metrics'], labels: { badge: 'Number (01–06)', subtitle: 'Sub-categories (e.g. QSR · Cafés)', description: 'Description', metrics: 'Metrics (comma separated)' } },
+  'focus-areas':   { show: ['tag','title','description','image'],       labels: { tag: 'Area Tag', description: 'Description' } },
+};
+
+const getConfig = section => SECTION_CONFIG[section] || { show: ['badge','tag','title','subtitle','description','metrics','image','link'], labels: {} };
+const shows = (section, field) => getConfig(section).show.includes(field);
+const label = (section, field, fallback) => getConfig(section).labels[field] || fallback;
+
 const Input = ({ label, value, onChange, placeholder, area }) =>
   area ? (
     <div>
@@ -297,18 +316,21 @@ export default function AdminPages() {
               <button onClick={() => setModal(false)} className="text-gray-500 hover:text-white"><X size={18} /></button>
             </div>
             <form onSubmit={saveItem} className="p-6 space-y-4">
-              <div className="grid grid-cols-2 gap-4">
-                <Input label="Badge / Number / Icon" value={form.badge} onChange={v => set('badge', v)} placeholder="01, ◈, etc." />
-                <Input label="Tag / Category" value={form.tag} onChange={v => set('tag', v)} placeholder="e.g. Franchise Ready" />
-              </div>
-              <Input label="Title *" value={form.title} onChange={v => set('title', v)} placeholder="Item title" />
-              <Input label="Subtitle" value={form.subtitle} onChange={v => set('subtitle', v)} placeholder="Secondary text or sub-description" />
-              <Input label="Metrics (comma separated)" value={form.metrics} onChange={v => set('metrics', v)} placeholder="e.g. High repeat business, Scalable, Multi-format" />
-              <Input label="Link / URL" value={form.link} onChange={v => set('link', v)} placeholder="/for-brands" />
+              {(shows(section,'badge') || shows(section,'tag')) && (
+                <div className={`grid gap-4 ${shows(section,'badge') && shows(section,'tag') ? 'grid-cols-2' : 'grid-cols-1'}`}>
+                  {shows(section,'badge') && <Input label={label(section,'badge','Badge / Number / Icon')} value={form.badge} onChange={v => set('badge', v)} placeholder="01, ◈, etc." />}
+                  {shows(section,'tag')   && <Input label={label(section,'tag','Tag / Category')}         value={form.tag}   onChange={v => set('tag', v)}   placeholder="e.g. Franchise Ready" />}
+                </div>
+              )}
+              <Input label={label(section,'title','Title') + ' *'} value={form.title} onChange={v => set('title', v)} placeholder="Item title" />
+              {shows(section,'subtitle') && <Input label={label(section,'subtitle','Subtitle')} value={form.subtitle} onChange={v => set('subtitle', v)} placeholder="Secondary / supporting text" />}
+              {shows(section,'description') && <Input label={label(section,'description','Description')} value={form.description} onChange={v => set('description', v)} placeholder="Full description text" area />}
+              {shows(section,'metrics') && <Input label={label(section,'metrics','Metrics (comma separated)')} value={form.metrics} onChange={v => set('metrics', v)} placeholder="e.g. High repeat business, Scalable, Multi-format" />}
+              {shows(section,'link') && <Input label={label(section,'link','Link / URL')} value={form.link} onChange={v => set('link', v)} placeholder="/for-brands" />}
               <Input label="Display Order" value={String(form.order)} onChange={v => set('order', parseInt(v) || 0)} placeholder="1" />
 
               {/* Image — upload goes to Cloudinary */}
-              <div>
+              {shows(section,'image') && <div>
                 <label className="block text-gray-400 text-xs mb-2">Image <span className="text-gray-600">(uploads saved to Cloudinary permanently)</span></label>
                 <label className={`flex flex-col items-center justify-center border-2 border-dashed rounded-xl cursor-pointer h-28 transition-colors overflow-hidden ${imgPrev ? 'border-[#f07920]/30' : 'border-[#2a2a2a] hover:border-[#f07920]/30'}`}>
                   {imgPrev
@@ -320,7 +342,7 @@ export default function AdminPages() {
                 <input type="text" value={!imgFile ? form.imageUrl : ''} onChange={e => { set('imageUrl', e.target.value); setImgPrev(e.target.value); setImgFile(null); }}
                   placeholder="Or paste existing image URL…"
                   className="w-full mt-2 bg-[#1a1a1a] border border-[#2a2a2a] text-white placeholder-gray-600 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#f07920]" />
-              </div>
+              </div>}
 
               <div className="flex gap-3 pt-2">
                 <button type="button" onClick={() => setModal(false)} className="flex-1 py-2.5 border border-[#2a2a2a] text-gray-400 rounded-lg text-sm hover:border-[#3a3a3a]">Cancel</button>
