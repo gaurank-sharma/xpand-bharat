@@ -4,7 +4,7 @@ import { Search, Trash2, Eye, X, Mail, Phone, Building2, FileText } from 'lucide
 
 const STATUS_OPTS = ['all', 'new', 'read', 'replied', 'resolved', 'spam'];
 const statusColor = {
-  new: 'bg-[#2eaff0]/10 text-[#2eaff0] border-[#2eaff0]/20',
+  new: 'bg-[#f07920]/10 text-[#f07920] border-[#f07920]/20',
   read: 'bg-gray-500/10 text-gray-400 border-gray-500/20',
   replied: 'bg-green-500/10 text-green-400 border-green-500/20',
   resolved: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
@@ -62,7 +62,7 @@ export default function AdminContacts() {
     <div className="space-y-4">
       {/* Toast */}
       {toast && (
-        <div className="fixed bottom-6 right-6 bg-[#2eaff0] text-black px-4 py-2 rounded-lg text-sm font-medium z-50 shadow-lg">
+        <div className="fixed bottom-6 right-6 bg-[#f07920] text-black px-4 py-2 rounded-lg text-sm font-medium z-50 shadow-lg">
           {toast}
         </div>
       )}
@@ -74,7 +74,7 @@ export default function AdminContacts() {
             key={s}
             onClick={() => setFilter(s)}
             className={`px-3 py-1.5 rounded-lg text-xs font-medium capitalize border transition-all
-              ${filter === s ? 'bg-[#2eaff0] text-black border-[#2eaff0]' : 'bg-[#111] text-gray-400 border-[#222] hover:border-[#2eaff0]/40'}`}
+              ${filter === s ? 'bg-[#f07920] text-black border-[#f07920]' : 'bg-[#111] text-gray-400 border-[#222] hover:border-[#f07920]/40'}`}
           >
             {s} {s !== 'all' && stats[s] !== undefined ? `(${stats[s]})` : ''}
           </button>
@@ -89,14 +89,14 @@ export default function AdminContacts() {
           placeholder="Search by name, email or company..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="w-full bg-[#0f0f0f] border border-[#1e1e1e] text-white placeholder-gray-600 rounded-lg pl-9 pr-4 py-2.5 text-sm focus:outline-none focus:border-[#2eaff0] transition-colors"
+          className="w-full bg-[#0f0f0f] border border-[#1e1e1e] text-white placeholder-gray-600 rounded-lg pl-9 pr-4 py-2.5 text-sm focus:outline-none focus:border-[#f07920] transition-colors"
         />
       </div>
 
       {/* Table */}
       <div className="bg-[#0f0f0f] border border-[#1e1e1e] rounded-xl overflow-hidden">
         {loading ? (
-          <div className="flex justify-center py-16"><div className="w-7 h-7 border-2 border-[#2eaff0] border-t-transparent rounded-full animate-spin" /></div>
+          <div className="flex justify-center py-16"><div className="w-7 h-7 border-2 border-[#f07920] border-t-transparent rounded-full animate-spin" /></div>
         ) : contacts.length === 0 ? (
           <div className="text-center py-16 text-gray-500 text-sm">No contacts found.</div>
         ) : (
@@ -124,7 +124,7 @@ export default function AdminContacts() {
                     </td>
                     <td className="px-5 py-3">
                       <div className="flex items-center gap-1">
-                        <button onClick={() => setSelected(c)} className="p-1.5 text-gray-500 hover:text-[#2eaff0] transition-colors" title="View">
+                        <button onClick={() => setSelected(c)} className="p-1.5 text-gray-500 hover:text-[#f07920] transition-colors" title="View">
                           <Eye size={14} />
                         </button>
                         <button onClick={() => deleteContact(c._id)} className="p-1.5 text-gray-500 hover:text-red-400 transition-colors" title="Delete">
@@ -192,7 +192,7 @@ export default function AdminContacts() {
                     href={selected.cvUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 px-4 py-2 bg-[#2eaff0]/10 border border-[#2eaff0]/20 text-[#2eaff0] text-xs font-medium rounded-lg hover:bg-[#2eaff0]/20 transition-colors"
+                    className="inline-flex items-center gap-2 px-4 py-2 bg-[#f07920]/10 border border-[#f07920]/20 text-[#f07920] text-xs font-medium rounded-lg hover:bg-[#f07920]/20 transition-colors"
                   >
                     <FileText size={13} /> Download CV
                   </a>
@@ -219,7 +219,7 @@ export default function AdminContacts() {
             <div className="px-6 pb-4 flex gap-2">
               <a
                 href={`mailto:${selected.email}`}
-                className="flex-1 bg-[#2eaff0] hover:bg-[#1a9fd8] text-black font-semibold py-2.5 rounded-lg text-sm text-center transition-colors"
+                className="flex-1 bg-[#f07920] hover:bg-[#1a9fd8] text-black font-semibold py-2.5 rounded-lg text-sm text-center transition-colors"
               >
                 Reply via Email
               </a>

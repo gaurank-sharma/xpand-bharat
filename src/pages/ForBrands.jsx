@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useContent } from '../hooks/useContent';
 
 const SERVICES = [
   {
@@ -112,6 +113,20 @@ function ContactForm() {
 }
 
 export default function ForBrands() {
+  const { hero, section } = useContent('for-brands');
+  const services = section('services', SERVICES).map((item, i) => ({
+    title: item.title,
+    desc: item.description || item.desc,
+    img: item.imageUrl || item.img,
+    tag: item.tag,
+    tagDark: item.tagDark !== undefined ? item.tagDark : i % 2 !== 0,
+  }));
+  const whyItems = section('why-us', WHY).map(item => ({
+    title: item.title,
+    desc: item.description || item.desc,
+  }));
+  const bgImage = hero?.backgroundImage || 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80';
+
   return (
     <div style={{ background: 'var(--cream-light)' }}>
       {/* ── SPLIT HERO ── */}
@@ -146,7 +161,7 @@ export default function ForBrands() {
         {/* Right image panel */}
         <div className="fb-hero-right">
           <img
-            src="https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80"
+            src={bgImage}
             alt="Brand expansion"
             style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', objectPosition: 'center' }}
           />
@@ -170,7 +185,7 @@ export default function ForBrands() {
             </h2>
           </FadeSection>
           <div className="fb-pillars-grid">
-            {SERVICES.map((s, i) => (
+            {services.map((s, i) => (
               <FadeSection key={s.title} delay={i * 70}>
                 <div className="fb-pillar-card">
                   {/* Left image */}
@@ -335,11 +350,11 @@ export default function ForBrands() {
 
           {/* Right — numbered list */}
           <FadeSection delay={150}>
-            {WHY.map((item, i) => (
+            {whyItems.map((item, i) => (
               <div key={item.title} style={{
                 display: 'flex', gap: '28px', alignItems: 'flex-start',
                 padding: '28px 0',
-                borderBottom: i < WHY.length - 1 ? '1px solid rgba(255,255,255,0.07)' : 'none',
+                borderBottom: i < whyItems.length - 1 ? '1px solid rgba(255,255,255,0.07)' : 'none',
               }}>
                 {/* Number */}
                 <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '42px', fontWeight: 700, color: 'var(--orange)', lineHeight: 0.9, flexShrink: 0, width: '56px', opacity: 0.9 }}>

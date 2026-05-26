@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import { useContent } from '../hooks/useContent';
 import { Link } from 'react-router-dom';
 
 const PILLARS = [
@@ -90,6 +91,29 @@ function FadeSection({ children, delay = 0, style = {}, className = '' }) {
 }
 
 export default function Home() {
+  const { hero, section } = useContent('home');
+  const offerings = section('offerings', OFFERINGS).map(item => ({
+    icon: item.badge || item.icon,
+    title: item.title,
+    desc: item.description || item.desc,
+  }));
+  const stats = section('stats', STATS).map(s => ({
+    number: s.title || s.number,
+    label: s.subtitle || s.label,
+  }));
+  const pillars = section('pillars', PILLARS).map(p => ({
+    label: p.title || p.label,
+    desc: p.description || p.desc,
+  }));
+  const photoCards = section('photo-cards', PHOTO_CARDS).map(c => ({
+    tag: c.tag,
+    title: c.title,
+    sub: c.subtitle || c.sub,
+    img: c.imageUrl || c.img,
+    to: c.link || c.to,
+  }));
+  const heroSubtitle = hero?.subtitle || 'Brands + investors aligned. XPANDBHARAT is a premium business expansion platform focused on structured growth, investor alignment, and execution-led business movement.';
+
   return (
     <>
       {/* ─── HERO WRAPPER ─── */}
@@ -154,7 +178,7 @@ export default function Home() {
                 lineHeight: 1.7, maxWidth: '560px', marginBottom: '48px',
                 fontWeight: 300,
               }}>
-                Brands + investors aligned. XPANDBHARAT is a premium business expansion platform focused on structured growth, investor alignment, and execution-led business movement.
+                {heroSubtitle}
               </p>
 
               <div className="xb-hero-cta">
@@ -185,7 +209,7 @@ export default function Home() {
         <div className="xb-offerings-strip" style={{ background: 'var(--navy)' }}>
           <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2px' }}>
-              {OFFERINGS.map((item, i) => (
+              {offerings.map((item, i) => (
                 <FadeSection
                   key={item.title}
                   delay={i * 120}
@@ -207,7 +231,7 @@ export default function Home() {
         {/* Stats bar */}
         <div className="xb-stats-bar" style={{ background: 'var(--orange)' }}>
           <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '0' }}>
-            {STATS.map((stat, i) => (
+            {stats.map((stat, i) => (
               <FadeSection
                 key={stat.label}
                 delay={i * 100}
@@ -245,7 +269,7 @@ export default function Home() {
               </FadeSection>
 
               <FadeSection delay={200} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
-                {PILLARS.map((p, i) => (
+                {pillars.map((p, i) => (
                   <div key={p.label} style={{
                     background: i === 0 ? 'var(--navy)' : i === 4 ? 'var(--orange)' : 'var(--white)',
                     borderRadius: '12px', padding: '32px 28px',
@@ -328,7 +352,7 @@ export default function Home() {
             </div>
           </div>
           <div className="xb-photo-grid" style={{ gap: '10px', padding: '0 10px 10px' }}>
-            {PHOTO_CARDS.map((card) => (
+            {photoCards.map((card) => (
               <Link
                 key={card.tag}
                 to={card.to}

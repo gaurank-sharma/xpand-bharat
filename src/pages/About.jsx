@@ -1,5 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useContent } from '../hooks/useContent';
 
 const FOCUS_AREAS = [
   {
@@ -56,10 +57,24 @@ function FadeSection({ children, delay = 0, style = {} }) {
 }
 
 export default function About() {
+  const { hero, section } = useContent('about');
+  const focusAreas = section('focus-areas', FOCUS_AREAS).map(item => ({
+    tag: item.tag,
+    label: item.title || item.label,
+    desc: item.description || item.desc,
+    img: item.imageUrl || item.img,
+  }));
+  const whyItems = section('why-us', WHY).map(item => ({
+    num: item.badge || item.num,
+    title: item.title,
+    desc: item.description || item.desc,
+  }));
+  const heroImg = hero?.backgroundImage || 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=80';
+
   return (
     <div style={{ background: 'var(--cream-light)' }}>
       {/* HERO */}
-      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: 'url("https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=80")', backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '500px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
+      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '500px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.86) 0%, rgba(13,27,62,0.72) 100%)' }} />
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)`, backgroundSize: '80px 80px' }} />
         <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '600px', height: '600px', background: 'radial-gradient(circle,rgba(240,121,32,0.09) 0%,transparent 70%)', pointerEvents: 'none' }} />
@@ -131,7 +146,7 @@ export default function About() {
 
         {/* 5-card cinematic grid */}
         <div className="fa-grid">
-          {FOCUS_AREAS.map((area) => (
+          {focusAreas.map((area) => (
             <div
               key={area.label}
               className="fa-card"
@@ -252,7 +267,7 @@ export default function About() {
             </h2>
           </FadeSection>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '24px' }}>
-            {WHY.map((item, i) => (
+            {whyItems.map((item, i) => (
               <FadeSection key={item.num} delay={i * 80}>
                 <div className="card-dark" style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
                   <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '36px', fontWeight: 700, color: 'var(--orange)', opacity: 0.4, lineHeight: 1, flexShrink: 0 }}>{item.num}</span>

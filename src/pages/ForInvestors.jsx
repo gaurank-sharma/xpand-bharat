@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useContent } from '../hooks/useContent';
 
 const OFFERINGS = [
   {
@@ -106,6 +107,19 @@ function InvestorForm() {
 }
 
 export default function ForInvestors() {
+  const { hero, section } = useContent('for-investors');
+  const offerings = section('offerings', OFFERINGS).map(item => ({
+    tag: item.tag,
+    title: item.title,
+    desc: item.description || item.desc,
+    img: item.imageUrl || item.img,
+  }));
+  const whyItems = section('why-us', WHY).map(item => ({
+    num: item.badge || item.num,
+    title: item.title,
+    sub: item.subtitle || item.sub,
+  }));
+  const heroImg = hero?.backgroundImage || 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1600&q=80';
   const sliderRef = useRef(null);
   const scrollSlider = (dir) => {
     if (sliderRef.current) sliderRef.current.scrollBy({ left: dir * 380, behavior: 'smooth' });
@@ -114,7 +128,7 @@ export default function ForInvestors() {
   return (
     <div style={{ background: 'var(--cream-light)' }}>
       {/* HERO */}
-      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: 'url("https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1600&q=80")', backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '500px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
+      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '500px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.86) 0%, rgba(13,27,62,0.72) 100%)' }} />
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)`, backgroundSize: '80px 80px' }} />
         <div style={{ position: 'absolute', bottom: '-20%', left: '-5%', width: '500px', height: '500px', background: 'radial-gradient(circle,rgba(240,121,32,0.1) 0%,transparent 70%)', pointerEvents: 'none' }} />
@@ -174,7 +188,7 @@ export default function ForInvestors() {
           WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none',
           padding: '0 40px 8px',
         }}>
-          {OFFERINGS.map((item, i) => (
+          {offerings.map((item, i) => (
             <div key={item.title} style={{
               width: '360px', minWidth: '360px', height: '480px',
               flexShrink: 0, borderRadius: '20px',
@@ -240,11 +254,11 @@ export default function ForInvestors() {
 
           {/* Right — numbered list */}
           <FadeSection delay={150}>
-            {WHY.map((item, i) => (
+            {whyItems.map((item, i) => (
               <div key={item.num} style={{
                 display: 'flex', gap: '28px', alignItems: 'flex-start',
                 padding: '28px 0',
-                borderBottom: i < WHY.length - 1 ? '1px solid rgba(255,255,255,0.07)' : 'none',
+                borderBottom: i < whyItems.length - 1 ? '1px solid rgba(255,255,255,0.07)' : 'none',
               }}>
                 <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '42px', fontWeight: 700, color: 'var(--orange)', lineHeight: 0.9, flexShrink: 0, width: '56px', opacity: 0.9 }}>
                   {item.num}

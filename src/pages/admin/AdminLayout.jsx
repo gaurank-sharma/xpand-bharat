@@ -5,11 +5,10 @@ import AdminHeader from '../../components/admin/AdminHeader';
 
 const pageTitles = {
   '/admin/dashboard': 'Dashboard',
-  '/admin/contacts': 'Contact Submissions',
-  '/admin/careers': 'Career Management',
-  '/admin/clients': 'Client Management',
-  '/admin/gallery': 'Gallery',
-  '/admin/members': 'Team Members',
+  '/admin/contacts':  'Contact Submissions',
+  '/admin/insights':  'Insights Management',
+  '/admin/pages':     'Page Content',
+  '/admin/settings':  'Site Settings',
 };
 
 export default function AdminLayout() {

@@ -1,11 +1,11 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 
 const AdminAuthContext = createContext(null);
-const API = 'https://web-mob-hut-backend.vercel.app/api';
+const API = import.meta.env.VITE_API_URL || 'http://localhost:8000/api';
 
 export const AdminAuthProvider = ({ children }) => {
   const [admin, setAdmin] = useState(null);
-  const [token, setToken] = useState(() => localStorage.getItem('wmh_admin_token'));
+  const [token, setToken] = useState(() => localStorage.getItem('xb_admin_token'));
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -28,14 +28,14 @@ export const AdminAuthProvider = ({ children }) => {
     });
     const data = await res.json();
     if (!data.success) throw new Error(data.message || 'Login failed');
-    localStorage.setItem('wmh_admin_token', data.token);
+    localStorage.setItem('xb_admin_token', data.token);
     setToken(data.token);
     setAdmin(data.admin);
     return data;
   };
 
   const logout = () => {
-    localStorage.removeItem('wmh_admin_token');
+    localStorage.removeItem('xb_admin_token');
     setToken(null);
     setAdmin(null);
   };
@@ -46,6 +46,11 @@ export const AdminAuthProvider = ({ children }) => {
       headers: { Authorization: `Bearer ${token}`, ...options.headers },
     });
     const data = await res.json();
+    if (res.status === 401) {
+      logout();
+      window.location.href = '/admin/login';
+      throw new Error('Session expired. Please login again.');
+    }
     if (!res.ok) throw new Error(data.message || 'Request failed');
     return data;
   };

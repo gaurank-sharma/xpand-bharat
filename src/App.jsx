@@ -18,6 +18,16 @@ import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Disclaimer from './pages/Disclaimer';
 
+import { AdminAuthProvider } from './context/AdminAuthContext';
+import ProtectedRoute from './components/admin/ProtectedRoute';
+import AdminLogin from './pages/admin/AdminLogin';
+import AdminLayout from './pages/admin/AdminLayout';
+import AdminDashboard from './pages/admin/AdminDashboard';
+import AdminContacts from './pages/admin/AdminContacts';
+import AdminInsights from './pages/admin/AdminInsights';
+import AdminPages from './pages/admin/AdminPages';
+import AdminSiteSettings from './pages/admin/AdminSiteSettings';
+
 function App() {
   const [loading, setLoading] = useState(
     () => !sessionStorage.getItem('xb-loaded')
@@ -29,34 +39,61 @@ function App() {
   }, []);
 
   return (
-    <Router>
-      {loading && <Preloader onComplete={handleComplete} />}
-      <ScrollToTop />
-      <div style={{
-        minHeight: '100vh', display: 'flex', flexDirection: 'column',
-        opacity: loading ? 0 : 1,
-        transition: 'opacity 0.4s ease 0.1s',
-      }}>
-        <Navbar />
-        <main style={{ flex: 1 }}>
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/for-brands" element={<ForBrands />} />
-            <Route path="/for-investors" element={<ForInvestors />} />
-            <Route path="/growth-opportunities" element={<GrowthOpportunities />} />
-            <Route path="/our-approach" element={<OurApproach />} />
-            <Route path="/industries" element={<Industries />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/insights" element={<Insights />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/privacy" element={<Privacy />} />
-            <Route path="/terms" element={<Terms />} />
-            <Route path="/disclaimer" element={<Disclaimer />} />
-          </Routes>
-        </main>
-        <Footer />
-      </div>
-    </Router>
+    <AdminAuthProvider>
+      <Router>
+        <ScrollToTop />
+        <Routes>
+
+          {/* ── Admin routes (no Navbar/Footer) ── */}
+          <Route path="/admin/login" element={<AdminLogin />} />
+          <Route
+            path="/admin"
+            element={<ProtectedRoute><AdminLayout /></ProtectedRoute>}
+          >
+            <Route index element={<AdminDashboard />} />
+            <Route path="dashboard" element={<AdminDashboard />} />
+            <Route path="contacts"  element={<AdminContacts />} />
+            <Route path="insights"  element={<AdminInsights />} />
+            <Route path="pages"     element={<AdminPages />} />
+            <Route path="settings"  element={<AdminSiteSettings />} />
+          </Route>
+
+          {/* ── Public routes (with Navbar/Footer) ── */}
+          <Route
+            path="*"
+            element={
+              <>
+                {loading && <Preloader onComplete={handleComplete} />}
+                <div style={{
+                  minHeight: '100vh', display: 'flex', flexDirection: 'column',
+                  opacity: loading ? 0 : 1,
+                  transition: 'opacity 0.4s ease 0.1s',
+                }}>
+                  <Navbar />
+                  <main style={{ flex: 1 }}>
+                    <Routes>
+                      <Route path="/"                      element={<Home />} />
+                      <Route path="/for-brands"            element={<ForBrands />} />
+                      <Route path="/for-investors"         element={<ForInvestors />} />
+                      <Route path="/growth-opportunities"  element={<GrowthOpportunities />} />
+                      <Route path="/our-approach"          element={<OurApproach />} />
+                      <Route path="/industries"            element={<Industries />} />
+                      <Route path="/about"                 element={<About />} />
+                      <Route path="/insights"              element={<Insights />} />
+                      <Route path="/contact"               element={<Contact />} />
+                      <Route path="/privacy"               element={<Privacy />} />
+                      <Route path="/terms"                 element={<Terms />} />
+                      <Route path="/disclaimer"            element={<Disclaimer />} />
+                    </Routes>
+                  </main>
+                  <Footer />
+                </div>
+              </>
+            }
+          />
+        </Routes>
+      </Router>
+    </AdminAuthProvider>
   );
 }
 

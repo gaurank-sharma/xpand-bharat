@@ -2,25 +2,26 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 const NAV_LINKS = [
-  { label: 'Home', to: '/' },
-  { label: 'For Brands', to: '/for-brands' },
-  { label: 'For Investors', to: '/for-investors' },
-  { label: 'Growth Opportunities', to: '/growth-opportunities' },
-  { label: 'Our Approach', to: '/our-approach' },
-  { label: 'Industries', to: '/industries' },
-  { label: 'About', to: '/about' },
-  { label: 'Insights', to: '/insights' },
+  { label: 'Home',                 to: '/' },
+  { label: 'For Brands',          to: '/for-brands' },
+  { label: 'For Investors',       to: '/for-investors' },
+  { label: 'Growth Opportunities',to: '/growth-opportunities' },
+  { label: 'Our Approach',        to: '/our-approach' },
+  { label: 'Industries',          to: '/industries' },
+  { label: 'About',               to: '/about' },
+  { label: 'Insights',            to: '/insights' },
 ];
 
 export default function Navbar() {
-  const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
-  const location = useLocation();
+  const [scrolled, setScrolled]   = useState(false);
+  const [menuOpen, setMenuOpen]   = useState(false);
+  const location                  = useLocation();
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 30);
-    window.addEventListener('scroll', onScroll, { passive: true });
-    return () => window.removeEventListener('scroll', onScroll);
+    const fn = () => setScrolled(window.scrollY > 40);
+    fn();
+    window.addEventListener('scroll', fn, { passive: true });
+    return () => window.removeEventListener('scroll', fn);
   }, []);
 
   useEffect(() => { setMenuOpen(false); }, [location.pathname]);
@@ -32,175 +33,288 @@ export default function Navbar() {
 
   return (
     <>
-      {/* ── Outer strip that pins to top ── */}
-      <div style={{
-        position: 'fixed',
-        top: 0,
-        left: 0,
-        right: 0,
-        zIndex: 1000,
-        padding: scrolled ? '10px 24px' : '16px 24px',
-        transition: 'padding 0.35s ease',
-        pointerEvents: 'none',          /* let clicks fall through the outer gap */
-      }}>
-        {/* ── Floating pill card ── */}
-        <div style={{
-          maxWidth: '1400px',
-          margin: '0 auto',
-          background: '#fff',
-          borderRadius: '14px',
-          boxShadow: scrolled
-            ? '0 8px 40px rgba(0,0,0,0.14)'
-            : '0 4px 24px rgba(0,0,0,0.09)',
-          border: '1px solid rgba(0,0,0,0.06)',
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'space-between',
-          padding: '0 28px',
-          height: '64px',
-          transition: 'box-shadow 0.35s ease',
-          pointerEvents: 'auto',        /* re-enable on the card */
-        }}>
+      <header className={`xb-header${scrolled ? ' xb-header--scrolled' : ''}`}>
+        <div className="xb-header-inner">
 
           {/* Logo */}
-          <Link to="/" style={{ display: 'flex', alignItems: 'center', flexShrink: 0, textDecoration: 'none' }}>
-            <img
-              src="/logo.png"
-              alt="Xpand Bharat"
-              style={{ height: '38px', width: 'auto', objectFit: 'contain', display: 'block' }}
-            />
+          <Link to="/" className="xb-logo">
+            <img src="/logo.png" alt="Xpand Bharat" />
           </Link>
 
-          {/* Desktop links */}
-          <div
-            className="xb-desktop-nav"
-            style={{ display: 'flex', alignItems: 'center', gap: '2px', flex: 1, justifyContent: 'center' }}
-          >
-            {NAV_LINKS.map(link => {
-              const active = location.pathname === link.to;
-              return (
-                <Link
-                  key={link.to}
-                  to={link.to}
-                  style={{
-                    color: active ? 'var(--orange)' : 'var(--navy)',
-                    fontWeight: active ? 600 : 400,
-                    fontSize: '12.5px',
-                    letterSpacing: '0.02em',
-                    padding: '7px 10px',
-                    borderRadius: '6px',
-                    whiteSpace: 'nowrap',
-                    textDecoration: 'none',
-                    fontFamily: "'Outfit', sans-serif",
-                    opacity: active ? 1 : 0.7,
-                    transition: 'color 0.2s, opacity 0.2s',
-                  }}
-                  onMouseEnter={e => { e.currentTarget.style.color = 'var(--orange)'; e.currentTarget.style.opacity = '1'; }}
-                  onMouseLeave={e => { e.currentTarget.style.color = active ? 'var(--orange)' : 'var(--navy)'; e.currentTarget.style.opacity = active ? '1' : '0.7'; }}
-                >
-                  {link.label}
-                </Link>
-              );
-            })}
-          </div>
+          {/* Desktop nav */}
+          <nav className="xb-nav">
+            {NAV_LINKS.map(link => (
+              <Link
+                key={link.to}
+                to={link.to}
+                className={`xb-nav-link${location.pathname === link.to ? ' xb-nav-link--active' : ''}`}
+              >
+                {link.label}
+                {location.pathname === link.to && <span className="xb-nav-dot" />}
+              </Link>
+            ))}
+          </nav>
 
-          {/* CTA + Hamburger */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '12px', flexShrink: 0 }}>
-            <Link
-              to="/contact"
-              className="xb-cta-btn"
-              style={{
-                display: 'inline-flex', alignItems: 'center', gap: '8px',
-                background: 'var(--orange)', color: '#fff',
-                fontFamily: "'Outfit', sans-serif", fontWeight: 600,
-                fontSize: '12px', letterSpacing: '0.06em', textTransform: 'uppercase',
-                padding: '11px 22px', borderRadius: '8px',
-                textDecoration: 'none', whiteSpace: 'nowrap',
-                transition: 'background 0.25s ease',
-              }}
-              onMouseEnter={e => e.currentTarget.style.background = 'var(--orange-light)'}
-              onMouseLeave={e => e.currentTarget.style.background = 'var(--orange)'}
-            >
-              {/* Phone icon inline */}
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
-                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12 19.79 19.79 0 0 1 1.6 3.4 2 2 0 0 1 3.57 1h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 8.84a16 16 0 0 0 6 6l.91-.91a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
-              </svg>
-              Start a Conversation
+          {/* Right side */}
+          <div className="xb-header-right">
+            <Link to="/contact" className="xb-header-cta">
+              Get in Touch
             </Link>
-
-            {/* Hamburger */}
             <button
+              className={`xb-burger${menuOpen ? ' xb-burger--open' : ''}`}
               onClick={() => setMenuOpen(v => !v)}
-              aria-label="Menu"
-              className="xb-hamburger"
-              style={{
-                background: 'none', border: '1px solid rgba(0,0,0,0.1)',
-                borderRadius: '8px', cursor: 'pointer',
-                padding: '10px', display: 'flex', flexDirection: 'column',
-                gap: '4px', alignItems: 'center',
-              }}
+              aria-label="Toggle menu"
             >
-              {[0, 1, 2].map(i => (
-                <span key={i} style={{
-                  display: 'block', height: '2px',
-                  background: 'var(--navy)', borderRadius: '2px',
-                  transition: 'all 0.3s ease',
-                  width: i === 1 ? (menuOpen ? '18px' : '12px') : '18px',
-                  opacity: i === 1 && menuOpen ? 0 : 1,
-                  transform:
-                    i === 0 && menuOpen ? 'rotate(45deg) translateY(6px)'
-                    : i === 2 && menuOpen ? 'rotate(-45deg) translateY(-6px)'
-                    : 'none',
-                }} />
-              ))}
+              <span /><span /><span />
             </button>
           </div>
+
         </div>
-      </div>
+      </header>
 
-      {/* ── Full-screen mobile menu ── */}
-      <div style={{
-        position: 'fixed', inset: 0, zIndex: 999,
-        background: '#fff',
-        display: 'flex', flexDirection: 'column', justifyContent: 'center',
-        padding: '40px 48px',
-        opacity: menuOpen ? 1 : 0,
-        pointerEvents: menuOpen ? 'auto' : 'none',
-        transition: 'opacity 0.3s ease',
-      }}>
-        <button onClick={() => setMenuOpen(false)} style={{
-          position: 'absolute', top: '24px', right: '32px',
-          background: 'none', border: 'none', cursor: 'pointer',
-          fontSize: '30px', color: 'var(--navy)', lineHeight: 1,
-        }}>×</button>
-
-        <img src="/logo.png" alt="Xpand Bharat" style={{ height: '38px', width: 'auto', objectFit: 'contain', marginBottom: '48px', display: 'block' }} />
-
-        <nav style={{ display: 'flex', flexDirection: 'column', gap: '4px' }}>
-          {[...NAV_LINKS, { label: 'Start a Conversation', to: '/contact' }].map((link) => (
-            <Link key={link.to} to={link.to} style={{
-              color: location.pathname === link.to ? 'var(--orange)' : 'var(--navy)',
-              fontSize: 'clamp(20px, 4vw, 28px)',
-              fontFamily: "'Playfair Display', serif", fontWeight: 600,
-              lineHeight: 1.5, padding: '10px 0',
-              borderBottom: '1px solid var(--border)',
-              textDecoration: 'none', display: 'block',
-              transition: 'color 0.2s',
-            }}>
+      {/* Mobile drawer */}
+      <div className={`xb-drawer${menuOpen ? ' xb-drawer--open' : ''}`}>
+        <div className="xb-drawer-head">
+          <img src="/logo.png" alt="Xpand Bharat" style={{ height: 32 }} />
+          <button onClick={() => setMenuOpen(false)} className="xb-drawer-close">✕</button>
+        </div>
+        <nav className="xb-drawer-nav">
+          {NAV_LINKS.map(link => (
+            <Link
+              key={link.to}
+              to={link.to}
+              className={`xb-drawer-link${location.pathname === link.to ? ' xb-drawer-link--active' : ''}`}
+            >
               {link.label}
             </Link>
           ))}
+          <Link to="/contact" className="xb-drawer-cta">Get in Touch</Link>
         </nav>
-
-        <p style={{ marginTop: '48px', color: 'var(--gray)', fontSize: '13px', fontFamily: "'Outfit', sans-serif" }}>
-          info@xpandbharat.com · Gurgaon, Haryana, India
-        </p>
       </div>
+      {menuOpen && <div className="xb-overlay" onClick={() => setMenuOpen(false)} />}
 
       <style>{`
-        @media (min-width: 1140px) { .xb-hamburger { display: none !important; } }
-        @media (max-width: 1139px) { .xb-desktop-nav { display: none !important; } }
-        @media (max-width: 560px)  { .xb-cta-btn    { display: none !important; } }
+        /* ── Base header ── */
+        .xb-header {
+          position: fixed;
+          top: 0; left: 0; right: 0;
+          z-index: 1000;
+          height: 72px;
+          background: #fff;
+          border-bottom: 1px solid rgba(0,0,0,0.07);
+          transition: box-shadow 0.35s ease;
+        }
+        .xb-header--scrolled {
+          box-shadow: 0 4px 24px rgba(0,0,0,0.09);
+        }
+
+        .xb-header-inner {
+          max-width: 1440px;
+          margin: 0 auto;
+          padding: 0 40px;
+          height: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 24px;
+        }
+
+        /* ── Logo ── */
+        .xb-logo { display: flex; align-items: center; flex-shrink: 0; text-decoration: none; }
+        .xb-logo img { height: 48px; width: auto; object-fit: contain; display: block; }
+
+        /* ── Desktop nav ── */
+        .xb-nav {
+          display: flex;
+          align-items: center;
+          gap: 2px;
+          flex: 1;
+          justify-content: center;
+        }
+        .xb-nav-link {
+          position: relative;
+          color: rgba(13,27,62,0.62);
+          font-family: 'Outfit', sans-serif;
+          font-size: 12.5px;
+          font-weight: 400;
+          letter-spacing: 0.025em;
+          padding: 6px 11px;
+          border-radius: 6px;
+          text-decoration: none;
+          white-space: nowrap;
+          transition: color 0.2s, background 0.2s;
+        }
+        .xb-nav-link:hover {
+          color: #0D1B3E;
+          background: rgba(0,0,0,0.04);
+        }
+        .xb-nav-link--active {
+          color: #f07920 !important;
+          font-weight: 600;
+        }
+        .xb-nav-dot {
+          position: absolute;
+          bottom: 2px;
+          left: 50%;
+          transform: translateX(-50%);
+          width: 4px; height: 4px;
+          border-radius: 50%;
+          background: #f07920;
+        }
+
+        /* ── Right side ── */
+        .xb-header-right {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          flex-shrink: 0;
+        }
+
+        /* CTA button */
+        .xb-header-cta {
+          display: inline-flex;
+          align-items: center;
+          background: #f07920;
+          color: #fff;
+          font-family: 'Outfit', sans-serif;
+          font-weight: 600;
+          font-size: 12px;
+          letter-spacing: 0.07em;
+          text-transform: uppercase;
+          padding: 10px 22px;
+          border-radius: 8px;
+          text-decoration: none;
+          white-space: nowrap;
+          transition: background 0.25s ease, transform 0.15s ease;
+        }
+        .xb-header-cta:hover {
+          background: #d96b1a;
+          transform: translateY(-1px);
+        }
+
+        /* Hamburger */
+        .xb-burger {
+          display: none;
+          flex-direction: column;
+          justify-content: center;
+          gap: 5px;
+          width: 42px;
+          height: 42px;
+          background: #f07920;
+          border: none;
+          border-radius: 10px;
+          cursor: pointer;
+          padding: 11px;
+          transition: background 0.2s, transform 0.15s;
+        }
+        .xb-burger span {
+          display: block;
+          height: 2px;
+          background: #fff;
+          border-radius: 2px;
+          transition: all 0.3s ease;
+          transform-origin: center;
+        }
+        .xb-header--scrolled .xb-burger {
+          background: #f07920;
+        }
+        .xb-burger:hover { background: #d96b1a; transform: scale(1.05); }
+
+        .xb-burger--open span:nth-child(1) { transform: rotate(45deg) translate(4.5px, 4.5px); }
+        .xb-burger--open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+        .xb-burger--open span:nth-child(3) { transform: rotate(-45deg) translate(4.5px, -4.5px); }
+
+        /* ── Mobile drawer ── */
+        .xb-drawer {
+          position: fixed;
+          top: 0; right: 0;
+          width: min(340px, 88vw);
+          height: 100vh;
+          background: #fff;
+          z-index: 1001;
+          display: flex;
+          flex-direction: column;
+          transform: translateX(100%);
+          transition: transform 0.35s cubic-bezier(0.4,0,0.2,1);
+          box-shadow: -8px 0 40px rgba(0,0,0,0.15);
+        }
+        .xb-drawer--open { transform: translateX(0); }
+
+        .xb-drawer-head {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 20px 24px;
+          border-bottom: 1px solid rgba(0,0,0,0.07);
+        }
+        .xb-drawer-close {
+          background: none; border: none; cursor: pointer;
+          font-size: 20px; color: #0D1B3E;
+          width: 36px; height: 36px;
+          display: flex; align-items: center; justify-content: center;
+          border-radius: 6px;
+          transition: background 0.2s;
+        }
+        .xb-drawer-close:hover { background: rgba(0,0,0,0.05); }
+
+        .xb-drawer-nav {
+          flex: 1;
+          overflow-y: auto;
+          padding: 8px 12px 24px;
+          display: flex;
+          flex-direction: column;
+          gap: 2px;
+        }
+        .xb-drawer-link {
+          display: block;
+          color: rgba(13,27,62,0.75);
+          font-family: 'Outfit', sans-serif;
+          font-size: 15px;
+          font-weight: 500;
+          padding: 13px 16px;
+          border-radius: 10px;
+          text-decoration: none;
+          transition: color 0.2s, background 0.2s;
+        }
+        .xb-drawer-link:hover { color: #0D1B3E; background: rgba(0,0,0,0.04); }
+        .xb-drawer-link--active { color: #f07920 !important; background: rgba(240,121,32,0.07); font-weight: 600; }
+
+        .xb-drawer-cta {
+          display: block;
+          margin-top: 12px;
+          background: #f07920;
+          color: #fff;
+          text-align: center;
+          font-family: 'Outfit', sans-serif;
+          font-weight: 700;
+          font-size: 13px;
+          letter-spacing: 0.06em;
+          text-transform: uppercase;
+          padding: 14px;
+          border-radius: 10px;
+          text-decoration: none;
+          transition: background 0.2s;
+        }
+        .xb-drawer-cta:hover { background: #d96b1a; }
+
+        /* Overlay */
+        .xb-overlay {
+          position: fixed;
+          inset: 0;
+          background: rgba(0,0,0,0.45);
+          z-index: 1000;
+          backdrop-filter: blur(2px);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 1180px) {
+          .xb-nav { display: none; }
+          .xb-burger { display: flex; }
+        }
+        @media (max-width: 560px) {
+          .xb-header-cta { display: none; }
+          .xb-header-inner { padding: 0 20px; }
+        }
       `}</style>
     </>
   );

@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useContent } from '../hooks/useContent';
 
 const STEPS = [
   {
@@ -92,10 +93,22 @@ function ApproachForm() {
 }
 
 export default function OurApproach() {
+  const { hero, section } = useContent('our-approach');
+  const steps = section('steps', STEPS).map(item => ({
+    num: item.badge || item.num,
+    title: item.title,
+    desc: item.description || item.desc,
+  }));
+  const principles = section('principles', PRINCIPLES).map(item => ({
+    label: item.title || item.label,
+    desc: item.description || item.desc,
+  }));
+  const heroImg = hero?.backgroundImage || 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1600&q=80';
+
   return (
     <div style={{ background: 'var(--cream-light)' }}>
       {/* HERO */}
-      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: 'url("https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1600&q=80")', backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '500px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
+      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '500px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.86) 0%, rgba(13,27,62,0.72) 100%)' }} />
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)`, backgroundSize: '80px 80px' }} />
         <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '500px', height: '500px', background: 'radial-gradient(circle,rgba(240,121,32,0.09) 0%,transparent 70%)', pointerEvents: 'none' }} />
@@ -122,14 +135,14 @@ export default function OurApproach() {
           </FadeSection>
 
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
-            {STEPS.map((step, i) => (
+            {steps.map((step, i) => (
               <FadeSection key={step.num} delay={i * 100}>
                 <div style={{
                   display: 'grid',
                   gridTemplateColumns: '120px 1fr',
                   gap: '48px',
                   padding: '56px 0',
-                  borderBottom: i < STEPS.length - 1 ? '1px solid var(--border)' : 'none',
+                  borderBottom: i < steps.length - 1 ? '1px solid var(--border)' : 'none',
                   alignItems: 'start',
                 }}>
                   <div>
@@ -156,7 +169,7 @@ export default function OurApproach() {
             </h2>
           </FadeSection>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2px' }}>
-            {PRINCIPLES.map((p, i) => (
+            {principles.map((p, i) => (
               <FadeSection key={p.label} delay={i * 80} style={{
                 padding: '48px 40px',
                 background: i === 2 ? 'var(--orange)' : 'rgba(255,255,255,0.03)',

@@ -1,5 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useContent } from '../hooks/useContent';
 
 const CATEGORIES = [
   {
@@ -110,10 +111,25 @@ function OppForm() {
 }
 
 export default function GrowthOpportunities() {
+  const { hero, section } = useContent('growth-opportunities');
+  const categories = section('categories', CATEGORIES).map(item => ({
+    tag: item.tag,
+    title: item.title,
+    desc: item.description || item.desc,
+    range: item.extra || item.range || '',
+    img: item.imageUrl || item.img,
+  }));
+  const differentiators = section('differentiators', DIFFERENTIATORS).map(item => ({
+    num: item.badge || item.num,
+    title: item.title,
+    desc: item.description || item.desc,
+  }));
+  const heroImg = hero?.backgroundImage || 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80';
+
   return (
     <div style={{ background: 'var(--cream-light)' }}>
       {/* HERO */}
-      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: 'url("https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80")', backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '500px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
+      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '500px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.86) 0%, rgba(13,27,62,0.72) 100%)' }} />
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)`, backgroundSize: '80px 80px' }} />
         <div style={{ position: 'absolute', top: '-10%', right: '5%', width: '600px', height: '600px', background: 'radial-gradient(circle,rgba(240,121,32,0.08) 0%,transparent 70%)', pointerEvents: 'none' }} />
@@ -151,7 +167,7 @@ export default function GrowthOpportunities() {
 
         {/* 3-column cinematic card grid */}
         <div className="go-grid-wrap" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '12px', padding: '0 12px' }}>
-          {CATEGORIES.map((cat, i) => (
+          {categories.map((cat, i) => (
             <div
               key={cat.tag}
               style={{ position: 'relative', height: '480px', overflow: 'hidden', borderRadius: '6px' }}
@@ -234,8 +250,8 @@ export default function GrowthOpportunities() {
             <Link to="/contact" className="btn-primary">Start a Conversation</Link>
           </FadeSection>
           <FadeSection delay={150}>
-            {DIFFERENTIATORS.map((item, i) => (
-              <div key={item.num} style={{ display: 'flex', gap: '28px', alignItems: 'flex-start', padding: '28px 0', borderBottom: i < DIFFERENTIATORS.length - 1 ? '1px solid rgba(255,255,255,0.07)' : 'none' }}>
+            {differentiators.map((item, i) => (
+              <div key={item.num} style={{ display: 'flex', gap: '28px', alignItems: 'flex-start', padding: '28px 0', borderBottom: i < differentiators.length - 1 ? '1px solid rgba(255,255,255,0.07)' : 'none' }}>
                 <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '40px', fontWeight: 700, color: 'var(--orange)', lineHeight: 0.9, flexShrink: 0, width: '52px', opacity: 0.9 }}>{item.num}</div>
                 <div style={{ paddingTop: '4px' }}>
                   <h4 style={{ color: '#fff', fontSize: '16px', fontWeight: 600, marginBottom: '8px', lineHeight: 1.3 }}>{item.title}</h4>

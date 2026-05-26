@@ -19,11 +19,34 @@ function FadeSection({ children, delay = 0, style = {} }) {
   return <div ref={ref} style={style}>{children}</div>;
 }
 
+const API = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
+
 function ContactForm() {
   const [form, setForm] = useState({ name: '', company: '', mobile: '', email: '', requirement: '', markets: '', message: '' });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState('');
   const handle = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
-  const submit = e => { e.preventDefault(); setSubmitted(true); };
+
+  const submit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setError('');
+    try {
+      const res = await fetch(`${API}/contacts`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+      const data = await res.json();
+      if (!data.success) throw new Error(data.message || 'Submission failed');
+      setSubmitted(true);
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  };
 
   if (submitted) return (
     <div style={{ textAlign: 'center', padding: '80px 40px' }}>
@@ -54,9 +77,14 @@ function ContactForm() {
         <label className="form-label">Message</label>
         <textarea name="message" value={form.message} onChange={handle} placeholder="Tell us about your business goals, expansion plans, or investment interests…" className="form-input" style={{ minHeight: '140px' }} />
       </div>
+      {error && (
+        <div style={{ gridColumn: '1 / -1', background: 'rgba(220,53,69,0.08)', border: '1px solid rgba(220,53,69,0.25)', borderRadius: '8px', padding: '12px 16px', color: '#c0392b', fontSize: '14px' }}>
+          {error}
+        </div>
+      )}
       <div style={{ gridColumn: '1 / -1' }}>
-        <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center', padding: '18px', fontSize: '14px' }}>
-          Send Message
+        <button type="submit" disabled={loading} className="btn-primary" style={{ width: '100%', justifyContent: 'center', padding: '18px', fontSize: '14px', opacity: loading ? 0.7 : 1 }}>
+          {loading ? 'Sending…' : 'Send Message'}
         </button>
       </div>
     </form>

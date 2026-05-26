@@ -1,5 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { useContent } from '../hooks/useContent';
 
 const SECTORS = [
   {
@@ -60,11 +61,21 @@ function FadeSection({ children, delay = 0, style = {}, className = '' }) {
 }
 
 export default function Industries() {
+  const { hero, section } = useContent('industries');
+  const sectors = section('sectors', SECTORS).map(item => ({
+    num: item.badge || item.num,
+    title: item.title,
+    sub: item.subtitle || item.sub,
+    desc: item.description || item.desc,
+    metrics: item.metrics || [],
+  }));
+  const heroImg = hero?.backgroundImage || 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80';
+
   return (
     <div style={{ background: 'var(--cream-light)' }}>
 
       {/* HERO */}
-      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: 'url("https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80")', backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '500px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
+      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '500px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.88) 0%, rgba(13,27,62,0.72) 100%)' }} />
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)`, backgroundSize: '80px 80px' }} />
         <div style={{ position: 'absolute', bottom: '-10%', right: '10%', width: '500px', height: '500px', background: 'radial-gradient(circle,rgba(240,121,32,0.08) 0%,transparent 70%)', pointerEvents: 'none' }} />
@@ -101,7 +112,7 @@ export default function Industries() {
 
           {/* 2-column card grid */}
           <div className="ind-grid">
-            {SECTORS.map((sector, i) => (
+            {sectors.map((sector, i) => (
               <FadeSection key={sector.title} delay={i * 70} className="ind-card">
                 {/* Card top row */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '28px' }}>

@@ -1,56 +1,7 @@
-import { useRef, useEffect } from 'react';
+import { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 
-const ARTICLES = [
-  {
-    tag: 'Franchise Growth',
-    title: 'Why structure matters more than speed in franchise expansion.',
-    excerpt: 'Most franchise failures stem not from poor products but from poor systems. The difference between a brand that scales and one that stalls is almost always structural.',
-    readTime: '6 min read',
-    date: 'May 2025',
-    img: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    tag: 'Business Expansion',
-    title: 'The five signals that tell you a brand is expansion-ready.',
-    excerpt: 'Not every business that wants to scale is ready to scale. Before expansion, a brand must pass five critical readiness tests that determine whether growth will be sustainable.',
-    readTime: '5 min read',
-    date: 'April 2025',
-    img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    tag: 'Investor Perspectives',
-    title: 'What smart investors look for before entering a franchise opportunity.',
-    excerpt: 'Investment in franchise businesses has surged, but so have the failures. Here is what distinguishes the opportunities worth backing from the ones worth walking away from.',
-    readTime: '7 min read',
-    date: 'April 2025',
-    img: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    tag: 'Market Trends',
-    title: 'Tier-2 India: the next frontier for brand expansion.',
-    excerpt: "The story of India's consumption growth is no longer just a metro story. Brands still ignoring tier-2 and tier-3 cities are missing the most significant opportunity of this decade.",
-    readTime: '8 min read',
-    date: 'March 2025',
-    img: 'https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    tag: 'Execution & Governance',
-    title: 'Building operational systems that scale without breaking.',
-    excerpt: 'Operational systems are the backbone of every scalable business. Most businesses hit a ceiling not because of market limits but because of internal system limits.',
-    readTime: '5 min read',
-    date: 'March 2025',
-    img: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=800&q=80',
-  },
-  {
-    tag: 'Business Expansion',
-    title: 'Commercial clarity: the most underrated competitive advantage.',
-    excerpt: 'When businesses have genuine commercial clarity — about their model, margins, unit economics, and customer — expansion becomes a structured movement, not a gamble.',
-    readTime: '6 min read',
-    date: 'February 2025',
-    img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80',
-  },
-];
+const API = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
 const TAG_COLORS = {
   'Franchise Growth':      { bg: 'rgba(240,121,32,0.15)', color: 'var(--orange)' },
@@ -77,6 +28,16 @@ function FadeSection({ children, delay = 0, style = {} }) {
 
 export default function Insights() {
   const sliderRef = useRef(null);
+  const [articles, setArticles] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    fetch(`${API}/insights`)
+      .then(r => r.json())
+      .then(d => { if (d.success) setArticles(d.data); })
+      .catch(() => {})
+      .finally(() => setLoading(false));
+  }, []);
 
   const scroll = (dir) => {
     if (!sliderRef.current) return;
@@ -115,7 +76,7 @@ export default function Insights() {
                 textTransform: 'uppercase', color: 'var(--gray)', marginBottom: '18px', margin: '0 0 18px',
               }}>
                 INSIGHTS&nbsp;
-                <span style={{ color: 'var(--orange)', fontFamily: 'monospace' }}>({ARTICLES.length})</span>
+                <span style={{ color: 'var(--orange)', fontFamily: 'monospace' }}>({articles.length})</span>
               </p>
               <h2 style={{
                 fontFamily: "'Playfair Display', serif",
@@ -174,9 +135,13 @@ export default function Insights() {
         >
           <style>{`.ins-slider::-webkit-scrollbar { display: none; }`}</style>
 
-          {ARTICLES.map((article, i) => (
+          {loading && (
+            <div style={{ padding: '60px 40px', color: 'var(--gray)', fontSize: '14px' }}>Loading insights…</div>
+          )}
+
+          {articles.map((article) => (
             <div
-              key={article.title}
+              key={article._id || article.title}
               style={{
                 width: '380px', flexShrink: 0,
                 scrollSnapAlign: 'start',
@@ -229,7 +194,7 @@ export default function Insights() {
               }}>{article.excerpt}</p>
 
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', borderTop: '1px solid var(--border)', paddingTop: '16px' }}>
-                <span style={{ color: 'var(--gray)', fontSize: '12px' }}>{article.date} · {article.readTime}</span>
+                <span style={{ color: 'var(--gray)', fontSize: '12px' }}>{article.displayDate} · {article.readTime}</span>
                 <span
                   className="ins-read"
                   style={{ fontSize: '13px', fontWeight: 600, color: 'var(--navy)', transition: 'color 0.2s' }}
