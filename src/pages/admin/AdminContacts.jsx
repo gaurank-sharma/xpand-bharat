@@ -104,7 +104,7 @@ export default function AdminContacts() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-[#1e1e1e]">
-                  {['Name', 'Email', 'Company', 'Subject', 'Status', 'Date', ''].map((h) => (
+                  {['Name', 'Email', 'Mobile', 'Requirement', 'Status', 'Date', ''].map((h) => (
                     <th key={h} className="text-left text-gray-500 text-xs px-5 py-3 font-medium whitespace-nowrap">{h}</th>
                   ))}
                 </tr>
@@ -114,8 +114,8 @@ export default function AdminContacts() {
                   <tr key={c._id} className="border-b border-[#161616] hover:bg-white/2 transition-colors">
                     <td className="px-5 py-3 text-white font-medium whitespace-nowrap">{c.name}</td>
                     <td className="px-5 py-3 text-gray-400 text-xs">{c.email}</td>
-                    <td className="px-5 py-3 text-gray-400 text-xs">{c.company || '—'}</td>
-                    <td className="px-5 py-3 text-gray-400 text-xs max-w-[140px] truncate">{c.subject || '—'}</td>
+                    <td className="px-5 py-3 text-gray-400 text-xs">{c.mobile || '—'}</td>
+                    <td className="px-5 py-3 text-gray-400 text-xs max-w-[140px] truncate">{c.requirement || '—'}</td>
                     <td className="px-5 py-3">
                       <span className={`text-xs px-2 py-0.5 rounded-full capitalize border ${statusColor[c.status]}`}>{c.status}</span>
                     </td>
@@ -163,8 +163,8 @@ export default function AdminContacts() {
                   <p className="text-white text-sm">{selected.email}</p>
                 </div>
                 <div>
-                  <p className="text-gray-500 text-xs mb-1 flex items-center gap-1"><Phone size={10} /> Phone</p>
-                  <p className="text-white text-sm">{selected.phone || '—'}</p>
+                  <p className="text-gray-500 text-xs mb-1 flex items-center gap-1"><Phone size={10} /> Mobile</p>
+                  <p className="text-white text-sm">{selected.mobile || '—'}</p>
                 </div>
                 <div>
                   <p className="text-gray-500 text-xs mb-1 flex items-center gap-1"><Building2 size={10} /> Company</p>
@@ -175,10 +175,16 @@ export default function AdminContacts() {
                   <p className="text-white text-sm">{new Date(selected.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
                 </div>
               </div>
-              {selected.subject && (
+              {selected.requirement && (
                 <div>
-                  <p className="text-gray-500 text-xs mb-1">Subject</p>
-                  <p className="text-white text-sm">{selected.subject}</p>
+                  <p className="text-gray-500 text-xs mb-1">Business Requirement</p>
+                  <p className="text-white text-sm">{selected.requirement}</p>
+                </div>
+              )}
+              {selected.markets && (
+                <div>
+                  <p className="text-gray-500 text-xs mb-1">Preferred Markets</p>
+                  <p className="text-white text-sm">{selected.markets}</p>
                 </div>
               )}
               <div>

@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { useContent } from '../hooks/useContent';
 
@@ -42,11 +43,18 @@ const OFFERINGS = [
 ];
 
 const WHY = [
-  { num: '01', title: 'Structured opportunities across sectors', sub: 'Pre-screened for scalability, not just potential.' },
-  { num: '02', title: 'Commercial clarity built into every deal', sub: 'Unit economics, market fit, and expansion logic — all packaged upfront.' },
-  { num: '03', title: 'Growth-focused from the first conversation', sub: 'We only present what is genuinely positioned to grow.' },
-  { num: '04', title: 'The right match, not the nearest available', sub: 'Investor–brand alignment based on commercial direction, not coincidence.' },
-  { num: '05', title: 'We stay until the deal actually moves', sub: 'Execution and follow-through until your investment is committed and in motion.' },
+  { num: '01', title: 'We Only Bring You Businesses Built To Last', sub: 'Not every business deserves your capital. After decades of building wealth, you know the difference between a business with energy and a business with systems. XPAND works exclusively with franchise businesses that demonstrate operational structure, market-proven demand, scalability across locations, and commercially sustainable growth — before they ever reach you. No noise. No speculation. Just structured franchise businesses ready for serious expansion.' },
+  { num: '02', title: 'Your Goals Come First. Opportunities Come Second.', sub: 'A 500-option listing is not alignment. It\'s homework. XPAND doesn\'t hand you a catalogue and walk away. We understand your investment goals, sector preference, capital appetite, and growth horizon — then align you with franchise opportunities built around your commercial intent. Right sector. Right model. Right market. Right fit. Because at this stage of your journey, your time is the most valuable asset in the room.' },
+  { num: '03', title: 'Why Franchise Over Stocks, Real Estate, or Mutual Funds?', sub: 'The question every sharp investor is already asking. Franchise businesses offer something most asset classes can\'t — an operational system you don\'t have to build from scratch, a brand customers already trust, and a scalable growth model designed for multi-location expansion. XPAND helps you navigate India\'s franchise investment landscape with clarity — comparing models, evaluating structures, and identifying opportunities with real commercial depth. This isn\'t passive investing. This is structured business ownership.' },
+  { num: '04', title: 'We Stay In The Room Until The Deal Is Done', sub: 'Not a platform. A partner. Most portals stop at the introduction. XPAND stays involved through investor counselling, business alignment, commercial discussions, follow-ups, and execution support — every step of the franchise expansion journey. We don\'t disappear after the first meeting. Because the real work begins after hello.' },
+  { num: '05', title: 'Built For Investors Who Think In Decades, Not Quarters', sub: 'Food. Retail. Lifestyle. Electronics. Emerging Categories. Whether you\'re looking at food franchise expansion in Tier-1 cities, retail franchise opportunities across India, or emerging consumer category businesses built for the next decade — XPAND focuses on one thing: helping serious investors participate in commercially scalable franchise businesses backed by structure, planning, and execution-led growth.' },
+];
+
+const STATS = [
+  { stat: 'India', desc: 'Franchise economy being built right now. Are you positioned inside it?' },
+  { stat: '#1', desc: 'Franchise Advisory Partner in India' },
+  { stat: '500+', desc: 'Expansion-ready franchise businesses evaluated' },
+  { stat: 'PanIndia', desc: 'Tier-1, Tier-2 & emerging market coverage' },
 ];
 
 function FadeSection({ children, delay = 0, style = {} }) {
@@ -127,21 +135,61 @@ export default function ForInvestors() {
 
   return (
     <div style={{ background: 'var(--cream-light)' }}>
+      <Helmet>
+        <title>For Investors — Franchise Investment Opportunities India | XPAND Bharat</title>
+        <meta name="description" content="XPAND Bharat helps serious investors find structured franchise investment opportunities in India. Franchise advisory, investor alignment, and execution support across F&B, retail, lifestyle, and emerging sectors." />
+        <meta name="keywords" content="franchise investment India, franchise investment opportunities India, best franchise advisory India, investor alignment franchise, food franchise India, retail franchise India, connect with franchise investors" />
+      </Helmet>
       {/* HERO */}
       <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '500px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.86) 0%, rgba(13,27,62,0.72) 100%)' }} />
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)`, backgroundSize: '80px 80px' }} />
         <div style={{ position: 'absolute', bottom: '-20%', left: '-5%', width: '500px', height: '500px', background: 'radial-gradient(circle,rgba(240,121,32,0.1) 0%,transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '1440px', margin: '0 auto', width: '100%', position: 'relative', zIndex: 1 }}>
-          <div className="section-label">For Investors</div>
+          <div className="section-label">Investor Intelligence</div>
           <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '720px' }}>
-            Discover opportunities built for<br />
-            <span style={{ color: 'var(--orange)' }}>serious business growth.</span>
+            Why Investors Work With<br />
+            <span style={{ color: 'var(--orange)' }}>XPAND Bharat</span>
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '18px', lineHeight: 1.7, maxWidth: '560px', marginBottom: '40px' }}>
-            XPANDBHARAT helps investors explore structured business opportunities designed around commercial clarity, scalability, and long-term growth potential.
+          <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '18px', lineHeight: 1.7, maxWidth: '560px', marginBottom: '16px', fontStyle: 'italic' }}>
+            'Because serious money deserves serious structure.'
+          </p>
+          <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '16px', lineHeight: 1.7, maxWidth: '560px', marginBottom: '40px' }}>
+            India's franchise sector is growing fast. Most platforms throw opportunities at investors and hope something sticks. XPAND Bharat does the opposite — we curate, structure, and align franchise businesses with investors who are commercially serious about long-term growth across India.
           </p>
           <Link to="/growth-opportunities" className="btn-primary">Explore Opportunities</Link>
+        </div>
+      </div>
+
+      {/* STAT CARDS */}
+      <div style={{ background: 'var(--navy)', borderTop: '1px solid rgba(255,255,255,0.06)', padding: '0 40px' }}>
+        <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0' }}>
+          {STATS.map((s, i) => (
+            <FadeSection key={s.stat} delay={i * 80} style={{ padding: '48px 40px', borderRight: i < STATS.length - 1 ? '1px solid rgba(255,255,255,0.07)' : 'none' }}>
+              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(32px, 3.5vw, 52px)', fontWeight: 700, color: 'var(--orange)', lineHeight: 1, marginBottom: '12px' }}>{s.stat}</div>
+              <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '13px', lineHeight: 1.7, margin: 0 }}>{s.desc}</p>
+            </FadeSection>
+          ))}
+        </div>
+      </div>
+
+      {/* BUILT FOR INVESTORS — extended intro */}
+      <div style={{ background: 'var(--navy)', padding: '100px 40px', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+        <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1.3fr', gap: '80px', alignItems: 'center' }}>
+          <FadeSection>
+            <div className="section-label">Built For Serious Investors</div>
+            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 3.5vw, 48px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: '20px' }}>
+              Built For Investors Who Think Beyond Traditional Investments
+            </h2>
+            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '17px', fontStyle: 'italic', lineHeight: 1.7, marginBottom: '0' }}>
+              Franchising is no longer just expansion. It is a structured growth strategy.
+            </p>
+          </FadeSection>
+          <FadeSection delay={150}>
+            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '16px', lineHeight: 1.9, marginBottom: '0' }}>
+              XPAND Bharat helps investors participate in commercially scalable franchise businesses through investor-ready opportunities, franchise advisory, expansion planning, and execution-led business systems. Headquartered in Gurugram and backed by 25+ years of collective experience, we focus on franchise opportunities designed for long-term commercial scalability across India.
+            </p>
+          </FadeSection>
         </div>
       </div>
 
@@ -188,7 +236,7 @@ export default function ForInvestors() {
           WebkitOverflowScrolling: 'touch', scrollbarWidth: 'none',
           padding: '0 40px 8px',
         }}>
-          {offerings.map((item, i) => (
+          {offerings.map((item) => (
             <div key={item.title} style={{
               width: '360px', minWidth: '360px', height: '480px',
               flexShrink: 0, borderRadius: '20px',
@@ -239,17 +287,13 @@ export default function ForInvestors() {
             <div className="section-label">Why Us</div>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(30px, 3.5vw, 50px)', fontWeight: 700, color: '#fff', marginBottom: '24px', lineHeight: 1.1 }}>
               Why investors work with<br />
-              <span style={{ color: 'var(--orange)' }}>XPANDBHARAT.</span>
+              <span style={{ color: 'var(--orange)' }}>XPAND Bharat.</span>
             </h2>
             <div style={{ width: '48px', height: '2px', background: 'var(--orange)', margin: '28px 0' }} />
             <p style={{ color: 'rgba(255,255,255,0.52)', fontSize: '16px', lineHeight: 1.85, marginBottom: '48px', maxWidth: '380px' }}>
-              We don't just show you opportunities — we help you understand them, align with them, and close them with structure and clarity.
+              India's franchise economy is being built right now. The question is — are you positioned inside it?
             </p>
             <Link to="/contact" className="btn-primary">Start a Conversation</Link>
-            <div style={{ marginTop: '56px', padding: '24px 28px', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '12px', display: 'inline-block' }}>
-              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '36px', fontWeight: 700, color: '#fff', lineHeight: 1 }}>180+</div>
-              <div style={{ color: 'rgba(255,255,255,0.4)', fontSize: '12px', letterSpacing: '0.08em', textTransform: 'uppercase', marginTop: '6px' }}>Active investment conversations</div>
-            </div>
           </FadeSection>
 
           {/* Right — numbered list */}

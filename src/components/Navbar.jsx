@@ -2,14 +2,15 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 
 const NAV_LINKS = [
-  { label: 'Home',                 to: '/' },
-  { label: 'For Brands',          to: '/for-brands' },
-  { label: 'For Investors',       to: '/for-investors' },
-  { label: 'Growth Opportunities',to: '/growth-opportunities' },
-  { label: 'Our Approach',        to: '/our-approach' },
-  { label: 'Industries',          to: '/industries' },
-  { label: 'About',               to: '/about' },
-  { label: 'Insights',            to: '/insights' },
+  { label: 'Home',                  to: '/' },
+  { label: 'Our Approach',          to: '/our-approach' },
+  { label: 'Industries',            to: '/industries' },
+  { label: 'Growth Opportunities',  to: '/growth-opportunities' },
+  { label: 'For Investors',         to: '/for-investors' },
+  { label: 'For Brands',            to: '/for-brands' },
+  { label: 'About',                 to: '/about' },
+  { label: 'Insights',              to: '/insights' },
+  { label: 'Contact Us',            to: '/contact' },
 ];
 
 export default function Navbar() {
@@ -58,7 +59,7 @@ export default function Navbar() {
           {/* Right side */}
           <div className="xb-header-right">
             <Link to="/contact" className="xb-header-cta">
-              Get in Touch
+              Connect Now
             </Link>
             <button
               className={`xb-burger${menuOpen ? ' xb-burger--open' : ''}`}
@@ -88,7 +89,7 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Link to="/contact" className="xb-drawer-cta">Get in Touch</Link>
+          <Link to="/contact" className="xb-drawer-cta">Connect Now</Link>
         </nav>
       </div>
       {menuOpen && <div className="xb-overlay" onClick={() => setMenuOpen(false)} />}
@@ -121,7 +122,7 @@ export default function Navbar() {
 
         /* ── Logo ── */
         .xb-logo { display: flex; align-items: center; flex-shrink: 0; text-decoration: none; }
-        .xb-logo img { height: 48px; width: auto; object-fit: contain; display: block; }
+        .xb-logo img { height: 68px; width: auto; object-fit: contain; display: block; }
 
         /* ── Desktop nav ── */
         .xb-nav {

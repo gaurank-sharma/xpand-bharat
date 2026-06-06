@@ -118,15 +118,17 @@ export default function AdminSiteSettings() {
           <>
             <Field label="LinkedIn URL"   value={form.socialLinks?.linkedin  || ''} onChange={v => setSocial('linkedin', v)}  placeholder="https://linkedin.com/company/xpandbharat" />
             <Field label="Instagram URL"  value={form.socialLinks?.instagram || ''} onChange={v => setSocial('instagram', v)} placeholder="https://instagram.com/xpandbharat" />
-            <Field label="Twitter / X URL" value={form.socialLinks?.twitter  || ''} onChange={v => setSocial('twitter', v)}   placeholder="https://twitter.com/xpandbharat" />
+            <Field label="Facebook URL"   value={form.socialLinks?.facebook  || ''} onChange={v => setSocial('facebook', v)}  placeholder="https://facebook.com/xpandbharat" />
+            <Field label="Twitter / X URL" value={form.socialLinks?.twitter  || ''} onChange={v => setSocial('twitter', v)}   placeholder="https://twitter.com/xpandbharat" hint="Leave blank to hide an icon in the footer." />
           </>
         )}
 
         {tab === 'Footer' && (
           <>
-            <TextArea label="Footer Tagline"  value={form.footerTagline}  onChange={v => set('footerTagline', v)}  placeholder='"Less noise. More execution."' />
-            <Field    label="Footer Subline"  value={form.footerSubline}  onChange={v => set('footerSubline', v)}  placeholder="No drama, only delivery." />
-            <Field    label="Copyright Text"  value={form.copyrightText}  onChange={v => set('copyrightText', v)}  placeholder="© 2025 XPANDBHARAT. All rights reserved." />
+            <TextArea label="Footer Description" value={form.footerDescription || ''} onChange={v => set('footerDescription', v)} rows={4} placeholder="Short company description shown in the footer brand column." />
+            <Field    label="Footer CTA Heading" value={form.footerHeading || ''} onChange={v => set('footerHeading', v)} placeholder="Ready to move" />
+            <Field    label="Footer CTA Tagline" value={form.footerTagline}  onChange={v => set('footerTagline', v)}  placeholder="Less noise. More execution." />
+            <Field    label="Copyright Text"  value={form.copyrightText}  onChange={v => set('copyrightText', v)}  placeholder="XPANDBHARAT. All rights reserved." />
           </>
         )}
       </div>

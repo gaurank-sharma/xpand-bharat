@@ -1,39 +1,16 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { useContent } from '../hooks/useContent';
 import { Link } from 'react-router-dom';
 
 const PILLARS = [
-  { label: 'Alignment', desc: 'Bringing the right brands and investors together around shared commercial direction.' },
-  { label: 'Structure', desc: 'Creating organised frameworks for scalable and disciplined business growth.' },
-  { label: 'Clarity', desc: 'Removing noise so opportunities and decisions move with sharper direction.' },
-  { label: 'Execution', desc: 'Turning strategy into real business movement through operational discipline.' },
-  { label: 'Governance', desc: 'Maintaining standards, processes, and accountability across all engagements.' },
+  { label: 'Diagnose', desc: 'Before businesses scale, they need clarity.' },
+  { label: 'Structure', desc: 'Good businesses often fail at expansion because they are not structured for franchising.' },
+  { label: 'Align', desc: 'The right investors matter more than a larger database.' },
+  { label: 'Execute', desc: 'Franchise growth rarely scales through introductions alone.' },
+  { label: 'Scale', desc: 'Opening more outlets is easy.' },
 ];
 
-const OFFERINGS = [
-  {
-    icon: '◈',
-    title: 'Expansion Strategy',
-    desc: 'Structured plans for entering new markets, territories, and geographies — built to scale without losing operational control.',
-  },
-  {
-    icon: '◉',
-    title: 'Investor Alignment',
-    desc: 'Commercially sound opportunities matched to investors who understand long-term business growth over short-term noise.',
-  },
-  {
-    icon: '◎',
-    title: 'Execution Support',
-    desc: 'On-ground discipline that turns strategy into real movement — deals closed, systems built, brands launched.',
-  },
-];
-
-const STATS = [
-  { number: '250+', label: 'Projects Supported' },
-  { number: '15+', label: 'Years of Experience' },
-  { number: '180+', label: 'Satisfied Partners' },
-  { number: '25+', label: 'Expert Team' },
-];
 
 const PHOTO_CARDS = [
   {
@@ -92,15 +69,6 @@ function FadeSection({ children, delay = 0, style = {}, className = '' }) {
 
 export default function Home() {
   const { hero, section } = useContent('home');
-  const offerings = section('offerings', OFFERINGS).map(item => ({
-    icon: item.badge || item.icon,
-    title: item.title,
-    desc: item.description || item.desc,
-  }));
-  const stats = section('stats', STATS).map(s => ({
-    number: s.title || s.number,
-    label: s.subtitle || s.label,
-  }));
   const pillars = section('pillars', PILLARS).map(p => ({
     label: p.title || p.label,
     desc: p.description || p.desc,
@@ -112,10 +80,15 @@ export default function Home() {
     img: c.imageUrl || c.img,
     to: c.link || c.to,
   }));
-  const heroSubtitle = hero?.subtitle || 'Brands + investors aligned. XPANDBHARAT is a premium business expansion platform focused on structured growth, investor alignment, and execution-led business movement.';
+  const heroSubtitle = hero?.subtitle || 'XPAND helps brands become investor-ready, scale through structured franchising, and align with commercially serious investors looking for profitable franchise opportunities in India.';
 
   return (
     <>
+      <Helmet>
+        <title>XPAND Bharat — India's Leading Franchise Expansion & Advisory Platform</title>
+        <meta name="description" content="XPAND Bharat is India's leading franchise consulting company helping brands expand through structured franchising, investor alignment, and execution-led growth. Connect with serious franchise investors across India." />
+        <meta name="keywords" content="franchise consulting company, franchise expansion consultants India, franchise investment advisory India, franchise lead generation, franchise investor network India, best franchise advisory India, franchise consulting firms India, business expansion advisory" />
+      </Helmet>
       {/* ─── HERO WRAPPER ─── */}
       <div className="hero-wrapper">
         <section className="hero-sticky" style={{ background: 'var(--navy-dark)' }}>
@@ -147,7 +120,7 @@ export default function Home() {
           <div className="xb-hero-content">
             <div className="xb-hero-inner">
               <div className="section-label" style={{ marginBottom: '28px', animationDelay: '0.2s' }}>
-                Premium Business Expansion Platform
+                India's Leading Franchise Expansion & Advisory Platform
               </div>
 
               <h1 style={{
@@ -159,7 +132,7 @@ export default function Home() {
                 margin: '0 0 12px',
                 letterSpacing: '-0.02em',
               }}>
-                Less noise.
+                Good businesses deserve
               </h1>
               <h1 style={{
                 fontFamily: "'Playfair Display', serif",
@@ -170,7 +143,7 @@ export default function Home() {
                 margin: '0 0 32px',
                 letterSpacing: '-0.02em',
               }}>
-                More execution.
+                more than random expansion.
               </h1>
 
               <p style={{
@@ -205,46 +178,20 @@ export default function Home() {
       {/* ─── RISING CONTENT PANEL ─── */}
       <div className="rising-panel">
 
-        {/* Offerings strip */}
-        <div className="xb-offerings-strip" style={{ background: 'var(--navy)' }}>
-          <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2px' }}>
-              {offerings.map((item, i) => (
-                <FadeSection
-                  key={item.title}
-                  delay={i * 120}
-                  className="xb-offering-item"
-                  style={{ borderRight: i < OFFERINGS.length - 1 ? '1px solid rgba(255,255,255,0.07)' : 'none' }}
-                >
-                  <div style={{ fontSize: '28px', color: 'var(--orange)', marginBottom: '24px' }}>{item.icon}</div>
-                  <h3 style={{
-                    fontFamily: "'Playfair Display', serif", color: '#fff',
-                    fontSize: '22px', fontWeight: 600, marginBottom: '16px',
-                  }}>{item.title}</h3>
-                  <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '15px', lineHeight: 1.7 }}>{item.desc}</p>
-                </FadeSection>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Stats bar */}
-        <div className="xb-stats-bar" style={{ background: 'var(--orange)' }}>
-          <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(160px, 1fr))', gap: '0' }}>
-            {stats.map((stat, i) => (
-              <FadeSection
-                key={stat.label}
-                delay={i * 100}
-                className="xb-stat-item"
-                style={{ borderRight: i < STATS.length - 1 ? '1px solid rgba(0,0,0,0.1)' : 'none', textAlign: 'center' }}
-              >
-                <div style={{ fontSize: 'clamp(32px, 4vw, 52px)', fontWeight: 700, color: '#fff', fontFamily: "'Playfair Display', serif", lineHeight: 1 }}>
-                  {stat.number}
-                </div>
-                <div style={{ fontSize: '13px', fontWeight: 500, color: 'rgba(0,0,0,0.6)', marginTop: '8px', letterSpacing: '0.06em', textTransform: 'uppercase' }}>
-                  {stat.label}
-                </div>
-              </FadeSection>
+        {/* Marquee brand statement */}
+        <div style={{ background: 'var(--navy)', borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)', padding: '22px 0', overflow: 'hidden' }}>
+          <div className="xb-marquee-track">
+            {[0,1].map(k => (
+              <div key={k} className="xb-marquee-inner" aria-hidden={k === 1}>
+                {Array(6).fill(null).map((_, i) => (
+                  <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: '32px', paddingRight: '32px' }}>
+                    <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(15px, 1.4vw, 20px)', fontWeight: 700, color: '#fff', letterSpacing: '0.06em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
+                      We Are The Best Franchise Advisory Partners In India
+                    </span>
+                    <span style={{ color: 'var(--orange)', fontSize: '10px' }}>◆</span>
+                  </span>
+                ))}
+              </div>
             ))}
           </div>
         </div>
@@ -260,10 +207,10 @@ export default function Home() {
                   fontSize: 'clamp(28px, 4vw, 54px)', fontWeight: 700,
                   color: 'var(--navy)', lineHeight: 1.15, marginBottom: '28px',
                 }}>
-                  Growth without structure creates noise.
+                  Structured franchise growth rarely happens accidentally.
                 </h2>
                 <p style={{ color: 'var(--gray)', fontSize: '17px', lineHeight: 1.8, marginBottom: '40px', maxWidth: '480px' }}>
-                  Every business decision deserves structure. We bring brands and investors together with the commercial clarity, operational framework, and execution discipline that serious growth actually demands.
+                  XPAND Bharat works through a commercially disciplined expansion process designed to help businesses scale through franchising with stronger investor alignment, operational clarity, and execution-backed growth systems.
                 </p>
                 <Link to="/our-approach" className="btn-outline-dark">Discover Our Approach</Link>
               </FadeSection>
@@ -271,17 +218,17 @@ export default function Home() {
               <FadeSection delay={200} style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px' }}>
                 {pillars.map((p, i) => (
                   <div key={p.label} style={{
-                    background: i === 0 ? 'var(--navy)' : i === 4 ? 'var(--orange)' : 'var(--white)',
+                    background: i === 0 ? 'var(--navy)' : i === 3 ? 'var(--orange)' : 'var(--white)',
                     borderRadius: '12px', padding: '32px 28px',
                     border: '1px solid var(--border)',
                     gridColumn: i === 4 ? '1 / -1' : 'auto',
                   }}>
                     <h4 style={{
                       fontSize: '15px', fontWeight: 700, marginBottom: '10px',
-                      color: i === 0 || i === 4 ? '#fff' : 'var(--navy)',
+                      color: i === 0 || i === 3 ? '#fff' : 'var(--navy)',
                       letterSpacing: '0.04em',
                     }}>{p.label}</h4>
-                    <p style={{ fontSize: '13px', lineHeight: 1.6, margin: 0, color: i === 0 || i === 4 ? 'rgba(255,255,255,0.7)' : 'var(--gray)' }}>
+                    <p style={{ fontSize: '13px', lineHeight: 1.6, margin: 0, color: i === 0 || i === 3 ? 'rgba(255,255,255,0.7)' : 'var(--gray)' }}>
                       {p.desc}
                     </p>
                   </div>
@@ -320,7 +267,7 @@ export default function Home() {
 
             <FadeSection style={{ textAlign: 'center', maxWidth: '580px', margin: '0 auto' }}>
               <p style={{ color: 'var(--gray)', fontSize: 'clamp(15px, 1.4vw, 17px)', lineHeight: 1.9, margin: 0 }}>
-                We support brands with structured franchise expansion, partner acquisition, and rollout governance across multiple cities and states in India.
+                Headquartered in Gurugram, XPAND Bharat brings 25+ years of collective experience across franchise consulting, investor advisory, expansion planning, and execution-led business growth.
               </p>
             </FadeSection>
           </div>
@@ -430,12 +377,13 @@ export default function Home() {
               <h2 style={{
                 fontFamily: "'Playfair Display', serif", color: '#fff',
                 fontSize: 'clamp(32px, 5vw, 64px)', fontWeight: 700,
-                maxWidth: '800px', margin: '0 auto 28px', lineHeight: 1.15,
+                maxWidth: '900px', margin: '0 auto 28px', lineHeight: 1.15,
+                letterSpacing: '0.02em', textTransform: 'uppercase',
               }}>
-                Clarity first. Business next.
+                We are the best franchise advisory partners in India
               </h2>
               <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 'clamp(15px, 1.5vw, 18px)', lineHeight: 1.7, maxWidth: '600px', margin: '0 auto 56px' }}>
-                Whether you are scaling a brand or exploring opportunities, XPANDBHARAT is built to move serious business conversations forward with structure, discipline, and execution.
+                Whether you are scaling a brand, exploring opportunities, or building strategic partnerships, XPAND Bharat is designed to support serious franchise business growth across India.
               </p>
               <div className="xb-hero-cta" style={{ justifyContent: 'center' }}>
                 <Link to="/for-brands" className="btn-primary">For Brands</Link>
@@ -459,7 +407,7 @@ export default function Home() {
                 {
                   tag: 'For Brands',
                   title: 'Expand with structure.',
-                  body: 'Franchise expansion, territory planning, channel development, partner acquisition, and rollout support — all structured for disciplined growth.',
+                  body: 'Franchise expansion, investor-ready business structuring, rollout strategy, and expansion planning — all structured for disciplined franchise growth across India.',
                   cta: 'Explore Brand Solutions',
                   to: '/for-brands',
                   dark: true,
@@ -467,7 +415,7 @@ export default function Home() {
                 {
                   tag: 'For Investors',
                   title: 'Invest with clarity.',
-                  body: 'Curated business opportunities across scalable sectors, designed around commercial clarity, expansion readiness, and long-term growth potential.',
+                  body: 'Curated franchise investment opportunities designed around commercial clarity, operational structure, and long-term scalability across India\'s fastest-growing sectors.',
                   cta: 'Explore Opportunities',
                   to: '/for-investors',
                   dark: false,
@@ -569,6 +517,69 @@ export default function Home() {
           </div>
         </div>
 
+        {/* ── FAQ SECTION ── */}
+        {(() => {
+          const FAQS = [
+            { q: 'What does XPAND Bharat do?', a: 'XPAND Bharat acts as a perfect matchmaker between flourishing businesses and qualified investors with growth capital through our structured 6-principle philosophy: Alignment, Structure, Clarity, Execution, and Governance.' },
+            { q: 'How does franchise expansion actually work?', a: 'Franchise expansion involves transforming an operational business into a scalable growth model through market analysis, business planning, investor onboarding, legal structuring, and operational systems built with the help of experts with years of experience.' },
+            { q: 'Why are businesses expanding through franchising in India?', a: 'Franchising allows businesses to scale faster while giving investors access to structured, growth-focused business opportunities beyond traditional investments like stocks, mutual funds, or real estate. XPAND helps reduce expansion risk through strategy, investor alignment, lead generation, legal structuring, and execution support.' },
+            { q: 'How does XPAND help businesses scale?', a: 'XPAND helps businesses scale by aligning their funding and expansion needs with qualified investors. It helps with investor-ready business proposals, helping you secure the best funding deal with end-to-end execution support.' },
+            { q: 'What industries does XPAND work with?', a: 'XPAND works with businesses across F&B, electronics, fashion, retail, and emerging scalable business categories looking to expand through franchising.' },
+            { q: 'Why invest in franchise businesses?', a: 'Franchise businesses offer operational support, structured business models, brand recognition, and scalability compared to building a business entirely from scratch.' },
+            { q: 'Franchise vs starting your own business — what is better?', a: 'Franchise businesses often reduce operational uncertainty because investors enter businesses with established systems, processes, market positioning, and brand visibility, whereas an independent business requires building everything from the ground up.' },
+            { q: 'Are franchise businesses profitable in India?', a: 'Franchise businesses in India are growing rapidly because they combine brand recognition, operational support, and scalable business systems with lower expansion risk. XPAND helps reduce expansion uncertainty through investor alignment, market analysis, business planning, legal structuring, and execution-led support.' },
+          ];
+          const [open, setOpen] = useState(0);
+          return (
+            <div style={{ background: 'var(--cream-light)', padding: '100px 40px' }}>
+              <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": FAQS.map(f => ({ "@type": "Question", "name": f.q, "acceptedAnswer": { "@type": "Answer", "text": f.a } })) }) }} />
+              <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: '80px', alignItems: 'start' }}>
+                <div>
+                  <FadeSection style={{ marginBottom: '48px' }}>
+                    <div className="section-label">Frequently Asked Questions</div>
+                    <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 3.5vw, 46px)', fontWeight: 700, color: 'var(--navy)', lineHeight: 1.15, margin: 0 }}>
+                      Everything you need to know about franchise expansion
+                    </h2>
+                  </FadeSection>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '12px' }}>
+                    {FAQS.map((item, i) => (
+                      <div key={i} style={{ borderRadius: '12px', overflow: 'hidden', border: `1px solid ${open === i ? 'var(--orange)' : 'var(--border)'}`, transition: 'border-color 0.25s' }}>
+                        <button onClick={() => setOpen(open === i ? -1 : i)} style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 24px', background: open === i ? 'var(--navy)' : 'var(--white)', border: 'none', cursor: 'pointer', textAlign: 'left', gap: '16px', transition: 'background 0.25s' }}>
+                          <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '16px', fontWeight: 700, color: open === i ? '#fff' : 'var(--navy)', lineHeight: 1.3 }}>{item.q}</span>
+                          <span style={{ width: '28px', height: '28px', borderRadius: '50%', border: `1.5px solid ${open === i ? 'rgba(255,255,255,0.3)' : 'var(--border)'}`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: open === i ? 'var(--orange)' : 'var(--gray)', fontSize: '18px', lineHeight: 1, transition: 'all 0.25s' }}>
+                            {open === i ? '−' : '+'}
+                          </span>
+                        </button>
+                        {open === i && (
+                          <div style={{ padding: '20px 24px 24px', background: 'var(--white)', borderTop: '1px solid var(--border)' }}>
+                            <p style={{ color: 'var(--gray)', fontSize: '15px', lineHeight: 1.8, margin: 0 }}>{item.a}</p>
+                          </div>
+                        )}
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <FadeSection delay={200} style={{ position: 'sticky', top: '120px' }}>
+                  <div style={{ background: 'var(--navy)', borderRadius: '20px', padding: '48px 40px', overflow: 'hidden', position: 'relative' }}>
+                    <div style={{ position: 'absolute', bottom: '-40%', right: '-20%', width: '280px', height: '280px', background: 'radial-gradient(circle, rgba(240,121,32,0.12) 0%, transparent 70%)', pointerEvents: 'none' }} />
+                    <div style={{ position: 'relative', zIndex: 1 }}>
+                      <div style={{ width: '40px', height: '3px', background: 'var(--orange)', marginBottom: '28px', borderRadius: '2px' }} />
+                      <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(22px, 2.2vw, 30px)', fontWeight: 700, color: '#fff', lineHeight: 1.25, marginBottom: '16px' }}>
+                        Still have questions?<br /><span style={{ color: 'var(--orange)' }}>Let's talk directly.</span>
+                      </h3>
+                      <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '14px', lineHeight: 1.75, marginBottom: '32px' }}>
+                        Our team will connect with you to discuss your business goals, expansion plans, or investment interests within 24 hours.
+                      </p>
+                      <Link to="/contact" className="btn-primary" style={{ width: '100%', justifyContent: 'center', marginBottom: '16px' }}>Start a Conversation</Link>
+                      <p style={{ color: 'rgba(255,255,255,0.3)', fontSize: '12px', textAlign: 'center', margin: 0 }}>No commitment. Just clarity.</p>
+                    </div>
+                  </div>
+                </FadeSection>
+              </div>
+            </div>
+          );
+        })()}
+
       </div>
 
       <style>{`
@@ -594,6 +605,21 @@ export default function Home() {
         /* ── Stats ── */
         .xb-stats-bar { padding: 0 40px; }
         .xb-stat-item { padding: 48px 40px; }
+
+        /* ── FAQ ── */
+        @media (max-width: 900px) {
+          .xb-faq-grid { grid-template-columns: 1fr !important; }
+        }
+
+        /* ── Marquee ── */
+        @keyframes xbMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        .xb-marquee-track {
+          display: flex;
+          width: max-content;
+          animation: xbMarquee 28s linear infinite;
+        }
+        .xb-marquee-track:hover { animation-play-state: paused; }
+        .xb-marquee-inner { display: flex; align-items: center; }
 
         /* ── Philosophy ── */
         .xb-philosophy-section { padding: 120px 40px; }

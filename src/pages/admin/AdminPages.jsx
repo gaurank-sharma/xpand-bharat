@@ -15,33 +15,55 @@ const PAGES = [
 ];
 
 const SECTION_LABELS = {
-  stats: 'Stats / Numbers', pillars: 'Pillars', offerings: 'Offerings',
+  stats: 'Stats / Numbers', pillars: 'Pillars (Our Philosophy)', offerings: 'Offerings',
   'photo-cards': 'Photo Cards', services: 'Services', 'why-us': 'Why Us',
   categories: 'Categories', differentiators: 'Differentiators',
-  steps: 'Approach Steps', principles: 'Principles', sectors: 'Sectors / Industries',
-  'focus-areas': 'Focus Areas',
+  steps: 'Approach Steps', principles: 'Principles / Framework', sectors: 'Sectors / Industries',
+  roadmap: 'Expansion Roadmap', 'focus-areas': 'Focus Areas / Process',
 };
 
-const EMPTY_ITEM = { badge: '', tag: '', title: '', subtitle: '', description: '', metrics: '', imageUrl: '', link: '', order: 0 };
+const EMPTY_ITEM = {
+  badge: '', tag: '', title: '', subtitle: '', description: '', metrics: '',
+  imageUrl: '', link: '', order: 0,
+  intro: '', lead: '', closing: '', quote: '', items: '', paras: '',
+  frontDesc: '', backStat: '', backDesc: '',
+};
 
+// Which field renders as what kind of input.
+const AREA_FIELDS = ['description','intro','lead','closing','quote','frontDesc','backStat','backDesc'];
+const LIST_FIELDS = ['items','paras'];       // one entry per line
+// metrics stays comma-separated (short tags)
+
+// Config is looked up by `page/section` first, then by bare `section`.
 const SECTION_CONFIG = {
-  stats:           { show: ['title','subtitle'],                        labels: { title: 'Number (e.g. 250+)', subtitle: 'Label (e.g. Projects Supported)' } },
-  pillars:         { show: ['title','description'],                     labels: { title: 'Pillar Name', description: 'Description' } },
-  offerings:       { show: ['badge','title','description'],             labels: { badge: 'Icon (◈ ◉ ◎)', description: 'Description' } },
-  'photo-cards':   { show: ['tag','title','subtitle','image','link'],   labels: { tag: 'Category Tag', subtitle: 'Sub-label', link: 'Page Link (e.g. /for-brands)' } },
-  services:        { show: ['tag','title','description','image'],       labels: { tag: 'Badge (e.g. Franchise Ready)', description: 'Description' } },
-  'why-us':        { show: ['badge','title','description'],             labels: { badge: 'Number (01, 02…)', description: 'Supporting text' } },
-  categories:      { show: ['tag','title','description','image'],       labels: { tag: 'Sector Tag', description: 'Description' } },
-  differentiators: { show: ['badge','title','description'],             labels: { badge: 'Number (01, 02…)', description: 'Supporting text' } },
-  steps:           { show: ['badge','title','description'],             labels: { badge: 'Step Number (01–05)', description: 'Step description' } },
-  principles:      { show: ['title','description'],                     labels: { title: 'Principle Name', description: 'One-line description' } },
-  sectors:         { show: ['badge','title','subtitle','description','metrics'], labels: { badge: 'Number (01–06)', subtitle: 'Sub-categories (e.g. QSR · Cafés)', description: 'Description', metrics: 'Metrics (comma separated)' } },
-  'focus-areas':   { show: ['tag','title','description','image'],       labels: { tag: 'Area Tag', description: 'Description' } },
+  // ── HOME
+  'home/pillars':                          { show: ['title','description'], labels: { title: 'Step Name', description: 'One-line description' } },
+  'home/photo-cards':                      { show: ['tag','title','subtitle','image','link'], labels: { tag: 'Category Tag', subtitle: 'Sub-label', link: 'Page Link (e.g. /for-brands)' } },
+  // ── FOR-BRANDS
+  'for-brands/services':                   { show: ['tag','title','description','image'], labels: { tag: 'Badge (e.g. Franchise Ready)' } },
+  'for-brands/why-us':                     { show: ['badge','title','description','intro','items','closing'], labels: { badge: 'Number (01–05)', description: 'Plain description — OR use intro + bullets + closing below', intro: 'Intro line (before bullets)', items: 'Bullet list (one per line)', closing: 'Closing line (after bullets)' } },
+  // ── FOR-INVESTORS
+  'for-investors/offerings':               { show: ['tag','title','description','image'], labels: { tag: 'Tag (e.g. Curated Access)' } },
+  'for-investors/stats':                   { show: ['title','description'], labels: { title: 'Stat (e.g. 500+)', description: 'Caption' } },
+  'for-investors/why-us':                  { show: ['badge','title','subtitle'], labels: { badge: 'Number (01–05)', subtitle: 'Full paragraph' } },
+  // ── GROWTH OPPORTUNITIES
+  'growth-opportunities/categories':       { show: ['tag','title','description','image'], labels: { tag: 'Sector Tag' } },
+  'growth-opportunities/differentiators':  { show: ['badge','title','description'], labels: { badge: 'Number (01–05)' } },
+  // ── OUR APPROACH
+  'our-approach/steps':                    { show: ['badge','title','description','quote'], labels: { badge: 'Step Number (01–05)', quote: 'Pull-quote (optional)' } },
+  'our-approach/principles':               { show: ['badge','title','intro','lead','items','closing','paras'], labels: { badge: 'Number (01–05)', title: 'Step Name', intro: 'Intro line', lead: 'Lead-in (before bullets)', items: 'Bullet list (one per line)', closing: 'Closing line', paras: 'Paragraphs (one per line — use instead of intro/lead/bullets)' } },
+  // ── INDUSTRIES
+  'industries/sectors':                    { show: ['badge','title','subtitle','frontDesc','backStat','backDesc'], labels: { badge: 'Number (01–05)', subtitle: 'Sub-categories (· separated)', frontDesc: 'Front of card', backStat: 'Back — market context', backDesc: 'Back — how XPAND helps' } },
+  'industries/roadmap':                    { show: ['badge','tag','title','description','lead','items','paras'], labels: { badge: 'Number (01–06)', tag: 'Stage Label (FOUNDATION, SYSTEMS…)', description: 'Description — OR use lead + bullets', lead: 'Lead-in (before bullets)', items: 'Bullet list (one per line)', paras: 'Paragraphs (one per line)' } },
+  'industries/why-us':                     { show: ['badge','title','description','intro','items','closing'], labels: { badge: 'Number (01–05)', description: 'Plain description — OR use intro + bullets + closing', intro: 'Intro line (before bullets)', items: 'Bullet list (one per line)', closing: 'Closing line (after bullets)' } },
+  // ── ABOUT
+  'about/focus-areas':                     { show: ['tag','title','items'], labels: { tag: 'Eyebrow (YOU COME TO US…)', items: 'Bullet list (one per line)' } },
 };
 
-const getConfig = section => SECTION_CONFIG[section] || { show: ['badge','tag','title','subtitle','description','metrics','image','link'], labels: {} };
-const shows = (section, field) => getConfig(section).show.includes(field);
-const label = (section, field, fallback) => getConfig(section).labels[field] || fallback;
+const GENERIC = { show: ['badge','tag','title','subtitle','description','metrics','image','link'], labels: {} };
+const getConfig = (page, section) => SECTION_CONFIG[`${page}/${section}`] || SECTION_CONFIG[section] || GENERIC;
+const shows = (page, section, field) => getConfig(page, section).show.includes(field);
+const label = (page, section, field, fallback) => getConfig(page, section).labels[field] || fallback;
 
 const Input = ({ label, value, onChange, placeholder, area }) =>
   area ? (
@@ -120,9 +142,14 @@ export default function AdminPages() {
 
   const openEdit = item => {
     setEditing(item);
-    setForm({ badge: item.badge || '', tag: item.tag || '', title: item.title || '', subtitle: item.subtitle || '',
+    setForm({
+      badge: item.badge || '', tag: item.tag || '', title: item.title || '', subtitle: item.subtitle || '',
       description: item.description || '', metrics: (item.metrics || []).join(', '),
-      imageUrl: item.imageUrl || '', link: item.link || '', order: item.order || 0 });
+      imageUrl: item.imageUrl || '', link: item.link || '', order: item.order || 0,
+      intro: item.intro || '', lead: item.lead || '', closing: item.closing || '', quote: item.quote || '',
+      items: (item.items || []).join('\n'), paras: (item.paras || []).join('\n'),
+      frontDesc: item.frontDesc || '', backStat: item.backStat || '', backDesc: item.backDesc || '',
+    });
     setImgPrev(item.imageUrl || ''); setImgFile(null); setModal(true);
   };
 
@@ -132,8 +159,10 @@ export default function AdminPages() {
     try {
       const fd = new FormData();
       fd.append('page', page); fd.append('section', section);
-      ['badge','tag','title','subtitle','description','link','order'].forEach(k => fd.append(k, form[k]));
+      ['badge','tag','title','subtitle','description','link','order','intro','lead','closing','quote','frontDesc','backStat','backDesc'].forEach(k => fd.append(k, form[k] ?? ''));
       fd.append('metrics', JSON.stringify(form.metrics ? form.metrics.split(',').map(s => s.trim()).filter(Boolean) : []));
+      fd.append('items', JSON.stringify(form.items ? form.items.split('\n').map(s => s.trim()).filter(Boolean) : []));
+      fd.append('paras', JSON.stringify(form.paras ? form.paras.split('\n').map(s => s.trim()).filter(Boolean) : []));
       if (!imgFile && form.imageUrl) fd.append('imageUrl', form.imageUrl);
       if (imgFile) fd.append('image', imgFile);
 
@@ -316,21 +345,35 @@ export default function AdminPages() {
               <button onClick={() => setModal(false)} className="text-gray-500 hover:text-white"><X size={18} /></button>
             </div>
             <form onSubmit={saveItem} className="p-6 space-y-4">
-              {(shows(section,'badge') || shows(section,'tag')) && (
-                <div className={`grid gap-4 ${shows(section,'badge') && shows(section,'tag') ? 'grid-cols-2' : 'grid-cols-1'}`}>
-                  {shows(section,'badge') && <Input label={label(section,'badge','Badge / Number / Icon')} value={form.badge} onChange={v => set('badge', v)} placeholder="01, ◈, etc." />}
-                  {shows(section,'tag')   && <Input label={label(section,'tag','Tag / Category')}         value={form.tag}   onChange={v => set('tag', v)}   placeholder="e.g. Franchise Ready" />}
+              {(shows(page,section,'badge') || shows(page,section,'tag')) && (
+                <div className={`grid gap-4 ${shows(page,section,'badge') && shows(page,section,'tag') ? 'grid-cols-2' : 'grid-cols-1'}`}>
+                  {shows(page,section,'badge') && <Input label={label(page,section,'badge','Badge / Number / Icon')} value={form.badge} onChange={v => set('badge', v)} placeholder="01, ◈, etc." />}
+                  {shows(page,section,'tag')   && <Input label={label(page,section,'tag','Tag / Category')}         value={form.tag}   onChange={v => set('tag', v)}   placeholder="e.g. Franchise Ready" />}
                 </div>
               )}
-              <Input label={label(section,'title','Title') + ' *'} value={form.title} onChange={v => set('title', v)} placeholder="Item title" />
-              {shows(section,'subtitle') && <Input label={label(section,'subtitle','Subtitle')} value={form.subtitle} onChange={v => set('subtitle', v)} placeholder="Secondary / supporting text" />}
-              {shows(section,'description') && <Input label={label(section,'description','Description')} value={form.description} onChange={v => set('description', v)} placeholder="Full description text" area />}
-              {shows(section,'metrics') && <Input label={label(section,'metrics','Metrics (comma separated)')} value={form.metrics} onChange={v => set('metrics', v)} placeholder="e.g. High repeat business, Scalable, Multi-format" />}
-              {shows(section,'link') && <Input label={label(section,'link','Link / URL')} value={form.link} onChange={v => set('link', v)} placeholder="/for-brands" />}
+              <Input label={label(page,section,'title','Title') + ' *'} value={form.title} onChange={v => set('title', v)} placeholder="Item title" />
+              {shows(page,section,'subtitle') && <Input label={label(page,section,'subtitle','Subtitle')} value={form.subtitle} onChange={v => set('subtitle', v)} placeholder="Secondary / supporting text" area={getConfig(page,section).labels.subtitle?.includes('paragraph')} />}
+              {shows(page,section,'description') && <Input label={label(page,section,'description','Description')} value={form.description} onChange={v => set('description', v)} placeholder="Full description text" area />}
+
+              {/* Rich text fields */}
+              {shows(page,section,'intro')   && <Input label={label(page,section,'intro','Intro line')}     value={form.intro}   onChange={v => set('intro', v)}   placeholder="Opening line before the bullet list" area />}
+              {shows(page,section,'lead')    && <Input label={label(page,section,'lead','Lead-in')}        value={form.lead}    onChange={v => set('lead', v)}    placeholder="e.g. XPAND helps build:" />}
+              {shows(page,section,'items')   && <Input label={label(page,section,'items','Bullet list (one per line)')} value={form.items} onChange={v => set('items', v)} placeholder={'one item per line\nsecond item\nthird item'} area />}
+              {shows(page,section,'closing') && <Input label={label(page,section,'closing','Closing line')}  value={form.closing} onChange={v => set('closing', v)} placeholder="Line shown after the bullets" area />}
+              {shows(page,section,'paras')   && <Input label={label(page,section,'paras','Paragraphs (one per line)')} value={form.paras} onChange={v => set('paras', v)} placeholder={'first paragraph\nsecond paragraph'} area />}
+              {shows(page,section,'quote')   && <Input label={label(page,section,'quote','Pull-quote')}      value={form.quote}   onChange={v => set('quote', v)}   placeholder="Optional highlighted quote" />}
+
+              {/* Flip-card (industries) fields */}
+              {shows(page,section,'frontDesc') && <Input label={label(page,section,'frontDesc','Front of card')} value={form.frontDesc} onChange={v => set('frontDesc', v)} placeholder="Text shown on the card front" area />}
+              {shows(page,section,'backStat')  && <Input label={label(page,section,'backStat','Back — market context')} value={form.backStat} onChange={v => set('backStat', v)} placeholder="Market stat shown on flip" area />}
+              {shows(page,section,'backDesc')  && <Input label={label(page,section,'backDesc','Back — how XPAND helps')} value={form.backDesc} onChange={v => set('backDesc', v)} placeholder="How XPAND helps — shown on flip" area />}
+
+              {shows(page,section,'metrics') && <Input label={label(page,section,'metrics','Metrics (comma separated)')} value={form.metrics} onChange={v => set('metrics', v)} placeholder="e.g. High repeat business, Scalable, Multi-format" />}
+              {shows(page,section,'link') && <Input label={label(page,section,'link','Link / URL')} value={form.link} onChange={v => set('link', v)} placeholder="/for-brands" />}
               <Input label="Display Order" value={String(form.order)} onChange={v => set('order', parseInt(v) || 0)} placeholder="1" />
 
               {/* Image — upload goes to Cloudinary */}
-              {shows(section,'image') && <div>
+              {shows(page,section,'image') && <div>
                 <label className="block text-gray-400 text-xs mb-2">Image <span className="text-gray-600">(uploads saved to Cloudinary permanently)</span></label>
                 <label className={`flex flex-col items-center justify-center border-2 border-dashed rounded-xl cursor-pointer h-28 transition-colors overflow-hidden ${imgPrev ? 'border-[#f07920]/30' : 'border-[#2a2a2a] hover:border-[#f07920]/30'}`}>
                   {imgPrev

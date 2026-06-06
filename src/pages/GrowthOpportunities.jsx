@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { useContent } from '../hooks/useContent';
 
@@ -128,6 +129,11 @@ export default function GrowthOpportunities() {
 
   return (
     <div style={{ background: 'var(--cream-light)' }}>
+      <Helmet>
+        <title>Growth Opportunities — Franchise Investment Opportunities India | XPAND Bharat</title>
+        <meta name="description" content="Explore curated franchise investment opportunities across F&B, retail, lifestyle, and emerging sectors in India. XPAND Bharat connects serious investors with structured, expansion-ready franchise businesses." />
+        <meta name="keywords" content="franchise opportunities India, franchise investment opportunities India, food franchise India, retail franchise India, multi-unit franchise opportunities, franchise investor network India, best franchise investment India" />
+      </Helmet>
       {/* HERO */}
       <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '500px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.86) 0%, rgba(13,27,62,0.72) 100%)' }} />
@@ -137,12 +143,12 @@ export default function GrowthOpportunities() {
           <div className="section-label">Growth Opportunities</div>
           <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '720px' }}>
             Opportunities built for<br />
-            <span style={{ color: 'var(--orange)' }}>scalable business growth.</span>
+            <span style={{ color: 'var(--orange)' }}>scalable franchise growth.</span>
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '18px', lineHeight: 1.7, maxWidth: '560px', marginBottom: '40px' }}>
-            Curated business opportunities designed around commercial clarity, operational structure, and long-term scalability across India.
+            Curated franchise investment opportunities designed around commercial clarity, operational structure, and long-term scalability across India.
           </p>
-          <Link to="/contact" className="btn-primary">Explore Opportunities</Link>
+          <Link to="/growth-opportunities" className="btn-primary">Explore Opportunities</Link>
         </div>
       </div>
 

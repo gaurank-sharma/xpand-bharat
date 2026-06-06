@@ -1,6 +1,8 @@
 import { useRef, useEffect } from 'react';
+import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { useContent } from '../hooks/useContent';
+import { Home, Search, FileText, Users, Gift } from 'lucide-react';
 
 const FOCUS_AREAS = [
   {
@@ -35,12 +37,27 @@ const FOCUS_AREAS = [
   },
 ];
 
-const WHY = [
-  { num: '01', title: 'Structured business approach', desc: 'Everything we do is built on a framework, not instinct.' },
-  { num: '02', title: 'Commercially aligned movement', desc: 'Growth decisions are anchored in commercial reality.' },
-  { num: '03', title: 'Execution-focused support', desc: 'We stay involved until the opportunity moves forward.' },
-  { num: '04', title: 'Organised growth planning', desc: 'No shortcuts — disciplined planning at every stage.' },
-  { num: '05', title: 'Long-term scalability mindset', desc: 'Built for the next 10 years, not just the next quarter.' },
+const PROCESS_STEPS = [
+  {
+    num: 1, eyebrow: 'YOU COME TO US', title: 'We Understand Your Business', Icon: Home,
+    items: ['Business model', 'Expansion vision', 'Funding requirements', 'Target cities', 'Scalability potential'],
+  },
+  {
+    num: 2, eyebrow: 'WE MAP', title: 'Expansion Needs Analysis', Icon: Search,
+    items: ['Market opportunities', 'City-wise potential', 'Investor fit', 'Commercial viability', 'Rollout strategy'],
+  },
+  {
+    num: 3, eyebrow: 'WE PREPARE', title: 'Investor-Ready Positioning', Icon: FileText,
+    items: ['Business proposals', 'Franchise frameworks', 'Expansion positioning', 'Commercial narratives', 'Structured presentations'],
+  },
+  {
+    num: 4, eyebrow: 'WE CONNECT', title: 'Qualified Investor Matchmaking', Icon: Users,
+    items: ['Lead-gen systems', 'Investor network access', 'Telesales counseling', 'Investor alignment', 'Franchise matching'],
+  },
+  {
+    num: 5, eyebrow: 'WE CLOSE', title: 'Deal Support Till Closure', Icon: Gift,
+    items: ['Investor coordination', 'Execution support', 'Commercial discussions', 'Closure facilitation', 'Scalable growth'],
+  },
 ];
 
 function FadeSection({ children, delay = 0, style = {} }) {
@@ -64,28 +81,28 @@ export default function About() {
     desc: item.description || item.desc,
     img: item.imageUrl || item.img,
   }));
-  const whyItems = section('why-us', WHY).map(item => ({
-    num: item.badge || item.num,
-    title: item.title,
-    desc: item.description || item.desc,
-  }));
   const heroImg = hero?.backgroundImage || 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=80';
 
   return (
     <div style={{ background: 'var(--cream-light)' }}>
+      <Helmet>
+        <title>About XPAND Bharat — India's Leading Franchise Expansion & Investment Consulting Company</title>
+        <meta name="description" content="XPAND Bharat is India's leading franchise expansion and investment consulting company backed by 25+ years of experience. Headquartered in Gurugram, we help brands scale through structured franchising, investor alignment, and execution-led growth." />
+        <meta name="keywords" content="franchise consulting company India, franchise expansion India, franchise investment advisory India, business expansion advisory Gurugram, franchise consulting firms India" />
+      </Helmet>
       {/* HERO */}
       <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '500px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.86) 0%, rgba(13,27,62,0.72) 100%)' }} />
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)`, backgroundSize: '80px 80px' }} />
         <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '600px', height: '600px', background: 'radial-gradient(circle,rgba(240,121,32,0.09) 0%,transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '1440px', margin: '0 auto', width: '100%', position: 'relative', zIndex: 1 }}>
-          <div className="section-label">About XPANDBHARAT</div>
+          <div className="section-label">About XPAND Bharat</div>
           <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '800px' }}>
-            Built for serious<br />
-            <span style={{ color: 'var(--orange)' }}>business movement.</span>
+            About<br />
+            <span style={{ color: 'var(--orange)' }}>XPAND Bharat</span>
           </h1>
           <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '18px', lineHeight: 1.7, maxWidth: '600px' }}>
-            A business expansion and investor-alignment platform focused on structured growth, commercial clarity, and execution-led business movement.
+            India's leading franchise expansion and investment consulting company, backed by 25+ years of collective industry experience in franchise growth, investor alignment, and business expansion strategy.
           </p>
         </div>
       </div>
@@ -96,14 +113,16 @@ export default function About() {
           <FadeSection>
             <div className="section-label">Who We Are</div>
             <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(32px, 4vw, 54px)', fontWeight: 700, color: 'var(--navy)', lineHeight: 1.15, marginBottom: '32px' }}>
-              Where brands meet<br />
-              <em style={{ fontStyle: 'italic', color: 'var(--orange)' }}>investors</em>.
+              Who We Are
             </h2>
-            <p style={{ color: 'var(--gray)', fontSize: '17px', lineHeight: 1.8, marginBottom: '24px' }}>
-              XPANDBHARAT works with brands, investors, and growth-stage businesses that want stronger commercial alignment, scalable expansion, and disciplined execution.
+            <p style={{ color: 'var(--gray)', fontSize: '17px', lineHeight: 1.8, marginBottom: '20px' }}>
+              XPAND Bharat is India's leading franchise expansion and investment consulting company, backed by 25+ years of collective industry experience in franchise growth, investor alignment, and business expansion strategy.
+            </p>
+            <p style={{ color: 'var(--gray)', fontSize: '17px', lineHeight: 1.8, marginBottom: '20px' }}>
+              We help businesses scale through structured franchising by aligning brands with qualified investors, expansion opportunities, and commercially viable growth systems. Through our investor network, lead-generation capabilities, and strategic expansion approach, we help brands connect with investors actively looking for profitable franchise business opportunities across sectors like F&B, electronics, fashion, retail, and emerging consumer categories.
             </p>
             <p style={{ color: 'var(--gray)', fontSize: '17px', lineHeight: 1.8, marginBottom: '40px' }}>
-              Our approach is built on strategy, structure, and operational clarity. We don't make noise — we make progress.
+              From investor-ready business proposals and franchise expansion planning to investor counseling, lead generation, and execution support, XPAND focuses on building scalable business growth with stronger commercial direction and long-term expansion potential across India.
             </p>
             <Link to="/our-approach" className="btn-outline-dark">Discover Our Approach</Link>
           </FadeSection>
@@ -113,10 +132,10 @@ export default function About() {
               <div style={{ position: 'absolute', top: '-30%', right: '-20%', width: '300px', height: '300px', background: 'radial-gradient(circle,rgba(240,121,32,0.15) 0%,transparent 70%)', pointerEvents: 'none' }} />
               <div className="section-label" style={{ marginBottom: '24px' }}>Our Philosophy</div>
               <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '24px', fontWeight: 600, color: '#fff', lineHeight: 1.5, marginBottom: '32px' }}>
-                "Growth works better when businesses move with clarity, structure, and execution discipline."
+                "Xpand your business to new heights."
               </p>
               <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '15px', lineHeight: 1.7 }}>
-                We believe meaningful growth is built through stronger planning, commercially aligned movement, and scalable execution systems — not through scattered activity or market noise.
+                As the name suggests, XPAND Bharat was built with one clear vision — helping businesses expand to greater commercial heights through structured franchising, investor alignment, and execution-led growth. Headquartered in Gurugram, we operate as a franchise consulting and business expansion platform helping brands scale across India.
               </p>
             </div>
           </FadeSection>
@@ -124,7 +143,7 @@ export default function About() {
       </div>
 
       {/* FOCUS AREAS — Cinematic card grid */}
-      <div style={{ background: '#04080f' }}>
+      <div style={{ background: 'var(--navy)' }}>
         {/* Section header */}
         <div style={{ padding: '80px 40px 52px' }}>
           <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '24px' }}>
@@ -255,29 +274,115 @@ export default function About() {
           .fa-grid { padding: 0 16px 12px; gap: 10px; }
           .fa-card { width: 82vw; min-width: 82vw; height: 400px; }
         }
+
+        /* ── How We Work ── */
+        .hw-section { padding: 100px 40px 120px; }
+        .hw-flow {
+          display: grid;
+          grid-template-columns: 1fr 32px 1fr 32px 1fr 32px 1fr 32px 1fr;
+          align-items: start;
+        }
+        .hw-arrow-sep {
+          display: flex; justify-content: center; align-items: flex-start;
+          padding-top: 26px; color: rgba(240,121,32,0.4); font-size: 20px; flex-shrink: 0;
+        }
+        .hw-step { display: flex; flex-direction: column; align-items: center; height: 100%; }
+        .hw-step-icon {
+          width: 72px; height: 72px; border-radius: 50%;
+          background: rgba(240,121,32,0.08); border: 1px solid rgba(240,121,32,0.3);
+          box-shadow: 0 0 28px rgba(240,121,32,0.1);
+          display: flex; align-items: center; justify-content: center;
+          position: relative; flex-shrink: 0;
+        }
+        .hw-step-badge {
+          position: absolute; top: -5px; right: -5px;
+          width: 22px; height: 22px; border-radius: 50%;
+          background: var(--orange); border: 2px solid var(--navy);
+          display: flex; align-items: center; justify-content: center;
+          font-size: 10px; font-weight: 700; color: #fff; line-height: 1;
+        }
+        .hw-step-line { width: 1px; height: 28px; background: rgba(240,121,32,0.22); flex-shrink: 0; }
+        .hw-step-card {
+          width: 100%; flex: 1;
+          background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.07);
+          border-radius: 12px; padding: 22px 16px;
+        }
+        .hw-card-eyebrow { font-size: 9px; font-weight: 700; letter-spacing: 0.18em; color: var(--orange); text-transform: uppercase; margin: 0 0 10px; }
+        .hw-card-title { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700; color: #fff; margin: 0 0 14px; line-height: 1.4; }
+        .hw-card-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 7px; }
+        .hw-card-list li { display: flex; align-items: flex-start; gap: 7px; color: rgba(255,255,255,0.48); font-size: 11.5px; line-height: 1.5; }
+        .hw-card-list li span { color: rgba(240,121,32,0.7); flex-shrink: 0; }
+
+        @media (max-width: 900px) {
+          .hw-section { padding: 60px 20px 80px; }
+          .hw-flow { display: flex; flex-direction: column; align-items: center; }
+          .hw-flow > div { width: 100%; }
+          .hw-step { flex-direction: column; align-items: center; width: 100%; }
+          .hw-step-line { display: block; }
+          .hw-step-card { width: 100%; padding: 32px 28px; }
+          .hw-card-eyebrow { text-align: center; margin-bottom: 12px; }
+          .hw-card-title { text-align: center; font-size: 17px; margin-bottom: 20px; }
+          .hw-card-list { gap: 12px; width: fit-content; margin: 0 auto; }
+          .hw-card-list li { font-size: 13.5px; }
+          .hw-arrow-sep {
+            width: 100%; font-size: 0;
+            display: flex; justify-content: center; align-items: center;
+            padding: 8px 0;
+          }
+          .hw-arrow-sep::after {
+            content: '↓'; font-size: 20px; color: rgba(240,121,32,0.5);
+          }
+        }
+        @media (max-width: 480px) {
+          .hw-section { padding: 48px 16px 64px; }
+          .hw-step-icon { width: 54px; height: 54px; }
+          .hw-step-badge { width: 18px; height: 18px; font-size: 9px; top: -3px; right: -3px; }
+          .hw-step-card { padding: 28px 20px; }
+          .hw-card-title { font-size: 15px; }
+          .hw-card-list li { font-size: 12.5px; }
+        }
       `}</style>
 
-      {/* WHY XPANDBHARAT */}
-      <div style={{ background: 'var(--navy)', padding: '100px 40px' }}>
+      {/* HOW WE WORK */}
+      <div className="hw-section" style={{ background: 'var(--navy)' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
-          <FadeSection style={{ marginBottom: '64px' }}>
-            <div className="section-label">Why XPANDBHARAT</div>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(30px, 3.5vw, 48px)', fontWeight: 700, color: '#fff', maxWidth: '540px', lineHeight: 1.2 }}>
-              Five reasons businesses choose us.
-            </h2>
+          <FadeSection>
+            <div style={{ textAlign: 'center', marginBottom: '80px' }}>
+              <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.25em', color: 'var(--orange)', textTransform: 'uppercase', margin: '0 0 18px' }}>Our Process</p>
+              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(36px, 5vw, 68px)', fontWeight: 700, color: '#fff', margin: 0, lineHeight: 1.05 }}>
+                How We <span style={{ color: 'var(--orange)' }}>Work</span>
+              </h2>
+            </div>
           </FadeSection>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(340px, 1fr))', gap: '24px' }}>
-            {whyItems.map((item, i) => (
-              <FadeSection key={item.num} delay={i * 80}>
-                <div className="card-dark" style={{ display: 'flex', gap: '20px', alignItems: 'flex-start' }}>
-                  <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '36px', fontWeight: 700, color: 'var(--orange)', opacity: 0.4, lineHeight: 1, flexShrink: 0 }}>{item.num}</span>
-                  <div>
-                    <h4 style={{ color: '#fff', fontSize: '16px', fontWeight: 600, marginBottom: '8px' }}>{item.title}</h4>
-                    <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '14px', lineHeight: 1.6, margin: 0 }}>{item.desc}</p>
+
+          <div className="hw-flow">
+            {PROCESS_STEPS.flatMap((step, i) => {
+              const Icon = step.Icon;
+              const stepEl = (
+                <FadeSection key={`s${i}`} delay={i * 120}>
+                  <div className="hw-step">
+                    <div className="hw-step-icon">
+                      <Icon size={22} color="rgba(240,121,32,0.85)" />
+                      <div className="hw-step-badge">{step.num}</div>
+                    </div>
+                    <div className="hw-step-line" />
+                    <div className="hw-step-card">
+                      <p className="hw-card-eyebrow">{step.eyebrow}</p>
+                      <h3 className="hw-card-title">{step.title}</h3>
+                      <ul className="hw-card-list">
+                        {step.items.map(item => (
+                          <li key={item}><span>→</span>{item}</li>
+                        ))}
+                      </ul>
+                    </div>
                   </div>
-                </div>
-              </FadeSection>
-            ))}
+                </FadeSection>
+              );
+              if (i < PROCESS_STEPS.length - 1) {
+                return [stepEl, <div key={`a${i}`} className="hw-arrow-sep">→</div>];
+              }
+              return [stepEl];
+            })}
           </div>
         </div>
       </div>
