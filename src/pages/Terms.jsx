@@ -50,7 +50,7 @@ export default function Terms() {
           },
           {
             title: '10. Contact',
-            body: 'For questions regarding these Terms and Conditions, please contact us at info@xpandbharat.com.',
+            body: 'For questions regarding these Terms and Conditions, please contact us at contact@xpandbharat.com.',
           },
         ].map(section => (
           <div key={section.title} style={{ marginBottom: '48px' }}>

@@ -34,7 +34,7 @@ export default function Privacy() {
           },
           {
             title: '6. Your Rights',
-            body: 'You have the right to access, correct, or delete your personal information held by us. You may also object to the processing of your data or request that we restrict how we use it. To exercise any of these rights, please contact us at info@xpandbharat.com.',
+            body: 'You have the right to access, correct, or delete your personal information held by us. You may also object to the processing of your data or request that we restrict how we use it. To exercise any of these rights, please contact us at contact@xpandbharat.com.',
           },
           {
             title: '7. Changes to This Policy',
@@ -42,7 +42,7 @@ export default function Privacy() {
           },
           {
             title: '8. Contact',
-            body: 'If you have any questions about this Privacy Policy or how we handle your information, please contact us at info@xpandbharat.com or write to us at our registered office in Gurgaon, Haryana, India.',
+            body: 'If you have any questions about this Privacy Policy or how we handle your information, please contact us at contact@xpandbharat.com or write to us at our registered office in Gurgaon, Haryana, India.',
           },
         ].map(section => (
           <div key={section.title} style={{ marginBottom: '48px' }}>

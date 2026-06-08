@@ -107,7 +107,7 @@ export default function AdminSiteSettings() {
 
         {tab === 'Contact' && (
           <>
-            <Field label="Email Address"  value={form.email}    onChange={v => set('email', v)}    placeholder="info@xpandbharat.com" />
+            <Field label="Email Address"  value={form.email}    onChange={v => set('email', v)}    placeholder="contact@xpandbharat.com" />
             <Field label="Phone Number"   value={form.phone}    onChange={v => set('phone', v)}    placeholder="+91 XXXXX XXXXX" />
             <Field label="WhatsApp"       value={form.whatsapp} onChange={v => set('whatsapp', v)} placeholder="+91 XXXXX XXXXX" />
             <Field label="Office Address" value={form.address}  onChange={v => set('address', v)}  placeholder="Gurgaon, Haryana, India" />

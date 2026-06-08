@@ -13,6 +13,7 @@ import OurApproach from './pages/OurApproach';
 import Industries from './pages/Industries';
 import About from './pages/About';
 import Insights from './pages/Insights';
+import InsightDetail from './pages/InsightDetail';
 import Contact from './pages/Contact';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
@@ -80,6 +81,7 @@ function App() {
                       <Route path="/industries"            element={<Industries />} />
                       <Route path="/about"                 element={<About />} />
                       <Route path="/insights"              element={<Insights />} />
+                      <Route path="/insights/:slug"        element={<InsightDetail />} />
                       <Route path="/contact"               element={<Contact />} />
                       <Route path="/privacy"               element={<Privacy />} />
                       <Route path="/terms"                 element={<Terms />} />

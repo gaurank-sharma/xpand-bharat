@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useAdminAuth } from '../../context/AdminAuthContext';
-import { Search, Trash2, Eye, X, Mail, Phone, Building2, FileText } from 'lucide-react';
+import { Search, Trash2, Eye, X, Mail, Phone, Building2, FileText, Download, PhoneCall } from 'lucide-react';
 
 const STATUS_OPTS = ['all', 'new', 'read', 'replied', 'resolved', 'spam'];
 const statusColor = {
@@ -58,6 +58,37 @@ export default function AdminContacts() {
     } catch (e) { showToast(e.message); }
   };
 
+  const exportCSV = async () => {
+    try {
+      showToast('Preparing export…');
+      const params = new URLSearchParams({ limit: '10000' });
+      if (filter !== 'all') params.set('status', filter);
+      if (search) params.set('search', search);
+      const d = await authFetch(`/contacts?${params}`);
+      const rows = d.data || [];
+      if (!rows.length) { showToast('No inquiries to export'); return; }
+      const headers = ['Name', 'Email', 'Mobile', 'Company', 'I am a', 'Looking For', 'Sector', 'Geography', 'Budget', 'Timeline', 'Wants Call', 'Report Consent', 'Message', 'Source', 'Status', 'Submitted'];
+      const esc = (v) => `"${String(v ?? '').replace(/"/g, '""')}"`;
+      const lines = [headers.join(',')];
+      rows.forEach(c => {
+        lines.push([
+          c.name, c.email, c.mobile, c.company, c.role, c.primaryGoal, c.sector, c.geography,
+          c.budget, c.timeline, c.consentContact ? 'YES' : 'No', c.consentReport ? 'Yes' : 'No',
+          c.message, c.source, c.status,
+          new Date(c.createdAt).toLocaleString('en-IN', { dateStyle: 'medium', timeStyle: 'short' }),
+        ].map(esc).join(','));
+      });
+      const blob = new Blob(['﻿' + lines.join('\n')], { type: 'text/csv;charset=utf-8;' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = `xpand-inquiries-${new Date().toISOString().slice(0, 10)}.csv`;
+      a.click();
+      URL.revokeObjectURL(url);
+      showToast(`Exported ${rows.length} inquiries`);
+    } catch (e) { showToast(e.message); }
+  };
+
   return (
     <div className="space-y-4">
       {/* Toast */}
@@ -81,16 +112,25 @@ export default function AdminContacts() {
         ))}
       </div>
 
-      {/* Search */}
-      <div className="relative">
-        <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
-        <input
-          type="text"
-          placeholder="Search by name, email or company..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className="w-full bg-[#0f0f0f] border border-[#1e1e1e] text-white placeholder-gray-600 rounded-lg pl-9 pr-4 py-2.5 text-sm focus:outline-none focus:border-[#f07920] transition-colors"
-        />
+      {/* Search + Export */}
+      <div className="flex gap-3">
+        <div className="relative flex-1">
+          <Search size={15} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+          <input
+            type="text"
+            placeholder="Search by name, email or company..."
+            value={search}
+            onChange={(e) => setSearch(e.target.value)}
+            className="w-full bg-[#0f0f0f] border border-[#1e1e1e] text-white placeholder-gray-600 rounded-lg pl-9 pr-4 py-2.5 text-sm focus:outline-none focus:border-[#f07920] transition-colors"
+          />
+        </div>
+        <button
+          onClick={exportCSV}
+          title="Export inquiries to Excel/CSV"
+          className="flex items-center gap-2 bg-[#f07920] hover:bg-[#d96b1a] text-white font-semibold px-4 py-2.5 rounded-lg text-sm transition-colors whitespace-nowrap"
+        >
+          <Download size={15} /> Export Excel
+        </button>
       </div>
 
       {/* Table */}
@@ -112,7 +152,12 @@ export default function AdminContacts() {
               <tbody>
                 {contacts.map((c) => (
                   <tr key={c._id} className="border-b border-[#161616] hover:bg-white/2 transition-colors">
-                    <td className="px-5 py-3 text-white font-medium whitespace-nowrap">{c.name}</td>
+                    <td className="px-5 py-3 text-white font-medium whitespace-nowrap">
+                      <span className="flex items-center gap-2">
+                        {c.name}
+                        {c.consentContact && <PhoneCall size={12} className="text-green-400" title="Wants a call" />}
+                      </span>
+                    </td>
                     <td className="px-5 py-3 text-gray-400 text-xs">{c.email}</td>
                     <td className="px-5 py-3 text-gray-400 text-xs">{c.mobile || '—'}</td>
                     <td className="px-5 py-3 text-gray-400 text-xs max-w-[140px] truncate">{c.requirement || '—'}</td>
@@ -175,22 +220,56 @@ export default function AdminContacts() {
                   <p className="text-white text-sm">{new Date(selected.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
                 </div>
               </div>
+              {/* Call consent banner */}
+              <div className={`rounded-lg p-3 flex items-center gap-3 border ${selected.consentContact ? 'bg-green-500/10 border-green-500/25' : 'bg-[#1a1a1a] border-[#2a2a2a]'}`}>
+                <PhoneCall size={16} className={selected.consentContact ? 'text-green-400' : 'text-gray-500'} />
+                <div>
+                  <p className={`text-sm font-semibold ${selected.consentContact ? 'text-green-400' : 'text-gray-400'}`}>
+                    {selected.consentContact ? 'Happy for an advisor to call' : 'Did NOT opt in for a call'}
+                  </p>
+                  <p className="text-gray-500 text-[11px]">
+                    {selected.consentContact ? 'You may contact this person by phone.' : 'Report / email only — do not cold-call.'}
+                  </p>
+                </div>
+              </div>
+
+              {/* Inquiry selections */}
+              {(selected.role || selected.primaryGoal || selected.sector || selected.geography || selected.budget || selected.timeline) && (
+                <div className="grid grid-cols-2 gap-3 bg-[#141414] rounded-lg p-3 border border-[#222]">
+                  {[
+                    ['I am a', selected.role],
+                    ['Looking For', selected.primaryGoal],
+                    ['Sector', selected.sector],
+                    ['Geography', selected.geography],
+                    ['Budget', selected.budget],
+                    ['Timeline', selected.timeline],
+                  ].filter(([, v]) => v).map(([label, value]) => (
+                    <div key={label}>
+                      <p className="text-gray-500 text-[10px] uppercase tracking-wide mb-0.5">{label}</p>
+                      <p className="text-white text-xs leading-snug">{value}</p>
+                    </div>
+                  ))}
+                </div>
+              )}
+
               {selected.requirement && (
                 <div>
-                  <p className="text-gray-500 text-xs mb-1">Business Requirement</p>
+                  <p className="text-gray-500 text-xs mb-1">Requirement Summary</p>
                   <p className="text-white text-sm">{selected.requirement}</p>
                 </div>
               )}
-              {selected.markets && (
+              {selected.source && (
                 <div>
-                  <p className="text-gray-500 text-xs mb-1">Preferred Markets</p>
-                  <p className="text-white text-sm">{selected.markets}</p>
+                  <p className="text-gray-500 text-xs mb-1">Source Page</p>
+                  <p className="text-white text-sm capitalize">{selected.source}</p>
                 </div>
               )}
-              <div>
-                <p className="text-gray-500 text-xs mb-1">Message</p>
-                <p className="text-gray-300 text-sm leading-relaxed bg-[#1a1a1a] rounded-lg p-3">{selected.message}</p>
-              </div>
+              {selected.message && (
+                <div>
+                  <p className="text-gray-500 text-xs mb-1">Message</p>
+                  <p className="text-gray-300 text-sm leading-relaxed bg-[#1a1a1a] rounded-lg p-3">{selected.message}</p>
+                </div>
+              )}
               {selected.cvUrl && (
                 <div>
                   <p className="text-gray-500 text-xs mb-2">CV / Resume</p>

@@ -162,7 +162,7 @@ export default function Home() {
 
               <h1 style={{
                 fontFamily: "'Fraunces', serif",
-                fontSize: 'clamp(38px, 7vw, 90px)',
+                fontSize: 'clamp(34px, min(6.4vw, 10.5vh), 80px)',
                 fontWeight: 700,
                 color: '#fff',
                 lineHeight: 1.05,
@@ -173,7 +173,7 @@ export default function Home() {
               </h1>
               <h1 style={{
                 fontFamily: "'Fraunces', serif",
-                fontSize: 'clamp(38px, 7vw, 90px)',
+                fontSize: 'clamp(34px, min(6.4vw, 10.5vh), 80px)',
                 fontWeight: 700,
                 color: 'var(--orange)',
                 lineHeight: 1.05,
@@ -680,6 +680,12 @@ export default function Home() {
         }
         .xb-hero-inner { max-width: 760px; padding-top: 96px; }
         .xb-hero-cta { display: flex; gap: 16px; flex-wrap: wrap; }
+        /* Short viewports: tighten so the hero never clips */
+        @media (max-height: 780px) {
+          .xb-hero-inner { padding-top: 78px; }
+          .xb-hero-inner .section-label { margin-bottom: 16px !important; }
+          .xb-hero-inner p { margin-bottom: 28px !important; }
+        }
 
         /* ── Offerings ── */
         .xb-offerings-strip { padding: 100px 40px; }

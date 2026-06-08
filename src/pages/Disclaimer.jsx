@@ -46,7 +46,7 @@ export default function Disclaimer() {
           },
           {
             title: 'Contact Us',
-            body: 'If you have any questions regarding this Disclaimer or any content on our website, please contact us at info@xpandbharat.com.',
+            body: 'If you have any questions regarding this Disclaimer or any content on our website, please contact us at contact@xpandbharat.com.',
           },
         ].map(section => (
           <div key={section.title} style={{ marginBottom: '48px' }}>

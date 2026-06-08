@@ -106,7 +106,7 @@ export default function GrowthOpportunities() {
           <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '18px', lineHeight: 1.7, maxWidth: '560px', marginBottom: '40px' }}>
             Curated franchise investment opportunities designed around commercial clarity, operational structure, and long-term scalability across India.
           </p>
-          <Link to="/growth-opportunities" className="btn-primary">Explore Opportunities</Link>
+          <Link to="/contact" className="btn-primary">Explore Opportunities</Link>
         </div>
       </div>
 

@@ -1,14 +1,6 @@
 import { useRef, useEffect, useState } from 'react';
-
-const API = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
-
-const TAG_COLORS = {
-  'Franchise Growth':      { bg: 'rgba(240,121,32,0.15)', color: 'var(--orange)' },
-  'Business Expansion':    { bg: 'rgba(13,27,62,0.5)',    color: '#fff' },
-  'Investor Perspectives': { bg: 'rgba(240,121,32,0.15)', color: 'var(--orange)' },
-  'Market Trends':         { bg: 'rgba(13,27,62,0.5)',    color: '#fff' },
-  'Execution & Governance':{ bg: 'rgba(13,27,62,0.5)',    color: '#fff' },
-};
+import { Link } from 'react-router-dom';
+import { API } from '../hooks/useContent';
 
 function FadeSection({ children, delay = 0, style = {} }) {
   const ref = useRef(null);
@@ -139,12 +131,14 @@ export default function Insights() {
           )}
 
           {articles.map((article) => (
-            <div
+            <Link
+              to={`/insights/${article.slug}`}
               key={article._id || article.title}
               style={{
                 width: '380px', flexShrink: 0,
                 scrollSnapAlign: 'start',
                 cursor: 'pointer',
+                textDecoration: 'none',
               }}
               onMouseEnter={e => {
                 e.currentTarget.querySelector('.ins-img').style.transform = 'scale(1.05)';
@@ -200,7 +194,7 @@ export default function Insights() {
                 >Read →</span>
               </div>
               </div>
-            </div>
+            </Link>
           ))}
 
           {/* trailing spacer */}

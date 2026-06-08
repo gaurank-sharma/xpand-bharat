@@ -5,7 +5,7 @@ import LeadForm from '../components/LeadForm';
 const INFO = [
   { label: 'Email Address', value: 'contact@xpandbharat.com', href: 'mailto:contact@xpandbharat.com', icon: '✉' },
   { label: 'WhatsApp / Phone', value: '+91 77172 72838', href: 'tel:+917717272838', icon: '✆' },
-  { label: 'Office Address', value: 'Gurugram, Haryana, India', href: null, icon: '⊕' },
+  { label: 'Office Address', value: 'Good Earth Business Bay 1, 6th Floor, Sector 58, Gurugram, Haryana', href: null, icon: '⊕' },
 ];
 
 function FadeSection({ children, delay = 0, style = {} }) {
