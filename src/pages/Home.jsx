@@ -82,6 +82,43 @@ export default function Home() {
   }));
   const heroSubtitle = hero?.subtitle || 'XPAND helps brands become investor-ready, scale through structured franchising, and align with commercially serious investors looking for profitable franchise opportunities in India.';
 
+  // Auto-slide testimonials on mobile (the slider only scrolls horizontally ≤900px)
+  const testimonialsRef = useRef(null);
+  useEffect(() => {
+    const el = testimonialsRef.current;
+    if (!el) return;
+    let timer;
+    let paused = false;
+    const isMobile = () => window.matchMedia('(max-width: 900px)').matches;
+
+    const tick = () => {
+      if (paused || !isMobile() || !el) return;
+      const cards = el.querySelectorAll('.xb-tcard');
+      if (!cards.length) return;
+      const gap = parseFloat(getComputedStyle(el).columnGap || '20') || 20;
+      const step = cards[0].offsetWidth + gap;
+      const atEnd = el.scrollLeft + el.clientWidth >= el.scrollWidth - 8;
+      el.scrollTo({ left: atEnd ? 0 : el.scrollLeft + step, behavior: 'smooth' });
+    };
+
+    const start = () => { clearInterval(timer); timer = setInterval(tick, 3500); };
+    const pause = () => { paused = true; };
+    const resume = () => { paused = false; };
+
+    start();
+    el.addEventListener('touchstart', pause, { passive: true });
+    el.addEventListener('touchend', () => { resume(); }, { passive: true });
+    el.addEventListener('mouseenter', pause);
+    el.addEventListener('mouseleave', resume);
+
+    return () => {
+      clearInterval(timer);
+      el.removeEventListener('touchstart', pause);
+      el.removeEventListener('mouseenter', pause);
+      el.removeEventListener('mouseleave', resume);
+    };
+  }, []);
+
   return (
     <>
       <Helmet>
@@ -513,7 +550,7 @@ export default function Home() {
               </h2>
             </FadeSection>
 
-            <div className="xb-testimonials">
+            <div className="xb-testimonials" ref={testimonialsRef}>
               {/* Card 1 */}
               <FadeSection delay={0} className="xb-tcard">
                 <img src="/abhishek.png" alt="Abhishek Gupta"
