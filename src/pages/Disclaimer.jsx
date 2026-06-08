@@ -1,11 +1,11 @@
 export default function Disclaimer() {
   return (
-    <div style={{ background: 'var(--cream-light)', minHeight: '100vh', fontFamily: "'Outfit', sans-serif" }}>
+    <div style={{ background: 'var(--cream-light)', minHeight: '100vh', fontFamily: "'Inter', sans-serif" }}>
       <div style={{ background: 'var(--navy)', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)`, backgroundSize: '80px 80px' }} />
         <div style={{ maxWidth: '800px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
           <div className="section-label">Legal</div>
-          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(36px, 5vw, 60px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '16px' }}>Disclaimer</h1>
+          <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '16px' }}>Disclaimer</h1>
           <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '14px' }}>Last updated: May 2025</p>
         </div>
       </div>
@@ -50,7 +50,7 @@ export default function Disclaimer() {
           },
         ].map(section => (
           <div key={section.title} style={{ marginBottom: '48px' }}>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: '22px', fontWeight: 700, color: 'var(--navy)', marginBottom: '16px' }}>{section.title}</h2>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: '22px', fontWeight: 700, color: 'var(--navy)', marginBottom: '16px' }}>{section.title}</h2>
             <p style={{ color: 'var(--gray)', fontSize: '16px', lineHeight: 1.8 }}>{section.body}</p>
           </div>
         ))}

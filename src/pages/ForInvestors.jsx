@@ -1,7 +1,8 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { useContent } from '../hooks/useContent';
+import LeadForm from '../components/LeadForm';
 
 const OFFERINGS = [
   {
@@ -43,11 +44,11 @@ const OFFERINGS = [
 ];
 
 const WHY = [
-  { num: '01', title: 'We Only Bring You Businesses Built To Last', sub: 'Not every business deserves your capital. After decades of building wealth, you know the difference between a business with energy and a business with systems. XPAND works exclusively with franchise businesses that demonstrate operational structure, market-proven demand, scalability across locations, and commercially sustainable growth — before they ever reach you. No noise. No speculation. Just structured franchise businesses ready for serious expansion.' },
-  { num: '02', title: 'Your Goals Come First. Opportunities Come Second.', sub: 'A 500-option listing is not alignment. It\'s homework. XPAND doesn\'t hand you a catalogue and walk away. We understand your investment goals, sector preference, capital appetite, and growth horizon — then align you with franchise opportunities built around your commercial intent. Right sector. Right model. Right market. Right fit. Because at this stage of your journey, your time is the most valuable asset in the room.' },
-  { num: '03', title: 'Why Franchise Over Stocks, Real Estate, or Mutual Funds?', sub: 'The question every sharp investor is already asking. Franchise businesses offer something most asset classes can\'t — an operational system you don\'t have to build from scratch, a brand customers already trust, and a scalable growth model designed for multi-location expansion. XPAND helps you navigate India\'s franchise investment landscape with clarity — comparing models, evaluating structures, and identifying opportunities with real commercial depth. This isn\'t passive investing. This is structured business ownership.' },
+  { num: '01', title: 'We Only Bring You Businesses Built To Last', sub: 'Not every business deserves your capital. After decades of building wealth, you know the difference between a business with energy and a business with systems. XPAND works exclusively with franchise businesses that demonstrate operational structure, market-proven demand, scalability across locations, and commercially sustainable growth — before they ever reach you.' },
+  { num: '02', title: 'Your Goals Come First. Opportunities Come Second.', sub: 'A 500-option listing is not an alignment. It\'s homework. XPAND doesn\'t hand you a catalogue and walk away. We understand your investment goals, sector preference, capital appetite, and growth horizon; then align you with franchise opportunities built around your commercial intent. Right sector. Right model. Right market. Right fit. Because at this stage of your journey, your time is the most valuable asset in the room.' },
+  { num: '03', title: 'Why Franchise Over Stocks, Real Estate, or Mutual Funds?', sub: 'The question every sharp investor is already asking. Franchise businesses offer something most asset classes can\'t — an operational system you don\'t have to build from scratch, a brand customers already trust, and a scalable growth model designed for multi-location expansion. XPAND helps you navigate India\'s franchise investment landscape with clarity — comparing models, evaluating structures, and identifying opportunities with real commercial depth.' },
   { num: '04', title: 'We Stay In The Room Until The Deal Is Done', sub: 'Not a platform. A partner. Most portals stop at the introduction. XPAND stays involved through investor counselling, business alignment, commercial discussions, follow-ups, and execution support — every step of the franchise expansion journey. We don\'t disappear after the first meeting. Because the real work begins after hello.' },
-  { num: '05', title: 'Built For Investors Who Think In Decades, Not Quarters', sub: 'Food. Retail. Lifestyle. Electronics. Emerging Categories. Whether you\'re looking at food franchise expansion in Tier-1 cities, retail franchise opportunities across India, or emerging consumer category businesses built for the next decade — XPAND focuses on one thing: helping serious investors participate in commercially scalable franchise businesses backed by structure, planning, and execution-led growth.' },
+  { num: '05', title: 'Built For Investors Who Think In Decades, Not Quarters', sub: 'Food. Retail. Lifestyle. Electronics. Emerging Categories. Whether you\'re looking at food franchise expansion in Tier-1 cities, retail franchise opportunities across India, or emerging consumer category businesses built for the next decade; XPAND focuses on one thing: helping serious investors participate in commercially scalable franchise businesses backed by structure, planning, and execution-led growth.' },
 ];
 
 const STATS = [
@@ -57,7 +58,7 @@ const STATS = [
   { stat: 'PanIndia', desc: 'Tier-1, Tier-2 & emerging market coverage' },
 ];
 
-function FadeSection({ children, delay = 0, style = {} }) {
+function FadeSection({ children, delay = 0, style = {}, className = '' }) {
   const ref = useRef(null);
   useEffect(() => {
     const el = ref.current;
@@ -67,51 +68,7 @@ function FadeSection({ children, delay = 0, style = {} }) {
     const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; obs.disconnect(); } }, { threshold: 0.1 });
     obs.observe(el); return () => obs.disconnect();
   }, [delay]);
-  return <div ref={ref} style={style}>{children}</div>;
-}
-
-function InvestorForm() {
-  const [form, setForm] = useState({ name: '', company: '', mobile: '', email: '', range: '', sector: '', geography: '', intent: '', message: '' });
-  const [submitted, setSubmitted] = useState(false);
-  const handle = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
-  const submit = e => { e.preventDefault(); setSubmitted(true); };
-
-  if (submitted) return (
-    <div style={{ textAlign: 'center', padding: '80px 40px' }}>
-      <div style={{ fontSize: '48px', marginBottom: '24px' }}>✓</div>
-      <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '28px', color: 'var(--navy)', marginBottom: '16px' }}>Conversation started.</h3>
-      <p style={{ color: 'var(--gray)', fontSize: '16px' }}>Our team will connect with you to explore the right opportunity within 48 hours.</p>
-    </div>
-  );
-
-  const fields = [
-    { name: 'name', label: 'Full Name', placeholder: 'Your full name' },
-    { name: 'company', label: 'Company Name', placeholder: 'Your company or fund name' },
-    { name: 'mobile', label: 'Mobile Number', placeholder: '+91 XXXXX XXXXX' },
-    { name: 'email', label: 'Email Address', placeholder: 'your@email.com' },
-    { name: 'range', label: 'Preferred Investment Range', placeholder: 'e.g. ₹50L – ₹2Cr' },
-    { name: 'sector', label: 'Sector Interest', placeholder: 'e.g. F&B, Retail, Services…' },
-    { name: 'geography', label: 'Preferred Geography', placeholder: 'Target cities or states' },
-    { name: 'intent', label: 'Investment Intent', placeholder: 'e.g. franchise, equity, partnership…' },
-  ];
-
-  return (
-    <form onSubmit={submit} className="xb-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-      {fields.map(f => (
-        <div key={f.name} className="form-group">
-          <label className="form-label">{f.label}</label>
-          <input name={f.name} value={form[f.name]} onChange={handle} placeholder={f.placeholder} className="form-input" required={f.name === 'name' || f.name === 'email'} />
-        </div>
-      ))}
-      <div className="form-group" style={{ gridColumn: '1 / -1' }}>
-        <label className="form-label">Message</label>
-        <textarea name="message" value={form.message} onChange={handle} placeholder="Tell us about your investment goals and what you are looking for…" className="form-input" />
-      </div>
-      <div style={{ gridColumn: '1 / -1' }}>
-        <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>Explore Opportunities</button>
-      </div>
-    </form>
-  );
+  return <div ref={ref} style={style} className={className}>{children}</div>;
 }
 
 export default function ForInvestors() {
@@ -147,7 +104,7 @@ export default function ForInvestors() {
         <div style={{ position: 'absolute', bottom: '-20%', left: '-5%', width: '500px', height: '500px', background: 'radial-gradient(circle,rgba(240,121,32,0.1) 0%,transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '1440px', margin: '0 auto', width: '100%', position: 'relative', zIndex: 1 }}>
           <div className="section-label">Investor Intelligence</div>
-          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '720px' }}>
+          <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '720px' }}>
             Why Investors Work With<br />
             <span style={{ color: 'var(--orange)' }}>XPAND Bharat</span>
           </h1>
@@ -163,10 +120,10 @@ export default function ForInvestors() {
 
       {/* STAT CARDS */}
       <div style={{ background: 'var(--navy)', borderTop: '1px solid rgba(255,255,255,0.06)', padding: '0 40px' }}>
-        <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0' }}>
+        <div className="fi-stats-grid" style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: '0' }}>
           {STATS.map((s, i) => (
-            <FadeSection key={s.stat} delay={i * 80} style={{ padding: '48px 40px', borderRight: i < STATS.length - 1 ? '1px solid rgba(255,255,255,0.07)' : 'none' }}>
-              <div style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(32px, 3.5vw, 52px)', fontWeight: 700, color: 'var(--orange)', lineHeight: 1, marginBottom: '12px' }}>{s.stat}</div>
+            <FadeSection key={s.stat} delay={i * 80} className="fi-stat-cell" style={{ padding: '48px 40px', borderRight: i < STATS.length - 1 ? '1px solid rgba(255,255,255,0.07)' : 'none' }}>
+              <div style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: 'var(--orange)', lineHeight: 1, marginBottom: '12px' }}>{s.stat}</div>
               <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '13px', lineHeight: 1.7, margin: 0 }}>{s.desc}</p>
             </FadeSection>
           ))}
@@ -174,11 +131,11 @@ export default function ForInvestors() {
       </div>
 
       {/* BUILT FOR INVESTORS — extended intro */}
-      <div style={{ background: 'var(--navy)', padding: '100px 40px', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
-        <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1.3fr', gap: '80px', alignItems: 'center' }}>
+      <div className="fi-intro-section" style={{ background: 'var(--navy)', padding: '100px 40px', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+        <div className="fi-intro-grid" style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1.3fr', gap: '80px', alignItems: 'center' }}>
           <FadeSection>
             <div className="section-label">Built For Serious Investors</div>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 3.5vw, 48px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: '20px' }}>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: '20px' }}>
               Built For Investors Who Think Beyond Traditional Investments
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '17px', fontStyle: 'italic', lineHeight: 1.7, marginBottom: '0' }}>
@@ -199,7 +156,7 @@ export default function ForInvestors() {
         <FadeSection style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 40px', marginBottom: '56px' }}>
           <div className="section-label">What We Offer</div>
           <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '24px' }}>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 3.5vw, 48px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, margin: 0 }}>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, margin: 0 }}>
               Six ways we support investors.
             </h2>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '20px', alignItems: 'flex-end' }}>
@@ -256,7 +213,7 @@ export default function ForInvestors() {
                     {item.tag}
                   </span>
                 </div>
-                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(18px, 1.6vw, 22px)', fontWeight: 700, color: 'var(--navy)', lineHeight: 1.3, marginBottom: '14px' }}>
+                <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(18px, 1.6vw, 22px)', fontWeight: 700, color: 'var(--navy)', lineHeight: 1.3, marginBottom: '14px' }}>
                   {item.title}
                 </h3>
                 <p style={{ color: 'var(--gray)', fontSize: '13.5px', lineHeight: 1.75, margin: 0 }}>{item.desc}</p>
@@ -277,44 +234,116 @@ export default function ForInvestors() {
       </div>
 
       {/* WHY */}
-      <div style={{ background: 'var(--navy)', padding: '100px 40px', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', right: '-40px', top: '50%', transform: 'translateY(-50%)', fontFamily: "'Playfair Display', serif", fontSize: '320px', fontWeight: 700, color: 'rgba(255,255,255,0.02)', lineHeight: 1, pointerEvents: 'none', userSelect: 'none' }}>05</div>
+      <div className="fi-why-section" style={{ background: 'var(--navy)', position: 'relative' }}>
+        {/* decorations clipped here so the section itself stays overflow-visible (sticky works) */}
+        <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
+          <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(240,121,32,0.07) 0%, transparent 70%)' }} />
+          <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.018) 1px,transparent 1px)`, backgroundSize: '80px 80px' }} />
+        </div>
 
-        <div className="xb-grid-2col" style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '100px', alignItems: 'start', position: 'relative', zIndex: 1 }}>
+        <div className="fi-why-grid" style={{ maxWidth: '1440px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
 
-          {/* Left */}
-          <FadeSection>
+          {/* Left — sticky */}
+          <FadeSection className="fi-why-left">
             <div className="section-label">Why Us</div>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(30px, 3.5vw, 50px)', fontWeight: 700, color: '#fff', marginBottom: '24px', lineHeight: 1.1 }}>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(30px, 3.4vw, 46px)', fontWeight: 700, color: '#fff', marginBottom: '24px', lineHeight: 1.1 }}>
               Why investors work with<br />
               <span style={{ color: 'var(--orange)' }}>XPAND Bharat.</span>
             </h2>
             <div style={{ width: '48px', height: '2px', background: 'var(--orange)', margin: '28px 0' }} />
-            <p style={{ color: 'rgba(255,255,255,0.52)', fontSize: '16px', lineHeight: 1.85, marginBottom: '48px', maxWidth: '380px' }}>
+            <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '16px', lineHeight: 1.85, marginBottom: '32px', maxWidth: '400px' }}>
               India's franchise economy is being built right now. The question is — are you positioned inside it?
             </p>
+
+            {/* Pull-quote callout */}
+            <div style={{ borderLeft: '3px solid var(--orange)', paddingLeft: '22px', marginBottom: '40px' }}>
+              <p style={{ fontFamily: "'Fraunces', serif", fontStyle: 'italic', fontSize: 'clamp(18px, 1.7vw, 23px)', color: '#fff', lineHeight: 1.4, margin: 0 }}>
+                "This isn't passive investing. This is structured business ownership."
+              </p>
+            </div>
+
             <Link to="/contact" className="btn-primary">Start a Conversation</Link>
           </FadeSection>
 
-          {/* Right — numbered list */}
-          <FadeSection delay={150}>
+          {/* Right — numbered cards */}
+          <div className="fi-why-cards">
             {whyItems.map((item, i) => (
-              <div key={item.num} style={{
-                display: 'flex', gap: '28px', alignItems: 'flex-start',
-                padding: '28px 0',
-                borderBottom: i < whyItems.length - 1 ? '1px solid rgba(255,255,255,0.07)' : 'none',
-              }}>
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '42px', fontWeight: 700, color: 'var(--orange)', lineHeight: 0.9, flexShrink: 0, width: '56px', opacity: 0.9 }}>
-                  {item.num}
+              <FadeSection key={item.num} delay={i * 70} className="fi-why-card">
+                <div className="fi-why-num">{item.num}</div>
+                <div>
+                  <h4 style={{ fontFamily: "'Fraunces', serif", color: '#fff', fontSize: 'clamp(17px, 1.5vw, 20px)', fontWeight: 700, marginBottom: '12px', lineHeight: 1.3 }}>{item.title}</h4>
+                  <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '14.5px', lineHeight: 1.8, margin: 0 }}>{item.sub}</p>
                 </div>
-                <div style={{ paddingTop: '6px' }}>
-                  <h4 style={{ color: '#fff', fontSize: '16px', fontWeight: 600, marginBottom: '8px', lineHeight: 1.3 }}>{item.title}</h4>
-                  <p style={{ color: 'rgba(255,255,255,0.42)', fontSize: '14px', lineHeight: 1.75, margin: 0 }}>{item.sub}</p>
-                </div>
-              </div>
+              </FadeSection>
             ))}
-          </FadeSection>
+          </div>
         </div>
+
+        <style>{`
+          .fi-why-section { padding: 110px 40px; }
+          .fi-why-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.1fr;
+            gap: 72px;
+            align-items: start;
+          }
+          .fi-why-left { position: sticky; top: 96px; align-self: start; }
+
+          .fi-why-cards { display: flex; flex-direction: column; gap: 16px; }
+          .fi-why-card {
+            display: grid;
+            grid-template-columns: 64px 1fr;
+            gap: 24px;
+            align-items: start;
+            background: rgba(255,255,255,0.025);
+            border: 1px solid rgba(255,255,255,0.07);
+            border-radius: 16px;
+            padding: 28px 30px;
+            transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+          }
+          .fi-why-card:hover {
+            background: rgba(255,255,255,0.045);
+            border-color: rgba(240,121,32,0.3);
+            transform: translateX(4px);
+          }
+          .fi-why-num {
+            font-family: 'Fraunces', serif;
+            font-size: 44px; font-weight: 700;
+            color: var(--orange); line-height: 0.9;
+            opacity: 0.85;
+          }
+
+          /* Stat cards */
+          @media (max-width: 860px) {
+            .fi-stats-grid { grid-template-columns: 1fr 1fr !important; }
+            .fi-stat-cell { border-right: none !important; border-bottom: 1px solid rgba(255,255,255,0.07); padding: 36px 28px !important; }
+            .fi-stat-cell:nth-child(odd) { border-right: 1px solid rgba(255,255,255,0.07) !important; }
+          }
+          @media (max-width: 480px) {
+            .fi-stats-grid { grid-template-columns: 1fr !important; }
+            .fi-stat-cell, .fi-stat-cell:nth-child(odd) { border-right: none !important; }
+            .fi-stat-cell:last-child { border-bottom: none; }
+            .fi-stat-cell { padding: 28px 22px !important; text-align: center; }
+          }
+
+          /* Extended intro */
+          @media (max-width: 860px) {
+            .fi-intro-section { padding: 64px 24px !important; }
+            .fi-intro-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+          }
+
+          /* WHY */
+          @media (max-width: 980px) {
+            .fi-why-section { padding: 72px 24px; }
+            .fi-why-grid { grid-template-columns: 1fr; gap: 48px; }
+            .fi-why-left { position: static; }
+          }
+          @media (max-width: 560px) {
+            .fi-why-section { padding: 56px 18px; }
+            .fi-why-card { grid-template-columns: 1fr; gap: 10px; padding: 24px 22px; }
+            .fi-why-num { font-size: 34px; }
+          }
+        `}</style>
       </div>
 
       {/* FORM */}
@@ -322,7 +351,7 @@ export default function ForInvestors() {
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <FadeSection style={{ marginBottom: '56px', textAlign: 'center' }}>
             <div className="section-label" style={{ justifyContent: 'center' }}>Let's explore together</div>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 3vw, 42px)', fontWeight: 700, color: 'var(--navy)', marginBottom: '16px' }}>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: 'var(--navy)', marginBottom: '16px' }}>
               Let's explore the right opportunity.
             </h2>
             <p style={{ color: 'var(--gray)', fontSize: '16px', lineHeight: 1.7 }}>
@@ -330,7 +359,7 @@ export default function ForInvestors() {
             </p>
           </FadeSection>
           <div className="xb-form-wrap" style={{ background: 'var(--white)', borderRadius: '16px', padding: '56px', border: '1px solid var(--border)' }}>
-            <InvestorForm />
+            <LeadForm role="Investor" source="for-investors" submitLabel="Get My Opportunity Report" />
           </div>
         </div>
       </div>

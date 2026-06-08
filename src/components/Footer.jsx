@@ -14,7 +14,7 @@ const COLS = [
   {
     heading: 'Company',
     links: [
-      { label: 'About XPANDBHARAT', to: '/about' },
+      { label: 'About Us', to: '/about' },
       { label: 'Our Approach', to: '/our-approach' },
       { label: 'Insights', to: '/insights' },
       { label: 'Start a Conversation', to: '/contact' },
@@ -70,7 +70,7 @@ const FB = {
   phone: '+91 77172 72838',
   address: 'Gurugram, Haryana, India',
   footerHeading: 'Ready to move',
-  footerTagline: 'Less noise. More execution.',
+  footerTagline: "Connect with us. India's Leading Franchise Expansion.",
   copyrightText: 'XPANDBHARAT. All rights reserved.',
 };
 
@@ -93,20 +93,20 @@ export default function Footer() {
     .filter(item => item.href);
 
   return (
-    <footer style={{ background: '#F5F2EC', borderTop: '1px solid #E5E2DC', fontFamily: "'Outfit', sans-serif" }}>
+    <footer style={{ background: '#F5F2EC', borderTop: '1px solid #E5E2DC', fontFamily: "'Inter', sans-serif" }}>
 
       {/* Top CTA strip — hidden on Contact page */}
       {pathname !== '/contact' && (
       <div className="xb-footer-cta" style={{ borderBottom: '1px solid #E5E2DC', padding: '80px 40px' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '32px' }}>
           <div>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(26px, 3.5vw, 44px)', fontWeight: 700, margin: '0 0 8px', color: 'var(--navy)', lineHeight: 1.2 }}>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, margin: '0 0 8px', color: 'var(--navy)', lineHeight: 1.2 }}>
               {footerHeading}
             </h2>
             <p style={{ color: 'var(--gray)', fontSize: '16px', margin: 0 }}>{footerTagline}</p>
           </div>
           <Link to="/contact" className="btn-primary" style={{ flexShrink: 0 }}>
-            Start a Conversation
+            Schedule a Strategy Call
           </Link>
         </div>
       </div>

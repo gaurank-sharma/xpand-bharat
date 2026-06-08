@@ -42,7 +42,7 @@ const SECTORS = [
     title: 'Retail & Consumer Businesses',
     sub: 'Regional Brands · Emerging Consumer · Specialty Retail',
     frontDesc: 'From regional brands to emerging consumer businesses, XPAND supports expansion through franchising, market mapping, and investor connectivity.',
-    backStat: "India's organised retail and consumer sector continues growing rapidly across tier-1, tier-2, and emerging cities through structured franchise expansion and commercially aligned growth systems.",
+    backStat: 'Reliance SMART Bazaar operates 260 stores across 100+ Indian cities, demonstrating how structured retail expansion, operational standardization, and market-led growth can create a scalable national footprint.',
     backDesc: 'XPAND supports regional and consumer businesses through franchise expansion, market mapping, and investor connectivity across Indian markets.',
   },
 ];
@@ -198,7 +198,7 @@ function RoadmapViz() {
           <div style={{ width: '32px', height: '32px', borderRadius: '8px', background: 'rgba(240,121,32,0.1)', border: '1px solid rgba(240,121,32,0.2)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }}>
             <item.Icon size={15} color="var(--orange)" strokeWidth={1.5}/>
           </div>
-          <h4 style={{ fontFamily: "'Playfair Display', serif", fontSize: '13px', fontWeight: 700, color: '#fff', margin: '0 0 7px', lineHeight: 1.3 }}>{item.title}</h4>
+          <h4 style={{ fontFamily: "'Fraunces', serif", fontSize: '13px', fontWeight: 700, color: '#fff', margin: '0 0 7px', lineHeight: 1.3 }}>{item.title}</h4>
           {item.desc && <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '11px', lineHeight: 1.7, margin: 0 }}>{item.desc}</p>}
           {item.lead && <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '10px', fontWeight: 600, marginBottom: '5px' }}>{item.lead}</p>}
           {item.items && <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>{item.items.map(it => <li key={it} style={{ color: 'rgba(255,255,255,0.5)', fontSize: '10px', lineHeight: 1.65, paddingLeft: '11px', position: 'relative' }}><span style={{ position: 'absolute', left: 0, color: 'var(--orange)', fontSize: '8px', top: '2px' }}>→</span>{it}</li>)}</ul>}
@@ -228,7 +228,7 @@ export default function Industries() {
         <div style={{ position: 'absolute', bottom: '-10%', right: '10%', width: '500px', height: '500px', background: 'radial-gradient(circle,rgba(240,121,32,0.08) 0%,transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '1440px', margin: '0 auto', width: '100%', position: 'relative', zIndex: 1 }}>
           <div className="section-label">Industries</div>
-          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '760px' }}>
+          <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '760px' }}>
             Industries we help scale<br />
             <span style={{ color: 'var(--orange)' }}>through expansion.</span>
           </h1>
@@ -242,7 +242,7 @@ export default function Industries() {
       <div style={{ background: 'var(--navy)', borderTop: '1px solid rgba(255,255,255,0.06)', padding: '28px 40px' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '16px' }}>
           <div style={{ width: '32px', height: '1px', background: 'var(--orange)', opacity: 0.6 }} />
-          <p style={{ fontFamily: "'Playfair Display', serif", fontStyle: 'italic', fontSize: 'clamp(16px, 1.8vw, 22px)', color: 'rgba(255,255,255,0.8)', margin: 0, textAlign: 'center' }}>
+          <p style={{ fontFamily: "'Fraunces', serif", fontStyle: 'italic', fontSize: 'clamp(16px, 1.8vw, 22px)', color: 'rgba(255,255,255,0.8)', margin: 0, textAlign: 'center' }}>
             "Good businesses should not struggle with expansion."
           </p>
           <div style={{ width: '32px', height: '1px', background: 'var(--orange)', opacity: 0.6 }} />
@@ -255,7 +255,7 @@ export default function Industries() {
           <FadeSection style={{ marginBottom: '72px' }}>
             <div className="section-label">Sectors We Work In</div>
             <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '24px' }}>
-              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 3.5vw, 48px)', fontWeight: 700, color: 'var(--navy)', lineHeight: 1.15, margin: 0 }}>
+              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: 'var(--navy)', lineHeight: 1.15, margin: 0 }}>
                 Five sectors. Proven franchise potential.
               </h2>
               <p style={{ color: 'var(--gray)', fontSize: '13px', lineHeight: 1.7, margin: 0 }}>
@@ -271,10 +271,10 @@ export default function Industries() {
                   {/* FRONT */}
                   <div className="ind-flip-front">
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '20px' }}>
-                      <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '52px', fontWeight: 700, color: 'rgba(240,121,32,0.12)', lineHeight: 1 }}>{sector.num}</span>
+                      <span style={{ fontFamily: "'Fraunces', serif", fontSize: '52px', fontWeight: 700, color: 'rgba(240,121,32,0.12)', lineHeight: 1 }}>{sector.num}</span>
                       <span style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.15em', color: 'rgba(240,121,32,0.6)', textTransform: 'uppercase', paddingTop: '14px' }}>Hover →</span>
                     </div>
-                    <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(17px, 1.6vw, 22px)', fontWeight: 700, color: 'var(--navy)', margin: '0 0 8px', lineHeight: 1.25 }}>{sector.title}</h3>
+                    <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(17px, 1.6vw, 22px)', fontWeight: 700, color: 'var(--navy)', margin: '0 0 8px', lineHeight: 1.25 }}>{sector.title}</h3>
                     <p style={{ color: 'var(--orange)', fontSize: '10px', fontWeight: 700, letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '16px', lineHeight: 1.6 }}>{sector.sub}</p>
                     <div style={{ height: '1px', background: 'var(--border)', marginBottom: '16px' }} />
                     <p style={{ color: 'var(--gray)', fontSize: '13px', lineHeight: 1.85, flex: 1, margin: 0 }}>{sector.frontDesc}</p>
@@ -311,7 +311,7 @@ export default function Industries() {
           {/* Section heading */}
           <FadeSection style={{ marginBottom: '64px', maxWidth: '720px' }}>
             <div className="section-label" style={{ color: 'rgba(240,121,32,0.85)' }}>Expansion Readiness</div>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(30px, 3.5vw, 52px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: '20px' }}>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: '20px' }}>
               The XPAND <em style={{ color: 'var(--orange)', fontStyle: 'italic' }}>Expansion</em> Readiness Roadmap
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '16px', lineHeight: 1.85, margin: 0 }}>
@@ -330,7 +330,7 @@ export default function Industries() {
               </p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px', marginBottom: '20px' }}>
                 {['business scalability', 'operational structure', 'expansion potential', 'market positioning', 'investor attractiveness', 'commercial sustainability', 'multi-location viability'].map(tag => (
-                  <span key={tag} style={{ fontSize: '11px', fontWeight: 600, padding: '6px 14px', borderRadius: '100px', background: 'rgba(240,121,32,0.1)', color: 'var(--orange)', letterSpacing: '0.03em' }}>{tag}</span>
+                  <span key={tag} style={{ fontSize: '11px', fontWeight: 700, padding: '7px 15px', borderRadius: '100px', background: 'rgba(240,121,32,0.14)', border: '1px solid rgba(240,121,32,0.45)', color: 'var(--orange)', letterSpacing: '0.03em' }}>{tag}</span>
                 ))}
               </div>
               <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '14px', lineHeight: 1.8, margin: 0, fontStyle: 'italic' }}>
@@ -341,7 +341,7 @@ export default function Industries() {
 
           {/* H3 */}
           <FadeSection style={{ marginBottom: '56px' }}>
-            <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(20px, 2.5vw, 30px)', fontWeight: 700, color: '#fff', margin: 0 }}>
+            <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(20px, 2.5vw, 30px)', fontWeight: 700, color: '#fff', margin: 0 }}>
               How does XPAND fit in?
             </h3>
           </FadeSection>
@@ -364,7 +364,7 @@ export default function Industries() {
                     <div style={{ width: '30px', height: '30px', borderRadius: '8px', background: 'rgba(240,121,32,0.1)', display: 'flex', alignItems: 'center', justifyContent: 'center', marginBottom: '10px' }}>
                       <item.Icon size={14} color="var(--orange)" strokeWidth={1.5} />
                     </div>
-                    <h4 style={{ fontFamily: "'Playfair Display', serif", fontSize: '16px', fontWeight: 700, color: '#fff', margin: '0 0 8px', lineHeight: 1.3 }}>{item.title}</h4>
+                    <h4 style={{ fontFamily: "'Fraunces', serif", fontSize: '16px', fontWeight: 700, color: '#fff', margin: '0 0 8px', lineHeight: 1.3 }}>{item.title}</h4>
                     {item.desc && <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '13px', lineHeight: 1.75, margin: 0 }}>{item.desc}</p>}
                     {item.lead && <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '12px', fontWeight: 600, marginBottom: '8px' }}>{item.lead}</p>}
                     {item.items && (
@@ -388,12 +388,12 @@ export default function Industries() {
           {/* Bottom tagline + pills */}
           <FadeSection style={{ marginTop: '56px' }}>
             <div style={{ background: 'rgba(255,255,255,0.04)', borderRadius: '12px', padding: '40px 48px' }}>
-              <p style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(17px, 2vw, 24px)', fontWeight: 700, color: '#fff', margin: '0 0 20px', lineHeight: 1.4 }}>
+              <p style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(17px, 2vw, 24px)', fontWeight: 700, color: '#fff', margin: '0 0 20px', lineHeight: 1.4 }}>
                 Businesses built for <span style={{ color: 'var(--orange)' }}>structured, scalable</span> franchise growth.
               </p>
               <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
                 {['Franchise Readiness', 'Investor Alignment', 'Market Mapping', 'Commercial Sustainability', 'Multi-location Viability'].map(tag => (
-                  <span key={tag} style={{ fontSize: '11px', fontWeight: 600, padding: '6px 16px', borderRadius: '100px', border: '1px solid rgba(240,121,32,0.35)', color: 'rgba(240,121,32,0.85)', letterSpacing: '0.04em' }}>{tag}</span>
+                  <span key={tag} style={{ fontSize: '11px', fontWeight: 700, padding: '7px 16px', borderRadius: '100px', border: '1px solid rgba(240,121,32,0.5)', color: 'var(--orange)', letterSpacing: '0.04em' }}>{tag}</span>
                 ))}
               </div>
             </div>
@@ -408,7 +408,7 @@ export default function Industries() {
           <FadeSection style={{ marginBottom: '64px' }}>
             <div className="section-label">Why Us</div>
             <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '24px' }}>
-              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 3.5vw, 48px)', fontWeight: 700, color: 'var(--navy)', lineHeight: 1.15, margin: 0 }}>
+              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: 'var(--navy)', lineHeight: 1.15, margin: 0 }}>
                 Why Businesses Choose XPAND Bharat
               </h2>
               <p style={{ color: 'var(--gray)', fontSize: '16px', fontStyle: 'italic', margin: 0, maxWidth: '360px' }}>
@@ -425,10 +425,10 @@ export default function Industries() {
               { num: '04', title: 'Franchising Is Not Just Expansion. It Is Controlled Expansion.', desc: 'Opening multiple locations without operational structure creates inconsistency very quickly. XPAND helps businesses scale through structured franchise expansion systems designed around operational scalability, franchise governance, investor alignment, and commercially sustainable growth across India.' },
               { num: '05', title: 'We Understand Investor Psychology, Not Just Franchise Consulting.', intro: 'A 40+ business owner investing ₹50 lakh to ₹2 crore is not casually "exploring opportunities." They are comparing:', items: ['franchise investments', 'real estate', 'mutual funds', 'independent businesses', 'expansion risk', 'long-term scalability.'], closing: "XPAND's investor counseling and telesales-driven approach helps businesses communicate stronger commercial clarity to serious investors looking for structured franchise investment opportunities in India." },
             ].map((item, i, arr) => (
-              <FadeSection key={item.num} delay={i * 80} style={{ display: 'grid', gridTemplateColumns: '72px 1fr', gap: '32px', padding: '36px 0', borderBottom: i < arr.length - 1 ? '1px solid var(--border)' : 'none', alignItems: 'start' }}>
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '52px', fontWeight: 700, color: 'var(--orange)', lineHeight: 1, opacity: 0.5 }}>{item.num}</div>
+              <FadeSection key={item.num} delay={i * 80} className="ind-why-row" style={{ borderBottom: i < arr.length - 1 ? '1px solid var(--border)' : 'none' }}>
+                <div className="ind-why-num" style={{ fontFamily: "'Fraunces', serif", fontWeight: 700, color: 'var(--orange)', lineHeight: 1 }}>{item.num}</div>
                 <div>
-                  <h4 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(16px, 1.5vw, 20px)', fontWeight: 700, color: 'var(--navy)', marginBottom: '12px', lineHeight: 1.3 }}>{item.title}</h4>
+                  <h4 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(16px, 1.5vw, 20px)', fontWeight: 700, color: 'var(--navy)', marginBottom: '12px', lineHeight: 1.3 }}>{item.title}</h4>
                   {item.desc && <p style={{ color: 'var(--gray)', fontSize: '15px', lineHeight: 1.8, margin: 0 }}>{item.desc}</p>}
                   {item.intro && <p style={{ color: 'var(--gray)', fontSize: '15px', lineHeight: 1.8, marginBottom: '10px' }}>{item.intro}</p>}
                   {item.items && (
@@ -453,7 +453,7 @@ export default function Industries() {
         <div style={{ maxWidth: '800px', margin: '0 auto', textAlign: 'center' }}>
           <FadeSection>
             <div className="section-label" style={{ justifyContent: 'center' }}>Work with us</div>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(32px, 4vw, 56px)', fontWeight: 700, color: '#fff', marginBottom: '24px', lineHeight: 1.15 }}>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: '#fff', marginBottom: '24px', lineHeight: 1.15 }}>
               Ready to explore your sector?
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '18px', lineHeight: 1.7, marginBottom: '48px' }}>
@@ -468,6 +468,20 @@ export default function Industries() {
       </div>
 
       <style>{`
+        /* ── Why-us numbered rows ── */
+        .ind-why-row {
+          display: grid;
+          grid-template-columns: 72px 1fr;
+          gap: 32px;
+          padding: 36px 0;
+          align-items: start;
+        }
+        .ind-why-num { font-size: 52px; opacity: 0.5; }
+        @media (max-width: 700px) {
+          .ind-why-row { grid-template-columns: 1fr; gap: 8px; padding: 28px 0; }
+          .ind-why-num { font-size: 38px; opacity: 0.9; }
+        }
+
         /* ── Flip Card Grid ── */
         .ind-flip-grid {
           display: grid;

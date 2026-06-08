@@ -1,6 +1,7 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useContent } from '../hooks/useContent';
+import LeadForm from '../components/LeadForm';
 
 const STEPS = [
   {
@@ -88,88 +89,6 @@ function FadeSection({ children, delay = 0, style = {} }) {
   return <div ref={ref} style={style}>{children}</div>;
 }
 
-const BUSINESS_OPTIONS = ['Franchise your business', 'Expand your business across cities', 'Looking for funding/investors', 'Franchise expansion advisory', 'Investor alignment support', 'Franchise rollout strategy'];
-const INVESTOR_OPTIONS = ['Franchise investment opportunities', 'Passive income franchise businesses', 'Multi-location franchise businesses', 'Retail franchise opportunities', 'Food & beverage franchise opportunities', 'Expansion-ready businesses', 'Scalable business investments'];
-
-function PillToggle({ options, selected, onToggle }) {
-  return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-      {options.map(opt => {
-        const active = selected.includes(opt);
-        return (
-          <button key={opt} type="button" onClick={() => onToggle(opt)} style={{ padding: '8px 16px', borderRadius: '100px', border: `1px solid ${active ? 'var(--orange)' : 'var(--border)'}`, background: active ? 'rgba(240,121,32,0.08)' : 'transparent', color: active ? 'var(--orange)' : 'var(--gray)', fontSize: '13px', fontWeight: active ? 600 : 400, cursor: 'pointer', transition: 'all 0.2s' }}>
-            {opt}
-          </button>
-        );
-      })}
-    </div>
-  );
-}
-
-function ApproachForm() {
-  const [form, setForm] = useState({ role: '', lookingFor: [], opportunityType: [], name: '', company: '', mobile: '', email: '', budget: '', markets: '', industry: '', message: '' });
-  const [submitted, setSubmitted] = useState(false);
-  const handle = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
-  const togglePill = (key, val) => setForm(f => ({ ...f, [key]: f[key].includes(val) ? f[key].filter(x => x !== val) : [...f[key], val] }));
-  const submit = e => { e.preventDefault(); setSubmitted(true); };
-
-  if (submitted) return (
-    <div style={{ textAlign: 'center', padding: '80px 40px' }}>
-      <div style={{ fontSize: '48px', marginBottom: '24px' }}>✓</div>
-      <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '28px', color: 'var(--navy)', marginBottom: '16px' }}>Conversation initiated.</h3>
-      <p style={{ color: 'var(--gray)', fontSize: '16px' }}>Our team will connect with you to discuss the next stage of growth.</p>
-    </div>
-  );
-
-  return (
-    <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-      <div>
-        <label className="form-label" style={{ marginBottom: '12px', display: 'block' }}>Are you a Business Owner or an Investor?</label>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-          {['Business Owner', 'Investor'].map(role => (
-            <button key={role} type="button" onClick={() => setForm(f => ({ ...f, role, lookingFor: [], opportunityType: [] }))} style={{ padding: '14px', borderRadius: '10px', border: `2px solid ${form.role === role ? 'var(--orange)' : 'var(--border)'}`, background: form.role === role ? 'rgba(240,121,32,0.06)' : 'transparent', color: form.role === role ? 'var(--orange)' : 'var(--gray)', fontWeight: 600, fontSize: '14px', cursor: 'pointer', transition: 'all 0.2s', fontFamily: "'Outfit', sans-serif" }}>
-              {role}
-            </button>
-          ))}
-        </div>
-      </div>
-      {form.role === 'Business Owner' && (
-        <div>
-          <label className="form-label" style={{ marginBottom: '12px', display: 'block' }}>What are you looking for?</label>
-          <PillToggle options={BUSINESS_OPTIONS} selected={form.lookingFor} onToggle={v => togglePill('lookingFor', v)} />
-        </div>
-      )}
-      {form.role === 'Investor' && (
-        <div>
-          <label className="form-label" style={{ marginBottom: '12px', display: 'block' }}>What type of opportunity are you exploring?</label>
-          <PillToggle options={INVESTOR_OPTIONS} selected={form.opportunityType} onToggle={v => togglePill('opportunityType', v)} />
-        </div>
-      )}
-      <div className="xb-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-        {[
-          { name: 'name', label: 'Full Name', placeholder: 'Your full name', req: true },
-          { name: 'company', label: 'Company Name', placeholder: 'Your company name' },
-          { name: 'mobile', label: 'Mobile Number', placeholder: '+91 XXXXX XXXXX' },
-          { name: 'email', label: 'Email Address', placeholder: 'your@email.com', req: true },
-          { name: 'budget', label: 'Preferred Investment / Expansion Budget', placeholder: 'e.g. ₹50L – ₹2Cr' },
-          { name: 'markets', label: 'Preferred Cities / Markets', placeholder: 'Target cities or regions' },
-          { name: 'industry', label: 'Industry Preference', placeholder: 'e.g. F&B, Retail, Lifestyle' },
-        ].map(f => (
-          <div key={f.name} className="form-group">
-            <label className="form-label">{f.label}</label>
-            <input name={f.name} value={form[f.name]} onChange={handle} placeholder={f.placeholder} className="form-input" required={!!f.req} />
-          </div>
-        ))}
-        <div className="form-group" style={{ gridColumn: '1 / -1' }}>
-          <label className="form-label">Message / Requirement</label>
-          <textarea name="message" value={form.message} onChange={handle} placeholder="Tell us about your business goals and what kind of support you need…" className="form-input" style={{ minHeight: '120px' }} />
-        </div>
-      </div>
-      <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>Move the Conversation Forward</button>
-    </form>
-  );
-}
-
 export default function OurApproach() {
   const { hero, section } = useContent('our-approach');
   const steps = section('steps', STEPS).map(item => ({
@@ -204,7 +123,7 @@ export default function OurApproach() {
         <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '500px', height: '500px', background: 'radial-gradient(circle,rgba(240,121,32,0.09) 0%,transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '1440px', margin: '0 auto', width: '100%', position: 'relative', zIndex: 1 }}>
           <div className="section-label">Our Approach</div>
-          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '760px' }}>
+          <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '760px' }}>
             Good businesses deserve<br />
             <span style={{ color: 'var(--orange)' }}>more than random expansion.</span>
           </h1>
@@ -218,7 +137,7 @@ export default function OurApproach() {
       <div style={{ padding: '100px 40px', background: 'var(--cream-light)' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
           <FadeSection style={{ marginBottom: '80px', maxWidth: '600px' }}>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(30px, 3.5vw, 48px)', fontWeight: 700, color: 'var(--navy)', lineHeight: 1.2 }}>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: 'var(--navy)', lineHeight: 1.2 }}>
               The XPAND Franchise Expansion Framework
             </h2>
           </FadeSection>
@@ -226,23 +145,18 @@ export default function OurApproach() {
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0' }}>
             {steps.map((step, i) => (
               <FadeSection key={step.num} delay={i * 100}>
-                <div style={{
-                  display: 'grid',
-                  gridTemplateColumns: '120px 1fr',
-                  gap: '48px',
-                  padding: '56px 0',
+                <div className="oa-step-row" style={{
                   borderBottom: i < steps.length - 1 ? '1px solid var(--border)' : 'none',
-                  alignItems: 'start',
                 }}>
                   <div>
-                    <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '64px', fontWeight: 700, color: 'var(--orange)', lineHeight: 1, opacity: 0.3 }}>{step.num}</div>
+                    <div className="oa-step-num" style={{ fontFamily: "'Fraunces', serif", fontWeight: 700, color: 'var(--orange)', lineHeight: 1 }}>{step.num}</div>
                   </div>
                   <div>
-                    <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(24px, 2.5vw, 36px)', fontWeight: 700, color: 'var(--navy)', marginBottom: '16px' }}>{step.title}</h3>
+                    <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(24px, 2.5vw, 36px)', fontWeight: 700, color: 'var(--navy)', marginBottom: '16px' }}>{step.title}</h3>
                     <p style={{ color: 'var(--gray)', fontSize: '17px', lineHeight: 1.7, maxWidth: '600px' }}>{step.desc}</p>
                     {step.quote && (
                       <div style={{ marginTop: '24px', borderLeft: '3px solid var(--orange)', paddingLeft: '20px', maxWidth: '560px' }}>
-                        <p style={{ fontFamily: "'Playfair Display', serif", fontStyle: 'italic', fontSize: '18px', color: 'var(--orange)', margin: 0, lineHeight: 1.65, letterSpacing: '0.01em' }}>
+                        <p style={{ fontFamily: "'Fraunces', serif", fontStyle: 'italic', fontSize: '18px', color: 'var(--orange)', margin: 0, lineHeight: 1.65, letterSpacing: '0.01em' }}>
                           "{step.quote}"
                         </p>
                       </div>
@@ -258,11 +172,14 @@ export default function OurApproach() {
       {/* PRINCIPLES */}
       <div style={{ background: 'var(--navy)', padding: '100px 40px' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
-          <FadeSection style={{ marginBottom: '64px', textAlign: 'center' }}>
+          <FadeSection style={{ marginBottom: '64px', textAlign: 'center', maxWidth: '760px', marginLeft: 'auto', marginRight: 'auto' }}>
             <div className="section-label" style={{ justifyContent: 'center' }}>What Drives Our Approach</div>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 3.5vw, 44px)', fontWeight: 700, color: '#fff' }}>
-              Five principles. One direction.
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: '#fff', marginBottom: '20px' }}>
+              Structured franchise growth rarely happens accidentally.
             </h2>
+            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '16px', lineHeight: 1.8, margin: 0 }}>
+              XPAND Bharat works through a commercially disciplined expansion process designed to help businesses scale through franchising with stronger investor alignment, operational clarity, and execution-backed growth systems.
+            </p>
           </FadeSection>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '2px' }}>
             {principles.map((p, i) => {
@@ -274,8 +191,8 @@ export default function OurApproach() {
                   background: isOrange ? 'var(--orange)' : 'rgba(255,255,255,0.03)',
                   borderRight: i < PRINCIPLES.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none',
                 }}>
-                  <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '40px', fontWeight: 700, color: isOrange ? 'rgba(255,255,255,0.2)' : 'rgba(240,121,32,0.2)', lineHeight: 1, marginBottom: '16px' }}>{p.num}</div>
-                  <h4 style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', fontWeight: 700, color: '#fff', marginBottom: '14px' }}>{p.label}</h4>
+                  <div style={{ fontFamily: "'Fraunces', serif", fontSize: '40px', fontWeight: 700, color: isOrange ? 'rgba(255,255,255,0.2)' : 'rgba(240,121,32,0.2)', lineHeight: 1, marginBottom: '16px' }}>{p.num}</div>
+                  <h4 style={{ fontFamily: "'Fraunces', serif", fontSize: '20px', fontWeight: 700, color: '#fff', marginBottom: '14px' }}>{p.label}</h4>
                   {p.intro && <p style={{ color: textMuted, fontSize: '13px', lineHeight: 1.7, marginBottom: '10px' }}>{p.intro}</p>}
                   {p.lead && <p style={{ color: isOrange ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.7)', fontSize: '12px', fontWeight: 700, letterSpacing: '0.05em', marginBottom: '8px' }}>{p.lead}</p>}
                   {p.items && (
@@ -294,7 +211,7 @@ export default function OurApproach() {
                   ))}
                   {p.quote && (
                     <div style={{ marginTop: '14px', borderLeft: '2px solid rgba(255,255,255,0.4)', paddingLeft: '12px' }}>
-                      <p style={{ fontFamily: "'Playfair Display', serif", fontStyle: 'italic', fontSize: '12px', color: 'rgba(255,255,255,0.8)', margin: 0, lineHeight: 1.6 }}>"{p.quote}"</p>
+                      <p style={{ fontFamily: "'Fraunces', serif", fontStyle: 'italic', fontSize: '12px', color: 'rgba(255,255,255,0.8)', margin: 0, lineHeight: 1.6 }}>"{p.quote}"</p>
                     </div>
                   )}
                 </FadeSection>
@@ -309,7 +226,7 @@ export default function OurApproach() {
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <FadeSection style={{ marginBottom: '56px', textAlign: 'center' }}>
             <div className="section-label" style={{ justifyContent: 'center' }}>Let's talk</div>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 3vw, 42px)', fontWeight: 700, color: 'var(--navy)', marginBottom: '16px' }}>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: 'var(--navy)', marginBottom: '16px' }}>
               Let's move the conversation forward.
             </h2>
             <p style={{ color: 'var(--gray)', fontSize: '16px', lineHeight: 1.7 }}>
@@ -317,10 +234,25 @@ export default function OurApproach() {
             </p>
           </FadeSection>
           <div className="xb-form-wrap" style={{ background: 'var(--white)', borderRadius: '16px', padding: '56px', border: '1px solid var(--border)' }}>
-            <ApproachForm />
+            <LeadForm source="our-approach" submitLabel="Get My Report" />
           </div>
         </div>
       </div>
+
+      <style>{`
+        .oa-step-row {
+          display: grid;
+          grid-template-columns: 120px 1fr;
+          gap: 48px;
+          padding: 56px 0;
+          align-items: start;
+        }
+        .oa-step-num { font-size: 64px; opacity: 0.35; }
+        @media (max-width: 700px) {
+          .oa-step-row { grid-template-columns: 1fr; gap: 10px; padding: 36px 0; }
+          .oa-step-num { font-size: 40px; opacity: 0.9; }
+        }
+      `}</style>
     </div>
   );
 }

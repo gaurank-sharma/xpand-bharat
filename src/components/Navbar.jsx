@@ -10,7 +10,6 @@ const NAV_LINKS = [
   { label: 'For Brands',            to: '/for-brands' },
   { label: 'About',                 to: '/about' },
   { label: 'Insights',              to: '/insights' },
-  { label: 'Contact Us',            to: '/contact' },
 ];
 
 export default function Navbar() {
@@ -59,7 +58,7 @@ export default function Navbar() {
           {/* Right side */}
           <div className="xb-header-right">
             <Link to="/contact" className="xb-header-cta">
-              Connect Now
+              Schedule a Strategy Call
             </Link>
             <button
               className={`xb-burger${menuOpen ? ' xb-burger--open' : ''}`}
@@ -89,7 +88,7 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Link to="/contact" className="xb-drawer-cta">Connect Now</Link>
+          <Link to="/contact" className="xb-drawer-cta">Schedule a Strategy Call</Link>
         </nav>
       </div>
       {menuOpen && <div className="xb-overlay" onClick={() => setMenuOpen(false)} />}
@@ -135,7 +134,7 @@ export default function Navbar() {
         .xb-nav-link {
           position: relative;
           color: rgba(13,27,62,0.62);
-          font-family: 'Outfit', sans-serif;
+          font-family: 'Inter', sans-serif;
           font-size: 12.5px;
           font-weight: 400;
           letter-spacing: 0.025em;
@@ -177,7 +176,7 @@ export default function Navbar() {
           align-items: center;
           background: #f07920;
           color: #fff;
-          font-family: 'Outfit', sans-serif;
+          font-family: 'Inter', sans-serif;
           font-weight: 600;
           font-size: 12px;
           letter-spacing: 0.07em;
@@ -269,7 +268,7 @@ export default function Navbar() {
         .xb-drawer-link {
           display: block;
           color: rgba(13,27,62,0.75);
-          font-family: 'Outfit', sans-serif;
+          font-family: 'Inter', sans-serif;
           font-size: 15px;
           font-weight: 500;
           padding: 13px 16px;
@@ -286,7 +285,7 @@ export default function Navbar() {
           background: #f07920;
           color: #fff;
           text-align: center;
-          font-family: 'Outfit', sans-serif;
+          font-family: 'Inter', sans-serif;
           font-weight: 700;
           font-size: 13px;
           letter-spacing: 0.06em;

@@ -154,7 +154,7 @@ export default function Preloader({ onComplete }) {
           transform: 'translateY(8px)',
           color: 'rgba(255,255,255,0.38)',
           fontSize: '9px',
-          fontFamily: "'Outfit', sans-serif",
+          fontFamily: "'Inter', sans-serif",
           fontWeight: 500,
           letterSpacing: '0.35em',
           textTransform: 'uppercase',

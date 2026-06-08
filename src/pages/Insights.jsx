@@ -1,5 +1,4 @@
 import { useRef, useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
 
 const API = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
 
@@ -54,7 +53,7 @@ export default function Insights() {
         <div style={{ position: 'absolute', top: '10%', right: '5%', width: '500px', height: '500px', background: 'radial-gradient(circle,rgba(240,121,32,0.09) 0%,transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '1440px', margin: '0 auto', width: '100%', position: 'relative', zIndex: 1 }}>
           <div className="section-label">Growth Insights</div>
-          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '720px' }}>
+          <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '720px' }}>
             Perspectives on growth,<br />
             <span style={{ color: 'var(--orange)' }}>expansion and execution.</span>
           </h1>
@@ -79,8 +78,8 @@ export default function Insights() {
                 <span style={{ color: 'var(--orange)', fontFamily: 'monospace' }}>({articles.length})</span>
               </p>
               <h2 style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: 'clamp(30px, 4vw, 52px)',
+                fontFamily: "'Fraunces', serif",
+                fontSize: 'clamp(28px, 3.4vw, 44px)',
                 fontWeight: 700, color: 'var(--navy)',
                 lineHeight: 1.1, margin: 0,
               }}>
@@ -178,7 +177,7 @@ export default function Insights() {
               {/* Text */}
               <div style={{ padding: '0 6px' }}>
               <h3 style={{
-                fontFamily: "'Playfair Display', serif",
+                fontFamily: "'Fraunces', serif",
                 fontSize: '19px', fontWeight: 700,
                 color: 'var(--navy)', lineHeight: 1.35,
                 marginBottom: '12px',
@@ -209,21 +208,6 @@ export default function Insights() {
         </div>
       </div>
 
-      {/* NEWSLETTER CTA */}
-      <div style={{ background: 'var(--cream)', padding: '100px 40px', borderTop: '1px solid var(--border)' }}>
-        <div style={{ maxWidth: '600px', margin: '0 auto', textAlign: 'center' }}>
-          <FadeSection>
-            <div className="section-label" style={{ justifyContent: 'center' }}>Stay ahead</div>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 3vw, 42px)', fontWeight: 700, color: 'var(--navy)', marginBottom: '16px' }}>
-              Built around practical business thinking.
-            </h2>
-            <p style={{ color: 'var(--gray)', fontSize: '16px', lineHeight: 1.7, marginBottom: '40px' }}>
-              XPANDBHARAT produces insights that help brands, investors, and operators make smarter, faster, and more structured business decisions.
-            </p>
-            <Link to="/contact" className="btn-primary">Start a Conversation</Link>
-          </FadeSection>
-        </div>
-      </div>
     </div>
   );
 }

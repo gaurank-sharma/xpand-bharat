@@ -124,7 +124,7 @@ export default function Home() {
               </div>
 
               <h1 style={{
-                fontFamily: "'Playfair Display', serif",
+                fontFamily: "'Fraunces', serif",
                 fontSize: 'clamp(38px, 7vw, 90px)',
                 fontWeight: 700,
                 color: '#fff',
@@ -135,7 +135,7 @@ export default function Home() {
                 Good businesses deserve
               </h1>
               <h1 style={{
-                fontFamily: "'Playfair Display', serif",
+                fontFamily: "'Fraunces', serif",
                 fontSize: 'clamp(38px, 7vw, 90px)',
                 fontWeight: 700,
                 color: 'var(--orange)',
@@ -185,7 +185,7 @@ export default function Home() {
               <div key={k} className="xb-marquee-inner" aria-hidden={k === 1}>
                 {Array(6).fill(null).map((_, i) => (
                   <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: '32px', paddingRight: '32px' }}>
-                    <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(15px, 1.4vw, 20px)', fontWeight: 700, color: '#fff', letterSpacing: '0.06em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
+                    <span style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(15px, 1.4vw, 20px)', fontWeight: 700, color: '#fff', letterSpacing: '0.06em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
                       We Are The Best Franchise Advisory Partners In India
                     </span>
                     <span style={{ color: 'var(--orange)', fontSize: '10px' }}>◆</span>
@@ -203,8 +203,8 @@ export default function Home() {
               <FadeSection>
                 <div className="section-label">Our Philosophy</div>
                 <h2 style={{
-                  fontFamily: "'Playfair Display', serif",
-                  fontSize: 'clamp(28px, 4vw, 54px)', fontWeight: 700,
+                  fontFamily: "'Fraunces', serif",
+                  fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700,
                   color: 'var(--navy)', lineHeight: 1.15, marginBottom: '28px',
                 }}>
                   Structured franchise growth rarely happens accidentally.
@@ -238,14 +238,42 @@ export default function Home() {
           </div>
         </div>
 
+        {/* ── ABOUT US ── */}
+        <div className="xb-about-section" style={{ background: 'var(--navy)', position: 'relative', overflow: 'hidden' }}>
+          <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
+            <div style={{ position: 'absolute', top: '-15%', left: '-5%', width: '520px', height: '520px', background: 'radial-gradient(circle, rgba(240,121,32,0.08) 0%, transparent 70%)' }} />
+            <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.018) 1px,transparent 1px)`, backgroundSize: '80px 80px' }} />
+          </div>
+          <div className="xb-about-grid" style={{ maxWidth: '1440px', margin: '0 auto', position: 'relative', zIndex: 1, alignItems: 'start' }}>
+            <FadeSection className="xb-about-left">
+              <div className="section-label">Who We Are</div>
+              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, margin: '0 0 32px' }}>
+                Who We Are
+              </h2>
+              <Link to="/about" className="btn-primary">Know More →</Link>
+            </FadeSection>
+            <FadeSection delay={150}>
+              <p style={{ color: 'rgba(255,255,255,0.62)', fontSize: '16px', lineHeight: 1.85, marginBottom: '22px' }}>
+                XPAND Bharat is India's leading franchise expansion and investment consulting company, backed by 25+ years of collective industry experience in franchise growth, investor alignment, and business expansion strategy.
+              </p>
+              <p style={{ color: 'rgba(255,255,255,0.62)', fontSize: '16px', lineHeight: 1.85, marginBottom: '22px' }}>
+                We help businesses scale through structured franchising by aligning brands with qualified investors, expansion opportunities, and commercially viable growth systems. Through our investor network, lead-generation capabilities, and strategic expansion approach, we help brands connect with investors actively looking for profitable franchise business opportunities across sectors like F&B, electronics, fashion, retail, and emerging consumer categories.
+              </p>
+              <p style={{ color: 'rgba(255,255,255,0.62)', fontSize: '16px', lineHeight: 1.85, margin: 0 }}>
+                We act as perfect matchmakers mapping your business to qualified investors by providing structured proposal support and expansion roadmap.
+              </p>
+            </FadeSection>
+          </div>
+        </div>
+
         {/* ── TRUSTED PARTNER SECTION ── */}
         <div style={{ background: 'var(--cream)', padding: '6px 40px' }}>
           <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
             <FadeSection style={{ textAlign: 'center', marginBottom: '64px' }}>
               <div className="section-label" style={{ justifyContent: 'center' }}>Our Promise</div>
               <h2 style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: 'clamp(28px, 4.5vw, 54px)',
+                fontFamily: "'Fraunces', serif",
+                fontSize: 'clamp(28px, 3.4vw, 44px)',
                 fontWeight: 700, color: 'var(--navy)',
                 lineHeight: 1.15, maxWidth: '720px', margin: '0 auto',
               }}>
@@ -264,17 +292,11 @@ export default function Home() {
                 <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=700&q=80" alt="Partnership handshake" />
               </div>
             </div>
-
-            <FadeSection style={{ textAlign: 'center', maxWidth: '580px', margin: '0 auto' }}>
-              <p style={{ color: 'var(--gray)', fontSize: 'clamp(15px, 1.4vw, 17px)', lineHeight: 1.9, margin: 0 }}>
-                Headquartered in Gurugram, XPAND Bharat brings 25+ years of collective experience across franchise consulting, investor advisory, expansion planning, and execution-led business growth.
-              </p>
-            </FadeSection>
           </div>
         </div>
 
         {/* ── PHOTO CARD GRID ── */}
-        <div style={{ background: '#04080f' }}>
+        <div style={{ background: 'var(--navy)' }}>
           {/* Heading inside the dark area */}
           <div style={{ padding: '80px 40px 52px' }}>
             <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '32px' }}>
@@ -283,8 +305,8 @@ export default function Home() {
                   Explore the Platform
                 </div>
                 <h2 style={{
-                  fontFamily: "'Playfair Display', serif",
-                  fontSize: 'clamp(28px, 3.5vw, 48px)',
+                  fontFamily: "'Fraunces', serif",
+                  fontSize: 'clamp(28px, 3.4vw, 44px)',
                   fontWeight: 700, color: '#fff',
                   lineHeight: 1.15, margin: 0,
                 }}>
@@ -348,7 +370,7 @@ export default function Home() {
                     marginBottom: '16px',
                   }} />
                   <h3 style={{
-                    fontFamily: "'Playfair Display', serif",
+                    fontFamily: "'Fraunces', serif",
                     fontSize: 'clamp(20px, 1.7vw, 28px)',
                     fontWeight: 400,
                     fontStyle: 'italic',
@@ -364,88 +386,112 @@ export default function Home() {
         </div>
 
         {/* "Built for serious business" section */}
-        <div className="xb-serious-section" style={{ background: 'var(--navy)', position: 'relative', overflow: 'hidden' }}>
+        <div className="xb-serious-section" style={{ background: 'var(--cream)', position: 'relative', overflow: 'hidden' }}>
           <div style={{
             position: 'absolute', top: '-20%', right: '-5%',
             width: '600px', height: '600px',
-            background: 'radial-gradient(circle, rgba(240,121,32,0.08) 0%, transparent 70%)',
+            background: 'radial-gradient(circle, rgba(240,121,32,0.07) 0%, transparent 70%)',
             pointerEvents: 'none',
           }} />
           <div style={{ maxWidth: '1440px', margin: '0 auto', textAlign: 'center', position: 'relative', zIndex: 1 }}>
             <FadeSection>
               <div className="section-label" style={{ justifyContent: 'center' }}>Built for serious business</div>
               <h2 style={{
-                fontFamily: "'Playfair Display', serif", color: '#fff',
-                fontSize: 'clamp(32px, 5vw, 64px)', fontWeight: 700,
-                maxWidth: '900px', margin: '0 auto 28px', lineHeight: 1.15,
-                letterSpacing: '0.02em', textTransform: 'uppercase',
+                fontFamily: "'Fraunces', serif", color: 'var(--navy)',
+                fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 600,
+                maxWidth: '960px', margin: '0 auto 28px', lineHeight: 1.1,
+                letterSpacing: '-0.01em',
               }}>
-                We are the best franchise advisory partners in India
+                We are the best franchise<br className="br-desktop" />advisory partners in India
               </h2>
-              <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: 'clamp(15px, 1.5vw, 18px)', lineHeight: 1.7, maxWidth: '600px', margin: '0 auto 56px' }}>
+              <p style={{ fontFamily: "'Fraunces', serif", color: 'var(--gray)', fontSize: 'clamp(16px, 1.6vw, 20px)', lineHeight: 1.65, maxWidth: '640px', margin: '0 auto 56px' }}>
                 Whether you are scaling a brand, exploring opportunities, or building strategic partnerships, XPAND Bharat is designed to support serious franchise business growth across India.
               </p>
               <div className="xb-hero-cta" style={{ justifyContent: 'center' }}>
                 <Link to="/for-brands" className="btn-primary">For Brands</Link>
-                <Link to="/for-investors" className="btn-outline">For Investors</Link>
+                <Link to="/for-investors" className="btn-outline-dark">For Investors</Link>
               </div>
             </FadeSection>
           </div>
         </div>
 
         {/* Two-path cards */}
-        <div className="xb-two-path-section" style={{ background: 'var(--cream)' }}>
-          <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
-            <FadeSection style={{ textAlign: 'center', marginBottom: '64px' }}>
+        <div className="xb-two-path-section" style={{ background: 'var(--navy)', position: 'relative', overflow: 'hidden' }}>
+          <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px)`, backgroundSize: '80px 80px', pointerEvents: 'none' }} />
+          <div style={{ maxWidth: '1440px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
+            <FadeSection style={{ textAlign: 'center', marginBottom: '48px' }}>
               <div className="section-label" style={{ justifyContent: 'center' }}>Two paths. One platform.</div>
-              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(24px, 3.5vw, 44px)', fontWeight: 700, color: 'var(--navy)', margin: 0 }}>
+              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: '#fff', margin: 0 }}>
                 Where brands meet investors.
               </h2>
             </FadeSection>
             <div className="xb-two-path-grid">
               {[
                 {
-                  tag: 'For Brands',
-                  title: 'Expand with structure.',
-                  body: 'Franchise expansion, investor-ready business structuring, rollout strategy, and expansion planning — all structured for disciplined franchise growth across India.',
-                  cta: 'Explore Brand Solutions',
+                  eyebrow: 'For Brands',
+                  title: 'Built to expand.',
+                  subtitle: 'Everything a brand needs to franchise and scale with structure.',
+                  items: ['Expansion Strategy & Roadmap', 'Investor Readiness Assessment', 'Territory Planning & Analysis', 'Franchise Model Development', 'Legal & Compliance Framework', 'Rollout Systems & Support'],
+                  cta: 'Start Your Expansion Journey',
                   to: '/for-brands',
-                  dark: true,
+                  filled: true,
+                  icon: (
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M3 21h18M5 21V7l8-4v18M19 21V11l-6-3" /><path d="M9 9v.01M9 12v.01M9 15v.01M9 18v.01" />
+                    </svg>
+                  ),
                 },
                 {
-                  tag: 'For Investors',
-                  title: 'Invest with clarity.',
-                  body: 'Curated franchise investment opportunities designed around commercial clarity, operational structure, and long-term scalability across India\'s fastest-growing sectors.',
-                  cta: 'Explore Opportunities',
+                  eyebrow: 'For Investors',
+                  title: 'Built to invest.',
+                  subtitle: 'Curated, due-diligenced franchise opportunities matched to your goals.',
+                  items: ['Curated Franchise Opportunities', 'Commercial Due Diligence', 'Scalable Business Models', 'Sector Diversification Options', 'ROI Analysis & Projections', 'Post-Investment Support'],
+                  cta: 'Explore Investment Opportunities',
                   to: '/for-investors',
-                  dark: false,
+                  filled: false,
+                  icon: (
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--orange)" strokeWidth="1.7" strokeLinecap="round" strokeLinejoin="round">
+                      <path d="M23 6l-9.5 9.5-5-5L1 18" /><path d="M17 6h6v6" />
+                    </svg>
+                  ),
                 },
-              ].map(card => (
-                <FadeSection key={card.tag} className="xb-two-path-card" style={{
-                  background: card.dark ? 'var(--navy)' : 'var(--white)',
-                  borderRadius: '16px',
-                  border: '1px solid var(--border)',
-                }}>
-                  <div className="pill" style={{
-                    background: card.dark ? 'rgba(240,121,32,0.15)' : 'var(--orange-pale)',
-                    color: 'var(--orange)', marginBottom: '32px',
-                  }}>{card.tag}</div>
-                  <h3 style={{
-                    fontFamily: "'Playfair Display', serif",
-                    fontSize: 'clamp(24px, 2.5vw, 32px)', fontWeight: 700,
-                    color: card.dark ? '#fff' : 'var(--navy)',
-                    marginBottom: '20px', lineHeight: 1.2,
-                  }}>{card.title}</h3>
-                  <p style={{ color: card.dark ? 'rgba(255,255,255,0.6)' : 'var(--gray)', fontSize: '15px', lineHeight: 1.7, marginBottom: '40px' }}>
-                    {card.body}
-                  </p>
-                  <Link to={card.to} style={{
-                    display: 'inline-flex', alignItems: 'center', gap: '8px',
-                    color: 'var(--orange)', fontWeight: 600, fontSize: '14px',
-                    textDecoration: 'none', letterSpacing: '0.04em',
-                  }}>
-                    {card.cta} <span>→</span>
-                  </Link>
+              ].map((card, ci) => (
+                <FadeSection key={card.eyebrow} delay={ci * 120} className={`xb-two-path-card xb-tp-card${card.filled ? ' xb-tp-card--accent' : ''}`}>
+                  {/* top accent bar */}
+                  <div className="xb-tp-bar" />
+                  {/* corner glow */}
+                  <div className="xb-tp-glow" />
+
+                  <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', height: '100%' }}>
+                    {/* header */}
+                    <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: '16px', marginBottom: '14px' }}>
+                      <div>
+                        <div style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.24em', textTransform: 'uppercase', color: 'var(--orange)', marginBottom: '10px' }}>{card.eyebrow}</div>
+                        <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(24px, 2.3vw, 32px)', fontWeight: 700, color: '#fff', margin: 0, lineHeight: 1.05, letterSpacing: '-0.01em' }}>{card.title}</h3>
+                      </div>
+                      <div className="xb-tp-icon">{card.icon}</div>
+                    </div>
+
+                    <p style={{ color: 'rgba(255,255,255,0.52)', fontSize: '14px', lineHeight: 1.6, margin: '0 0 22px', maxWidth: '92%' }}>{card.subtitle}</p>
+
+                    <ul className="xb-tp-list">
+                      {card.items.map((item, ii) => (
+                        <li key={item} className="xb-tp-row" style={{ transitionDelay: `${ii * 20}ms` }}>
+                          <span className="xb-tp-check">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.2">
+                              <path d="M5 12.5l4 4 10-11" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </span>
+                          <span className="xb-tp-text">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+
+                    <Link to={card.to} className={`xb-tp-btn${card.filled ? ' xb-tp-btn--accent' : ' xb-tp-btn--light'}`}>
+                      {card.cta}
+                      <span className="xb-tp-arrow">→</span>
+                    </Link>
+                  </div>
                 </FadeSection>
               ))}
             </div>
@@ -458,10 +504,10 @@ export default function Home() {
             <FadeSection style={{ marginBottom: '64px' }}>
               <div className="section-label">Testimonials</div>
               <h2 style={{
-                fontFamily: "'Playfair Display', serif",
-                fontSize: 'clamp(26px, 4vw, 54px)',
+                fontFamily: "'Fraunces', serif",
+                fontSize: 'clamp(28px, 3.4vw, 44px)',
                 fontWeight: 700, color: 'var(--navy)',
-                lineHeight: 1.15, maxWidth: '580px',
+                lineHeight: 1.15, maxWidth: '820px',
               }}>
                 Don't take our word for it.<br />Hear it from our partners.
               </h2>
@@ -472,12 +518,12 @@ export default function Home() {
               <FadeSection delay={0} className="xb-tcard">
                 <img src="/abhishek.png" alt="Abhishek Gupta"
                   style={{ width: '56px', height: '56px', borderRadius: '50%', objectFit: 'cover', marginBottom: '28px' }} />
-                <div style={{ fontSize: '52px', color: 'var(--orange)', fontFamily: "'Playfair Display', serif", lineHeight: 0.8, marginBottom: '20px' }}>"</div>
+                <div style={{ fontSize: '52px', color: 'var(--orange)', fontFamily: "'Fraunces', serif", lineHeight: 0.8, marginBottom: '20px' }}>"</div>
                 <p style={{ fontSize: '15px', lineHeight: 1.85, color: 'var(--charcoal)', fontStyle: 'italic', marginBottom: '40px', flexGrow: 1 }}>
                   Xpand Bharat has been a game-changer for our expansion journey. Their structured approach helped us scale faster while maintaining brand consistency. Within months, we were closing multiple franchise locations seamlessly.
                 </p>
                 <div style={{ borderTop: '1px solid var(--border)', paddingTop: '24px' }}>
-                  <p style={{ fontFamily: "'Playfair Display', serif", fontStyle: 'italic', fontSize: '19px', color: 'var(--navy)', margin: '0 0 5px' }}>Abhishek Gupta</p>
+                  <p style={{ fontFamily: "'Fraunces', serif", fontStyle: 'italic', fontSize: '19px', color: 'var(--navy)', margin: '0 0 5px' }}>Abhishek Gupta</p>
                   <p style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gray)', margin: 0 }}>Founder — Haldiwale</p>
                 </div>
               </FadeSection>
@@ -489,12 +535,12 @@ export default function Home() {
                 <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', height: '100%' }}>
                   <img src="/Dikshant.png" alt="Dikshant Rai"
                     style={{ width: '56px', height: '56px', borderRadius: '50%', objectFit: 'cover', marginBottom: '28px', border: '2px solid rgba(240,121,32,0.7)' }} />
-                  <div style={{ fontSize: '52px', color: 'var(--orange)', fontFamily: "'Playfair Display', serif", lineHeight: 0.8, marginBottom: '20px' }}>"</div>
+                  <div style={{ fontSize: '52px', color: 'var(--orange)', fontFamily: "'Fraunces', serif", lineHeight: 0.8, marginBottom: '20px' }}>"</div>
                   <p style={{ fontSize: '15px', lineHeight: 1.85, color: 'rgba(255,255,255,0.88)', fontStyle: 'italic', marginBottom: '40px', flexGrow: 1 }}>
                     As an investor, finding the right brand is always a challenge. Xpand Bharat made the entire process transparent and data-driven. Their insights and support helped me make confident investment decisions. Highly recommended.
                   </p>
                   <div style={{ borderTop: '1px solid rgba(255,255,255,0.12)', paddingTop: '24px' }}>
-                    <p style={{ fontFamily: "'Playfair Display', serif", fontStyle: 'italic', fontSize: '19px', color: '#fff', margin: '0 0 5px' }}>Dikshant Rai</p>
+                    <p style={{ fontFamily: "'Fraunces', serif", fontStyle: 'italic', fontSize: '19px', color: '#fff', margin: '0 0 5px' }}>Dikshant Rai</p>
                     <p style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(240,121,32,0.85)', margin: 0 }}>Franchise Investor</p>
                   </div>
                 </div>
@@ -504,12 +550,12 @@ export default function Home() {
               <FadeSection delay={300} className="xb-tcard">
                 <img src="/Karan.png" alt="Karan Gupta"
                   style={{ width: '56px', height: '56px', borderRadius: '50%', objectFit: 'cover', marginBottom: '28px' }} />
-                <div style={{ fontSize: '52px', color: 'var(--orange)', fontFamily: "'Playfair Display', serif", lineHeight: 0.8, marginBottom: '20px' }}>"</div>
+                <div style={{ fontSize: '52px', color: 'var(--orange)', fontFamily: "'Fraunces', serif", lineHeight: 0.8, marginBottom: '20px' }}>"</div>
                 <p style={{ fontSize: '15px', lineHeight: 1.85, color: 'var(--charcoal)', fontStyle: 'italic', marginBottom: '40px', flexGrow: 1 }}>
                   Xpand Bharat made my first franchise investment smooth and stress-free. From shortlisting the right brand to guiding me through financials and location strategy — it didn't feel like a service, it felt like a long-term partner.
                 </p>
                 <div style={{ borderTop: '1px solid var(--border)', paddingTop: '24px' }}>
-                  <p style={{ fontFamily: "'Playfair Display', serif", fontStyle: 'italic', fontSize: '19px', color: 'var(--navy)', margin: '0 0 5px' }}>Karan Gupta</p>
+                  <p style={{ fontFamily: "'Fraunces', serif", fontStyle: 'italic', fontSize: '19px', color: 'var(--navy)', margin: '0 0 5px' }}>Karan Gupta</p>
                   <p style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gray)', margin: 0 }}>Franchise Partner & Investor</p>
                 </div>
               </FadeSection>
@@ -521,23 +567,23 @@ export default function Home() {
         {(() => {
           const FAQS = [
             { q: 'What does XPAND Bharat do?', a: 'XPAND Bharat acts as a perfect matchmaker between flourishing businesses and qualified investors with growth capital through our structured 6-principle philosophy: Alignment, Structure, Clarity, Execution, and Governance.' },
-            { q: 'How does franchise expansion actually work?', a: 'Franchise expansion involves transforming an operational business into a scalable growth model through market analysis, business planning, investor onboarding, legal structuring, and operational systems built with the help of experts with years of experience.' },
+            { q: 'How does franchise expansion actually work?', a: 'Franchise expansion involves transforming an operational business into a scalable growth model through market analysis, business planning, investor onboarding, legal structuring, and operational systems that are built with the help of experts with years of experience.' },
             { q: 'Why are businesses expanding through franchising in India?', a: 'Franchising allows businesses to scale faster while giving investors access to structured, growth-focused business opportunities beyond traditional investments like stocks, mutual funds, or real estate. XPAND helps reduce expansion risk through strategy, investor alignment, lead generation, legal structuring, and execution support.' },
             { q: 'How does XPAND help businesses scale?', a: 'XPAND helps businesses scale by aligning their funding and expansion needs with qualified investors. It helps with investor-ready business proposals, helping you secure the best funding deal with end-to-end execution support.' },
             { q: 'What industries does XPAND work with?', a: 'XPAND works with businesses across F&B, electronics, fashion, retail, and emerging scalable business categories looking to expand through franchising.' },
             { q: 'Why invest in franchise businesses?', a: 'Franchise businesses offer operational support, structured business models, brand recognition, and scalability compared to building a business entirely from scratch.' },
             { q: 'Franchise vs starting your own business — what is better?', a: 'Franchise businesses often reduce operational uncertainty because investors enter businesses with established systems, processes, market positioning, and brand visibility, whereas an independent business requires building everything from the ground up.' },
-            { q: 'Are franchise businesses profitable in India?', a: 'Franchise businesses in India are growing rapidly because they combine brand recognition, operational support, and scalable business systems with lower expansion risk. XPAND helps reduce expansion uncertainty through investor alignment, market analysis, business planning, legal structuring, and execution-led support.' },
+            { q: 'Are franchise businesses profitable in India?', a: 'Franchise businesses in India are growing rapidly because they combine brand recognition, operational support, and scalable business systems with lower expansion risk compared to building a business entirely from scratch. Many investors today evaluate franchise opportunities alongside mutual funds, stocks, and real estate because franchise models can offer structured growth potential, operational guidance, and long-term commercial scalability when backed by the right market demand and execution systems. XPAND helps reduce expansion uncertainty through investor alignment, market analysis, business planning, legal structuring, execution-led support, and investor advisory.' },
           ];
           const [open, setOpen] = useState(0);
           return (
-            <div style={{ background: 'var(--cream-light)', padding: '100px 40px' }}>
+            <div className="xb-faq-section" style={{ background: 'var(--cream-light)', padding: '100px 40px' }}>
               <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify({ "@context": "https://schema.org", "@type": "FAQPage", "mainEntity": FAQS.map(f => ({ "@type": "Question", "name": f.q, "acceptedAnswer": { "@type": "Answer", "text": f.a } })) }) }} />
-              <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: '80px', alignItems: 'start' }}>
+              <div className="xb-faq-grid" style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1.6fr 1fr', gap: '80px', alignItems: 'start' }}>
                 <div>
                   <FadeSection style={{ marginBottom: '48px' }}>
                     <div className="section-label">Frequently Asked Questions</div>
-                    <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 3.5vw, 46px)', fontWeight: 700, color: 'var(--navy)', lineHeight: 1.15, margin: 0 }}>
+                    <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: 'var(--navy)', lineHeight: 1.15, margin: 0 }}>
                       Everything you need to know about franchise expansion
                     </h2>
                   </FadeSection>
@@ -545,7 +591,7 @@ export default function Home() {
                     {FAQS.map((item, i) => (
                       <div key={i} style={{ borderRadius: '12px', overflow: 'hidden', border: `1px solid ${open === i ? 'var(--orange)' : 'var(--border)'}`, transition: 'border-color 0.25s' }}>
                         <button onClick={() => setOpen(open === i ? -1 : i)} style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 24px', background: open === i ? 'var(--navy)' : 'var(--white)', border: 'none', cursor: 'pointer', textAlign: 'left', gap: '16px', transition: 'background 0.25s' }}>
-                          <span style={{ fontFamily: "'Playfair Display', serif", fontSize: '16px', fontWeight: 700, color: open === i ? '#fff' : 'var(--navy)', lineHeight: 1.3 }}>{item.q}</span>
+                          <span style={{ fontFamily: "'Fraunces', serif", fontSize: '16px', fontWeight: 700, color: open === i ? '#fff' : 'var(--navy)', lineHeight: 1.3 }}>{item.q}</span>
                           <span style={{ width: '28px', height: '28px', borderRadius: '50%', border: `1.5px solid ${open === i ? 'rgba(255,255,255,0.3)' : 'var(--border)'}`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: open === i ? 'var(--orange)' : 'var(--gray)', fontSize: '18px', lineHeight: 1, transition: 'all 0.25s' }}>
                             {open === i ? '−' : '+'}
                           </span>
@@ -559,12 +605,12 @@ export default function Home() {
                     ))}
                   </div>
                 </div>
-                <FadeSection delay={200} style={{ position: 'sticky', top: '120px' }}>
+                <FadeSection delay={200} className="xb-faq-cta" style={{ position: 'sticky', top: '120px' }}>
                   <div style={{ background: 'var(--navy)', borderRadius: '20px', padding: '48px 40px', overflow: 'hidden', position: 'relative' }}>
                     <div style={{ position: 'absolute', bottom: '-40%', right: '-20%', width: '280px', height: '280px', background: 'radial-gradient(circle, rgba(240,121,32,0.12) 0%, transparent 70%)', pointerEvents: 'none' }} />
                     <div style={{ position: 'relative', zIndex: 1 }}>
                       <div style={{ width: '40px', height: '3px', background: 'var(--orange)', marginBottom: '28px', borderRadius: '2px' }} />
-                      <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(22px, 2.2vw, 30px)', fontWeight: 700, color: '#fff', lineHeight: 1.25, marginBottom: '16px' }}>
+                      <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(22px, 2.2vw, 30px)', fontWeight: 700, color: '#fff', lineHeight: 1.25, marginBottom: '16px' }}>
                         Still have questions?<br /><span style={{ color: 'var(--orange)' }}>Let's talk directly.</span>
                       </h3>
                       <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '14px', lineHeight: 1.75, marginBottom: '32px' }}>
@@ -608,7 +654,9 @@ export default function Home() {
 
         /* ── FAQ ── */
         @media (max-width: 900px) {
-          .xb-faq-grid { grid-template-columns: 1fr !important; }
+          .xb-faq-grid { grid-template-columns: 1fr !important; gap: 36px !important; }
+          .xb-faq-cta { position: static !important; }
+          .xb-faq-section { padding: 64px 20px !important; }
         }
 
         /* ── Marquee ── */
@@ -628,6 +676,24 @@ export default function Home() {
           grid-template-columns: 1fr 1fr;
           gap: 80px;
           align-items: center;
+        }
+
+        /* ── About Us ── */
+        .xb-about-section { padding: 110px 40px; }
+        .xb-about-grid {
+          display: grid;
+          grid-template-columns: 0.8fr 1.2fr;
+          gap: 80px;
+          align-items: start;
+        }
+        .xb-about-left { position: sticky; top: 96px; }
+        @media (max-width: 900px) {
+          .xb-about-section { padding: 72px 24px; }
+          .xb-about-grid { grid-template-columns: 1fr; gap: 32px; }
+          .xb-about-left { position: static; }
+        }
+        @media (max-width: 560px) {
+          .xb-about-section { padding: 56px 18px; }
         }
 
         /* ── Trusted partner photos ── */
@@ -700,9 +766,100 @@ export default function Home() {
         .xb-serious-section { padding: 120px 40px; }
 
         /* ── Two-path ── */
-        .xb-two-path-section { padding: 100px 40px; }
+        .xb-two-path-section { padding: 80px 40px; }
         .xb-two-path-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; }
-        .xb-two-path-card { padding: 56px 48px; }
+        .xb-two-path-card { padding: 40px 40px; }
+
+        /* ── Two-path premium cards ── */
+        .xb-tp-card {
+          position: relative;
+          overflow: hidden;
+          border-radius: 24px;
+          background:
+            radial-gradient(120% 120% at 100% 0%, rgba(240,121,32,0.05) 0%, transparent 45%),
+            linear-gradient(165deg, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0.012) 60%);
+          border: 1px solid rgba(255,255,255,0.08);
+          box-shadow: inset 0 1px 0 rgba(255,255,255,0.05);
+          transition: transform 0.4s cubic-bezier(0.25,0.46,0.45,0.94), border-color 0.4s, box-shadow 0.4s;
+        }
+        .xb-tp-card--accent { border-color: rgba(240,121,32,0.22); }
+        .xb-tp-card:hover {
+          transform: translateY(-8px);
+          border-color: rgba(240,121,32,0.45);
+          box-shadow: 0 30px 70px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.07);
+        }
+
+        /* top accent bar */
+        .xb-tp-bar {
+          position: absolute; top: 0; left: 0; right: 0; height: 3px;
+          background: linear-gradient(90deg, var(--orange), rgba(240,121,32,0));
+          transform: scaleX(0); transform-origin: left;
+          transition: transform 0.5s cubic-bezier(0.25,0.46,0.45,0.94);
+        }
+        .xb-tp-card:hover .xb-tp-bar { transform: scaleX(1); }
+
+        /* corner glow */
+        .xb-tp-glow {
+          position: absolute; top: -28%; right: -18%;
+          width: 340px; height: 340px;
+          background: radial-gradient(circle, rgba(240,121,32,0.16) 0%, transparent 70%);
+          pointer-events: none; opacity: 0.6;
+          transition: opacity 0.4s ease;
+        }
+        .xb-tp-card:hover .xb-tp-glow { opacity: 1; }
+
+        /* icon tile */
+        .xb-tp-icon {
+          width: 48px; height: 48px; border-radius: 13px; flex-shrink: 0;
+          background: rgba(240,121,32,0.1);
+          border: 1px solid rgba(240,121,32,0.25);
+          display: flex; align-items: center; justify-content: center;
+          transition: transform 0.4s ease, background 0.3s ease;
+        }
+        .xb-tp-card:hover .xb-tp-icon { transform: rotate(-6deg) scale(1.06); background: rgba(240,121,32,0.16); }
+
+        /* list */
+        .xb-tp-list { list-style: none; padding: 0; margin: 0 0 28px; flex: 1; }
+        .xb-tp-row {
+          display: flex; align-items: center; gap: 13px;
+          padding: 10px 12px; margin: 0 -12px;
+          border-radius: 10px;
+          border-bottom: 1px solid rgba(255,255,255,0.05);
+          transition: background 0.25s ease, padding-left 0.25s ease;
+        }
+        .xb-tp-row:last-child { border-bottom: none; }
+        .xb-tp-row:hover { background: rgba(255,255,255,0.03); }
+        .xb-tp-check {
+          width: 24px; height: 24px; border-radius: 50%; flex-shrink: 0;
+          display: flex; align-items: center; justify-content: center;
+          color: var(--orange);
+          background: rgba(240,121,32,0.12);
+          border: 1px solid rgba(240,121,32,0.3);
+          transition: background 0.25s ease, color 0.25s ease, transform 0.25s ease;
+        }
+        .xb-tp-row:hover .xb-tp-check { background: var(--orange); color: #fff; transform: scale(1.08); }
+        .xb-tp-text { color: rgba(255,255,255,0.9); font-size: 15px; font-weight: 500; flex: 1; }
+
+        /* CTA button */
+        .xb-tp-btn {
+          display: flex; align-items: center; justify-content: center; gap: 9px;
+          font-weight: 700; font-size: 13.5px; letter-spacing: 0.03em;
+          padding: 15px 24px; border-radius: 12px; text-decoration: none;
+          transition: transform 0.25s ease, box-shadow 0.3s ease, filter 0.25s ease;
+        }
+        .xb-tp-btn--accent {
+          background: linear-gradient(135deg, #f8862e 0%, var(--orange) 55%, #e06b12 100%);
+          color: #fff;
+          box-shadow: 0 10px 30px rgba(240,121,32,0.32);
+        }
+        .xb-tp-btn--accent:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(240,121,32,0.45); filter: brightness(1.04); }
+        .xb-tp-btn--light {
+          background: #fff; color: var(--navy);
+          box-shadow: 0 10px 30px rgba(0,0,0,0.25);
+        }
+        .xb-tp-btn--light:hover { transform: translateY(-3px); box-shadow: 0 16px 40px rgba(0,0,0,0.35); }
+        .xb-tp-arrow { display: inline-block; transition: transform 0.25s ease; }
+        .xb-tp-btn:hover .xb-tp-arrow { transform: translateX(5px); }
 
         /* ══════════════════════════════════════
            TABLET  ≤ 900px
@@ -780,6 +937,11 @@ export default function Home() {
             padding: 28px 24px;
           }
           .xb-tcard-featured { min-height: 440px; }
+        }
+
+        /* Heading: let it wrap naturally on phones (drop the forced break) */
+        @media (max-width: 700px) {
+          .br-desktop { display: none; }
         }
 
         /* ══════════════════════════════════════

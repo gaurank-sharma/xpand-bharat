@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { useContent } from '../hooks/useContent';
@@ -69,48 +69,6 @@ function FadeSection({ children, delay = 0, style = {} }) {
   return <div ref={ref} style={style}>{children}</div>;
 }
 
-function OppForm() {
-  const [form, setForm] = useState({ name: '', company: '', mobile: '', email: '', sector: '', category: '', interest: '', markets: '', message: '' });
-  const [submitted, setSubmitted] = useState(false);
-  const handle = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
-  const submit = e => { e.preventDefault(); setSubmitted(true); };
-
-  if (submitted) return (
-    <div style={{ textAlign: 'center', padding: '80px 40px' }}>
-      <div style={{ fontSize: '48px', marginBottom: '24px' }}>✓</div>
-      <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '28px', color: 'var(--navy)', marginBottom: '16px' }}>Enquiry received.</h3>
-      <p style={{ color: 'var(--gray)', fontSize: '16px' }}>We'll match you with the most relevant opportunities within 48 hours.</p>
-    </div>
-  );
-
-  return (
-    <form onSubmit={submit} className="xb-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-      {[
-        { name: 'name', label: 'Full Name', placeholder: 'Your full name' },
-        { name: 'company', label: 'Company Name', placeholder: 'Your company name' },
-        { name: 'mobile', label: 'Mobile Number', placeholder: '+91 XXXXX XXXXX' },
-        { name: 'email', label: 'Email Address', placeholder: 'your@email.com' },
-        { name: 'sector', label: 'Sector Interest', placeholder: 'e.g. F&B, Retail, Services…' },
-        { name: 'category', label: 'Preferred Business Category', placeholder: 'Category of interest' },
-        { name: 'interest', label: 'Investment / Expansion Interest', placeholder: 'Your intent or budget range' },
-        { name: 'markets', label: 'Preferred Markets', placeholder: 'Target cities or states' },
-      ].map(f => (
-        <div key={f.name} className="form-group">
-          <label className="form-label">{f.label}</label>
-          <input name={f.name} value={form[f.name]} onChange={handle} placeholder={f.placeholder} className="form-input" required={f.name === 'name' || f.name === 'email'} />
-        </div>
-      ))}
-      <div className="form-group" style={{ gridColumn: '1 / -1' }}>
-        <label className="form-label">Message</label>
-        <textarea name="message" value={form.message} onChange={handle} placeholder="Describe what kind of opportunity you are looking for…" className="form-input" />
-      </div>
-      <div style={{ gridColumn: '1 / -1' }}>
-        <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>Explore Opportunities</button>
-      </div>
-    </form>
-  );
-}
-
 export default function GrowthOpportunities() {
   const { hero, section } = useContent('growth-opportunities');
   const categories = section('categories', CATEGORIES).map(item => ({
@@ -141,7 +99,7 @@ export default function GrowthOpportunities() {
         <div style={{ position: 'absolute', top: '-10%', right: '5%', width: '600px', height: '600px', background: 'radial-gradient(circle,rgba(240,121,32,0.08) 0%,transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '1440px', margin: '0 auto', width: '100%', position: 'relative', zIndex: 1 }}>
           <div className="section-label">Growth Opportunities</div>
-          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '720px' }}>
+          <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '720px' }}>
             Opportunities built for<br />
             <span style={{ color: 'var(--orange)' }}>scalable franchise growth.</span>
           </h1>
@@ -160,7 +118,7 @@ export default function GrowthOpportunities() {
             <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '24px' }}>
               <div>
                 <div style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.25em', color: 'rgba(220,168,60,0.85)', textTransform: 'uppercase', marginBottom: '18px' }}>Business Opportunities</div>
-                <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 3.5vw, 48px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, margin: 0 }}>
+                <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, margin: 0 }}>
                   Sectors we bring to the table.
                 </h2>
               </div>
@@ -209,12 +167,12 @@ export default function GrowthOpportunities() {
                 <div style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', marginBottom: '14px', background: 'rgba(7,15,35,0.75)', backdropFilter: 'blur(8px)', border: '1px solid rgba(240,121,32,0.55)', borderRadius: '4px', padding: '6px 14px' }}>
                   <span style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.75)' }}>Range</span>
                   <span style={{ width: '1px', height: '12px', background: 'rgba(240,121,32,0.45)', flexShrink: 0 }} />
-                  <span style={{ fontSize: '13px', fontWeight: 700, color: 'var(--orange)', fontFamily: "'Outfit', sans-serif", letterSpacing: '0.02em' }}>{cat.range}</span>
+                  <span style={{ fontSize: '13px', fontWeight: 700, color: 'var(--orange)', fontFamily: "'Inter', sans-serif", letterSpacing: '0.02em' }}>{cat.range}</span>
                 </div>
 
                 <div style={{ width: '20px', height: '1px', background: 'rgba(255,255,255,0.35)', marginBottom: '12px' }} />
 
-                <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(20px, 1.8vw, 26px)', fontWeight: 600, fontStyle: 'italic', color: '#fff', margin: 0, lineHeight: 1.25 }}>
+                <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(20px, 1.8vw, 26px)', fontWeight: 600, fontStyle: 'italic', color: '#fff', margin: 0, lineHeight: 1.25 }}>
                   {cat.title}
                 </h3>
 
@@ -242,11 +200,11 @@ export default function GrowthOpportunities() {
 
       {/* DIFFERENTIATORS */}
       <div style={{ background: 'var(--navy)', padding: '100px 40px', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', right: '-40px', top: '50%', transform: 'translateY(-50%)', fontFamily: "'Playfair Display', serif", fontSize: '300px', fontWeight: 700, color: 'rgba(255,255,255,0.02)', lineHeight: 1, pointerEvents: 'none', userSelect: 'none' }}>05</div>
+        <div style={{ position: 'absolute', right: '-40px', top: '50%', transform: 'translateY(-50%)', fontFamily: "'Fraunces', serif", fontSize: '300px', fontWeight: 700, color: 'rgba(255,255,255,0.02)', lineHeight: 1, pointerEvents: 'none', userSelect: 'none' }}>05</div>
         <div className="xb-grid-2col" style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '100px', alignItems: 'start', position: 'relative', zIndex: 1 }}>
           <FadeSection>
             <div className="section-label">What Makes These Different</div>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(30px, 3.5vw, 50px)', fontWeight: 700, color: '#fff', marginBottom: '24px', lineHeight: 1.1 }}>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: '#fff', marginBottom: '24px', lineHeight: 1.1 }}>
               Built for serious,<br /><span style={{ color: 'var(--orange)' }}>scalable growth.</span>
             </h2>
             <div style={{ width: '48px', height: '2px', background: 'var(--orange)', margin: '28px 0' }} />
@@ -258,7 +216,7 @@ export default function GrowthOpportunities() {
           <FadeSection delay={150}>
             {differentiators.map((item, i) => (
               <div key={item.num} style={{ display: 'flex', gap: '28px', alignItems: 'flex-start', padding: '28px 0', borderBottom: i < differentiators.length - 1 ? '1px solid rgba(255,255,255,0.07)' : 'none' }}>
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '40px', fontWeight: 700, color: 'var(--orange)', lineHeight: 0.9, flexShrink: 0, width: '52px', opacity: 0.9 }}>{item.num}</div>
+                <div style={{ fontFamily: "'Fraunces', serif", fontSize: '40px', fontWeight: 700, color: 'var(--orange)', lineHeight: 0.9, flexShrink: 0, width: '52px', opacity: 0.9 }}>{item.num}</div>
                 <div style={{ paddingTop: '4px' }}>
                   <h4 style={{ color: '#fff', fontSize: '16px', fontWeight: 600, marginBottom: '8px', lineHeight: 1.3 }}>{item.title}</h4>
                   <p style={{ color: 'rgba(255,255,255,0.42)', fontSize: '14px', lineHeight: 1.75, margin: 0 }}>{item.desc}</p>
@@ -269,23 +227,6 @@ export default function GrowthOpportunities() {
         </div>
       </div>
 
-      {/* FORM */}
-      <div style={{ padding: '100px 40px', background: 'var(--cream-light)' }}>
-        <div style={{ maxWidth: '900px', margin: '0 auto' }}>
-          <FadeSection style={{ marginBottom: '56px', textAlign: 'center' }}>
-            <div className="section-label" style={{ justifyContent: 'center' }}>Enquire now</div>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 3vw, 42px)', fontWeight: 700, color: 'var(--navy)', marginBottom: '16px' }}>
-              Let's explore the right opportunity.
-            </h2>
-            <p style={{ color: 'var(--gray)', fontSize: '16px', lineHeight: 1.7 }}>
-              Tell us about your business interests, preferred sectors, and growth goals. We will match you with the right opportunities within 24 hours.
-            </p>
-          </FadeSection>
-          <div className="xb-form-wrap" style={{ background: 'var(--white)', borderRadius: '16px', padding: '56px', border: '1px solid var(--border)' }}>
-            <OppForm />
-          </div>
-        </div>
-      </div>
     </div>
   );
 }

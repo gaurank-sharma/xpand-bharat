@@ -1,5 +1,6 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import LeadForm from '../components/LeadForm';
 
 const INFO = [
   { label: 'Email Address', value: 'contact@xpandbharat.com', href: 'mailto:contact@xpandbharat.com', icon: '✉' },
@@ -20,130 +21,6 @@ function FadeSection({ children, delay = 0, style = {} }) {
   return <div ref={ref} style={style}>{children}</div>;
 }
 
-const API = import.meta.env.VITE_API_URL || 'http://localhost:5000/api';
-
-const BUSINESS_OPTIONS = ['Franchise your business', 'Expand your business across cities', 'Looking for funding/investors', 'Franchise expansion advisory', 'Investor alignment support', 'Franchise rollout strategy'];
-const INVESTOR_OPTIONS = ['Franchise investment opportunities', 'Passive income franchise businesses', 'Multi-location franchise businesses', 'Retail franchise opportunities', 'Food & beverage franchise opportunities', 'Expansion-ready businesses', 'Scalable business investments'];
-
-function PillToggle({ options, selected, onToggle }) {
-  return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-      {options.map(opt => {
-        const active = selected.includes(opt);
-        return (
-          <button key={opt} type="button" onClick={() => onToggle(opt)} style={{ padding: '8px 16px', borderRadius: '100px', border: `1px solid ${active ? 'var(--orange)' : 'var(--border)'}`, background: active ? 'rgba(240,121,32,0.08)' : 'transparent', color: active ? 'var(--orange)' : 'var(--gray)', fontSize: '13px', fontWeight: active ? 600 : 400, cursor: 'pointer', transition: 'all 0.2s' }}>
-            {opt}
-          </button>
-        );
-      })}
-    </div>
-  );
-}
-
-function ContactForm() {
-  const [form, setForm] = useState({ role: '', lookingFor: [], opportunityType: [], name: '', company: '', mobile: '', email: '', budget: '', markets: '', industry: '', message: '' });
-  const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState('');
-
-  const handle = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
-  const togglePill = (key, val) => setForm(f => ({ ...f, [key]: f[key].includes(val) ? f[key].filter(x => x !== val) : [...f[key], val] }));
-  const setRole = role => setForm(f => ({ ...f, role, lookingFor: [], opportunityType: [] }));
-
-  const submit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setError('');
-    const selects = form.role === 'Business Owner' ? form.lookingFor : form.opportunityType;
-    const requirement = [form.role, selects.length > 0 ? selects.join(', ') : ''].filter(Boolean).join(' — ');
-    try {
-      const res = await fetch(`${API}/contacts`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ name: form.name, company: form.company, mobile: form.mobile, email: form.email, requirement, markets: `${form.markets}${form.budget ? ' | Budget: ' + form.budget : ''}${form.industry ? ' | Industry: ' + form.industry : ''}`, message: form.message }),
-      });
-      const data = await res.json();
-      if (!data.success) throw new Error(data.message || 'Submission failed');
-      setSubmitted(true);
-    } catch (err) {
-      setError(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
-
-  if (submitted) return (
-    <div style={{ textAlign: 'center', padding: '80px 40px' }}>
-      <div style={{ width: '64px', height: '64px', background: 'var(--orange)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 24px', fontSize: '28px', color: '#fff' }}>✓</div>
-      <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '30px', color: 'var(--navy)', marginBottom: '16px' }}>Inquiry Received.</h3>
-      <p style={{ color: 'var(--gray)', fontSize: '17px', lineHeight: 1.7, maxWidth: '420px', margin: '0 auto' }}>
-        Your request has been forwarded to our team. We will shortly get in touch with you. A confirmation has been sent to your email.
-      </p>
-    </div>
-  );
-
-  return (
-    <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-      {/* Q1: Role */}
-      <div>
-        <label className="form-label" style={{ marginBottom: '12px', display: 'block' }}>Are you a Business Owner or an Investor?</label>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-          {['Business Owner', 'Investor'].map(role => (
-            <button key={role} type="button" onClick={() => setRole(role)} style={{ padding: '14px', borderRadius: '10px', border: `2px solid ${form.role === role ? 'var(--orange)' : 'var(--border)'}`, background: form.role === role ? 'rgba(240,121,32,0.06)' : 'transparent', color: form.role === role ? 'var(--orange)' : 'var(--gray)', fontWeight: 600, fontSize: '14px', cursor: 'pointer', transition: 'all 0.2s', fontFamily: "'Outfit', sans-serif" }}>
-              {role}
-            </button>
-          ))}
-        </div>
-      </div>
-
-      {/* Q2: Conditional options */}
-      {form.role === 'Business Owner' && (
-        <div>
-          <label className="form-label" style={{ marginBottom: '12px', display: 'block' }}>What are you looking for?</label>
-          <PillToggle options={BUSINESS_OPTIONS} selected={form.lookingFor} onToggle={v => togglePill('lookingFor', v)} />
-        </div>
-      )}
-      {form.role === 'Investor' && (
-        <div>
-          <label className="form-label" style={{ marginBottom: '12px', display: 'block' }}>What type of opportunity are you exploring?</label>
-          <PillToggle options={INVESTOR_OPTIONS} selected={form.opportunityType} onToggle={v => togglePill('opportunityType', v)} />
-        </div>
-      )}
-
-      {/* Common fields */}
-      <div className="xb-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-        {[
-          { name: 'name', label: 'Full Name', placeholder: 'Your full name', req: true },
-          { name: 'company', label: 'Company Name', placeholder: 'Your company or brand name' },
-          { name: 'mobile', label: 'Mobile Number', placeholder: '+91 XXXXX XXXXX' },
-          { name: 'email', label: 'Email Address', placeholder: 'your@email.com', req: true },
-          { name: 'budget', label: 'Preferred Investment / Expansion Budget', placeholder: 'e.g. ₹50L – ₹2Cr' },
-          { name: 'markets', label: 'Preferred Cities / Markets', placeholder: 'Target cities or regions' },
-          { name: 'industry', label: 'Industry Preference', placeholder: 'e.g. F&B, Retail, Lifestyle' },
-        ].map(f => (
-          <div key={f.name} className="form-group">
-            <label className="form-label">{f.label}</label>
-            <input name={f.name} value={form[f.name]} onChange={handle} placeholder={f.placeholder} className="form-input" required={!!f.req} />
-          </div>
-        ))}
-        <div className="form-group" style={{ gridColumn: '1 / -1' }}>
-          <label className="form-label">Message / Requirement</label>
-          <textarea name="message" value={form.message} onChange={handle} placeholder="Tell us about your business goals, expansion plans, or investment interests…" className="form-input" style={{ minHeight: '140px' }} />
-        </div>
-      </div>
-
-      {error && (
-        <div style={{ background: 'rgba(220,53,69,0.08)', border: '1px solid rgba(220,53,69,0.25)', borderRadius: '8px', padding: '12px 16px', color: '#c0392b', fontSize: '14px' }}>
-          {error}
-        </div>
-      )}
-      <button type="submit" disabled={loading} className="btn-primary" style={{ width: '100%', justifyContent: 'center', padding: '18px', fontSize: '14px', opacity: loading ? 0.7 : 1 }}>
-        {loading ? 'Sending…' : 'Send Message'}
-      </button>
-    </form>
-  );
-}
-
 export default function Contact() {
   return (
     <div style={{ background: 'var(--cream-light)' }}>
@@ -154,7 +31,7 @@ export default function Contact() {
         <div style={{ position: 'absolute', bottom: '-10%', right: '10%', width: '500px', height: '500px', background: 'radial-gradient(circle,rgba(240,121,32,0.09) 0%,transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '1440px', margin: '0 auto', width: '100%', position: 'relative', zIndex: 1 }}>
           <div className="section-label">Start a Conversation</div>
-          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '720px' }}>
+          <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '720px' }}>
             Let's start the right<br />
             <span style={{ color: 'var(--orange)' }}>business conversation.</span>
           </h1>
@@ -171,7 +48,7 @@ export default function Contact() {
             <div key={k} style={{ display: 'flex', alignItems: 'center' }} aria-hidden={k === 1}>
               {Array(6).fill(null).map((_, i) => (
                 <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: '32px', paddingRight: '32px' }}>
-                  <span style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(15px, 1.4vw, 20px)', fontWeight: 700, color: '#fff', letterSpacing: '0.06em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
+                  <span style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(15px, 1.4vw, 20px)', fontWeight: 700, color: '#fff', letterSpacing: '0.06em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
                     We Are The Best Franchise Advisory Partners In India
                   </span>
                   <span style={{ color: 'var(--orange)', fontSize: '10px' }}>◆</span>
@@ -207,10 +84,9 @@ export default function Contact() {
 
             {/* Tagline */}
             <div style={{ marginTop: '48px', padding: '32px', background: 'var(--navy)', borderRadius: '12px' }}>
-              <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '18px', color: '#fff', lineHeight: 1.6, margin: '0 0 12px' }}>
-                "Less noise. More execution. Brands + investors aligned."
+              <p style={{ fontFamily: "'Fraunces', serif", fontSize: '18px', color: '#fff', lineHeight: 1.6, margin: 0 }}>
+                Connect with us. India's Leading Franchise Expansion.
               </p>
-              <p style={{ color: 'var(--orange)', fontSize: '12px', fontWeight: 600, letterSpacing: '0.1em', textTransform: 'uppercase', margin: 0 }}>No drama, only delivery.</p>
             </div>
           </FadeSection>
 
@@ -223,15 +99,15 @@ export default function Contact() {
               </p>
             </div>
             <div style={{ background: 'var(--white)', borderRadius: '16px', padding: '56px', border: '1px solid var(--border)' }}>
-              <ContactForm />
+              <LeadForm source="contact" submitLabel="Send Message" />
             </div>
           </FadeSection>
         </div>
       </div>
 
       {/* EXTENSION SECTION */}
-      <div style={{ background: 'var(--navy)', padding: '100px 40px' }}>
-        <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: '80px', alignItems: 'start' }}>
+      <div className="ct-about-section" style={{ background: 'var(--navy)', padding: '100px 40px' }}>
+        <div className="ct-about-grid" style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: '80px', alignItems: 'start' }}>
           <FadeSection>
             <div className="section-label" style={{ marginBottom: '20px' }}>About XPAND Bharat</div>
             <div style={{ width: '40px', height: '2px', background: 'var(--orange)' }} />
@@ -241,17 +117,17 @@ export default function Contact() {
               Headquartered in Gurugram, XPAND Bharat brings 25+ years of collective experience across franchise consulting, investor advisory, expansion planning, and execution-led business growth.
             </p>
             <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '16px', lineHeight: 1.85, margin: 0 }}>
-              Businesses do not struggle because of lack of ambition. They struggle because expansion without structure, investor alignment, and operational planning becomes difficult to sustain at scale.
+              Businesses do not struggle because of lack of ambition. They struggle without structured support.
             </p>
-            <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '20px', fontWeight: 700, color: '#fff', margin: 0, lineHeight: 1.4 }}>
+            <p style={{ fontFamily: "'Fraunces', serif", fontSize: '20px', fontWeight: 700, color: '#fff', margin: 0, lineHeight: 1.4 }}>
               That is where XPAND comes in.
             </p>
-            <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '16px', lineHeight: 1.85, margin: 0 }}>
-              From franchise business structuring and investor-ready proposals to investor alignment, telesales-driven counseling, and expansion execution support, XPAND helps brands scale through commercially disciplined franchise growth systems designed for long-term expansion across India.
-            </p>
             <div style={{ paddingTop: '8px' }}>
-              <Link to="/our-approach" style={{ color: 'var(--orange)', fontSize: '15px', fontWeight: 600, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '8px' }}>
-                Understand our expansion framework → <span style={{ textDecoration: 'underline' }}>Our Approach</span>
+              <Link to="/our-approach" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', color: 'var(--orange)', fontSize: '14px', fontWeight: 700, letterSpacing: '0.03em', textDecoration: 'none', border: '1px solid rgba(240,121,32,0.4)', borderRadius: '10px', padding: '12px 20px', transition: 'background 0.2s, border-color 0.2s' }}
+                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(240,121,32,0.1)'; e.currentTarget.style.borderColor = 'var(--orange)'; }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = 'rgba(240,121,32,0.4)'; }}
+              >
+                Understand our expansion framework <span style={{ fontSize: '16px' }}>→</span>
               </Link>
             </div>
           </FadeSection>
@@ -260,6 +136,10 @@ export default function Contact() {
       <style>{`
         @keyframes xbMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
         .xb-marquee-track { display: flex; width: max-content; animation: xbMarquee 28s linear infinite; }
+        @media (max-width: 860px) {
+          .ct-about-section { padding: 64px 24px !important; }
+          .ct-about-grid { grid-template-columns: 1fr !important; gap: 28px !important; }
+        }
         .xb-marquee-track:hover { animation-play-state: paused; }
       `}</style>
     </div>

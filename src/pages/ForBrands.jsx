@@ -1,7 +1,8 @@
-import { useRef, useEffect, useState } from 'react';
+import { useRef, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Link } from 'react-router-dom';
 import { useContent } from '../hooks/useContent';
+import LeadForm from '../components/LeadForm';
 
 const SERVICES = [
   {
@@ -91,88 +92,6 @@ function FadeSection({ children, delay = 0, style = {}, className = '' }) {
   return <div ref={ref} style={style} className={className}>{children}</div>;
 }
 
-const BUSINESS_OPTIONS = ['Franchise your business', 'Expand your business across cities', 'Looking for funding/investors', 'Franchise expansion advisory', 'Investor alignment support', 'Franchise rollout strategy'];
-const INVESTOR_OPTIONS = ['Franchise investment opportunities', 'Passive income franchise businesses', 'Multi-location franchise businesses', 'Retail franchise opportunities', 'Food & beverage franchise opportunities', 'Expansion-ready businesses', 'Scalable business investments'];
-
-function PillToggle({ options, selected, onToggle }) {
-  return (
-    <div style={{ display: 'flex', flexWrap: 'wrap', gap: '10px' }}>
-      {options.map(opt => {
-        const active = selected.includes(opt);
-        return (
-          <button key={opt} type="button" onClick={() => onToggle(opt)} style={{ padding: '8px 16px', borderRadius: '100px', border: `1px solid ${active ? 'var(--orange)' : 'var(--border)'}`, background: active ? 'rgba(240,121,32,0.08)' : 'transparent', color: active ? 'var(--orange)' : 'var(--gray)', fontSize: '13px', fontWeight: active ? 600 : 400, cursor: 'pointer', transition: 'all 0.2s' }}>
-            {opt}
-          </button>
-        );
-      })}
-    </div>
-  );
-}
-
-function ContactForm() {
-  const [form, setForm] = useState({ role: '', lookingFor: [], opportunityType: [], name: '', company: '', mobile: '', email: '', budget: '', markets: '', industry: '', message: '' });
-  const [submitted, setSubmitted] = useState(false);
-  const handle = e => setForm(f => ({ ...f, [e.target.name]: e.target.value }));
-  const togglePill = (key, val) => setForm(f => ({ ...f, [key]: f[key].includes(val) ? f[key].filter(x => x !== val) : [...f[key], val] }));
-  const submit = e => { e.preventDefault(); setSubmitted(true); };
-
-  if (submitted) return (
-    <div style={{ textAlign: 'center', padding: '80px 40px' }}>
-      <div style={{ fontSize: '48px', marginBottom: '24px' }}>✓</div>
-      <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '28px', color: 'var(--navy)', marginBottom: '16px' }}>Conversation started.</h3>
-      <p style={{ color: 'var(--gray)', fontSize: '16px' }}>Our team will connect with you within 48 hours to discuss your expansion plans.</p>
-    </div>
-  );
-
-  return (
-    <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-      <div>
-        <label className="form-label" style={{ marginBottom: '12px', display: 'block' }}>Are you a Business Owner or an Investor?</label>
-        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '12px' }}>
-          {['Business Owner', 'Investor'].map(role => (
-            <button key={role} type="button" onClick={() => setForm(f => ({ ...f, role, lookingFor: [], opportunityType: [] }))} style={{ padding: '14px', borderRadius: '10px', border: `2px solid ${form.role === role ? 'var(--orange)' : 'var(--border)'}`, background: form.role === role ? 'rgba(240,121,32,0.06)' : 'transparent', color: form.role === role ? 'var(--orange)' : 'var(--gray)', fontWeight: 600, fontSize: '14px', cursor: 'pointer', transition: 'all 0.2s', fontFamily: "'Outfit', sans-serif" }}>
-              {role}
-            </button>
-          ))}
-        </div>
-      </div>
-      {form.role === 'Business Owner' && (
-        <div>
-          <label className="form-label" style={{ marginBottom: '12px', display: 'block' }}>What are you looking for?</label>
-          <PillToggle options={BUSINESS_OPTIONS} selected={form.lookingFor} onToggle={v => togglePill('lookingFor', v)} />
-        </div>
-      )}
-      {form.role === 'Investor' && (
-        <div>
-          <label className="form-label" style={{ marginBottom: '12px', display: 'block' }}>What type of opportunity are you exploring?</label>
-          <PillToggle options={INVESTOR_OPTIONS} selected={form.opportunityType} onToggle={v => togglePill('opportunityType', v)} />
-        </div>
-      )}
-      <div className="xb-form-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '20px' }}>
-        {[
-          { name: 'name', label: 'Full Name', placeholder: 'Your full name', req: true },
-          { name: 'company', label: 'Company Name', placeholder: 'Your company or brand name' },
-          { name: 'mobile', label: 'Mobile Number', placeholder: '+91 XXXXX XXXXX' },
-          { name: 'email', label: 'Email Address', placeholder: 'your@email.com', req: true },
-          { name: 'budget', label: 'Preferred Investment / Expansion Budget', placeholder: 'e.g. ₹50L – ₹2Cr' },
-          { name: 'markets', label: 'Preferred Cities / Markets', placeholder: 'Target cities or regions' },
-          { name: 'industry', label: 'Industry Preference', placeholder: 'e.g. F&B, Retail, Lifestyle' },
-        ].map(f => (
-          <div key={f.name} className="form-group">
-            <label className="form-label">{f.label}</label>
-            <input name={f.name} value={form[f.name]} onChange={handle} placeholder={f.placeholder} className="form-input" required={!!f.req} />
-          </div>
-        ))}
-        <div className="form-group" style={{ gridColumn: '1 / -1' }}>
-          <label className="form-label">Message / Requirement</label>
-          <textarea name="message" value={form.message} onChange={handle} placeholder="Tell us more about your requirement…" className="form-input" style={{ minHeight: '120px' }} />
-        </div>
-      </div>
-      <button type="submit" className="btn-primary" style={{ width: '100%', justifyContent: 'center' }}>Start the Conversation</button>
-    </form>
-  );
-}
-
 export default function ForBrands() {
   const { hero, section } = useContent('for-brands');
   const services = section('services', SERVICES).map((item, i) => ({
@@ -206,7 +125,7 @@ export default function ForBrands() {
           <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.02) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.02) 1px,transparent 1px)`, backgroundSize: '80px 80px', pointerEvents: 'none' }} />
           <div style={{ position: 'relative', zIndex: 1 }}>
             <div className="section-label" style={{ marginBottom: '32px' }}>For Brands</div>
-            <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(30px, 4vw, 60px)', fontWeight: 700, color: '#fff', lineHeight: 1.08, margin: '0 0 28px' }}>
+            <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: '#fff', lineHeight: 1.08, margin: '0 0 28px' }}>
               Expanding India's Best Franchise Businesses,{' '}
               <span style={{ color: 'var(--orange)' }}>One City At A Time.</span>
             </h1>
@@ -233,7 +152,7 @@ export default function ForBrands() {
         <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
           <FadeSection style={{ marginBottom: '64px' }}>
             <div className="section-label">What We Offer</div>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 3.5vw, 48px)', fontWeight: 700, color: 'var(--navy)', maxWidth: '520px', lineHeight: 1.15, marginBottom: '0' }}>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: 'var(--navy)', maxWidth: '520px', lineHeight: 1.15, marginBottom: '0' }}>
               Six pillars of brand expansion.
             </h2>
           </FadeSection>
@@ -248,7 +167,7 @@ export default function ForBrands() {
                   {/* Right content */}
                   <div className="fb-pillar-body">
                     <div style={{ flex: 1 }}>
-                      <h3 style={{ fontFamily: "'Playfair Display', serif", fontSize: '18px', fontWeight: 700, color: 'var(--navy)', marginBottom: '10px', lineHeight: 1.3 }}>{s.title}</h3>
+                      <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: '18px', fontWeight: 700, color: 'var(--navy)', marginBottom: '10px', lineHeight: 1.3 }}>{s.title}</h3>
                       <p style={{ color: 'var(--gray)', fontSize: '13.5px', lineHeight: 1.75, margin: 0 }}>{s.desc}</p>
                     </div>
                     <div style={{ marginTop: '20px', display: 'flex', alignItems: 'center', gap: '12px' }}>
@@ -414,7 +333,7 @@ export default function ForBrands() {
           <FadeSection style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '32px', marginBottom: '72px' }}>
             <div>
               <div className="section-label">Why Us</div>
-              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(32px, 3.5vw, 52px)', fontWeight: 700, color: '#fff', margin: 0, lineHeight: 1.1 }}>
+              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: '#fff', margin: 0, lineHeight: 1.1 }}>
                 Why businesses choose<br />
                 <span style={{ color: 'var(--orange)' }}>XPAND Bharat.</span>
               </h2>
@@ -431,10 +350,10 @@ export default function ForBrands() {
           <div className="fb-why-grid">
             {whyItems.map((item, i) => (
               <FadeSection key={item.title} delay={i * 80} className={`fb-why-card fb-why-card-${i + 1}`}>
-                <div style={{ fontFamily: "'Playfair Display', serif", fontSize: '48px', fontWeight: 700, color: 'var(--orange)', lineHeight: 1, opacity: 0.25, marginBottom: '20px' }}>
+                <div style={{ fontFamily: "'Fraunces', serif", fontSize: '48px', fontWeight: 700, color: 'var(--orange)', lineHeight: 1, opacity: 0.25, marginBottom: '20px' }}>
                   {item.num}
                 </div>
-                <h4 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(15px, 1.4vw, 18px)', fontWeight: 700, color: '#fff', marginBottom: '14px', lineHeight: 1.35 }}>{item.title}</h4>
+                <h4 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(15px, 1.4vw, 18px)', fontWeight: 700, color: '#fff', marginBottom: '14px', lineHeight: 1.35 }}>{item.title}</h4>
                 {item.desc && <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '13px', lineHeight: 1.8, margin: 0 }}>{item.desc}</p>}
                 {item.intro && <p style={{ color: 'rgba(255,255,255,0.45)', fontSize: '13px', lineHeight: 1.8, marginBottom: '10px' }}>{item.intro}</p>}
                 {item.items && (
@@ -460,7 +379,7 @@ export default function ForBrands() {
         <div style={{ maxWidth: '900px', margin: '0 auto' }}>
           <FadeSection style={{ marginBottom: '56px', textAlign: 'center' }}>
             <div className="section-label" style={{ justifyContent: 'center' }}>Let's connect</div>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 3vw, 42px)', fontWeight: 700, color: 'var(--navy)', marginBottom: '16px' }}>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: 'var(--navy)', marginBottom: '16px' }}>
               Let's discuss your expansion plans.
             </h2>
             <p style={{ color: 'var(--gray)', fontSize: '16px', lineHeight: 1.7 }}>
@@ -468,7 +387,7 @@ export default function ForBrands() {
             </p>
           </FadeSection>
           <div className="xb-form-wrap" style={{ background: 'var(--white)', borderRadius: '16px', padding: '56px', border: '1px solid var(--border)' }}>
-            <ContactForm />
+            <LeadForm role="Business Owner" source="for-brands" submitLabel="Get My Expansion Report" />
           </div>
         </div>
       </div>

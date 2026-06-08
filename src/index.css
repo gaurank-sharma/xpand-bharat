@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&display=swap');
+/* ── Premium type system: Fraunces (display serif) for headings, Inter for body ── */
+@import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&family=Inter:wght@300;400;500;600;700&display=swap');
 @import "tailwindcss";
 
 
@@ -38,12 +39,14 @@ html {
 }
 
 body {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   background-color: var(--cream-light);
   color: var(--charcoal);
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.005em;
 }
 
 #root {
@@ -58,11 +61,11 @@ body {
    TYPOGRAPHY UTILITIES
 ============================================ */
 .font-heading {
-  font-family: 'Playfair Display', serif;
+  font-family: 'Fraunces', serif;
 }
 
 .font-body {
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 /* ============================================
@@ -129,7 +132,7 @@ body {
   gap: 8px;
   background: var(--orange);
   color: #fff;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 14px;
   letter-spacing: 0.08em;
@@ -152,7 +155,7 @@ body {
   gap: 8px;
   background: transparent;
   color: var(--white);
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 14px;
   letter-spacing: 0.08em;
@@ -175,7 +178,7 @@ body {
   gap: 8px;
   background: transparent;
   color: var(--charcoal);
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 600;
   font-size: 14px;
   letter-spacing: 0.08em;
@@ -199,7 +202,7 @@ body {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 11px;
   font-weight: 600;
   letter-spacing: 0.2em;
@@ -263,7 +266,7 @@ body {
   padding: 14px 18px;
   border: 1px solid var(--border);
   border-radius: 6px;
-  font-family: 'Outfit', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: 15px;
   color: var(--charcoal);
   background: var(--white);

@@ -39,24 +39,29 @@ const FOCUS_AREAS = [
 
 const PROCESS_STEPS = [
   {
-    num: 1, eyebrow: 'YOU COME TO US', title: 'We Understand Your Business', Icon: Home,
-    items: ['Business model', 'Expansion vision', 'Funding requirements', 'Target cities', 'Scalability potential'],
+    num: 1, eyebrow: 'YOU COME TO US', title: 'You Come to XPAND Bharat', Icon: Home,
+    lead: 'We understand your:',
+    items: ['business model', 'expansion vision', 'funding requirements', 'target cities', 'scalability potential'],
   },
   {
-    num: 2, eyebrow: 'WE MAP', title: 'Expansion Needs Analysis', Icon: Search,
-    items: ['Market opportunities', 'City-wise potential', 'Investor fit', 'Commercial viability', 'Rollout strategy'],
+    num: 2, eyebrow: 'WE MAP', title: 'We Map Your Expansion Needs', Icon: Search,
+    lead: 'Our team helps evaluate:',
+    items: ['market opportunities', 'city-wise expansion potential', 'investor fit', 'commercial viability', 'rollout strategy'],
+    closing: '…so the business is positioned for structured franchise growth.',
   },
   {
-    num: 3, eyebrow: 'WE PREPARE', title: 'Investor-Ready Positioning', Icon: FileText,
-    items: ['Business proposals', 'Franchise frameworks', 'Expansion positioning', 'Commercial narratives', 'Structured presentations'],
+    num: 3, eyebrow: 'WE PREPARE', title: 'We Help You Become Investor-Ready', Icon: FileText,
+    lead: 'We create:',
+    items: ['investor-ready business proposals', 'franchise growth frameworks', 'expansion positioning', 'commercial narratives', 'structured business presentations'],
+    closing: '…designed to attract serious franchise investors.',
   },
   {
-    num: 4, eyebrow: 'WE CONNECT', title: 'Qualified Investor Matchmaking', Icon: Users,
-    items: ['Lead-gen systems', 'Investor network access', 'Telesales counseling', 'Investor alignment', 'Franchise matching'],
+    num: 4, eyebrow: 'WE CONNECT', title: 'We Connect You With Qualified Investors', Icon: Users,
+    para: 'Using our lead-generation systems, investor network, and telesales-driven investor counseling process, we help align your business with commercially relevant investors actively looking for profitable franchise opportunities.',
   },
   {
-    num: 5, eyebrow: 'WE CLOSE', title: 'Deal Support Till Closure', Icon: Gift,
-    items: ['Investor coordination', 'Execution support', 'Commercial discussions', 'Closure facilitation', 'Scalable growth'],
+    num: 5, eyebrow: 'WE CLOSE', title: 'We Support the Deal Till Closure', Icon: Gift,
+    para: 'From investor alignment and coordination to execution support and commercial discussions, XPAND remains involved throughout the expansion journey to help move opportunities toward closure.',
   },
 ];
 
@@ -97,7 +102,7 @@ export default function About() {
         <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '600px', height: '600px', background: 'radial-gradient(circle,rgba(240,121,32,0.09) 0%,transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '1440px', margin: '0 auto', width: '100%', position: 'relative', zIndex: 1 }}>
           <div className="section-label">About XPAND Bharat</div>
-          <h1 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '800px' }}>
+          <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '800px' }}>
             About<br />
             <span style={{ color: 'var(--orange)' }}>XPAND Bharat</span>
           </h1>
@@ -107,38 +112,90 @@ export default function About() {
         </div>
       </div>
 
-      {/* BRAND STATEMENT */}
-      <div style={{ padding: '100px 40px', background: 'var(--cream-light)' }}>
-        <div className="xb-grid-2col" style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '100px', alignItems: 'center' }}>
-          <FadeSection>
-            <div className="section-label">Who We Are</div>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(32px, 4vw, 54px)', fontWeight: 700, color: 'var(--navy)', lineHeight: 1.15, marginBottom: '32px' }}>
-              Who We Are
+      {/* BRAND STATEMENT — About XPAND Bharat */}
+      <div className="ab-statement" style={{ padding: '110px 40px', background: 'var(--cream-light)' }}>
+        <div style={{ maxWidth: '1180px', margin: '0 auto' }}>
+
+          {/* Header */}
+          <FadeSection style={{ textAlign: 'center', marginBottom: '40px' }}>
+            <div className="section-label" style={{ justifyContent: 'center' }}>Who We Are</div>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: 'var(--navy)', lineHeight: 1.1, margin: 0 }}>
+              About XPAND Bharat
             </h2>
-            <p style={{ color: 'var(--gray)', fontSize: '17px', lineHeight: 1.8, marginBottom: '20px' }}>
-              XPAND Bharat is India's leading franchise expansion and investment consulting company, backed by 25+ years of collective industry experience in franchise growth, investor alignment, and business expansion strategy.
-            </p>
-            <p style={{ color: 'var(--gray)', fontSize: '17px', lineHeight: 1.8, marginBottom: '20px' }}>
-              We help businesses scale through structured franchising by aligning brands with qualified investors, expansion opportunities, and commercially viable growth systems. Through our investor network, lead-generation capabilities, and strategic expansion approach, we help brands connect with investors actively looking for profitable franchise business opportunities across sectors like F&B, electronics, fashion, retail, and emerging consumer categories.
-            </p>
-            <p style={{ color: 'var(--gray)', fontSize: '17px', lineHeight: 1.8, marginBottom: '40px' }}>
-              From investor-ready business proposals and franchise expansion planning to investor counseling, lead generation, and execution support, XPAND focuses on building scalable business growth with stronger commercial direction and long-term expansion potential across India.
-            </p>
-            <Link to="/our-approach" className="btn-outline-dark">Discover Our Approach</Link>
           </FadeSection>
-          <FadeSection delay={200}>
-            {/* Philosophy card */}
-            <div style={{ background: 'var(--navy)', borderRadius: '20px', padding: '60px 48px', position: 'relative', overflow: 'hidden' }}>
-              <div style={{ position: 'absolute', top: '-30%', right: '-20%', width: '300px', height: '300px', background: 'radial-gradient(circle,rgba(240,121,32,0.15) 0%,transparent 70%)', pointerEvents: 'none' }} />
-              <div className="section-label" style={{ marginBottom: '24px' }}>Our Philosophy</div>
-              <p style={{ fontFamily: "'Playfair Display', serif", fontSize: '24px', fontWeight: 600, color: '#fff', lineHeight: 1.5, marginBottom: '32px' }}>
-                "Xpand your business to new heights."
+
+          {/* Hero pull-quote */}
+          <FadeSection style={{ maxWidth: '900px', margin: '0 auto 80px', textAlign: 'center' }}>
+            <div style={{ fontFamily: "'Fraunces', serif", fontSize: '60px', color: 'rgba(240,121,32,0.28)', lineHeight: 0.6, marginBottom: '8px' }}>“</div>
+            <p style={{ fontFamily: "'Fraunces', serif", fontStyle: 'italic', fontWeight: 600, fontSize: 'clamp(23px, 2.9vw, 38px)', color: 'var(--navy)', lineHeight: 1.32, margin: 0, letterSpacing: '-0.01em' }}>
+              Anyone can help you open another outlet. We help you build a business that deserves <span style={{ color: 'var(--orange)' }}>fifty more.</span>
+            </p>
+            <div style={{ width: '44px', height: '3px', background: 'var(--orange)', borderRadius: '2px', margin: '32px auto 0' }} />
+          </FadeSection>
+
+          {/* Image + body */}
+          <div className="ab-about-grid">
+            <FadeSection>
+              <div className="ab-about-img">
+                <img src="/image.png" alt="XPAND Bharat office" />
+                <div className="ab-img-badge">
+                  <span className="ab-img-badge-num">25+</span>
+                  <span className="ab-img-badge-label">Years of collective<br />industry experience</span>
+                </div>
+              </div>
+            </FadeSection>
+            <FadeSection delay={150}>
+              <p style={{ color: 'var(--gray)', fontSize: '16px', lineHeight: 1.85, marginBottom: '20px' }}>
+                Headquartered in Gurugram, XPAND Bharat is a franchise consulting and business expansion platform built to help brands scale through structured franchising, qualified investor networks, and commercially disciplined growth strategies.
               </p>
-              <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '15px', lineHeight: 1.7 }}>
-                As the name suggests, XPAND Bharat was built with one clear vision — helping businesses expand to greater commercial heights through structured franchising, investor alignment, and execution-led growth. Headquartered in Gurugram, we operate as a franchise consulting and business expansion platform helping brands scale across India.
+              <p style={{ color: 'var(--gray)', fontSize: '16px', lineHeight: 1.85, marginBottom: '20px' }}>
+                With 25+ years of collective industry experience, we work alongside businesses across food, retail, electronics, fashion, and consumer sectors to create expansion models that are scalable, investable, and execution-ready.
               </p>
+              <p style={{ color: 'var(--gray)', fontSize: '16px', lineHeight: 1.85, marginBottom: '24px' }}>
+                From franchise advisory and investor alignment to territory planning and rollout support, every solution is designed around one objective: helping businesses expand with clarity, confidence, and commercial viability.
+              </p>
+              <div style={{ borderLeft: '3px solid var(--orange)', paddingLeft: '20px' }}>
+                <p style={{ fontFamily: "'Fraunces', serif", fontWeight: 700, fontSize: '20px', color: 'var(--navy)', lineHeight: 1.5, margin: 0 }}>
+                  Because real expansion isn't about growing bigger. It's about growing stronger.
+                </p>
+              </div>
+            </FadeSection>
+          </div>
+
+          {/* Navy quote band */}
+          <FadeSection style={{ marginTop: '80px' }}>
+            <div className="ab-quote-band" style={{ background: 'var(--navy)', borderRadius: '22px', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
+              <div style={{ position: 'absolute', top: '-30%', right: '-8%', width: '360px', height: '360px', background: 'radial-gradient(circle,rgba(240,121,32,0.13) 0%,transparent 70%)', pointerEvents: 'none' }} />
+              <div style={{ position: 'absolute', top: '10px', left: '32px', fontFamily: "'Fraunces', serif", fontSize: '140px', color: 'rgba(255,255,255,0.04)', lineHeight: 1, pointerEvents: 'none' }}>“</div>
+              <div style={{ position: 'relative', zIndex: 1 }}>
+                <p style={{ fontFamily: "'Fraunces', serif", fontStyle: 'italic', fontWeight: 600, fontSize: 'clamp(21px, 2.3vw, 32px)', color: '#fff', lineHeight: 1.4, margin: '0 auto 18px', maxWidth: '760px' }}>
+                  Every successful franchise started with a business that was built to scale.
+                </p>
+                <p style={{ color: 'var(--orange)', fontSize: '12px', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', margin: 0 }}>
+                  Where ambitious brands become scalable businesses
+                </p>
+              </div>
             </div>
           </FadeSection>
+
+          {/* Closing taglines */}
+          <FadeSection style={{ marginTop: '60px', textAlign: 'center' }}>
+            <p style={{ fontFamily: "'Fraunces', serif", fontStyle: 'italic', fontSize: 'clamp(19px, 2.1vw, 28px)', fontWeight: 600, color: 'var(--navy)', margin: '0 0 14px' }}>
+              <span style={{ color: 'var(--orange)' }}>“</span>Xpand your business to new heights<span style={{ color: 'var(--orange)' }}>”</span>
+            </p>
+            <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '14px', margin: '0 auto 14px', maxWidth: '320px' }}>
+              <div style={{ flex: 1, height: '1px', background: 'var(--border)' }} />
+              <span style={{ color: 'var(--orange)', fontSize: '10px' }}>◆</span>
+              <div style={{ flex: 1, height: '1px', background: 'var(--border)' }} />
+            </div>
+            <p style={{ fontFamily: "'Fraunces', serif", fontStyle: 'italic', fontSize: 'clamp(19px, 2.1vw, 28px)', fontWeight: 600, color: 'var(--orange)', margin: 0 }}>
+              <span>“</span>We are the best franchise advisory partners in India<span>”</span>
+            </p>
+            <div style={{ marginTop: '36px' }}>
+              <Link to="/our-approach" className="btn-outline-dark">Discover Our Approach</Link>
+            </div>
+          </FadeSection>
+
         </div>
       </div>
 
@@ -151,7 +208,7 @@ export default function About() {
               <div style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.25em', color: 'rgba(220,168,60,0.85)', textTransform: 'uppercase', marginBottom: '18px' }}>
                 What We Focus On
               </div>
-              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(28px, 3.5vw, 48px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, margin: 0 }}>
+              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, margin: 0 }}>
                 Five areas. One direction.
               </h2>
             </FadeSection>
@@ -208,7 +265,7 @@ export default function About() {
               <div style={{ position: 'absolute', bottom: '28px', left: '22px', right: '22px', zIndex: 2 }}>
                 <div style={{ width: '20px', height: '1px', background: 'rgba(255,255,255,0.4)', marginBottom: '14px' }} />
                 <h3 style={{
-                  fontFamily: "'Playfair Display', serif",
+                  fontFamily: "'Fraunces', serif",
                   fontSize: 'clamp(18px, 1.6vw, 24px)',
                   fontWeight: 400, fontStyle: 'italic',
                   color: '#fff', margin: 0, lineHeight: 1.3,
@@ -228,6 +285,56 @@ export default function About() {
       </div>
 
       <style>{`
+        /* ── About image + body ── */
+        .ab-about-grid {
+          display: grid;
+          grid-template-columns: 1fr 1.15fr;
+          gap: 64px;
+          align-items: center;
+        }
+        .ab-about-img {
+          position: relative;
+          border-radius: 18px;
+          overflow: hidden;
+          box-shadow: 0 24px 60px rgba(13,27,62,0.16);
+        }
+        .ab-about-img img {
+          width: 100%; height: 100%; min-height: 420px;
+          object-fit: cover; display: block;
+          transition: transform 0.6s cubic-bezier(0.25,0.46,0.45,0.94);
+        }
+        .ab-about-img:hover img { transform: scale(1.04); }
+        /* floating badge */
+        .ab-img-badge {
+          position: absolute; left: 20px; bottom: 20px;
+          display: flex; align-items: center; gap: 12px;
+          background: rgba(13,27,62,0.82);
+          backdrop-filter: blur(12px);
+          -webkit-backdrop-filter: blur(12px);
+          border: 1px solid rgba(255,255,255,0.12);
+          border-radius: 14px;
+          padding: 14px 18px;
+        }
+        .ab-img-badge-num {
+          font-family: 'Fraunces', serif;
+          font-size: 30px; font-weight: 700; color: var(--orange); line-height: 1;
+        }
+        .ab-img-badge-label {
+          font-size: 11px; color: rgba(255,255,255,0.7); line-height: 1.4; font-weight: 500;
+        }
+
+        /* quote band */
+        .ab-quote-band { padding: 60px 48px; }
+
+        @media (max-width: 860px) {
+          .ab-statement { padding: 64px 22px !important; }
+          .ab-about-grid { grid-template-columns: 1fr; gap: 28px; }
+          .ab-about-img img { min-height: 280px; }
+          .ab-quote-band { padding: 44px 26px; }
+          .ab-img-badge { left: 14px; bottom: 14px; padding: 12px 15px; }
+          .ab-img-badge-num { font-size: 26px; }
+        }
+
         /* ── Focus areas grid ── */
         .fa-grid {
           display: grid;
@@ -280,8 +387,9 @@ export default function About() {
         .hw-flow {
           display: grid;
           grid-template-columns: 1fr 32px 1fr 32px 1fr 32px 1fr 32px 1fr;
-          align-items: start;
+          align-items: stretch;
         }
+        .hw-flow > div { height: 100%; }
         .hw-arrow-sep {
           display: flex; justify-content: center; align-items: flex-start;
           padding-top: 26px; color: rgba(240,121,32,0.4); font-size: 20px; flex-shrink: 0;
@@ -308,10 +416,13 @@ export default function About() {
           border-radius: 12px; padding: 22px 16px;
         }
         .hw-card-eyebrow { font-size: 9px; font-weight: 700; letter-spacing: 0.18em; color: var(--orange); text-transform: uppercase; margin: 0 0 10px; }
-        .hw-card-title { font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 700; color: #fff; margin: 0 0 14px; line-height: 1.4; }
+        .hw-card-title { font-family: 'Inter', sans-serif; font-size: 14px; font-weight: 700; color: #fff; margin: 0 0 14px; line-height: 1.4; }
+        .hw-card-lead { font-size: 11px; font-weight: 600; color: rgba(255,255,255,0.7); margin: 0 0 8px; }
         .hw-card-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 7px; }
         .hw-card-list li { display: flex; align-items: flex-start; gap: 7px; color: rgba(255,255,255,0.48); font-size: 11.5px; line-height: 1.5; }
         .hw-card-list li span { color: rgba(240,121,32,0.7); flex-shrink: 0; }
+        .hw-card-closing { font-size: 11px; font-style: italic; color: rgba(255,255,255,0.4); line-height: 1.55; margin: 10px 0 0; }
+        .hw-card-para { font-size: 11.5px; color: rgba(255,255,255,0.5); line-height: 1.6; margin: 0; }
 
         @media (max-width: 900px) {
           .hw-section { padding: 60px 20px 80px; }
@@ -322,8 +433,11 @@ export default function About() {
           .hw-step-card { width: 100%; padding: 32px 28px; }
           .hw-card-eyebrow { text-align: center; margin-bottom: 12px; }
           .hw-card-title { text-align: center; font-size: 17px; margin-bottom: 20px; }
+          .hw-card-lead { text-align: center; font-size: 13px; }
           .hw-card-list { gap: 12px; width: fit-content; margin: 0 auto; }
           .hw-card-list li { font-size: 13.5px; }
+          .hw-card-closing { text-align: center; font-size: 12.5px; }
+          .hw-card-para { text-align: center; font-size: 13.5px; }
           .hw-arrow-sep {
             width: 100%; font-size: 0;
             display: flex; justify-content: center; align-items: center;
@@ -349,7 +463,7 @@ export default function About() {
           <FadeSection>
             <div style={{ textAlign: 'center', marginBottom: '80px' }}>
               <p style={{ fontSize: '11px', fontWeight: 700, letterSpacing: '0.25em', color: 'var(--orange)', textTransform: 'uppercase', margin: '0 0 18px' }}>Our Process</p>
-              <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(36px, 5vw, 68px)', fontWeight: 700, color: '#fff', margin: 0, lineHeight: 1.05 }}>
+              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: '#fff', margin: 0, lineHeight: 1.05 }}>
                 How We <span style={{ color: 'var(--orange)' }}>Work</span>
               </h2>
             </div>
@@ -369,11 +483,16 @@ export default function About() {
                     <div className="hw-step-card">
                       <p className="hw-card-eyebrow">{step.eyebrow}</p>
                       <h3 className="hw-card-title">{step.title}</h3>
-                      <ul className="hw-card-list">
-                        {step.items.map(item => (
-                          <li key={item}><span>→</span>{item}</li>
-                        ))}
-                      </ul>
+                      {step.lead && <p className="hw-card-lead">{step.lead}</p>}
+                      {step.items && (
+                        <ul className="hw-card-list">
+                          {step.items.map(item => (
+                            <li key={item}><span>→</span>{item}</li>
+                          ))}
+                        </ul>
+                      )}
+                      {step.closing && <p className="hw-card-closing">{step.closing}</p>}
+                      {step.para && <p className="hw-card-para">{step.para}</p>}
                     </div>
                   </div>
                 </FadeSection>
@@ -392,7 +511,7 @@ export default function About() {
         <div style={{ maxWidth: '700px', margin: '0 auto' }}>
           <FadeSection>
             <div className="section-label" style={{ justifyContent: 'center' }}>Let's build together</div>
-            <h2 style={{ fontFamily: "'Playfair Display', serif", fontSize: 'clamp(32px, 4vw, 52px)', fontWeight: 700, color: 'var(--navy)', marginBottom: '24px', lineHeight: 1.15 }}>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: 'var(--navy)', marginBottom: '24px', lineHeight: 1.15 }}>
               Let's build something that actually lasts.
             </h2>
             <p style={{ color: 'var(--gray)', fontSize: '18px', lineHeight: 1.7, marginBottom: '48px' }}>
