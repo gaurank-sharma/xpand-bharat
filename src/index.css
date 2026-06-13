@@ -106,8 +106,7 @@ body {
   position: relative;
   z-index: 10;
   background: var(--cream-light);
-  border-radius: 60px 60px 0 0;
-  margin-top: -60px;
+  margin-top: 0;
 }
 
 /* ============================================
@@ -310,10 +309,9 @@ textarea.form-input {
 @media (max-width: 768px) {
   .page-hero-section {
     padding: 100px 20px 52px !important;
-    min-height: 380px !important;
+    min-height: 88vh !important;
   }
   .page-hero-section h1 {
-    font-size: clamp(26px, 7vw, 40px) !important;
     max-width: 100% !important;
   }
   .page-hero-section > div:last-child > p {
@@ -321,6 +319,39 @@ textarea.form-input {
     margin-bottom: 28px !important;
   }
 }
+
+/* ============================================
+   FROSTED HERO CONTENT CARD (matches homepage hero)
+============================================ */
+.hero-card {
+  max-width: 660px;
+  background: rgba(9,17,38,0.5);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 20px;
+  padding: 38px 42px;
+}
+.hero-card .section-label { margin-bottom: 16px; }
+.hero-card h1 {
+  max-width: 100% !important;
+  margin-bottom: 16px !important;
+}
+.hero-card p {
+  max-width: 100% !important;
+}
+@media (max-width: 768px) {
+  .hero-card { padding: 26px 22px; max-width: 100%; border-radius: 16px; }
+}
+
+/* ============================================
+   GLOBAL TYPE SCALE — 3 sizes only
+   Heading (h1) · Sub-heading (h2) · Body (p)
+   Small labels/captions (eyebrows, stats, footer micro-copy)
+   keep their own functional sizes and are not "body".
+============================================ */
+h1 { font-size: clamp(32px, 4vw, 52px) !important; }
+h2 { font-size: clamp(25px, 3vw, 38px) !important; }
 
 /* ============================================
    SHARED LAYOUT HELPERS

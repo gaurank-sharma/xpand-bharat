@@ -39,8 +39,8 @@ export default function Insights() {
     <div style={{ background: 'var(--cream-light)' }}>
 
       {/* HERO */}
-      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: 'url("https://images.unsplash.com/photo-1499750310107-5fef28a66643?auto=format&fit=crop&w=1600&q=80")', backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '500px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.88) 0%, rgba(13,27,62,0.72) 100%)' }} />
+      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: 'url("https://images.unsplash.com/photo-1532012197267-da84d127e765?auto=format&fit=crop&w=1600&q=80")', backgroundSize: 'cover', backgroundPosition: 'center center', minHeight: '100vh', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.55) 0%, rgba(7,15,35,0.32) 100%)' }} />
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)`, backgroundSize: '80px 80px' }} />
         <div style={{ position: 'absolute', top: '10%', right: '5%', width: '500px', height: '500px', background: 'radial-gradient(circle,rgba(240,121,32,0.09) 0%,transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '1440px', margin: '0 auto', width: '100%', position: 'relative', zIndex: 1 }}>
@@ -49,7 +49,7 @@ export default function Insights() {
             Perspectives on growth,<br />
             <span style={{ color: 'var(--orange)' }}>expansion and execution.</span>
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '18px', lineHeight: 1.7, maxWidth: '540px' }}>
+          <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '16px', lineHeight: 1.7, maxWidth: '540px' }}>
             Franchise growth, market trends, investor perspectives, and strategic content for serious business professionals.
           </p>
         </div>
@@ -172,7 +172,7 @@ export default function Insights() {
               <div style={{ padding: '0 6px' }}>
               <h3 style={{
                 fontFamily: "'Fraunces', serif",
-                fontSize: '19px', fontWeight: 700,
+                fontSize: '16px', fontWeight: 700,
                 color: 'var(--navy)', lineHeight: 1.35,
                 marginBottom: '12px',
                 display: '-webkit-box', WebkitLineClamp: 2,

@@ -15,7 +15,7 @@ const FOCUS_AREAS = [
     tag: 'Investors',
     label: 'Investor Alignment',
     desc: 'Connecting investors with commercially verified, growth-ready opportunities backed by real due diligence.',
-    img: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=700&q=80',
+    img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=700&q=80',
   },
   {
     tag: 'Clarity',
@@ -33,7 +33,7 @@ const FOCUS_AREAS = [
     tag: 'Growth',
     label: 'Scalable Growth',
     desc: 'Building systems, processes, and governance structures that sustain momentum at every stage of growth.',
-    img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=700&q=80',
+    img: 'https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?auto=format&fit=crop&w=700&q=80',
   },
 ];
 
@@ -86,7 +86,7 @@ export default function About() {
     desc: item.description || item.desc,
     img: item.imageUrl || item.img,
   }));
-  const heroImg = hero?.backgroundImage || 'https://images.unsplash.com/photo-1519389950473-47ba0277781c?auto=format&fit=crop&w=1600&q=80';
+  const heroImg = hero?.backgroundImage || 'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1600&q=80';
 
   return (
     <div style={{ background: 'var(--cream-light)' }}>
@@ -96,19 +96,21 @@ export default function About() {
         <meta name="keywords" content="franchise consulting company India, franchise expansion India, franchise investment advisory India, business expansion advisory Gurugram, franchise consulting firms India" />
       </Helmet>
       {/* HERO */}
-      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '500px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.86) 0%, rgba(13,27,62,0.72) 100%)' }} />
+      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '100vh', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.55) 0%, rgba(7,15,35,0.32) 100%)' }} />
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)`, backgroundSize: '80px 80px' }} />
         <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '600px', height: '600px', background: 'radial-gradient(circle,rgba(240,121,32,0.09) 0%,transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '1440px', margin: '0 auto', width: '100%', position: 'relative', zIndex: 1 }}>
-          <div className="section-label">About XPAND Bharat</div>
-          <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '800px' }}>
-            About<br />
-            <span style={{ color: 'var(--orange)' }}>XPAND Bharat</span>
-          </h1>
-          <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '18px', lineHeight: 1.7, maxWidth: '600px' }}>
-            India's leading franchise expansion and investment consulting company, backed by 25+ years of collective industry experience in franchise growth, investor alignment, and business expansion strategy.
-          </p>
+          <div className="hero-card">
+            <div className="section-label">About XPAND Bharat</div>
+            <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '800px' }}>
+              About<br />
+              <span style={{ color: 'var(--orange)' }}>XPAND Bharat</span>
+            </h1>
+            <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '16px', lineHeight: 1.7, maxWidth: '600px' }}>
+              India's leading franchise expansion and investment consulting company, backed by 25+ years of collective industry experience in franchise growth, investor alignment, and business expansion strategy.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -155,7 +157,7 @@ export default function About() {
                 From franchise advisory and investor alignment to territory planning and rollout support, every solution is designed around one objective: helping businesses expand with clarity, confidence, and commercial viability.
               </p>
               <div style={{ borderLeft: '3px solid var(--orange)', paddingLeft: '20px' }}>
-                <p style={{ fontFamily: "'Fraunces', serif", fontWeight: 700, fontSize: '20px', color: 'var(--navy)', lineHeight: 1.5, margin: 0 }}>
+                <p style={{ fontFamily: "'Fraunces', serif", fontWeight: 700, fontSize: '16px', color: 'var(--navy)', lineHeight: 1.5, margin: 0 }}>
                   Because real expansion isn't about growing bigger. It's about growing stronger.
                 </p>
               </div>
@@ -514,7 +516,7 @@ export default function About() {
             <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: 'var(--navy)', marginBottom: '24px', lineHeight: 1.15 }}>
               Let's build something that actually lasts.
             </h2>
-            <p style={{ color: 'var(--gray)', fontSize: '18px', lineHeight: 1.7, marginBottom: '48px' }}>
+            <p style={{ color: 'var(--gray)', fontSize: '16px', lineHeight: 1.7, marginBottom: '48px' }}>
               Whether you are scaling a brand, exploring opportunities, or building strategic partnerships, XPANDBHARAT is designed to support serious business growth.
             </p>
             <Link to="/contact" className="btn-primary" style={{ fontSize: '14px' }}>Let's Talk Business</Link>

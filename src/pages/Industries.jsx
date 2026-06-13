@@ -211,7 +211,7 @@ function RoadmapViz() {
 
 export default function Industries() {
   const { hero } = useContent('industries');
-  const heroImg = hero?.backgroundImage || 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=1600&q=80';
+  const heroImg = hero?.backgroundImage || 'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1600&q=80';
 
   return (
     <div style={{ background: 'var(--cream-light)' }}>
@@ -222,19 +222,21 @@ export default function Industries() {
       </Helmet>
 
       {/* HERO */}
-      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '500px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.88) 0%, rgba(13,27,62,0.72) 100%)' }} />
+      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '100vh', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.55) 0%, rgba(7,15,35,0.32) 100%)' }} />
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)`, backgroundSize: '80px 80px' }} />
         <div style={{ position: 'absolute', bottom: '-10%', right: '10%', width: '500px', height: '500px', background: 'radial-gradient(circle,rgba(240,121,32,0.08) 0%,transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '1440px', margin: '0 auto', width: '100%', position: 'relative', zIndex: 1 }}>
-          <div className="section-label">Industries</div>
-          <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '760px' }}>
-            Industries we help scale<br />
-            <span style={{ color: 'var(--orange)' }}>through expansion.</span>
-          </h1>
-          <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '18px', lineHeight: 1.7, maxWidth: '620px' }}>
-            Whether you are exploring how to expand your brand through franchising or looking for investor-ready franchise opportunities in India, XPAND provides structured franchise business advisory, franchise expansion support, investor alignment, and execution-led growth strategy under one framework.
-          </p>
+          <div className="hero-card">
+            <div className="section-label">Industries</div>
+            <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '760px' }}>
+              Industries we help scale<br />
+              <span style={{ color: 'var(--orange)' }}>through expansion.</span>
+            </h1>
+            <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '16px', lineHeight: 1.7, maxWidth: '620px' }}>
+              Whether you are exploring how to expand your brand through franchising or looking for investor-ready franchise opportunities in India, XPAND provides structured franchise business advisory, franchise expansion support, investor alignment, and execution-led growth strategy under one framework.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -456,7 +458,7 @@ export default function Industries() {
             <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: '#fff', marginBottom: '24px', lineHeight: 1.15 }}>
               Ready to explore your sector?
             </h2>
-            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '18px', lineHeight: 1.7, marginBottom: '48px' }}>
+            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '16px', lineHeight: 1.7, marginBottom: '48px' }}>
               Whether you are a brand ready to expand or an investor looking to enter a high-growth sector, XPANDBHARAT gives you the structure, clarity, and execution support to move with confidence.
             </p>
             <div style={{ display: 'flex', gap: '16px', justifyContent: 'center', flexWrap: 'wrap' }}>

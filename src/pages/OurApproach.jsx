@@ -117,19 +117,21 @@ export default function OurApproach() {
         <meta name="keywords" content="franchise expansion framework India, franchise consulting approach, franchise expansion strategy India, franchise business structuring, investor-ready franchise India" />
       </Helmet>
       {/* HERO */}
-      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '500px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.86) 0%, rgba(13,27,62,0.72) 100%)' }} />
+      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '100vh', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.55) 0%, rgba(7,15,35,0.32) 100%)' }} />
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)`, backgroundSize: '80px 80px' }} />
         <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '500px', height: '500px', background: 'radial-gradient(circle,rgba(240,121,32,0.09) 0%,transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '1440px', margin: '0 auto', width: '100%', position: 'relative', zIndex: 1 }}>
-          <div className="section-label">Our Approach</div>
-          <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '760px' }}>
-            Good businesses deserve<br />
-            <span style={{ color: 'var(--orange)' }}>more than random expansion.</span>
-          </h1>
-          <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '18px', lineHeight: 1.7, maxWidth: '600px' }}>
-            XPAND helps brands become investor-ready, scale through structured franchising, and align with commercially serious investors looking for profitable franchise opportunities in India.
-          </p>
+          <div className="hero-card">
+            <div className="section-label">Our Approach</div>
+            <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '760px' }}>
+              Good businesses deserve<br />
+              <span style={{ color: 'var(--orange)' }}>more than random expansion.</span>
+            </h1>
+            <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '16px', lineHeight: 1.7, maxWidth: '600px' }}>
+              XPAND helps brands become investor-ready, scale through structured franchising, and align with commercially serious investors looking for profitable franchise opportunities in India.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -153,10 +155,10 @@ export default function OurApproach() {
                   </div>
                   <div>
                     <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(24px, 2.5vw, 36px)', fontWeight: 700, color: 'var(--navy)', marginBottom: '16px' }}>{step.title}</h3>
-                    <p style={{ color: 'var(--gray)', fontSize: '17px', lineHeight: 1.7, maxWidth: '600px' }}>{step.desc}</p>
+                    <p style={{ color: 'var(--gray)', fontSize: '16px', lineHeight: 1.7, maxWidth: '600px' }}>{step.desc}</p>
                     {step.quote && (
                       <div style={{ marginTop: '24px', borderLeft: '3px solid var(--orange)', paddingLeft: '20px', maxWidth: '560px' }}>
-                        <p style={{ fontFamily: "'Fraunces', serif", fontStyle: 'italic', fontSize: '18px', color: 'var(--orange)', margin: 0, lineHeight: 1.65, letterSpacing: '0.01em' }}>
+                        <p style={{ fontFamily: "'Fraunces', serif", fontStyle: 'italic', fontSize: '16px', color: 'var(--orange)', margin: 0, lineHeight: 1.65, letterSpacing: '0.01em' }}>
                           "{step.quote}"
                         </p>
                       </div>

@@ -195,7 +195,7 @@ export default function ForBrands() {
         .fb-hero {
           display: grid;
           grid-template-columns: 1fr 1fr;
-          min-height: 680px;
+          min-height: 100vh;
           background: var(--navy-dark);
           overflow: hidden;
         }

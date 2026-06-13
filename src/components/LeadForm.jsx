@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef } from 'react';
 import { API } from '../hooks/useContent';
 
 /* ── Options ───────────────────────────────────────────────── */
@@ -71,7 +71,7 @@ function RadioGroup({ label, options, value, onChange }) {
   );
 }
 
-export default function LeadForm({ role: fixedRole = '', source = 'website', submitLabel = 'Get My Report' }) {
+export default function LeadForm({ role: fixedRole = '', source = 'website', submitLabel = 'Get My Report', brochureUrl = '' }) {
   const [step, setStep] = useState(1);
   const [form, setForm] = useState({
     role: fixedRole, primaryGoal: '',
@@ -95,8 +95,15 @@ export default function LeadForm({ role: fixedRole = '', source = 'website', sub
   const step2Ok = form.sector && form.geography && form.budget && form.timeline;
   const step3Ok = form.name.trim() && validMobile && validEmail && form.consentReport;
 
-  const next = () => { setError(''); setStep(s => Math.min(3, s + 1)); window.scrollTo({ top: window.scrollY, behavior: 'auto' }); };
-  const back = () => { setError(''); setStep(s => Math.max(1, s - 1)); };
+  const wrapRef = useRef(null);
+  const scrollToForm = () => {
+    const el = wrapRef.current;
+    if (!el) return;
+    const top = el.getBoundingClientRect().top + window.scrollY - 100; // clear navbar
+    window.scrollTo({ top, behavior: 'smooth' });
+  };
+  const next = () => { setError(''); setStep(s => Math.min(3, s + 1)); requestAnimationFrame(scrollToForm); };
+  const back = () => { setError(''); setStep(s => Math.max(1, s - 1)); requestAnimationFrame(scrollToForm); };
 
   const submit = async (e) => {
     e.preventDefault();
@@ -111,6 +118,16 @@ export default function LeadForm({ role: fixedRole = '', source = 'website', sub
       const d = await res.json();
       if (!d.success) throw new Error(d.message || 'Submission failed');
       setSubmitted(true);
+      // Gated brochure: trigger the PDF download on successful submit
+      if (brochureUrl) {
+        const a = document.createElement('a');
+        a.href = brochureUrl;
+        a.download = 'XPAND-Bharat-Presentation.pdf';
+        a.target = '_blank';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+      }
     } catch (err) {
       setError(err.message);
     } finally {
@@ -122,10 +139,15 @@ export default function LeadForm({ role: fixedRole = '', source = 'website', sub
     <div className="lf-wrap">
       <div style={{ textAlign: 'center', padding: '60px 24px' }}>
         <div style={{ width: '64px', height: '64px', background: 'var(--orange)', borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center', margin: '0 auto 24px', fontSize: '28px', color: '#fff' }}>✓</div>
-        <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: '28px', color: 'var(--navy)', marginBottom: '14px' }}>Your report is on the way.</h3>
+        <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: '28px', color: 'var(--navy)', marginBottom: '14px' }}>{brochureUrl ? 'Your brochure is downloading…' : 'Your report is on the way.'}</h3>
         <p style={{ color: 'var(--gray)', fontSize: '16px', lineHeight: 1.7, maxWidth: '440px', margin: '0 auto' }}>
-          Thank you, {form.name.split(' ')[0]}. We'll review your details and get back to you within 48 hours. A confirmation has been sent to your email.
+          Thank you, {form.name.split(' ')[0]}. {brochureUrl ? 'The XPAND Bharat presentation is downloading now. ' : ''}We'll review your details and get back to you within 48 hours. A confirmation has been sent to your email.
         </p>
+        {brochureUrl && (
+          <a href={brochureUrl} download="XPAND-Bharat-Presentation.pdf" target="_blank" rel="noreferrer" style={{ display: 'inline-block', marginTop: '22px', color: 'var(--orange)', fontWeight: 700, fontSize: '14px', textDecoration: 'underline' }}>
+            Download didn't start? Click here ↓
+          </a>
+        )}
       </div>
       <FormStyles />
     </div>
@@ -133,6 +155,8 @@ export default function LeadForm({ role: fixedRole = '', source = 'website', sub
 
   return (
     <div className="lf-wrap">
+      {/* anchor */}
+      <span ref={wrapRef} style={{ position: 'absolute', marginTop: '-20px' }} aria-hidden="true" />
       {/* Progress */}
       <div className="lf-progress">
         {[1, 2, 3].map(n => (

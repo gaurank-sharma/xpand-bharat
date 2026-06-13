@@ -94,7 +94,7 @@ export default function InsightDetail() {
 
       {/* BODY */}
       <div style={{ maxWidth: '780px', margin: '0 auto', padding: '60px 40px 40px' }}>
-        <p style={{ fontFamily: "'Fraunces', serif", fontStyle: 'italic', fontSize: '20px', lineHeight: 1.6, color: 'var(--navy)', marginBottom: '40px', paddingBottom: '32px', borderBottom: '1px solid var(--border)' }}>
+        <p style={{ fontFamily: "'Fraunces', serif", fontStyle: 'italic', fontSize: '16px', lineHeight: 1.6, color: 'var(--navy)', marginBottom: '40px', paddingBottom: '32px', borderBottom: '1px solid var(--border)' }}>
           {post.excerpt}
         </p>
         <div className="insight-prose" dangerouslySetInnerHTML={{ __html: post.content || '<p>Full article coming soon.</p>' }} />

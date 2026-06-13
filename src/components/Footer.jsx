@@ -1,5 +1,7 @@
+import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSettings } from '../hooks/useContent';
+import LeadForm from './LeadForm';
 
 const COLS = [
   {
@@ -35,6 +37,8 @@ const SOCIAL_ICONS = {
   linkedin: {
     label: 'LinkedIn',
     fallback: 'https://www.linkedin.com/company/xpandbharat/',
+    brand: '#0A66C2',
+    hoverBg: '#0A66C2',
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
         <path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/>
@@ -45,6 +49,8 @@ const SOCIAL_ICONS = {
   instagram: {
     label: 'Instagram',
     fallback: 'https://www.instagram.com/xpandbharat',
+    brand: '#E4405F',
+    hoverBg: 'linear-gradient(45deg, #feda75, #fa7e1e, #d62976, #962fbf, #4f5bd5)',
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
         <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
@@ -56,6 +62,8 @@ const SOCIAL_ICONS = {
   facebook: {
     label: 'Facebook',
     fallback: 'https://www.facebook.com/share/1HFEiRkeXX/?mibextid=wwXIfr',
+    brand: '#1877F2',
+    hoverBg: '#1877F2',
     icon: (
       <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
         <path d="M18 2h-3a5 5 0 00-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 011-1h3z"/>
@@ -78,6 +86,7 @@ const telHref = (phone) => `tel:${(phone || '').replace(/[^\d+]/g, '')}`;
 
 export default function Footer() {
   const { pathname } = useLocation();
+  const [brochureOpen, setBrochureOpen] = useState(false);
   const settings = useSettings();
   const s = settings || {};
   const social = s.socialLinks || {};
@@ -105,9 +114,9 @@ export default function Footer() {
             </h2>
             <p style={{ color: 'var(--gray)', fontSize: '16px', margin: 0 }}>{footerTagline}</p>
           </div>
-          <Link to="/contact" className="btn-primary" style={{ flexShrink: 0 }}>
-            Schedule a Strategy Call
-          </Link>
+          <button onClick={() => setBrochureOpen(true)} className="btn-primary" style={{ flexShrink: 0 }}>
+            Download Brochure ↓
+          </button>
         </div>
       </div>
       )}
@@ -183,13 +192,13 @@ export default function Footer() {
             {socials.map(s => (
               <a key={s.label} href={s.href} aria-label={s.label} target="_blank" rel="noreferrer" style={{
                 width: '36px', height: '36px', borderRadius: '50%',
-                border: '1px solid #D5D2CC',
+                border: `1px solid ${s.brand}`,
                 display: 'flex', alignItems: 'center', justifyContent: 'center',
-                color: 'var(--gray)', fontSize: '10px', fontWeight: 700,
+                color: s.brand, fontSize: '10px', fontWeight: 700,
                 textDecoration: 'none', transition: 'all 0.2s',
               }}
-                onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--orange)'; e.currentTarget.style.color = 'var(--orange)'; e.currentTarget.style.background = 'rgba(240,121,32,0.06)'; }}
-                onMouseLeave={e => { e.currentTarget.style.borderColor = '#D5D2CC'; e.currentTarget.style.color = 'var(--gray)'; e.currentTarget.style.background = 'transparent'; }}
+                onMouseEnter={e => { e.currentTarget.style.background = s.hoverBg; e.currentTarget.style.color = '#fff'; e.currentTarget.style.borderColor = 'transparent'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = s.brand; e.currentTarget.style.borderColor = s.brand; e.currentTarget.style.transform = 'translateY(0)'; }}
               >
                 <span style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{s.icon}</span>
               </a>
@@ -211,6 +220,35 @@ export default function Footer() {
           .xb-footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
         }
       `}</style>
+
+      {/* ── BROCHURE MODAL (gated download) ── */}
+      {brochureOpen && (
+        <div
+          onClick={() => setBrochureOpen(false)}
+          style={{ position: 'fixed', inset: 0, zIndex: 2000, background: 'rgba(7,15,35,0.6)', backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: '40px 20px', overflowY: 'auto' }}
+        >
+          <div
+            onClick={e => e.stopPropagation()}
+            style={{ background: 'var(--white)', borderRadius: '18px', width: '100%', maxWidth: '720px', padding: '40px 40px 36px', position: 'relative', boxShadow: '0 30px 80px rgba(0,0,0,0.4)', margin: 'auto' }}
+          >
+            <button
+              onClick={() => setBrochureOpen(false)}
+              aria-label="Close"
+              style={{ position: 'absolute', top: '18px', right: '18px', width: '34px', height: '34px', borderRadius: '50%', border: '1px solid var(--border)', background: 'transparent', color: 'var(--gray)', fontSize: '16px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1 }}
+            >✕</button>
+            <div style={{ marginBottom: '24px', maxWidth: '90%' }}>
+              <div className="section-label">Get the Brochure</div>
+              <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(22px, 2.4vw, 30px)', fontWeight: 700, color: 'var(--navy)', lineHeight: 1.2, margin: '0 0 8px' }}>
+                A few details, then it's yours.
+              </h3>
+              <p style={{ color: 'var(--gray)', fontSize: '14.5px', lineHeight: 1.6, margin: 0 }}>
+                The XPAND Bharat presentation downloads instantly after you submit.
+              </p>
+            </div>
+            <LeadForm source="brochure-download" submitLabel="Download Brochure ↓" brochureUrl="/XpandBharat%20Presentation.pdf" />
+          </div>
+        </div>
+      )}
     </footer>
   );
 }

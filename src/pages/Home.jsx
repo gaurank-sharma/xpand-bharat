@@ -69,6 +69,7 @@ function FadeSection({ children, delay = 0, style = {}, className = '' }) {
 
 export default function Home() {
   const { hero, section } = useContent('home');
+  const heroSubtitle = hero?.subtitle || 'XPAND helps brands become investor-ready, scale through structured franchising, and align with commercially serious investors looking for profitable franchise opportunities in India.';
   const pillars = section('pillars', PILLARS).map(p => ({
     label: p.title || p.label,
     desc: p.description || p.desc,
@@ -80,8 +81,6 @@ export default function Home() {
     img: c.imageUrl || c.img,
     to: c.link || c.to,
   }));
-  const heroSubtitle = hero?.subtitle || 'XPAND helps brands become investor-ready, scale through structured franchising, and align with commercially serious investors looking for profitable franchise opportunities in India.';
-
   // Auto-slide testimonials on mobile (the slider only scrolls horizontally ≤900px)
   const testimonialsRef = useRef(null);
   useEffect(() => {
@@ -126,112 +125,48 @@ export default function Home() {
         <meta name="description" content="XPAND Bharat is India's leading franchise consulting company helping brands expand through structured franchising, investor alignment, and execution-led growth. Connect with serious franchise investors across India." />
         <meta name="keywords" content="franchise consulting company, franchise expansion consultants India, franchise investment advisory India, franchise lead generation, franchise investor network India, best franchise advisory India, franchise consulting firms India, business expansion advisory" />
       </Helmet>
-      {/* ─── HERO WRAPPER ─── */}
-      <div className="hero-wrapper">
-        <section className="hero-sticky" style={{ background: 'var(--navy-dark)' }}>
-          <video
-            autoPlay muted loop playsInline
-            style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.35 }}
-          >
-            <source src="/video/hero.mp4" type="video/mp4" />
-          </video>
+      {/* ─── HERO — full-screen video, EBG-style wordmark + content block ─── */}
+      <div className="home-hero" style={{ background: 'var(--navy-dark)', minHeight: '100vh', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden' }}>
+        <video
+          autoPlay muted loop playsInline
+          onLoadedMetadata={(e) => { e.currentTarget.playbackRate = 1.5; }}
+          poster="https://images.pexels.com/videos/12731888/cityscape-downtown-downtown-minneapolis-minneapolis-12731888.jpeg?auto=compress&cs=tinysrgb&w=1600"
+          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.92 }}
+        >
+          {/* Self-hosted free aerial clip — no people (Pexels, royalty-free). Lives in /public/video/hero.mp4 */}
+          <source src="/video/hero.mp4" type="video/mp4" />
+        </video>
 
-          <div style={{
-            position: 'absolute', inset: 0,
-            backgroundImage: `linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px)`,
-            backgroundSize: '80px 80px',
-          }} />
+        {/* Readability wash — darker top-left (wordmark) and bottom (content block) */}
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(160deg, rgba(7,15,35,0.62) 0%, rgba(7,15,35,0.18) 38%, rgba(7,15,35,0.86) 100%)' }} />
 
-          <div style={{
-            position: 'absolute', inset: 0,
-            background: 'linear-gradient(135deg, rgba(7,15,35,0.85) 0%, rgba(13,27,62,0.6) 50%, rgba(7,15,35,0.75) 100%)',
-          }} />
+        {/* Full-height column: wordmark pinned top, content block pinned bottom */}
+        <div className="home-hero-inner" style={{ position: 'relative', zIndex: 2, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '24px', maxWidth: '1440px', width: '100%', margin: '0 auto', padding: '96px 40px 56px', boxSizing: 'border-box' }}>
 
-          <div style={{
-            position: 'absolute', bottom: '-10%', left: '5%',
-            width: '500px', height: '500px',
-            background: 'radial-gradient(circle, rgba(240,121,32,0.12) 0%, transparent 70%)',
-            pointerEvents: 'none',
-          }} />
+          {/* Giant brand wordmark (EBG-style) */}
+          <div className="home-hero-mark" style={{ pointerEvents: 'none' }}>
+            <span style={{ display: 'block', fontFamily: "'Fraunces', serif", fontWeight: 700, lineHeight: 0.9, letterSpacing: '-0.02em', color: 'rgba(255,255,255,0.94)' }}>XPAND</span>
+            <span style={{ display: 'block', fontFamily: "'Fraunces', serif", fontWeight: 700, lineHeight: 0.9, letterSpacing: '-0.02em', color: 'var(--orange)' }}>BHARAT</span>
+          </div>
 
-          <div className="xb-hero-content">
-            <div className="xb-hero-inner">
-              <div className="section-label" style={{ marginBottom: '28px', animationDelay: '0.2s' }}>
-                India's Leading Franchise Expansion & Advisory Platform
-              </div>
-
-              <h1 style={{
-                fontFamily: "'Fraunces', serif",
-                fontSize: 'clamp(34px, min(6.4vw, 10.5vh), 80px)',
-                fontWeight: 700,
-                color: '#fff',
-                lineHeight: 1.05,
-                margin: '0 0 12px',
-                letterSpacing: '-0.02em',
-              }}>
-                Good businesses deserve
-              </h1>
-              <h1 style={{
-                fontFamily: "'Fraunces', serif",
-                fontSize: 'clamp(34px, min(6.4vw, 10.5vh), 80px)',
-                fontWeight: 700,
-                color: 'var(--orange)',
-                lineHeight: 1.05,
-                margin: '0 0 32px',
-                letterSpacing: '-0.02em',
-              }}>
-                more than random expansion.
-              </h1>
-
-              <p style={{
-                color: 'rgba(255,255,255,0.7)', fontSize: 'clamp(15px, 1.8vw, 20px)',
-                lineHeight: 1.7, maxWidth: '560px', marginBottom: '48px',
-                fontWeight: 300,
-              }}>
-                {heroSubtitle}
-              </p>
-
-              <div className="xb-hero-cta">
-                <Link to="/contact" className="btn-primary">Discuss Your Requirement</Link>
-                <Link to="/growth-opportunities" className="btn-outline">Explore Opportunities</Link>
-              </div>
+          {/* Content block (EBG-style frosted card) */}
+          <div className="home-hero-card" style={{ maxWidth: '640px', background: 'rgba(9,17,38,0.5)', backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '20px', padding: '38px 42px' }}>
+            <div className="section-label" style={{ marginBottom: '18px' }}>India's Leading Franchise Expansion &amp; Advisory Platform</div>
+            <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 48px)', fontWeight: 700, lineHeight: 1.08, margin: '0 0 18px', letterSpacing: '-0.01em' }}>
+              <span style={{ color: '#fff' }}>Good businesses deserve </span>
+              <span style={{ color: 'var(--orange)' }}>more than random expansion.</span>
+            </h1>
+            <p style={{ color: 'rgba(255,255,255,0.72)', fontSize: '16px', lineHeight: 1.7, margin: '0 0 28px' }}>{heroSubtitle}</p>
+            <div className="xb-hero-cta">
+              <Link to="/contact" className="btn-primary">Discuss Your Requirement</Link>
+              <Link to="/growth-opportunities" className="btn-outline">Explore Opportunities</Link>
             </div>
           </div>
-
-          <div style={{
-            position: 'absolute', bottom: '40px', left: '50%', transform: 'translateX(-50%)',
-            display: 'flex', flexDirection: 'column', alignItems: 'center', gap: '8px', zIndex: 3,
-          }}>
-            <p style={{ color: 'rgba(255,255,255,0.4)', fontSize: '10px', letterSpacing: '0.2em', textTransform: 'uppercase' }}>Scroll</p>
-            <div style={{
-              width: '1px', height: '60px',
-              background: 'linear-gradient(to bottom, rgba(240,121,32,0.8), transparent)',
-              animation: 'scrollLine 2s ease-in-out infinite',
-            }} />
-          </div>
-        </section>
+        </div>
       </div>
 
       {/* ─── RISING CONTENT PANEL ─── */}
       <div className="rising-panel">
-
-        {/* Marquee brand statement */}
-        <div style={{ background: 'var(--navy)', borderTop: '1px solid rgba(255,255,255,0.06)', borderBottom: '1px solid rgba(255,255,255,0.06)', padding: '22px 0', overflow: 'hidden' }}>
-          <div className="xb-marquee-track">
-            {[0,1].map(k => (
-              <div key={k} className="xb-marquee-inner" aria-hidden={k === 1}>
-                {Array(6).fill(null).map((_, i) => (
-                  <span key={i} style={{ display: 'inline-flex', alignItems: 'center', gap: '32px', paddingRight: '32px' }}>
-                    <span style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(15px, 1.4vw, 20px)', fontWeight: 700, color: '#fff', letterSpacing: '0.06em', textTransform: 'uppercase', whiteSpace: 'nowrap' }}>
-                      We Are The Best Franchise Advisory Partners In India
-                    </span>
-                    <span style={{ color: 'var(--orange)', fontSize: '10px' }}>◆</span>
-                  </span>
-                ))}
-              </div>
-            ))}
-          </div>
-        </div>
 
         {/* Philosophy section */}
         <div className="xb-philosophy-section" style={{ background: 'var(--cream-light)' }}>
@@ -246,7 +181,7 @@ export default function Home() {
                 }}>
                   Structured franchise growth rarely happens accidentally.
                 </h2>
-                <p style={{ color: 'var(--gray)', fontSize: '17px', lineHeight: 1.8, marginBottom: '40px', maxWidth: '480px' }}>
+                <p style={{ color: 'var(--gray)', fontSize: '16px', lineHeight: 1.8, marginBottom: '40px', maxWidth: '480px' }}>
                   XPAND Bharat works through a commercially disciplined expansion process designed to help businesses scale through franchising with stronger investor alignment, operational clarity, and execution-backed growth systems.
                 </p>
                 <Link to="/our-approach" className="btn-outline-dark">Discover Our Approach</Link>
@@ -391,11 +326,12 @@ export default function Home() {
                 <div style={{ position: 'relative', zIndex: 2 }}>
                   <span style={{
                     display: 'inline-block',
-                    border: '1px solid rgba(220,168,60,0.5)',
-                    color: 'rgba(230,178,70,0.9)',
-                    fontSize: '9px', fontWeight: 700,
-                    letterSpacing: '0.28em', textTransform: 'uppercase',
-                    padding: '5px 13px',
+                    border: '1px solid rgba(230,178,70,0.7)',
+                    background: 'rgba(13,27,62,0.35)',
+                    color: 'rgba(238,190,90,1)',
+                    fontSize: '14px', fontWeight: 700,
+                    letterSpacing: '0.16em', textTransform: 'uppercase',
+                    padding: '11px 24px',
                   }}>{card.tag}</span>
                 </div>
 
@@ -439,7 +375,7 @@ export default function Home() {
                 maxWidth: '960px', margin: '0 auto 28px', lineHeight: 1.1,
                 letterSpacing: '-0.01em',
               }}>
-                We are the best franchise<br className="br-desktop" />advisory partners in India
+                We are the best franchise <br className="br-desktop" />advisory partners in India
               </h2>
               <p style={{ fontFamily: "'Fraunces', serif", color: 'var(--gray)', fontSize: 'clamp(16px, 1.6vw, 20px)', lineHeight: 1.65, maxWidth: '640px', margin: '0 auto 56px' }}>
                 Whether you are scaling a brand, exploring opportunities, or building strategic partnerships, XPAND Bharat is designed to support serious franchise business growth across India.
@@ -560,7 +496,7 @@ export default function Home() {
                   Xpand Bharat has been a game-changer for our expansion journey. Their structured approach helped us scale faster while maintaining brand consistency. Within months, we were closing multiple franchise locations seamlessly.
                 </p>
                 <div style={{ borderTop: '1px solid var(--border)', paddingTop: '24px' }}>
-                  <p style={{ fontFamily: "'Fraunces', serif", fontStyle: 'italic', fontSize: '19px', color: 'var(--navy)', margin: '0 0 5px' }}>Abhishek Gupta</p>
+                  <p style={{ fontFamily: "'Fraunces', serif", fontStyle: 'italic', fontSize: '16px', color: 'var(--navy)', margin: '0 0 5px' }}>Abhishek Gupta</p>
                   <p style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gray)', margin: 0 }}>Founder — Haldiwale</p>
                 </div>
               </FadeSection>
@@ -577,7 +513,7 @@ export default function Home() {
                     As an investor, finding the right brand is always a challenge. Xpand Bharat made the entire process transparent and data-driven. Their insights and support helped me make confident investment decisions. Highly recommended.
                   </p>
                   <div style={{ borderTop: '1px solid rgba(255,255,255,0.12)', paddingTop: '24px' }}>
-                    <p style={{ fontFamily: "'Fraunces', serif", fontStyle: 'italic', fontSize: '19px', color: '#fff', margin: '0 0 5px' }}>Dikshant Rai</p>
+                    <p style={{ fontFamily: "'Fraunces', serif", fontStyle: 'italic', fontSize: '16px', color: '#fff', margin: '0 0 5px' }}>Dikshant Rai</p>
                     <p style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'rgba(240,121,32,0.85)', margin: 0 }}>Franchise Investor</p>
                   </div>
                 </div>
@@ -592,7 +528,7 @@ export default function Home() {
                   Xpand Bharat made my first franchise investment smooth and stress-free. From shortlisting the right brand to guiding me through financials and location strategy — it didn't feel like a service, it felt like a long-term partner.
                 </p>
                 <div style={{ borderTop: '1px solid var(--border)', paddingTop: '24px' }}>
-                  <p style={{ fontFamily: "'Fraunces', serif", fontStyle: 'italic', fontSize: '19px', color: 'var(--navy)', margin: '0 0 5px' }}>Karan Gupta</p>
+                  <p style={{ fontFamily: "'Fraunces', serif", fontStyle: 'italic', fontSize: '16px', color: 'var(--navy)', margin: '0 0 5px' }}>Karan Gupta</p>
                   <p style={{ fontSize: '11px', fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: 'var(--gray)', margin: 0 }}>Franchise Partner & Investor</p>
                 </div>
               </FadeSection>
@@ -629,7 +565,7 @@ export default function Home() {
                       <div key={i} style={{ borderRadius: '12px', overflow: 'hidden', border: `1px solid ${open === i ? 'var(--orange)' : 'var(--border)'}`, transition: 'border-color 0.25s' }}>
                         <button onClick={() => setOpen(open === i ? -1 : i)} style={{ width: '100%', display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '20px 24px', background: open === i ? 'var(--navy)' : 'var(--white)', border: 'none', cursor: 'pointer', textAlign: 'left', gap: '16px', transition: 'background 0.25s' }}>
                           <span style={{ fontFamily: "'Fraunces', serif", fontSize: '16px', fontWeight: 700, color: open === i ? '#fff' : 'var(--navy)', lineHeight: 1.3 }}>{item.q}</span>
-                          <span style={{ width: '28px', height: '28px', borderRadius: '50%', border: `1.5px solid ${open === i ? 'rgba(255,255,255,0.3)' : 'var(--border)'}`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: open === i ? 'var(--orange)' : 'var(--gray)', fontSize: '18px', lineHeight: 1, transition: 'all 0.25s' }}>
+                          <span style={{ width: '28px', height: '28px', borderRadius: '50%', border: `1.5px solid ${open === i ? 'rgba(255,255,255,0.3)' : 'var(--border)'}`, display: 'flex', alignItems: 'center', justifyContent: 'center', flexShrink: 0, color: open === i ? 'var(--orange)' : 'var(--gray)', fontSize: '16px', lineHeight: 1, transition: 'all 0.25s' }}>
                             {open === i ? '−' : '+'}
                           </span>
                         </button>
@@ -669,6 +605,21 @@ export default function Home() {
         @keyframes scrollLine {
           0%, 100% { opacity: 0.4; transform: scaleY(1); }
           50% { opacity: 1; transform: scaleY(0.6); }
+        }
+
+        /* ── Full-screen home hero (EBG-style wordmark + content block) ── */
+        .home-hero { min-height: 100vh; }
+        .home-hero-mark span { font-size: clamp(38px, 5.4vw, 78px); }
+        @media (max-width: 768px) {
+          .home-hero { min-height: 90vh; }
+          .home-hero-inner { padding: 96px 20px 40px !important; justify-content: flex-end !important; }
+          .home-hero-mark { display: none; }
+          .home-hero-card { padding: 24px 20px !important; }
+        }
+        @media (max-width: 480px) {
+          .home-hero-card .xb-hero-cta { flex-direction: column; }
+          .home-hero-card .xb-hero-cta .btn-primary,
+          .home-hero-card .xb-hero-cta .btn-outline { width: 100%; justify-content: center; text-align: center; }
         }
 
         /* ── Hero content ── */
@@ -795,7 +746,7 @@ export default function Home() {
         /* ── Photo card ── */
         .xb-photo-card {
           position: relative;
-          height: 560px;
+          height: 400px;
           overflow: hidden;
           display: flex;
           flex-direction: column;
@@ -996,12 +947,14 @@ export default function Home() {
 
           .xb-hero-cta { flex-direction: column; }
           .xb-hero-cta .btn-primary,
-          .xb-hero-cta .btn-outline { width: 100%; justify-content: center; text-align: center; }
+          .xb-hero-cta .btn-outline,
+          .xb-hero-cta .btn-outline-dark { width: 100%; justify-content: center; text-align: center; }
 
           .xb-stat-item { border-right: none !important; border-bottom: 1px solid rgba(0,0,0,0.1); }
           .xb-stat-item:last-child { border-bottom: none; }
         }
       `}</style>
+
     </>
   );
 }

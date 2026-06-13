@@ -84,7 +84,7 @@ export default function ForInvestors() {
     title: item.title,
     sub: item.subtitle || item.sub,
   }));
-  const heroImg = hero?.backgroundImage || 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=1600&q=80';
+  const heroImg = hero?.backgroundImage || '/investor.png';
   const sliderRef = useRef(null);
   const scrollSlider = (dir) => {
     if (sliderRef.current) sliderRef.current.scrollBy({ left: dir * 380, behavior: 'smooth' });
@@ -98,8 +98,9 @@ export default function ForInvestors() {
         <meta name="keywords" content="franchise investment India, franchise investment opportunities India, best franchise advisory India, investor alignment franchise, food franchise India, retail franchise India, connect with franchise investors" />
       </Helmet>
       {/* HERO */}
-      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '500px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.86) 0%, rgba(13,27,62,0.72) 100%)' }} />
+      <div className="page-hero-section" style={{ background: 'var(--navy-dark)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'auto 90%', backgroundRepeat: 'no-repeat', backgroundPosition: 'right bottom', minHeight: '100vh', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(7,15,35,0.92) 0%, rgba(7,15,35,0.78) 32%, rgba(7,15,35,0.4) 60%, rgba(7,15,35,0.12) 100%)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(7,15,35,0.55) 0%, transparent 45%)' }} />
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)`, backgroundSize: '80px 80px' }} />
         <div style={{ position: 'absolute', bottom: '-20%', left: '-5%', width: '500px', height: '500px', background: 'radial-gradient(circle,rgba(240,121,32,0.1) 0%,transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '1440px', margin: '0 auto', width: '100%', position: 'relative', zIndex: 1 }}>
@@ -108,10 +109,10 @@ export default function ForInvestors() {
             Why Investors Work With<br />
             <span style={{ color: 'var(--orange)' }}>XPAND Bharat</span>
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '18px', lineHeight: 1.7, maxWidth: '560px', marginBottom: '16px', fontStyle: 'italic' }}>
+          <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '16px', lineHeight: 1.7, maxWidth: '560px', marginBottom: '16px', fontStyle: 'italic' }}>
             'Because serious money deserves serious structure.'
           </p>
-          <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '16px', lineHeight: 1.7, maxWidth: '560px', marginBottom: '40px' }}>
+          <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '16px', lineHeight: 1.7, maxWidth: '560px', marginBottom: '40px' }}>
             India's franchise sector is growing fast. Most platforms throw opportunities at investors and hope something sticks. XPAND Bharat does the opposite — we curate, structure, and align franchise businesses with investors who are commercially serious about long-term growth across India.
           </p>
           <Link to="/growth-opportunities" className="btn-primary">Explore Opportunities</Link>
@@ -138,7 +139,7 @@ export default function ForInvestors() {
             <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: '20px' }}>
               Built For Investors Who Think Beyond Traditional Investments
             </h2>
-            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '17px', fontStyle: 'italic', lineHeight: 1.7, marginBottom: '0' }}>
+            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '16px', fontStyle: 'italic', lineHeight: 1.7, marginBottom: '0' }}>
               Franchising is no longer just expansion. It is a structured growth strategy.
             </p>
           </FadeSection>

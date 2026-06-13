@@ -25,19 +25,21 @@ export default function Contact() {
   return (
     <div style={{ background: 'var(--cream-light)' }}>
       {/* HERO */}
-      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: 'url("https://images.unsplash.com/photo-1497366754035-f200968a677a?auto=format&fit=crop&w=1600&q=80")', backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '500px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.86) 0%, rgba(13,27,62,0.72) 100%)' }} />
+      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: 'url("https://images.unsplash.com/photo-1431576901776-e539bd916ba2?auto=format&fit=crop&w=1600&q=80")', backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '100vh', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.55) 0%, rgba(7,15,35,0.32) 100%)' }} />
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)`, backgroundSize: '80px 80px' }} />
         <div style={{ position: 'absolute', bottom: '-10%', right: '10%', width: '500px', height: '500px', background: 'radial-gradient(circle,rgba(240,121,32,0.09) 0%,transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '1440px', margin: '0 auto', width: '100%', position: 'relative', zIndex: 1 }}>
-          <div className="section-label">Start a Conversation</div>
-          <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '720px' }}>
-            Let's start the right<br />
-            <span style={{ color: 'var(--orange)' }}>business conversation.</span>
-          </h1>
-          <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '18px', lineHeight: 1.7, maxWidth: '540px' }}>
-            Whether you are exploring expansion, investment opportunities, or strategic partnerships — XPANDBHARAT is ready to move the conversation forward.
-          </p>
+          <div className="hero-card">
+            <div className="section-label">Start a Conversation</div>
+            <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '720px' }}>
+              Let's start the right<br />
+              <span style={{ color: 'var(--orange)' }}>business conversation.</span>
+            </h1>
+            <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '16px', lineHeight: 1.7, maxWidth: '540px' }}>
+              Whether you are exploring expansion, investment opportunities, or strategic partnerships — XPANDBHARAT is ready to move the conversation forward.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -84,7 +86,7 @@ export default function Contact() {
 
             {/* Tagline */}
             <div style={{ marginTop: '48px', padding: '32px', background: 'var(--navy)', borderRadius: '12px' }}>
-              <p style={{ fontFamily: "'Fraunces', serif", fontSize: '18px', color: '#fff', lineHeight: 1.6, margin: 0 }}>
+              <p style={{ fontFamily: "'Fraunces', serif", fontSize: '16px', color: '#fff', lineHeight: 1.6, margin: 0 }}>
                 Connect with us. India's Leading Franchise Expansion.
               </p>
             </div>
@@ -119,7 +121,7 @@ export default function Contact() {
             <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '16px', lineHeight: 1.85, margin: 0 }}>
               Businesses do not struggle because of lack of ambition. They struggle without structured support.
             </p>
-            <p style={{ fontFamily: "'Fraunces', serif", fontSize: '20px', fontWeight: 700, color: '#fff', margin: 0, lineHeight: 1.4 }}>
+            <p style={{ fontFamily: "'Fraunces', serif", fontSize: '16px', fontWeight: 700, color: '#fff', margin: 0, lineHeight: 1.4 }}>
               That is where XPAND comes in.
             </p>
             <div style={{ paddingTop: '8px' }}>

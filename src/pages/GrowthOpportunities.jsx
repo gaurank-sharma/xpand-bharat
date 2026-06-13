@@ -83,7 +83,7 @@ export default function GrowthOpportunities() {
     title: item.title,
     desc: item.description || item.desc,
   }));
-  const heroImg = hero?.backgroundImage || 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1600&q=80';
+  const heroImg = hero?.backgroundImage || 'https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?auto=format&fit=crop&w=1600&q=80';
 
   return (
     <div style={{ background: 'var(--cream-light)' }}>
@@ -93,20 +93,19 @@ export default function GrowthOpportunities() {
         <meta name="keywords" content="franchise opportunities India, franchise investment opportunities India, food franchise India, retail franchise India, multi-unit franchise opportunities, franchise investor network India, best franchise investment India" />
       </Helmet>
       {/* HERO */}
-      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '500px', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.86) 0%, rgba(13,27,62,0.72) 100%)' }} />
+      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '100vh', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 150px', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.55) 0%, rgba(7,15,35,0.32) 100%)' }} />
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)`, backgroundSize: '80px 80px' }} />
         <div style={{ position: 'absolute', top: '-10%', right: '5%', width: '600px', height: '600px', background: 'radial-gradient(circle,rgba(240,121,32,0.08) 0%,transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '1440px', margin: '0 auto', width: '100%', position: 'relative', zIndex: 1 }}>
           <div className="section-label">Growth Opportunities</div>
-          <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '720px' }}>
+          <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(32px, 4.6vw, 56px)', fontWeight: 700, color: '#fff', lineHeight: 1.12, marginBottom: '24px', maxWidth: '720px' }}>
             Opportunities built for<br />
             <span style={{ color: 'var(--orange)' }}>scalable franchise growth.</span>
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '18px', lineHeight: 1.7, maxWidth: '560px', marginBottom: '40px' }}>
+          <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '16px', lineHeight: 1.7, maxWidth: '560px' }}>
             Curated franchise investment opportunities designed around commercial clarity, operational structure, and long-term scalability across India.
           </p>
-          <Link to="/contact" className="btn-primary">Explore Opportunities</Link>
         </div>
       </div>
 
@@ -199,10 +198,12 @@ export default function GrowthOpportunities() {
       </div>
 
       {/* DIFFERENTIATORS */}
-      <div style={{ background: 'var(--navy)', padding: '100px 40px', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', right: '-40px', top: '50%', transform: 'translateY(-50%)', fontFamily: "'Fraunces', serif", fontSize: '300px', fontWeight: 700, color: 'rgba(255,255,255,0.02)', lineHeight: 1, pointerEvents: 'none', userSelect: 'none' }}>05</div>
-        <div className="xb-grid-2col" style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '100px', alignItems: 'start', position: 'relative', zIndex: 1 }}>
-          <FadeSection>
+      <div style={{ background: 'var(--navy)', padding: '100px 40px', position: 'relative' }}>
+        <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
+          <div style={{ position: 'absolute', right: '-40px', top: '50%', transform: 'translateY(-50%)', fontFamily: "'Fraunces', serif", fontSize: '300px', fontWeight: 700, color: 'rgba(255,255,255,0.02)', lineHeight: 1 }}>05</div>
+        </div>
+        <div className="xb-grid-2col" style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '72px', alignItems: 'start', position: 'relative', zIndex: 1 }}>
+          <FadeSection style={{ position: 'sticky', top: '100px' }}>
             <div className="section-label">What Makes These Different</div>
             <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: '#fff', marginBottom: '24px', lineHeight: 1.1 }}>
               Built for serious,<br /><span style={{ color: 'var(--orange)' }}>scalable growth.</span>
