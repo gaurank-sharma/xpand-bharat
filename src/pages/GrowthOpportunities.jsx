@@ -9,42 +9,42 @@ const CATEGORIES = [
     title: 'F&B Expansion',
     desc: 'From QSR chains to cloud kitchens — high-velocity expansion opportunities with proven models and strong unit economics.',
     range: '₹30L – ₹2Cr',
-    img: 'https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=800&q=80',
+    img: '/img/photo-1414235077428-338989a2e8c0.jpg',
   },
   {
     tag: 'Retail and Lifestyle',
     title: 'Retail Formats',
     desc: 'Brand-driven retail scaling across tier-1 and tier-2 cities with hybrid models and strong brand loyalty.',
     range: '₹50L – ₹5Cr',
-    img: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=800&q=80',
+    img: '/img/photo-1441986300917-64674bd600d8.jpg',
   },
   {
     tag: 'Service Businesses',
     title: 'Service Sector',
     desc: 'Recurring revenue, low capex, and strong scalability across defensible service business categories.',
     range: '₹20L – ₹1Cr',
-    img: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=800&q=80',
+    img: '/img/photo-1542744173-8e7e53415bb0.jpg',
   },
   {
     tag: 'Emerging Brands',
     title: 'Growth Stage',
     desc: 'Growth-ready businesses with proven models seeking strategic alignment, capital, and expansion support.',
     range: '₹1Cr – ₹10Cr',
-    img: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=800&q=80',
+    img: '/img/photo-1559526324-4b87b5e36e44.jpg',
   },
   {
     tag: 'Franchise',
     title: 'Franchise Models',
     desc: 'Structured franchise systems with defined operations, proven replication, and disciplined rollout support.',
     range: '₹25L – ₹3Cr',
-    img: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=800&q=80',
+    img: '/img/photo-1553877522-43269d4ea984.jpg',
   },
   {
     tag: 'Multi-Market',
     title: 'Expansion-Led Businesses',
     desc: 'Businesses positioned for pan-India multi-market growth with long-term operational scalability.',
     range: '₹2Cr – ₹20Cr',
-    img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=800&q=80',
+    img: '/img/photo-1486406146926-c627a92ad1ab.jpg',
   },
 ];
 
@@ -83,7 +83,7 @@ export default function GrowthOpportunities() {
     title: item.title,
     desc: item.description || item.desc,
   }));
-  const heroImg = hero?.backgroundImage || 'https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?auto=format&fit=crop&w=1600&q=80';
+  const heroImg = hero?.backgroundImage || '/img/photo-1449157291145-7efd050a4d0e.jpg';
 
   return (
     <div style={{ background: 'var(--cream-light)' }}>
@@ -110,18 +110,18 @@ export default function GrowthOpportunities() {
       </div>
 
       {/* OPPORTUNITY CATEGORIES — Premium cinematic grid */}
-      <div style={{ background: '#04080f', padding: '100px 0' }}>
+      <div style={{ background: 'var(--cream-light)', padding: '100px 0 44px' }}>
         {/* Header */}
         <div style={{ maxWidth: '1440px', margin: '0 auto', padding: '0 40px', marginBottom: '56px' }}>
           <FadeSection>
             <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', flexWrap: 'wrap', gap: '24px' }}>
               <div>
-                <div style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.25em', color: 'rgba(220,168,60,0.85)', textTransform: 'uppercase', marginBottom: '18px' }}>Business Opportunities</div>
-                <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, margin: 0 }}>
+                <div style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.25em', color: 'var(--orange)', textTransform: 'uppercase', marginBottom: '18px' }}>Business Opportunities</div>
+                <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: 'var(--navy)', lineHeight: 1.15, margin: 0 }}>
                   Sectors we bring to the table.
                 </h2>
               </div>
-              <p style={{ color: 'rgba(255,255,255,0.38)', fontSize: '14px', lineHeight: 1.75, maxWidth: '320px', margin: 0 }}>
+              <p style={{ color: 'var(--gray)', fontSize: '14px', lineHeight: 1.75, maxWidth: '320px', margin: 0 }}>
                 Every sector is chosen for its expansion potential, proven demand, and scalability across Indian markets.
               </p>
             </div>
@@ -205,22 +205,28 @@ export default function GrowthOpportunities() {
         <div className="xb-grid-2col" style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '72px', alignItems: 'start', position: 'relative', zIndex: 1 }}>
           <FadeSection style={{ position: 'sticky', top: '100px' }}>
             <div className="section-label">What Makes These Different</div>
-            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: '#fff', marginBottom: '24px', lineHeight: 1.1 }}>
+            <h1 style={{ fontFamily: "'Fraunces', serif", fontWeight: 700, color: '#fff', marginBottom: '24px', lineHeight: 1.1 }}>
               Built for serious,<br /><span style={{ color: 'var(--orange)' }}>scalable growth.</span>
-            </h2>
+            </h1>
             <div style={{ width: '48px', height: '2px', background: 'var(--orange)', margin: '28px 0' }} />
             <p style={{ color: 'rgba(255,255,255,0.52)', fontSize: '16px', lineHeight: 1.85, marginBottom: '48px', maxWidth: '360px' }}>
               Every opportunity on our platform passes through a structured screening process before it reaches a serious investor.
             </p>
             <Link to="/contact" className="btn-primary">Start a Conversation</Link>
           </FadeSection>
-          <FadeSection delay={150}>
-            {differentiators.map((item, i) => (
-              <div key={item.num} style={{ display: 'flex', gap: '28px', alignItems: 'flex-start', padding: '28px 0', borderBottom: i < differentiators.length - 1 ? '1px solid rgba(255,255,255,0.07)' : 'none' }}>
-                <div style={{ fontFamily: "'Fraunces', serif", fontSize: '40px', fontWeight: 700, color: 'var(--orange)', lineHeight: 0.9, flexShrink: 0, width: '52px', opacity: 0.9 }}>{item.num}</div>
+          <FadeSection delay={150} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
+            {differentiators.map((item) => (
+              <div
+                key={item.num}
+                style={{ position: 'relative', display: 'grid', gridTemplateColumns: '58px 1fr', gap: '22px', alignItems: 'start', background: 'rgba(255,255,255,0.025)', border: '1px solid rgba(255,255,255,0.08)', borderRadius: '14px', padding: '26px 30px', overflow: 'hidden', transition: 'background 0.35s ease, border-color 0.35s ease, transform 0.35s ease' }}
+                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.05)'; e.currentTarget.style.borderColor = 'rgba(240,121,32,0.45)'; e.currentTarget.style.transform = 'translateX(6px)'; e.currentTarget.querySelector('.go-diff-bar').style.transform = 'scaleY(1)'; }}
+                onMouseLeave={e => { e.currentTarget.style.background = 'rgba(255,255,255,0.025)'; e.currentTarget.style.borderColor = 'rgba(255,255,255,0.08)'; e.currentTarget.style.transform = 'translateX(0)'; e.currentTarget.querySelector('.go-diff-bar').style.transform = 'scaleY(0)'; }}
+              >
+                <span className="go-diff-bar" style={{ position: 'absolute', left: 0, top: 0, bottom: 0, width: '3px', background: 'var(--orange)', transform: 'scaleY(0)', transformOrigin: 'top', transition: 'transform 0.35s ease' }} />
+                <div style={{ fontFamily: "'Fraunces', serif", fontSize: '42px', fontWeight: 700, color: 'var(--orange)', lineHeight: 0.9 }}>{item.num}</div>
                 <div style={{ paddingTop: '4px' }}>
-                  <h4 style={{ color: '#fff', fontSize: '16px', fontWeight: 600, marginBottom: '8px', lineHeight: 1.3 }}>{item.title}</h4>
-                  <p style={{ color: 'rgba(255,255,255,0.42)', fontSize: '14px', lineHeight: 1.75, margin: 0 }}>{item.desc}</p>
+                  <h4 style={{ fontFamily: "'Fraunces', serif", color: '#fff', fontSize: 'clamp(17px, 1.5vw, 20px)', fontWeight: 700, marginBottom: '8px', lineHeight: 1.3 }}>{item.title}</h4>
+                  <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '14px', lineHeight: 1.75, margin: 0 }}>{item.desc}</p>
                 </div>
               </div>
             ))}

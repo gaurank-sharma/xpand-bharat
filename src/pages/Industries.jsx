@@ -211,7 +211,7 @@ function RoadmapViz() {
 
 export default function Industries() {
   const { hero } = useContent('industries');
-  const heroImg = hero?.backgroundImage || 'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1600&q=80';
+  const heroImg = hero?.backgroundImage || '/img/photo-1480714378408-67cf0d13bc1b.jpg';
 
   return (
     <div style={{ background: 'var(--cream-light)' }}>
@@ -273,7 +273,7 @@ export default function Industries() {
                   {/* FRONT */}
                   <div className="ind-flip-front">
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '20px' }}>
-                      <span style={{ fontFamily: "'Fraunces', serif", fontSize: '52px', fontWeight: 700, color: 'rgba(240,121,32,0.12)', lineHeight: 1 }}>{sector.num}</span>
+                      <span style={{ fontFamily: "'Fraunces', serif", fontSize: '52px', fontWeight: 700, color: 'var(--orange)', lineHeight: 1 }}>{sector.num}</span>
                       <span style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.15em', color: 'rgba(240,121,32,0.6)', textTransform: 'uppercase', paddingTop: '14px' }}>Hover →</span>
                     </div>
                     <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(17px, 1.6vw, 22px)', fontWeight: 700, color: 'var(--navy)', margin: '0 0 8px', lineHeight: 1.25 }}>{sector.title}</h3>

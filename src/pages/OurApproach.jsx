@@ -107,7 +107,7 @@ export default function OurApproach() {
     paras: item.paras,
     quote: item.quote,
   }));
-  const heroImg = hero?.backgroundImage || 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=1600&q=80';
+  const heroImg = hero?.backgroundImage || '/img/photo-1553877522-43269d4ea984.jpg';
 
   return (
     <div style={{ background: 'var(--cream-light)' }}>
@@ -193,7 +193,7 @@ export default function OurApproach() {
                   background: isOrange ? 'var(--orange)' : 'rgba(255,255,255,0.03)',
                   borderRight: i < PRINCIPLES.length - 1 ? '1px solid rgba(255,255,255,0.06)' : 'none',
                 }}>
-                  <div style={{ fontFamily: "'Fraunces', serif", fontSize: '40px', fontWeight: 700, color: isOrange ? 'rgba(255,255,255,0.2)' : 'rgba(240,121,32,0.2)', lineHeight: 1, marginBottom: '16px' }}>{p.num}</div>
+                  <div style={{ fontFamily: "'Fraunces', serif", fontSize: '40px', fontWeight: 700, color: isOrange ? 'rgba(255,255,255,0.9)' : 'var(--orange)', lineHeight: 1, marginBottom: '16px' }}>{p.num}</div>
                   <h4 style={{ fontFamily: "'Fraunces', serif", fontSize: '20px', fontWeight: 700, color: '#fff', marginBottom: '14px' }}>{p.label}</h4>
                   {p.intro && <p style={{ color: textMuted, fontSize: '13px', lineHeight: 1.7, marginBottom: '10px' }}>{p.intro}</p>}
                   {p.lead && <p style={{ color: isOrange ? 'rgba(255,255,255,0.95)' : 'rgba(255,255,255,0.7)', fontSize: '12px', fontWeight: 700, letterSpacing: '0.05em', marginBottom: '8px' }}>{p.lead}</p>}

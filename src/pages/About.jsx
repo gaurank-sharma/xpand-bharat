@@ -4,39 +4,6 @@ import { Link } from 'react-router-dom';
 import { useContent } from '../hooks/useContent';
 import { Home, Search, FileText, Users, Gift } from 'lucide-react';
 
-const FOCUS_AREAS = [
-  {
-    tag: 'Expansion',
-    label: 'Business Expansion',
-    desc: 'Helping brands grow through structured, scalable, and execution-led expansion systems across India.',
-    img: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=700&q=80',
-  },
-  {
-    tag: 'Investors',
-    label: 'Investor Alignment',
-    desc: 'Connecting investors with commercially verified, growth-ready opportunities backed by real due diligence.',
-    img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=700&q=80',
-  },
-  {
-    tag: 'Clarity',
-    label: 'Commercial Clarity',
-    desc: 'Creating clear commercial frameworks so every business decision is backed by structured, data-driven thinking.',
-    img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=700&q=80',
-  },
-  {
-    tag: 'Execution',
-    label: 'Execution Support',
-    desc: 'Operational discipline and on-ground coordination to ensure strategy becomes tangible progress.',
-    img: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=700&q=80',
-  },
-  {
-    tag: 'Growth',
-    label: 'Scalable Growth',
-    desc: 'Building systems, processes, and governance structures that sustain momentum at every stage of growth.',
-    img: 'https://images.unsplash.com/photo-1449157291145-7efd050a4d0e?auto=format&fit=crop&w=700&q=80',
-  },
-];
-
 const PROCESS_STEPS = [
   {
     num: 1, eyebrow: 'YOU COME TO US', title: 'You Come to XPAND Bharat', Icon: Home,
@@ -79,14 +46,8 @@ function FadeSection({ children, delay = 0, style = {} }) {
 }
 
 export default function About() {
-  const { hero, section } = useContent('about');
-  const focusAreas = section('focus-areas', FOCUS_AREAS).map(item => ({
-    tag: item.tag,
-    label: item.title || item.label,
-    desc: item.description || item.desc,
-    img: item.imageUrl || item.img,
-  }));
-  const heroImg = hero?.backgroundImage || 'https://images.unsplash.com/photo-1480714378408-67cf0d13bc1b?auto=format&fit=crop&w=1600&q=80';
+  const { hero } = useContent('about');
+  const heroImg = hero?.backgroundImage || '/about%20us.png';
 
   return (
     <div style={{ background: 'var(--cream-light)' }}>
@@ -96,21 +57,20 @@ export default function About() {
         <meta name="keywords" content="franchise consulting company India, franchise expansion India, franchise investment advisory India, business expansion advisory Gurugram, franchise consulting firms India" />
       </Helmet>
       {/* HERO */}
-      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '100vh', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.55) 0%, rgba(7,15,35,0.32) 100%)' }} />
+      <div className="page-hero-section" style={{ background: 'var(--navy-dark)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'auto 100%', backgroundRepeat: 'no-repeat', backgroundPosition: 'calc(100% + 130px) center', minHeight: '100vh', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 140px', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(7,15,35,0.9) 0%, rgba(7,15,35,0.72) 30%, rgba(7,15,35,0.38) 56%, rgba(7,15,35,0.1) 100%)' }} />
+        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(7,15,35,0.6) 0%, transparent 45%)' }} />
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)`, backgroundSize: '80px 80px' }} />
         <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '600px', height: '600px', background: 'radial-gradient(circle,rgba(240,121,32,0.09) 0%,transparent 70%)', pointerEvents: 'none' }} />
         <div style={{ maxWidth: '1440px', margin: '0 auto', width: '100%', position: 'relative', zIndex: 1 }}>
-          <div className="hero-card">
-            <div className="section-label">About XPAND Bharat</div>
-            <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '800px' }}>
-              About<br />
-              <span style={{ color: 'var(--orange)' }}>XPAND Bharat</span>
-            </h1>
-            <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '16px', lineHeight: 1.7, maxWidth: '600px' }}>
-              India's leading franchise expansion and investment consulting company, backed by 25+ years of collective industry experience in franchise growth, investor alignment, and business expansion strategy.
-            </p>
-          </div>
+          <div className="section-label">About XPAND Bharat</div>
+          <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(40px, 6vw, 72px)', fontWeight: 700, color: '#fff', lineHeight: 1.1, marginBottom: '24px', maxWidth: '800px' }}>
+            About<br />
+            <span style={{ color: 'var(--orange)' }}>XPAND Bharat</span>
+          </h1>
+          <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '16px', lineHeight: 1.7, maxWidth: '560px' }}>
+            India's leading franchise expansion and investment consulting company, backed by 25+ years of collective industry experience in franchise growth, investor alignment, and business expansion strategy.
+          </p>
         </div>
       </div>
 
@@ -201,90 +161,6 @@ export default function About() {
         </div>
       </div>
 
-      {/* FOCUS AREAS — Cinematic card grid */}
-      <div style={{ background: 'var(--navy)' }}>
-        {/* Section header */}
-        <div style={{ padding: '80px 40px 52px' }}>
-          <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', flexWrap: 'wrap', gap: '24px' }}>
-            <FadeSection>
-              <div style={{ fontSize: '10px', fontWeight: 700, letterSpacing: '0.25em', color: 'rgba(220,168,60,0.85)', textTransform: 'uppercase', marginBottom: '18px' }}>
-                What We Focus On
-              </div>
-              <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, margin: 0 }}>
-                Five areas. One direction.
-              </h2>
-            </FadeSection>
-            <FadeSection delay={150}>
-              <p style={{ color: 'rgba(255,255,255,0.38)', fontSize: '14px', lineHeight: 1.7, maxWidth: '320px', margin: 0 }}>
-                Every service, conversation, and engagement traces back to one of these five areas.
-              </p>
-            </FadeSection>
-          </div>
-        </div>
-
-        {/* 5-card cinematic grid */}
-        <div className="fa-grid">
-          {focusAreas.map((area) => (
-            <div
-              key={area.label}
-              className="fa-card"
-              style={{ position: 'relative', height: '540px', overflow: 'hidden', borderRadius: '4px', cursor: 'default', flexShrink: 0 }}
-              onMouseEnter={e => {
-                e.currentTarget.querySelector('.fa-img').style.transform = 'scale(1.06)';
-                e.currentTarget.querySelector('.fa-desc').style.opacity = '1';
-                e.currentTarget.querySelector('.fa-desc').style.transform = 'translateY(0)';
-                e.currentTarget.querySelector('.fa-grad').style.background = 'linear-gradient(180deg, rgba(4,8,15,0.6) 0%, rgba(4,8,15,0.1) 30%, rgba(4,8,15,0.96) 100%)';
-              }}
-              onMouseLeave={e => {
-                e.currentTarget.querySelector('.fa-img').style.transform = 'scale(1)';
-                e.currentTarget.querySelector('.fa-desc').style.opacity = '0';
-                e.currentTarget.querySelector('.fa-desc').style.transform = 'translateY(10px)';
-                e.currentTarget.querySelector('.fa-grad').style.background = 'linear-gradient(180deg, rgba(4,8,15,0.55) 0%, rgba(4,8,15,0.1) 38%, rgba(4,8,15,0.85) 100%)';
-              }}
-            >
-              {/* Image */}
-              <div className="fa-img" style={{
-                position: 'absolute', inset: 0,
-                backgroundImage: `url("${area.img}")`,
-                backgroundSize: 'cover', backgroundPosition: 'center',
-                transition: 'transform 0.75s cubic-bezier(0.25,0.46,0.45,0.94)',
-              }} />
-
-              {/* Cinematic gradient */}
-              <div className="fa-grad" style={{ position: 'absolute', inset: 0, background: 'linear-gradient(180deg, rgba(4,8,15,0.55) 0%, rgba(4,8,15,0.1) 38%, rgba(4,8,15,0.85) 100%)', transition: 'background 0.4s ease' }} />
-
-              {/* Tag — top left */}
-              <div style={{ position: 'absolute', top: '22px', left: '22px', zIndex: 2 }}>
-                <span style={{
-                  fontSize: '9px', fontWeight: 700, letterSpacing: '0.28em',
-                  textTransform: 'uppercase', padding: '5px 12px',
-                  border: '1px solid rgba(220,168,60,0.55)',
-                  color: 'rgba(230,178,70,0.92)',
-                }}>{area.tag}</span>
-              </div>
-
-              {/* Bottom title */}
-              <div style={{ position: 'absolute', bottom: '28px', left: '22px', right: '22px', zIndex: 2 }}>
-                <div style={{ width: '20px', height: '1px', background: 'rgba(255,255,255,0.4)', marginBottom: '14px' }} />
-                <h3 style={{
-                  fontFamily: "'Fraunces', serif",
-                  fontSize: 'clamp(18px, 1.6vw, 24px)',
-                  fontWeight: 400, fontStyle: 'italic',
-                  color: '#fff', margin: 0, lineHeight: 1.3,
-                }}>{area.label}</h3>
-                <p className="fa-desc" style={{
-                  color: 'rgba(255,255,255,0.72)',
-                  fontSize: '13px', lineHeight: 1.7,
-                  margin: '12px 0 0',
-                  opacity: 0,
-                  transform: 'translateY(10px)',
-                  transition: 'opacity 0.4s ease, transform 0.4s ease',
-                }}>{area.desc}</p>
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
 
       <style>{`
         /* ── About image + body ── */

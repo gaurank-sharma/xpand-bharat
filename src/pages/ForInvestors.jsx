@@ -9,37 +9,37 @@ const OFFERINGS = [
     tag: 'Curated Access',
     title: 'Business opportunities built for serious investors.',
     desc: 'Handpicked, commercially verified opportunities across scalable sectors and expansion-ready business models.',
-    img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=700&q=80',
+    img: '/img/photo-1486406146926-c627a92ad1ab.jpg',
   },
   {
     tag: 'Market Clarity',
     title: 'Understand the model before you commit.',
     desc: 'We give you a clear picture of unit economics, market direction, and expansion potential — before any decision is made.',
-    img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=700&q=80',
+    img: '/img/photo-1460925895917-afdab827c52f.jpg',
   },
   {
     tag: 'Strategic Match',
     title: 'The right opportunity matched to the right investor.',
     desc: 'We align business opportunities with investors who share the same commercial direction and long-term growth mindset.',
-    img: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=700&q=80',
+    img: '/img/photo-1553877522-43269d4ea984.jpg',
   },
   {
     tag: 'Proven Models',
     title: 'Expansion-ready businesses with real fundamentals.',
     desc: 'Every business we present is screened for scalability, operational structure, and genuine growth readiness.',
-    img: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=700&q=80',
+    img: '/img/photo-1559526324-4b87b5e36e44.jpg',
   },
   {
     tag: 'Growth Sectors',
     title: 'Sectors chosen for their expansion trajectory.',
     desc: 'F&B, retail, services, EdTech, health — opportunities in India\'s fastest-growing industries with proven demand.',
-    img: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=700&q=80',
+    img: '/img/photo-1441986300917-64674bd600d8.jpg',
   },
   {
     tag: 'Full Support',
     title: 'We stay involved until the investment moves forward.',
     desc: 'From initial conversation to final commitment, our team ensures every investor-brand engagement is handled with structure and accountability.',
-    img: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=700&q=80',
+    img: '/img/photo-1556761175-b413da4baf72.jpg',
   },
 ];
 
@@ -132,19 +132,19 @@ export default function ForInvestors() {
       </div>
 
       {/* BUILT FOR INVESTORS — extended intro */}
-      <div className="fi-intro-section" style={{ background: 'var(--navy)', padding: '100px 40px', borderTop: '1px solid rgba(255,255,255,0.06)' }}>
+      <div className="fi-intro-section" style={{ background: 'var(--cream-light)', padding: '100px 40px', borderTop: '1px solid var(--border)' }}>
         <div className="fi-intro-grid" style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1.3fr', gap: '80px', alignItems: 'center' }}>
           <FadeSection>
             <div className="section-label">Built For Serious Investors</div>
-            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: '#fff', lineHeight: 1.15, marginBottom: '20px' }}>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 44px)', fontWeight: 700, color: 'var(--navy)', lineHeight: 1.15, marginBottom: '20px' }}>
               Built For Investors Who Think Beyond Traditional Investments
             </h2>
-            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '16px', fontStyle: 'italic', lineHeight: 1.7, marginBottom: '0' }}>
+            <p style={{ color: 'var(--gray)', fontSize: '16px', fontStyle: 'italic', lineHeight: 1.7, marginBottom: '0' }}>
               Franchising is no longer just expansion. It is a structured growth strategy.
             </p>
           </FadeSection>
           <FadeSection delay={150}>
-            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '16px', lineHeight: 1.9, marginBottom: '0' }}>
+            <p style={{ color: 'var(--gray)', fontSize: '16px', lineHeight: 1.9, marginBottom: '0' }}>
               XPAND Bharat helps investors participate in commercially scalable franchise businesses through investor-ready opportunities, franchise advisory, expansion planning, and execution-led business systems. Headquartered in Gurugram and backed by 25+ years of collective experience, we focus on franchise opportunities designed for long-term commercial scalability across India.
             </p>
           </FadeSection>
@@ -235,11 +235,10 @@ export default function ForInvestors() {
       </div>
 
       {/* WHY */}
-      <div className="fi-why-section" style={{ background: 'var(--navy)', position: 'relative' }}>
+      <div className="fi-why-section" style={{ background: 'var(--cream-light)', position: 'relative' }}>
         {/* decorations clipped here so the section itself stays overflow-visible (sticky works) */}
         <div style={{ position: 'absolute', inset: 0, overflow: 'hidden', pointerEvents: 'none' }}>
-          <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(240,121,32,0.07) 0%, transparent 70%)' }} />
-          <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.018) 1px,transparent 1px)`, backgroundSize: '80px 80px' }} />
+          <div style={{ position: 'absolute', top: '-10%', right: '-5%', width: '600px', height: '600px', background: 'radial-gradient(circle, rgba(240,121,32,0.08) 0%, transparent 70%)' }} />
         </div>
 
         <div className="fi-why-grid" style={{ maxWidth: '1440px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
@@ -247,18 +246,18 @@ export default function ForInvestors() {
           {/* Left — sticky */}
           <FadeSection className="fi-why-left">
             <div className="section-label">Why Us</div>
-            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(30px, 3.4vw, 46px)', fontWeight: 700, color: '#fff', marginBottom: '24px', lineHeight: 1.1 }}>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(30px, 3.4vw, 46px)', fontWeight: 700, color: 'var(--navy)', marginBottom: '24px', lineHeight: 1.1 }}>
               Why investors work with<br />
               <span style={{ color: 'var(--orange)' }}>XPAND Bharat.</span>
             </h2>
             <div style={{ width: '48px', height: '2px', background: 'var(--orange)', margin: '28px 0' }} />
-            <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '16px', lineHeight: 1.85, marginBottom: '32px', maxWidth: '400px' }}>
+            <p style={{ color: 'var(--gray)', fontSize: '16px', lineHeight: 1.85, marginBottom: '32px', maxWidth: '400px' }}>
               India's franchise economy is being built right now. The question is — are you positioned inside it?
             </p>
 
             {/* Pull-quote callout */}
             <div style={{ borderLeft: '3px solid var(--orange)', paddingLeft: '22px', marginBottom: '40px' }}>
-              <p style={{ fontFamily: "'Fraunces', serif", fontStyle: 'italic', fontSize: 'clamp(18px, 1.7vw, 23px)', color: '#fff', lineHeight: 1.4, margin: 0 }}>
+              <p style={{ fontFamily: "'Fraunces', serif", fontStyle: 'italic', fontSize: 'clamp(18px, 1.7vw, 23px)', color: 'var(--navy)', lineHeight: 1.4, margin: 0 }}>
                 "This isn't passive investing. This is structured business ownership."
               </p>
             </div>
@@ -272,8 +271,8 @@ export default function ForInvestors() {
               <FadeSection key={item.num} delay={i * 70} className="fi-why-card">
                 <div className="fi-why-num">{item.num}</div>
                 <div>
-                  <h4 style={{ fontFamily: "'Fraunces', serif", color: '#fff', fontSize: 'clamp(17px, 1.5vw, 20px)', fontWeight: 700, marginBottom: '12px', lineHeight: 1.3 }}>{item.title}</h4>
-                  <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '14.5px', lineHeight: 1.8, margin: 0 }}>{item.sub}</p>
+                  <h4 style={{ fontFamily: "'Fraunces', serif", color: 'var(--navy)', fontSize: 'clamp(17px, 1.5vw, 20px)', fontWeight: 700, marginBottom: '12px', lineHeight: 1.3 }}>{item.title}</h4>
+                  <p style={{ color: 'var(--gray)', fontSize: '14.5px', lineHeight: 1.8, margin: 0 }}>{item.sub}</p>
                 </div>
               </FadeSection>
             ))}
@@ -296,15 +295,15 @@ export default function ForInvestors() {
             grid-template-columns: 64px 1fr;
             gap: 24px;
             align-items: start;
-            background: rgba(255,255,255,0.025);
-            border: 1px solid rgba(255,255,255,0.07);
+            background: var(--white);
+            border: 1px solid var(--border);
             border-radius: 16px;
             padding: 28px 30px;
-            transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease;
+            transition: background 0.3s ease, border-color 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
           }
           .fi-why-card:hover {
-            background: rgba(255,255,255,0.045);
-            border-color: rgba(240,121,32,0.3);
+            border-color: rgba(240,121,32,0.4);
+            box-shadow: 0 12px 40px rgba(0,0,0,0.07);
             transform: translateX(4px);
           }
           .fi-why-num {

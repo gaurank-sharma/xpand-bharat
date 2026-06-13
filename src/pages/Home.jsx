@@ -17,28 +17,28 @@ const PHOTO_CARDS = [
     tag: 'For Brands',
     title: 'Expand with Structure',
     sub: 'Franchise and market expansion',
-    img: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=700&q=80',
+    img: '/img/photo-1441986300917-64674bd600d8.jpg',
     to: '/for-brands',
   },
   {
     tag: 'For Investors',
     title: 'Invest with Clarity',
     sub: 'Curated business opportunities',
-    img: 'https://images.unsplash.com/photo-1559526324-4b87b5e36e44?auto=format&fit=crop&w=700&q=80',
+    img: '/img/photo-1559526324-4b87b5e36e44.jpg',
     to: '/for-investors',
   },
   {
     tag: 'Opportunities',
     title: 'Growth at Scale',
     sub: 'Scalable business models',
-    img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=700&q=80',
+    img: '/img/photo-1486406146926-c627a92ad1ab.jpg',
     to: '/growth-opportunities',
   },
   {
     tag: 'Our Approach',
     title: 'Structured Execution',
     sub: 'Five-stage growth framework',
-    img: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=700&q=80',
+    img: '/img/photo-1553877522-43269d4ea984.jpg',
     to: '/our-approach',
   },
 ];
@@ -255,13 +255,13 @@ export default function Home() {
 
             <div className="xb-partner-photos">
               <div className="xb-photo-slot xb-photo-left">
-                <img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=700&q=80" alt="Business partnership" />
+                <img src="/img/photo-1521791136064-7986c2920216.jpg" alt="Business partnership" />
               </div>
               <div className="xb-photo-slot xb-photo-center">
-                <img src="https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=700&q=80" alt="Team meeting" />
+                <img src="/img/photo-1556761175-b413da4baf72.jpg" alt="Team meeting" />
               </div>
               <div className="xb-photo-slot xb-photo-right">
-                <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=700&q=80" alt="Partnership handshake" />
+                <img src="/img/photo-1600880292203-757bb62b4baf.jpg" alt="Partnership handshake" />
               </div>
             </div>
           </div>
@@ -503,7 +503,7 @@ export default function Home() {
 
               {/* Card 2 — Featured dark */}
               <FadeSection delay={150} className="xb-tcard xb-tcard-featured">
-                <div className="xb-tcard-bg" style={{ backgroundImage: 'url("https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=700&q=80")' }} />
+                <div className="xb-tcard-bg" style={{ backgroundImage: 'url("/img/photo-1556761175-b413da4baf72.jpg")' }} />
                 <div className="xb-tcard-overlay" />
                 <div style={{ position: 'relative', zIndex: 1, display: 'flex', flexDirection: 'column', height: '100%' }}>
                   <img src="/Dikshant.png" alt="Dikshant Rai"
@@ -610,6 +610,9 @@ export default function Home() {
         /* ── Full-screen home hero (EBG-style wordmark + content block) ── */
         .home-hero { min-height: 100vh; }
         .home-hero-mark span { font-size: clamp(38px, 5.4vw, 78px); }
+        /* Equal-width hero CTAs (grow to share the row, wrap to full width if tight) */
+        .home-hero-card .xb-hero-cta .btn-primary,
+        .home-hero-card .xb-hero-cta .btn-outline { flex: 1 1 220px; justify-content: center; text-align: center; }
         @media (max-width: 768px) {
           .home-hero { min-height: 90vh; }
           .home-hero-inner { padding: 96px 20px 40px !important; justify-content: flex-end !important; }

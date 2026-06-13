@@ -8,37 +8,37 @@ const SERVICES = [
   {
     title: 'Franchise Expansion',
     desc: 'Structured franchise expansion designed for scalable and sustainable business growth across India.',
-    img: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=300&q=80',
+    img: '/img/photo-1441986300917-64674bd600d8.jpg',
     tag: 'Franchise Ready', tagDark: false,
   },
   {
     title: 'Territory Planning',
     desc: 'Identifying the right cities, markets, and geographies for disciplined, data-backed expansion.',
-    img: 'https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=300&q=80',
+    img: '/img/photo-1486406146926-c627a92ad1ab.jpg',
     tag: 'Market Mapping', tagDark: true,
   },
   {
     title: 'Channel Development',
     desc: 'Building organised channel and distribution frameworks for stronger market reach and brand presence.',
-    img: 'https://images.unsplash.com/photo-1542744173-8e7e53415bb0?auto=format&fit=crop&w=300&q=80',
+    img: '/img/photo-1542744173-8e7e53415bb0.jpg',
     tag: 'Multi-Channel', tagDark: false,
   },
   {
     title: 'Partner Acquisition',
     desc: 'Connecting brands with commercially aligned franchise and business partners across tier-1 and tier-2 cities.',
-    img: 'https://images.unsplash.com/photo-1521791136064-7986c2920216?auto=format&fit=crop&w=300&q=80',
+    img: '/img/photo-1521791136064-7986c2920216.jpg',
     tag: 'Partner Network', tagDark: true,
   },
   {
     title: 'Expansion Strategy',
     desc: 'Growth-focused expansion plans built around real scalability, unit economics, and operational clarity.',
-    img: 'https://images.unsplash.com/photo-1553877522-43269d4ea984?auto=format&fit=crop&w=300&q=80',
+    img: '/img/photo-1553877522-43269d4ea984.jpg',
     tag: 'Growth Planning', tagDark: false,
   },
   {
     title: 'Rollout Support',
     desc: 'End-to-end support for onboarding, coordination, and execution from day one through full rollout.',
-    img: 'https://images.unsplash.com/photo-1556761175-b413da4baf72?auto=format&fit=crop&w=300&q=80',
+    img: '/img/photo-1556761175-b413da4baf72.jpg',
     tag: 'Full Support', tagDark: true,
   },
 ];
@@ -109,7 +109,7 @@ export default function ForBrands() {
     items: item.items,
     closing: item.closing,
   }));
-  const bgImage = hero?.backgroundImage || 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=900&q=80';
+  const bgImage = hero?.backgroundImage || '/img/photo-1441986300917-64674bd600d8.jpg';
 
   return (
     <div style={{ background: 'var(--cream-light)' }}>
@@ -350,7 +350,7 @@ export default function ForBrands() {
           <div className="fb-why-grid">
             {whyItems.map((item, i) => (
               <FadeSection key={item.title} delay={i * 80} className={`fb-why-card fb-why-card-${i + 1}`}>
-                <div style={{ fontFamily: "'Fraunces', serif", fontSize: '48px', fontWeight: 700, color: 'var(--orange)', lineHeight: 1, opacity: 0.25, marginBottom: '20px' }}>
+                <div style={{ fontFamily: "'Fraunces', serif", fontSize: '48px', fontWeight: 700, color: 'var(--orange)', lineHeight: 1, opacity: 0.9, marginBottom: '20px' }}>
                   {item.num}
                 </div>
                 <h4 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(15px, 1.4vw, 18px)', fontWeight: 700, color: '#fff', marginBottom: '14px', lineHeight: 1.35 }}>{item.title}</h4>

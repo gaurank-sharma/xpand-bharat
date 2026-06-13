@@ -11,7 +11,7 @@
 //       "Weekend & promotional activations",
 //       "Kids’ zones & family engagement"
 //     ],
-//     image: "https://images.unsplash.com/photo-1519750157634-b6d493a0f77c?q=80&w=1000&auto=format&fit=crop"
+//     image: "/img/photo-1519750157634-b6d493a0f77c.jpg"
 //   },
 //   {
 //     id: "brand-promotions",
@@ -24,7 +24,7 @@
 //       "Interactive games & contests",
 //       "Influencer-led mall activations"
 //     ],
-//     image: "https://images.unsplash.com/photo-1531058020387-3be344556be6?q=80&w=1000&auto=format&fit=crop"
+//     image: "/img/photo-1531058020387-3be344556be6.jpg"
 //   },
 //   {
 //     id: "corporate-events",
@@ -37,7 +37,7 @@
 //       "Corporate exhibitions & showcases",
 //       "Employee engagement events"
 //     ],
-//     image: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1000&auto=format&fit=crop"
+//     image: "/img/photo-1511578314322-379afb476865.jpg"
 //   },
 //   {
 //     id: "concept-design",
@@ -50,7 +50,7 @@
 //       "Fabrication & installation",
 //       "Vendor & logistics coordination"
 //     ],
-//     image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=1000&auto=format&fit=crop"
+//     image: "/img/photo-1505373877841-8d25f7d46678.jpg"
 //   },
 //   {
 //     id: "visual-merchandising",
@@ -63,7 +63,7 @@
 //       "Lighting & ambience design",
 //       "Signage & branding elements"
 //     ],
-//     image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1000&auto=format&fit=crop"
+//     image: "/img/photo-1492684223066-81342ee5ff30.jpg"
 //   },
 //   {
 //     id: "turnkey-solutions",
@@ -76,7 +76,7 @@
 //       "Audio-visual & technical setup",
 //       "Security & crowd flow management"
 //     ],
-//     image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=1000&auto=format&fit=crop"
+//     image: "/img/photo-1475721027785-f74eccf877e2.jpg"
 //   }
 // ];
 
@@ -95,35 +95,35 @@
 //     type: "image",
 //     // category: "Corporate",
 //     // title: "Tech Summit Launch 2024",
-//     src: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=1000&auto=format&fit=crop"
+//     src: "/img/photo-1505373877841-8d25f7d46678.jpg"
 //   },
 //   {
 //     id: 3,
 //     type: "video",
 //     // category: "Activations",
 //     // title: "Weekend Mall Flash Mob",
-//     src: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1000&auto=format&fit=crop",
+//     src: "/img/photo-1492684223066-81342ee5ff30.jpg",
 //   },
 //   {
 //     id: 4,
 //     type: "image",
 //     // category: "Mall Decor",
 //     // title: "Christmas Atrium Centerpiece",
-//     src: "https://images.unsplash.com/photo-1512389142860-9c449ded37a1?q=80&w=1000&auto=format&fit=crop"
+//     src: "/img/photo-1512389142860-9c449ded37a1.jpg"
 //   },
 //   {
 //     id: 5,
 //     type: "image",
 //     // category: "Corporate",
 //     // title: "Annual Awards Night",
-//     src: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1000&auto=format&fit=crop"
+//     src: "/img/photo-1511578314322-379afb476865.jpg"
 //   },
 //   {
 //     id: 6,
 //     type: "video",
 //     // category: "Activations",
 //     // title: "Product Sampling Booth",
-//     src: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=1000&auto=format&fit=crop",
+//     src: "/img/photo-1475721027785-f74eccf877e2.jpg",
 //   }
 // ];
 
@@ -138,7 +138,7 @@ export const servicesData = [
     title: "Mall & Retail Space Event Management",
     shortDesc: "High-impact events within malls, shopping complexes, and high-footfall zones.",
     fullDesc: "We specialize in planning and executing high-impact events within malls, shopping complexes, marketplaces, and high-footfall retail zones. Our goal is to transform standard retail spaces into immersive environments.",
-    image: "https://images.unsplash.com/photo-1519750157634-b6d493a0f77c?q=80&w=1000&auto=format&fit=crop",
+    image: "/img/photo-1519750157634-b6d493a0f77c.jpg",
     features: [
       "Seasonal & festive mall décor",
       "Themed installations",
@@ -152,7 +152,7 @@ export const servicesData = [
     title: "Mall Activations & Brand Promotions",
     shortDesc: "Strategic activations designed to increase footfall and brand recall.",
     fullDesc: "Our strategic activations are designed to increase footfall, dwell time, and brand recall. We help brands stand out in crowded marketplaces through direct consumer interaction.",
-    image: "https://images.unsplash.com/photo-1531058020387-3be344556be6?q=80&w=1000&auto=format&fit=crop",
+    image: "/img/photo-1531058020387-3be344556be6.jpg",
     features: [
       "Brand kiosks & experiential booths",
       "Live demonstrations & sampling",
@@ -165,7 +165,7 @@ export const servicesData = [
     title: "Corporate Events & Brand Launches",
     shortDesc: "End-to-end execution of professional corporate events with precision.",
     fullDesc: "We execute professional corporate events with precision and brand alignment. From gala dinners to high-stakes product launches, we ensure your corporate identity is shined.",
-    image: "https://images.unsplash.com/photo-1511578314322-379afb476865?q=80&w=1000&auto=format&fit=crop",
+    image: "/img/photo-1511578314322-379afb476865.jpg",
     features: [
       "Product & project launches",
       "Annual meets & milestone celebrations",
@@ -178,7 +178,7 @@ export const servicesData = [
     title: "Event Concept, Design & Execution",
     shortDesc: "Translating concepts into seamless on-ground experiences.",
     fullDesc: "From ideation to execution, we translate concepts into seamless on-ground experiences. Our design team visualizes the event before a single nail is driven.",
-    image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?q=80&w=1000&auto=format&fit=crop",
+    image: "/img/photo-1505373877841-8d25f7d46678.jpg",
     features: [
       "Event ideation & theme development",
       "3D layouts & spatial planning",
@@ -191,7 +191,7 @@ export const servicesData = [
     title: "Visual Merchandising & Decor",
     shortDesc: "Aesthetic, functional, and brand-aligned installations.",
     fullDesc: "We create aesthetic, functional, and brand-aligned installations for commercial spaces. Our visual merchandising turns heads and creates 'Instagrammable' moments.",
-    image: "https://images.unsplash.com/photo-1492684223066-81342ee5ff30?q=80&w=1000&auto=format&fit=crop",
+    image: "/img/photo-1492684223066-81342ee5ff30.jpg",
     features: [
       "Stage & backdrop design",
       "Entry gates & photo-op zones",
@@ -204,7 +204,7 @@ export const servicesData = [
     title: "Turnkey Event Solutions",
     shortDesc: "Single-window execution ensuring smooth delivery and accountability.",
     fullDesc: "We provide single-window execution ensuring smooth delivery and accountability. We take the stress out of event management by handling the regulatory and technical details.",
-    image: "https://images.unsplash.com/photo-1475721027785-f74eccf877e2?q=80&w=1000&auto=format&fit=crop",
+    image: "/img/photo-1475721027785-f74eccf877e2.jpg",
     features: [
       "Permissions & compliance coordination",
       "Artist & manpower management",
