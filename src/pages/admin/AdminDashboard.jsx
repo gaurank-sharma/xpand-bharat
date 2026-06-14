@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const statusColor = {
   new:      'bg-[#f07920]/10 text-[#f07920]',
-  read:     'bg-gray-500/10 text-gray-400',
+  read:     'bg-gray-500/10 text-gray-600',
   replied:  'bg-green-500/10 text-green-400',
   resolved: 'bg-purple-500/10 text-purple-400',
   spam:     'bg-red-500/10 text-red-400',
@@ -16,15 +16,15 @@ const StatCard = ({ icon: Icon, label, value, color, sub, href }) => {
   return (
     <div
       onClick={() => href && navigate(href)}
-      className={`bg-[#0d1730] border border-[#1e2c52] rounded-xl p-5 flex items-start gap-4 transition-all
-        ${href ? 'cursor-pointer hover:border-[#f07920]/40 hover:bg-[#f07920]/5' : 'hover:border-[#2a3a63]'}`}
+      className={`bg-[#ffffff] border border-[#e6e8ec] rounded-xl p-5 flex items-start gap-4 transition-all
+        ${href ? 'cursor-pointer hover:border-[#f07920]/40 hover:bg-[#f07920]/5' : 'hover:border-[#d4d7dd]'}`}
     >
       <div className={`p-2.5 rounded-lg ${color}`}>
-        <Icon size={20} className="text-white" />
+        <Icon size={20} className="text-[#0b1430]" />
       </div>
       <div>
-        <p className="text-gray-400 text-xs mb-0.5">{label}</p>
-        <p className="text-white text-2xl font-semibold">{value ?? '—'}</p>
+        <p className="text-gray-600 text-xs mb-0.5">{label}</p>
+        <p className="text-[#0b1430] text-2xl font-semibold">{value ?? '—'}</p>
         {sub && <p className="text-[#f07920] text-xs mt-0.5">{sub}</p>}
       </div>
     </div>
@@ -66,7 +66,7 @@ export default function AdminDashboard() {
   return (
     <div className="space-y-6">
       <div>
-        <h2 className="text-white text-xl font-semibold">Welcome back</h2>
+        <h2 className="text-[#0b1430] text-xl font-semibold">Welcome back</h2>
         <p className="text-gray-500 text-sm mt-0.5">Here's what's happening with Xpand Bharat today.</p>
       </div>
 
@@ -75,9 +75,9 @@ export default function AdminDashboard() {
       </div>
 
       {/* Recent Contacts */}
-      <div className="bg-[#0d1730] border border-[#1e2c52] rounded-xl overflow-hidden">
-        <div className="px-5 py-4 border-b border-[#1e2c52] flex items-center justify-between">
-          <h3 className="text-white font-medium">Recent Contact Submissions</h3>
+      <div className="bg-[#ffffff] border border-[#e6e8ec] rounded-xl overflow-hidden">
+        <div className="px-5 py-4 border-b border-[#e6e8ec] flex items-center justify-between">
+          <h3 className="text-[#0b1430] font-medium">Recent Contact Submissions</h3>
           <a href="/admin/contacts" className="text-[#f07920] text-xs hover:underline">View all</a>
         </div>
         {contacts.length === 0 ? (
@@ -86,7 +86,7 @@ export default function AdminDashboard() {
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-[#1e2c52]">
+                <tr className="border-b border-[#e6e8ec]">
                   {['Name', 'Email', 'Company', 'Status', 'Date'].map((h) => (
                     <th key={h} className="text-left text-gray-500 text-xs px-5 py-3 font-medium">{h}</th>
                   ))}
@@ -94,10 +94,10 @@ export default function AdminDashboard() {
               </thead>
               <tbody>
                 {contacts.map((c) => (
-                  <tr key={c._id} className="border-b border-[#0b1430] hover:bg-white/2 transition-colors">
-                    <td className="px-5 py-3 text-white font-medium">{c.name}</td>
-                    <td className="px-5 py-3 text-gray-400">{c.email}</td>
-                    <td className="px-5 py-3 text-gray-400">{c.company || '—'}</td>
+                  <tr key={c._id} className="border-b border-[#ffffff] hover:bg-[#f8f9fb] transition-colors">
+                    <td className="px-5 py-3 text-[#0b1430] font-medium">{c.name}</td>
+                    <td className="px-5 py-3 text-gray-600">{c.email}</td>
+                    <td className="px-5 py-3 text-gray-600">{c.company || '—'}</td>
                     <td className="px-5 py-3">
                       <span className={`text-xs px-2 py-0.5 rounded-full capitalize ${statusColor[c.status]}`}>{c.status}</span>
                     </td>

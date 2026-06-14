@@ -19,7 +19,7 @@ export default function AdminLayout() {
   const title = pageTitles[location.pathname] || 'Admin';
 
   return (
-    <div className="min-h-screen bg-[#070f20] flex">
+    <div className="min-h-screen bg-[#f4f5f7] flex">
       <AdminSidebar open={sidebarOpen} onClose={() => setSidebarOpen(false)} />
       <div className="flex-1 flex flex-col lg:ml-64 min-w-0">
         <AdminHeader title={title} onMenuClick={() => setSidebarOpen(true)} />

@@ -5,12 +5,12 @@ export default function AdminHeader({ onMenuClick, title }) {
   const { admin } = useAdminAuth();
 
   return (
-    <header className="h-16 bg-[#0b1430] border-b border-[#1e2c52] flex items-center justify-between px-4 lg:px-6 sticky top-0 z-30">
+    <header className="h-16 bg-[#ffffff] border-b border-[#e6e8ec] flex items-center justify-between px-4 lg:px-6 sticky top-0 z-30">
       <div className="flex items-center gap-4">
-        <button onClick={onMenuClick} className="lg:hidden text-gray-400 hover:text-white p-1">
+        <button onClick={onMenuClick} className="lg:hidden text-gray-600 hover:text-[#0b1430] p-1">
           <Menu size={22} />
         </button>
-        <h1 className="text-white font-semibold text-lg">{title}</h1>
+        <h1 className="text-[#0b1430] font-semibold text-lg">{title}</h1>
       </div>
       <div className="flex items-center gap-3">
         <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" title="Backend Connected" />

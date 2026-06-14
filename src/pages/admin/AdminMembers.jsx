@@ -75,14 +75,14 @@ export default function AdminMembers() {
     catch (e) { showToast(e.message); }
   };
 
-  const inputCls = 'w-full bg-[#0b1430] border border-white/10 rounded-lg px-3.5 py-2.5 text-sm text-white placeholder-gray-500 outline-none focus:border-[#f07920]/60';
-  const labelCls = 'block text-xs font-medium text-gray-400 mb-1.5';
+  const inputCls = 'w-full bg-[#ffffff] border border-[#e6e8ec] rounded-lg px-3.5 py-2.5 text-sm text-[#0b1430] placeholder-gray-500 outline-none focus:border-[#f07920]/60';
+  const labelCls = 'block text-xs font-medium text-gray-600 mb-1.5';
 
   return (
     <div>
       <div className="flex items-center justify-between mb-6 flex-wrap gap-4">
         <div>
-          <h2 className="text-white text-lg font-semibold">Members & Access</h2>
+          <h2 className="text-[#0b1430] text-lg font-semibold">Members & Access</h2>
           <p className="text-gray-500 text-sm">Create admin accounts and control which sections they can access.</p>
         </div>
         <button onClick={openNew} className="inline-flex items-center gap-2 bg-[#f07920] hover:bg-[#d96b1a] text-white text-sm font-semibold px-4 py-2.5 rounded-lg transition-colors">
@@ -95,15 +95,15 @@ export default function AdminMembers() {
       ) : (
         <div className="grid gap-3">
           {members.map((m) => (
-            <div key={m.id} className="bg-[#0d1730] border border-white/10 rounded-xl p-4 flex items-start justify-between gap-4 flex-wrap">
+            <div key={m.id} className="bg-[#ffffff] border border-[#e6e8ec] rounded-xl p-4 flex items-start justify-between gap-4 flex-wrap">
               <div className="flex items-start gap-3 min-w-0">
                 <div className="w-10 h-10 rounded-full bg-[#f07920]/15 flex items-center justify-center shrink-0">
                   <span className="text-[#f07920] text-sm font-bold">{(m.name || m.email)[0].toUpperCase()}</span>
                 </div>
                 <div className="min-w-0">
                   <div className="flex items-center gap-2 flex-wrap">
-                    <p className="text-white text-sm font-semibold truncate">{m.name || '—'}</p>
-                    <span className={`inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wide px-2 py-0.5 rounded ${m.role === 'superadmin' ? 'bg-[#f07920]/15 text-[#f07920]' : 'bg-white/5 text-gray-400'}`}>
+                    <p className="text-[#0b1430] text-sm font-semibold truncate">{m.name || '—'}</p>
+                    <span className={`inline-flex items-center gap-1 text-[10px] font-semibold uppercase tracking-wide px-2 py-0.5 rounded ${m.role === 'superadmin' ? 'bg-[#f07920]/15 text-[#f07920]' : 'bg-[#f2f3f6] text-gray-600'}`}>
                       {m.role === 'superadmin' ? <ShieldCheck size={11} /> : <Shield size={11} />}{m.role}
                     </span>
                     {m.id === admin?.id && <span className="text-[10px] text-gray-500">(you)</span>}
@@ -111,15 +111,15 @@ export default function AdminMembers() {
                   <p className="text-gray-500 text-xs mt-0.5 truncate">{m.email}</p>
                   <div className="flex flex-wrap gap-1.5 mt-2">
                     {(m.role === 'superadmin' ? ['Full access'] : (m.permissions.length ? m.permissions.map((p) => SECTION_LABELS[p] || p) : ['No access'])).map((p) => (
-                      <span key={p} className="text-[10px] text-gray-300 bg-white/5 border border-white/10 rounded px-2 py-0.5">{p}</span>
+                      <span key={p} className="text-[10px] text-gray-700 bg-[#f2f3f6] border border-[#e6e8ec] rounded px-2 py-0.5">{p}</span>
                     ))}
                   </div>
                 </div>
               </div>
               <div className="flex items-center gap-1.5 shrink-0">
-                <button onClick={() => openEdit(m)} className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-white/5" title="Edit"><Pencil size={15} /></button>
+                <button onClick={() => openEdit(m)} className="p-2 rounded-lg text-gray-600 hover:text-[#0b1430] hover:bg-[#f2f3f6]" title="Edit"><Pencil size={15} /></button>
                 {m.id !== admin?.id && (
-                  <button onClick={() => remove(m)} className="p-2 rounded-lg text-gray-400 hover:text-red-400 hover:bg-red-400/5" title="Remove"><Trash2 size={15} /></button>
+                  <button onClick={() => remove(m)} className="p-2 rounded-lg text-gray-600 hover:text-red-400 hover:bg-red-400/5" title="Remove"><Trash2 size={15} /></button>
                 )}
               </div>
             </div>
@@ -130,10 +130,10 @@ export default function AdminMembers() {
       {/* Add / Edit modal */}
       {editing && (
         <div className="fixed inset-0 z-[100] bg-black/60 backdrop-blur-sm flex items-start justify-center p-4 overflow-y-auto" onClick={close}>
-          <div className="bg-[#0d1730] border border-white/10 rounded-2xl w-full max-w-lg my-8 p-6" onClick={(e) => e.stopPropagation()}>
+          <div className="bg-[#ffffff] border border-[#e6e8ec] rounded-2xl w-full max-w-lg my-8 p-6" onClick={(e) => e.stopPropagation()}>
             <div className="flex items-center justify-between mb-5">
-              <h3 className="text-white font-semibold">{editing === 'new' ? 'Add Member' : `Edit ${editing.name || editing.email}`}</h3>
-              <button onClick={close} className="text-gray-400 hover:text-white"><X size={18} /></button>
+              <h3 className="text-[#0b1430] font-semibold">{editing === 'new' ? 'Add Member' : `Edit ${editing.name || editing.email}`}</h3>
+              <button onClick={close} className="text-gray-600 hover:text-[#0b1430]"><X size={18} /></button>
             </div>
 
             <div className="space-y-4">
@@ -161,7 +161,7 @@ export default function AdminMembers() {
                   <label className={labelCls}>Section access</label>
                   <div className="grid grid-cols-2 gap-2">
                     {sections.map((s) => (
-                      <label key={s} className={`flex items-center gap-2 px-3 py-2 rounded-lg border cursor-pointer text-sm ${form.permissions.includes(s) ? 'border-[#f07920]/50 bg-[#f07920]/10 text-white' : 'border-white/10 text-gray-400 hover:border-white/20'}`}>
+                      <label key={s} className={`flex items-center gap-2 px-3 py-2 rounded-lg border cursor-pointer text-sm ${form.permissions.includes(s) ? 'border-[#f07920]/50 bg-[#f07920]/10 text-[#0b1430]' : 'border-[#e6e8ec] text-gray-600 hover:border-[#e6e8ec]'}`}>
                         <input type="checkbox" className="accent-[#f07920]" checked={form.permissions.includes(s)} onChange={() => togglePerm(s)} />
                         {SECTION_LABELS[s] || s}
                       </label>
@@ -173,7 +173,7 @@ export default function AdminMembers() {
             </div>
 
             <div className="flex justify-end gap-2 mt-6">
-              <button onClick={close} className="px-4 py-2.5 rounded-lg text-sm text-gray-400 hover:text-white">Cancel</button>
+              <button onClick={close} className="px-4 py-2.5 rounded-lg text-sm text-gray-600 hover:text-[#0b1430]">Cancel</button>
               <button onClick={save} disabled={saving} className="px-5 py-2.5 rounded-lg text-sm font-semibold bg-[#f07920] hover:bg-[#d96b1a] text-white disabled:opacity-60">
                 {saving ? 'Saving…' : editing === 'new' ? 'Create Member' : 'Save Changes'}
               </button>
@@ -183,7 +183,7 @@ export default function AdminMembers() {
       )}
 
       {toast && (
-        <div className="fixed bottom-6 right-6 z-[110] bg-[#0d1730] border border-white/15 text-white text-sm px-4 py-3 rounded-lg shadow-xl">{toast}</div>
+        <div className="fixed bottom-6 right-6 z-[110] bg-[#ffffff] border border-[#e6e8ec] text-[#0b1430] text-sm px-4 py-3 rounded-lg shadow-xl">{toast}</div>
       )}
     </div>
   );

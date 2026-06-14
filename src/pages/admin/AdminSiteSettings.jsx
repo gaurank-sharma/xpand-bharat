@@ -6,11 +6,11 @@ const TABS = ['General', 'Contact', 'Social', 'Footer'];
 
 const Field = ({ label, value, onChange, placeholder, type = 'text', hint }) => (
   <div>
-    <label className="block text-gray-400 text-xs mb-1 font-medium">{label}</label>
+    <label className="block text-gray-600 text-xs mb-1 font-medium">{label}</label>
     <input
       type={type} value={value} onChange={e => onChange(e.target.value)}
       placeholder={placeholder}
-      className="w-full bg-[#0b1430] border border-[#2a3a63] text-white placeholder-gray-600 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#f07920] transition-colors"
+      className="w-full bg-[#ffffff] border border-[#d4d7dd] text-[#0b1430] placeholder-gray-600 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#f07920] transition-colors"
     />
     {hint && <p className="text-gray-600 text-[10px] mt-1">{hint}</p>}
   </div>
@@ -18,11 +18,11 @@ const Field = ({ label, value, onChange, placeholder, type = 'text', hint }) => 
 
 const TextArea = ({ label, value, onChange, placeholder, rows = 3 }) => (
   <div>
-    <label className="block text-gray-400 text-xs mb-1 font-medium">{label}</label>
+    <label className="block text-gray-600 text-xs mb-1 font-medium">{label}</label>
     <textarea
       value={value} onChange={e => onChange(e.target.value)} rows={rows}
       placeholder={placeholder}
-      className="w-full bg-[#0b1430] border border-[#2a3a63] text-white placeholder-gray-600 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#f07920] resize-none transition-colors"
+      className="w-full bg-[#ffffff] border border-[#d4d7dd] text-[#0b1430] placeholder-gray-600 rounded-lg px-3 py-2.5 text-sm focus:outline-none focus:border-[#f07920] resize-none transition-colors"
     />
   </div>
 );
@@ -74,17 +74,17 @@ export default function AdminSiteSettings() {
       {toast && <div className="fixed bottom-6 right-6 bg-[#f07920] text-white px-4 py-2 rounded-lg text-sm font-medium z-50 shadow-lg">{toast}</div>}
 
       {/* Tabs */}
-      <div className="flex gap-1 bg-[#0d1730] border border-[#1e2c52] rounded-xl p-1">
+      <div className="flex gap-1 bg-[#ffffff] border border-[#e6e8ec] rounded-xl p-1">
         {TABS.map(t => (
           <button key={t} onClick={() => setTab(t)}
             className={`flex-1 py-2 text-sm rounded-lg font-medium transition-all
-              ${tab === t ? 'bg-[#f07920] text-white' : 'text-gray-400 hover:text-white'}`}>
+              ${tab === t ? 'bg-[#f07920] text-white' : 'text-gray-600 hover:text-[#0b1430]'}`}>
             {t}
           </button>
         ))}
       </div>
 
-      <div className="bg-[#0d1730] border border-[#1e2c52] rounded-xl p-6 space-y-5">
+      <div className="bg-[#ffffff] border border-[#e6e8ec] rounded-xl p-6 space-y-5">
 
         {tab === 'General' && (
           <>
@@ -92,8 +92,8 @@ export default function AdminSiteSettings() {
             <Field label="Tagline"        value={form.tagline}      onChange={v => set('tagline', v)}      placeholder="Less noise. More execution." />
             {/* Logo upload */}
             <div>
-              <label className="block text-gray-400 text-xs mb-2 font-medium">Logo</label>
-              <label className={`flex items-center justify-center border-2 border-dashed rounded-xl cursor-pointer transition-colors h-24 ${logoPreview || form.logoUrl ? 'border-[#f07920]/30' : 'border-[#2a3a63] hover:border-[#f07920]/30'}`}>
+              <label className="block text-gray-600 text-xs mb-2 font-medium">Logo</label>
+              <label className={`flex items-center justify-center border-2 border-dashed rounded-xl cursor-pointer transition-colors h-24 ${logoPreview || form.logoUrl ? 'border-[#f07920]/30' : 'border-[#d4d7dd] hover:border-[#f07920]/30'}`}>
                 {logoPreview
                   ? <img src={logoPreview} alt="logo" className="max-h-full max-w-full object-contain p-2" />
                   : form.logoUrl

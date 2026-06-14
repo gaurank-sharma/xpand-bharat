@@ -5,7 +5,7 @@ import { Search, Trash2, Eye, X, Mail, Phone, Building2, FileText, Download, Pho
 const STATUS_OPTS = ['all', 'new', 'read', 'replied', 'resolved', 'spam'];
 const statusColor = {
   new: 'bg-[#f07920]/10 text-[#f07920] border-[#f07920]/20',
-  read: 'bg-gray-500/10 text-gray-400 border-gray-500/20',
+  read: 'bg-gray-500/10 text-gray-600 border-gray-500/20',
   replied: 'bg-green-500/10 text-green-400 border-green-500/20',
   resolved: 'bg-purple-500/10 text-purple-400 border-purple-500/20',
   spam: 'bg-red-500/10 text-red-400 border-red-500/20',
@@ -107,7 +107,7 @@ export default function AdminContacts({ view = 'business' }) {
             key={s}
             onClick={() => setFilter(s)}
             className={`px-3 py-1.5 rounded-lg text-xs font-medium capitalize border transition-all
-              ${filter === s ? 'bg-[#f07920] text-white border-[#f07920]' : 'bg-[#0b1430] text-gray-400 border-[#1e2c52] hover:border-[#f07920]/40'}`}
+              ${filter === s ? 'bg-[#f07920] text-white border-[#f07920]' : 'bg-[#ffffff] text-gray-600 border-[#e6e8ec] hover:border-[#f07920]/40'}`}
           >
             {s} {s !== 'all' && stats[s] !== undefined ? `(${stats[s]})` : ''}
           </button>
@@ -123,7 +123,7 @@ export default function AdminContacts({ view = 'business' }) {
             placeholder="Search by name, email or company..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full bg-[#0d1730] border border-[#1e2c52] text-white placeholder-gray-600 rounded-lg pl-9 pr-4 py-2.5 text-sm focus:outline-none focus:border-[#f07920] transition-colors"
+            className="w-full bg-[#ffffff] border border-[#e6e8ec] text-[#0b1430] placeholder-gray-600 rounded-lg pl-9 pr-4 py-2.5 text-sm focus:outline-none focus:border-[#f07920] transition-colors"
           />
         </div>
         <button
@@ -136,7 +136,7 @@ export default function AdminContacts({ view = 'business' }) {
       </div>
 
       {/* Table */}
-      <div className="bg-[#0d1730] border border-[#1e2c52] rounded-xl overflow-hidden">
+      <div className="bg-[#ffffff] border border-[#e6e8ec] rounded-xl overflow-hidden">
         {loading ? (
           <div className="flex justify-center py-16"><div className="w-7 h-7 border-2 border-[#f07920] border-t-transparent rounded-full animate-spin" /></div>
         ) : contacts.length === 0 ? (
@@ -145,7 +145,7 @@ export default function AdminContacts({ view = 'business' }) {
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-[#1e2c52]">
+                <tr className="border-b border-[#e6e8ec]">
                   {['Name', 'Email', 'Mobile', 'Requirement', 'Status', 'Date', ''].map((h) => (
                     <th key={h} className="text-left text-gray-500 text-xs px-5 py-3 font-medium whitespace-nowrap">{h}</th>
                   ))}
@@ -153,16 +153,16 @@ export default function AdminContacts({ view = 'business' }) {
               </thead>
               <tbody>
                 {contacts.map((c) => (
-                  <tr key={c._id} className="border-b border-[#161616] hover:bg-white/2 transition-colors">
-                    <td className="px-5 py-3 text-white font-medium whitespace-nowrap">
+                  <tr key={c._id} className="border-b border-[#eef0f3] hover:bg-[#f8f9fb] transition-colors">
+                    <td className="px-5 py-3 text-[#0b1430] font-medium whitespace-nowrap">
                       <span className="flex items-center gap-2">
                         {c.name}
                         {c.consentContact && <PhoneCall size={12} className="text-green-400" title="Wants a call" />}
                       </span>
                     </td>
-                    <td className="px-5 py-3 text-gray-400 text-xs">{c.email}</td>
-                    <td className="px-5 py-3 text-gray-400 text-xs">{c.mobile || '—'}</td>
-                    <td className="px-5 py-3 text-gray-400 text-xs max-w-[140px] truncate">{c.requirement || '—'}</td>
+                    <td className="px-5 py-3 text-gray-600 text-xs">{c.email}</td>
+                    <td className="px-5 py-3 text-gray-600 text-xs">{c.mobile || '—'}</td>
+                    <td className="px-5 py-3 text-gray-600 text-xs max-w-[140px] truncate">{c.requirement || '—'}</td>
                     <td className="px-5 py-3">
                       <span className={`text-xs px-2 py-0.5 rounded-full capitalize border ${statusColor[c.status]}`}>{c.status}</span>
                     </td>
@@ -190,16 +190,16 @@ export default function AdminContacts({ view = 'business' }) {
       {/* Detail Modal */}
       {selected && (
         <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
-          <div className="bg-[#0d1730] border border-[#1e2c52] rounded-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
-            <div className="flex items-center justify-between px-6 py-4 border-b border-[#1e2c52]">
-              <h3 className="text-white font-semibold">Contact Details</h3>
-              <button onClick={() => setSelected(null)} className="text-gray-500 hover:text-white"><X size={18} /></button>
+          <div className="bg-[#ffffff] border border-[#e6e8ec] rounded-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-[#e6e8ec]">
+              <h3 className="text-[#0b1430] font-semibold">Contact Details</h3>
+              <button onClick={() => setSelected(null)} className="text-gray-500 hover:text-[#0b1430]"><X size={18} /></button>
             </div>
             <div className="p-6 space-y-4">
               <div className="grid grid-cols-2 gap-4">
                 <div>
                   <p className="text-gray-500 text-xs mb-1">Name</p>
-                  <p className="text-white text-sm font-medium">{selected.name}</p>
+                  <p className="text-[#0b1430] text-sm font-medium">{selected.name}</p>
                 </div>
                 <div>
                   <p className="text-gray-500 text-xs mb-1">Status</p>
@@ -207,26 +207,26 @@ export default function AdminContacts({ view = 'business' }) {
                 </div>
                 <div>
                   <p className="text-gray-500 text-xs mb-1 flex items-center gap-1"><Mail size={10} /> Email</p>
-                  <p className="text-white text-sm">{selected.email}</p>
+                  <p className="text-[#0b1430] text-sm">{selected.email}</p>
                 </div>
                 <div>
                   <p className="text-gray-500 text-xs mb-1 flex items-center gap-1"><Phone size={10} /> Mobile</p>
-                  <p className="text-white text-sm">{selected.mobile || '—'}</p>
+                  <p className="text-[#0b1430] text-sm">{selected.mobile || '—'}</p>
                 </div>
                 <div>
                   <p className="text-gray-500 text-xs mb-1 flex items-center gap-1"><Building2 size={10} /> Company</p>
-                  <p className="text-white text-sm">{selected.company || '—'}</p>
+                  <p className="text-[#0b1430] text-sm">{selected.company || '—'}</p>
                 </div>
                 <div>
                   <p className="text-gray-500 text-xs mb-1">Date</p>
-                  <p className="text-white text-sm">{new Date(selected.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+                  <p className="text-[#0b1430] text-sm">{new Date(selected.createdAt).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
                 </div>
               </div>
               {/* Call consent banner */}
-              <div className={`rounded-lg p-3 flex items-center gap-3 border ${selected.consentContact ? 'bg-green-500/10 border-green-500/25' : 'bg-[#0b1430] border-[#2a3a63]'}`}>
+              <div className={`rounded-lg p-3 flex items-center gap-3 border ${selected.consentContact ? 'bg-green-500/10 border-green-500/25' : 'bg-[#ffffff] border-[#d4d7dd]'}`}>
                 <PhoneCall size={16} className={selected.consentContact ? 'text-green-400' : 'text-gray-500'} />
                 <div>
-                  <p className={`text-sm font-semibold ${selected.consentContact ? 'text-green-400' : 'text-gray-400'}`}>
+                  <p className={`text-sm font-semibold ${selected.consentContact ? 'text-green-400' : 'text-gray-600'}`}>
                     {selected.consentContact ? 'Happy for an advisor to call' : 'Did NOT opt in for a call'}
                   </p>
                   <p className="text-gray-500 text-[11px]">
@@ -237,7 +237,7 @@ export default function AdminContacts({ view = 'business' }) {
 
               {/* Inquiry selections */}
               {(selected.role || selected.primaryGoal || selected.sector || selected.geography || selected.budget || selected.timeline) && (
-                <div className="grid grid-cols-2 gap-3 bg-[#141414] rounded-lg p-3 border border-[#1e2c52]">
+                <div className="grid grid-cols-2 gap-3 bg-[#f4f5f7] rounded-lg p-3 border border-[#e6e8ec]">
                   {[
                     ['I am a', selected.role],
                     ['Looking For', selected.primaryGoal],
@@ -248,7 +248,7 @@ export default function AdminContacts({ view = 'business' }) {
                   ].filter(([, v]) => v).map(([label, value]) => (
                     <div key={label}>
                       <p className="text-gray-500 text-[10px] uppercase tracking-wide mb-0.5">{label}</p>
-                      <p className="text-white text-xs leading-snug">{value}</p>
+                      <p className="text-[#0b1430] text-xs leading-snug">{value}</p>
                     </div>
                   ))}
                 </div>
@@ -257,19 +257,19 @@ export default function AdminContacts({ view = 'business' }) {
               {selected.requirement && (
                 <div>
                   <p className="text-gray-500 text-xs mb-1">Requirement Summary</p>
-                  <p className="text-white text-sm">{selected.requirement}</p>
+                  <p className="text-[#0b1430] text-sm">{selected.requirement}</p>
                 </div>
               )}
               {selected.source && (
                 <div>
                   <p className="text-gray-500 text-xs mb-1">Source Page</p>
-                  <p className="text-white text-sm capitalize">{selected.source}</p>
+                  <p className="text-[#0b1430] text-sm capitalize">{selected.source}</p>
                 </div>
               )}
               {selected.message && (
                 <div>
                   <p className="text-gray-500 text-xs mb-1">Message</p>
-                  <p className="text-gray-300 text-sm leading-relaxed bg-[#0b1430] rounded-lg p-3">{selected.message}</p>
+                  <p className="text-gray-700 text-sm leading-relaxed bg-[#ffffff] rounded-lg p-3">{selected.message}</p>
                 </div>
               )}
               {selected.cvUrl && (
@@ -295,7 +295,7 @@ export default function AdminContacts({ view = 'business' }) {
                       onClick={() => updateStatus(selected._id, s)}
                       disabled={selected.status === s}
                       className={`px-3 py-1.5 rounded-lg text-xs capitalize border transition-all disabled:opacity-40
-                        ${statusColor[s] || 'border-[#2a3a63] text-gray-400'}`}
+                        ${statusColor[s] || 'border-[#d4d7dd] text-gray-600'}`}
                     >
                       {s}
                     </button>
