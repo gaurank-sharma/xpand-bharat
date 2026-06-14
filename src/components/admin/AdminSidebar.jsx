@@ -32,7 +32,7 @@ export default function AdminSidebar({ open, onClose }) {
 
         {/* Logo */}
         <div className="flex items-center justify-between px-5 py-5 border-b border-[#e6e8ec]">
-          <img src="/logo.png" alt="Xpand Bharat" className="h-8 w-auto object-contain" />
+          <img src="/logo.png" alt="Xpand Bharat" className="h-12 w-auto object-contain" />
           <button onClick={onClose} className="lg:hidden text-gray-600 hover:text-[#0b1430]"><X size={18} /></button>
         </div>
 
