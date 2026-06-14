@@ -308,9 +308,23 @@ export default function Navbar() {
         }
 
         /* ── Responsive ── */
+        /* Medium laptops (≈14") — tighten so the full nav + CTA fit without clipping */
+        @media (max-width: 1440px) {
+          .xb-header-inner { padding: 0 22px; gap: 14px; }
+          .xb-logo img { height: 54px; }
+          .xb-nav { gap: 0; }
+          .xb-nav-link { font-size: 11.5px; padding: 6px 8px; letter-spacing: 0.01em; }
+          .xb-header-cta { font-size: 11px; padding: 9px 15px; letter-spacing: 0.04em; }
+        }
+        @media (max-width: 1300px) {
+          .xb-logo img { height: 48px; }
+          .xb-nav-link { font-size: 11px; padding: 5px 6px; }
+          .xb-header-cta { font-size: 10.5px; padding: 8px 12px; }
+        }
         @media (max-width: 1180px) {
           .xb-nav { display: none; }
           .xb-burger { display: flex; }
+          .xb-logo img { height: 60px; }
         }
         @media (max-width: 560px) {
           .xb-header-cta { display: none; }

@@ -141,7 +141,7 @@ export default function Home() {
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(160deg, rgba(7,15,35,0.62) 0%, rgba(7,15,35,0.18) 38%, rgba(7,15,35,0.86) 100%)' }} />
 
         {/* Full-height column: wordmark pinned top, content block pinned bottom */}
-        <div className="home-hero-inner" style={{ position: 'relative', zIndex: 2, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '24px', maxWidth: '1440px', width: '100%', margin: '0 auto', padding: '96px 40px 56px', boxSizing: 'border-box' }}>
+        <div className="home-hero-inner" style={{ position: 'relative', zIndex: 2, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '20px', maxWidth: '1440px', width: '100%', margin: '0 auto', padding: '84px 40px 44px', boxSizing: 'border-box' }}>
 
           {/* Giant brand wordmark (EBG-style) */}
           <div className="home-hero-mark" style={{ pointerEvents: 'none' }}>
@@ -150,15 +150,15 @@ export default function Home() {
           </div>
 
           {/* Content block (EBG-style frosted card) */}
-          <div className="home-hero-card" style={{ maxWidth: '640px', background: 'rgba(9,17,38,0.5)', backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '20px', padding: '38px 42px' }}>
-            <div className="section-label" style={{ marginBottom: '18px' }}>India's Leading Franchise Expansion &amp; Advisory Platform</div>
-            <h1 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(28px, 3.4vw, 48px)', fontWeight: 700, lineHeight: 1.08, margin: '0 0 18px', letterSpacing: '-0.01em' }}>
+          <div className="home-hero-card" style={{ maxWidth: '640px', background: 'rgba(9,17,38,0.5)', backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '20px', padding: '30px 38px' }}>
+            <div className="section-label" style={{ marginBottom: '14px' }}>India's Leading Franchise Expansion &amp; Advisory Platform</div>
+            <h1 style={{ fontFamily: "'Fraunces', serif", fontWeight: 700, lineHeight: 1.08, margin: '0 0 14px', letterSpacing: '-0.01em' }}>
               <span style={{ color: '#fff' }}>Good businesses deserve </span>
               <span style={{ color: 'var(--orange)' }}>more than random expansion.</span>
             </h1>
-            <p style={{ color: 'rgba(255,255,255,0.72)', fontSize: '16px', lineHeight: 1.7, margin: '0 0 28px' }}>{heroSubtitle}</p>
+            <p style={{ color: 'rgba(255,255,255,0.72)', fontSize: '15px', lineHeight: 1.6, margin: '0 0 22px' }}>{heroSubtitle}</p>
             <div className="xb-hero-cta">
-              <Link to="/contact" className="btn-primary">Discuss Your Requirement</Link>
+              <Link to="/get-started" className="btn-primary">Discuss Your Requirement</Link>
               <Link to="/growth-opportunities" className="btn-outline">Explore Opportunities</Link>
             </div>
           </div>
@@ -609,10 +609,14 @@ export default function Home() {
 
         /* ── Full-screen home hero (EBG-style wordmark + content block) ── */
         .home-hero { min-height: 100vh; }
-        .home-hero-mark span { font-size: clamp(38px, 5.4vw, 78px); }
-        /* Equal-width hero CTAs (grow to share the row, wrap to full width if tight) */
+        .home-hero-inner { padding: 84px 40px 44px; }
+        .home-hero-mark span { font-size: clamp(36px, 4.8vw, 68px); }
+        /* Keep the card compact so it fits one viewport (and stays robust to browser zoom) */
+        .home-hero-card h1 { font-size: clamp(26px, 3vw, 42px) !important; }
+        /* Equal-width hero CTAs — compact so they sit on one line and don't push the card past the fold */
+        .home-hero-card .xb-hero-cta { gap: 12px; }
         .home-hero-card .xb-hero-cta .btn-primary,
-        .home-hero-card .xb-hero-cta .btn-outline { flex: 1 1 220px; justify-content: center; text-align: center; }
+        .home-hero-card .xb-hero-cta .btn-outline { flex: 1 1 200px; justify-content: center; text-align: center; font-size: 12px; padding: 12px 16px; }
         @media (max-width: 768px) {
           .home-hero { min-height: 90vh; }
           .home-hero-inner { padding: 96px 20px 40px !important; justify-content: flex-end !important; }
