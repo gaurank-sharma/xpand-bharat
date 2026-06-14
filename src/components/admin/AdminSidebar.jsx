@@ -1,12 +1,13 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAdminAuth } from '../../context/AdminAuthContext';
-import { LayoutDashboard, MessageSquare, BookOpen, Settings, FileText, LogOut, X, ChevronRight } from 'lucide-react';
+import { LayoutDashboard, MessageSquare, Briefcase, BookOpen, Settings, FileText, LogOut, X, ChevronRight } from 'lucide-react';
 
 const links = [
   { to: '/admin/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
   { to: '/admin/pages',     icon: FileText,        label: 'Pages' },
   { to: '/admin/insights',  icon: BookOpen,        label: 'Insights' },
-  { to: '/admin/contacts',  icon: MessageSquare,   label: 'Contacts' },
+  { to: '/admin/leads',     icon: Briefcase,       label: 'Business Queries' },
+  { to: '/admin/contacts',  icon: MessageSquare,   label: 'Contact Queries' },
   { to: '/admin/settings',  icon: Settings,        label: 'Site Settings' },
 ];
 

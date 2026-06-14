@@ -54,7 +54,8 @@ function App() {
           >
             <Route index element={<AdminDashboard />} />
             <Route path="dashboard" element={<AdminDashboard />} />
-            <Route path="contacts"  element={<AdminContacts />} />
+            <Route path="leads"     element={<AdminContacts view="business" />} />
+            <Route path="contacts"  element={<AdminContacts view="contact" />} />
             <Route path="insights"  element={<AdminInsights />} />
             <Route path="pages"     element={<AdminPages />} />
             <Route path="settings"  element={<AdminSiteSettings />} />

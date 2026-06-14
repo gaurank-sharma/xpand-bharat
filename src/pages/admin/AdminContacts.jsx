@@ -11,7 +11,7 @@ const statusColor = {
   spam: 'bg-red-500/10 text-red-400 border-red-500/20',
 };
 
-export default function AdminContacts() {
+export default function AdminContacts({ view = 'business' }) {
   const { authFetch } = useAdminAuth();
   const [contacts, setContacts] = useState([]);
   const [stats, setStats] = useState({});
@@ -27,6 +27,7 @@ export default function AdminContacts() {
     setLoading(true);
     try {
       const params = new URLSearchParams();
+      if (view) params.set('view', view);
       if (filter !== 'all') params.set('status', filter);
       if (search) params.set('search', search);
       const d = await authFetch(`/contacts?${params}`);
@@ -37,7 +38,7 @@ export default function AdminContacts() {
     }
   };
 
-  useEffect(() => { load(); }, [filter, search]);
+  useEffect(() => { load(); /* eslint-disable-next-line */ }, [filter, search, view]);
 
   const updateStatus = async (id, status) => {
     try {
@@ -62,6 +63,7 @@ export default function AdminContacts() {
     try {
       showToast('Preparing export…');
       const params = new URLSearchParams({ limit: '10000' });
+      if (view) params.set('view', view);
       if (filter !== 'all') params.set('status', filter);
       if (search) params.set('search', search);
       const d = await authFetch(`/contacts?${params}`);
@@ -82,7 +84,7 @@ export default function AdminContacts() {
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = `xpand-inquiries-${new Date().toISOString().slice(0, 10)}.csv`;
+      a.download = `xpand-${view}-queries-${new Date().toISOString().slice(0, 10)}.csv`;
       a.click();
       URL.revokeObjectURL(url);
       showToast(`Exported ${rows.length} inquiries`);

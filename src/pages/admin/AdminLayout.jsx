@@ -5,7 +5,8 @@ import AdminHeader from '../../components/admin/AdminHeader';
 
 const pageTitles = {
   '/admin/dashboard': 'Dashboard',
-  '/admin/contacts':  'Contact Submissions',
+  '/admin/leads':     'Business Queries',
+  '/admin/contacts':  'Contact Queries',
   '/admin/insights':  'Insights Management',
   '/admin/pages':     'Page Content',
   '/admin/settings':  'Site Settings',
