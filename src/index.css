@@ -352,8 +352,8 @@ textarea.form-input {
 ============================================ */
 /* Headings scale with BOTH width and viewport height — so short laptops (12–13") don't get
    oversized headings that push hero content (CTAs) below the fold. */
-h1 { font-size: clamp(26px, min(4.4vw, 6.4vh), 52px) !important; }
-h2 { font-size: clamp(23px, min(3vw, 4.6vh), 38px) !important; }
+.site-root h1 { font-size: clamp(26px, min(4.4vw, 6.4vh), 52px) !important; }
+.site-root h2 { font-size: clamp(23px, min(3vw, 4.6vh), 38px) !important; }
 
 /* Short viewports — tighten the full-screen page heroes so all content fits one screen */
 @media (max-height: 820px) {

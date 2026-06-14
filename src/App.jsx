@@ -69,7 +69,7 @@ function App() {
             element={
               <>
                 {loading && <Preloader onComplete={handleComplete} />}
-                <div style={{
+                <div className="site-root" style={{
                   minHeight: '100vh', display: 'flex', flexDirection: 'column',
                   opacity: loading ? 0 : 1,
                   transition: 'opacity 0.4s ease 0.1s',
