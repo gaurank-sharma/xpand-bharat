@@ -98,7 +98,7 @@ export default function ForInvestors() {
         <meta name="keywords" content="franchise investment India, franchise investment opportunities India, best franchise advisory India, investor alignment franchise, food franchise India, retail franchise India, connect with franchise investors" />
       </Helmet>
       {/* HERO */}
-      <div className="page-hero-section" style={{ background: 'var(--navy-dark)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'auto 90%', backgroundRepeat: 'no-repeat', backgroundPosition: 'right bottom', minHeight: '100vh', display: 'flex', alignItems: 'center', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
+      <div className="page-hero-section" style={{ background: 'var(--navy-dark)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'auto 90%', backgroundRepeat: 'no-repeat', backgroundPosition: 'right bottom', minHeight: '100vh', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(7,15,35,0.92) 0%, rgba(7,15,35,0.78) 32%, rgba(7,15,35,0.4) 60%, rgba(7,15,35,0.12) 100%)' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(7,15,35,0.55) 0%, transparent 45%)' }} />
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)`, backgroundSize: '80px 80px' }} />
