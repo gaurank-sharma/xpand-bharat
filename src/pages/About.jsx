@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
+import Seo from '../components/Seo';
 import { Link } from 'react-router-dom';
 import { useContent } from '../hooks/useContent';
 import { Home, Search, FileText, Users, Gift } from 'lucide-react';
@@ -51,11 +51,12 @@ export default function About() {
 
   return (
     <div style={{ background: 'var(--cream-light)' }}>
-      <Helmet>
-        <title>About XPAND Bharat — India's Leading Franchise Expansion & Investment Consulting Company</title>
-        <meta name="description" content="XPAND Bharat is India's leading franchise expansion and investment consulting company backed by 25+ years of experience. Headquartered in Gurugram, we help brands scale through structured franchising, investor alignment, and execution-led growth." />
-        <meta name="keywords" content="franchise consulting company India, franchise expansion India, franchise investment advisory India, business expansion advisory Gurugram, franchise consulting firms India" />
-      </Helmet>
+      <Seo
+        path="/about"
+        title={"About XPAND Bharat - India's Leading Franchise Advisory Company"}
+        description={"Headquartered in Gurugram, XPAND Bharat is India's leading franchise consulting and investment advisory platform. 25+ years of collective experience. Structured growth. Serious results."}
+        keywords={"franchise consulting company India, franchise expansion India, franchise investment advisory India, business expansion advisory Gurugram, franchise consulting firms India"}
+      />
       {/* HERO */}
       <div className="page-hero-section" style={{ background: 'var(--navy-dark)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'auto 100%', backgroundRepeat: 'no-repeat', backgroundPosition: 'calc(100% + 130px) center', minHeight: '100vh', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 140px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(7,15,35,0.9) 0%, rgba(7,15,35,0.72) 30%, rgba(7,15,35,0.38) 56%, rgba(7,15,35,0.1) 100%)' }} />

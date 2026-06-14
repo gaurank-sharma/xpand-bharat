@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
+import Seo from '../components/Seo';
 import { useContent } from '../hooks/useContent';
 import LeadForm from '../components/LeadForm';
 
@@ -111,11 +111,12 @@ export default function OurApproach() {
 
   return (
     <div style={{ background: 'var(--cream-light)' }}>
-      <Helmet>
-        <title>Our Approach — The XPAND Franchise Expansion Framework | XPAND Bharat</title>
-        <meta name="description" content="XPAND Bharat's structured 5-stage franchise expansion framework: Understand, Structure, Align, Execute, Scale. India's leading franchise expansion consultants helping brands become investor-ready and scale through structured franchising." />
-        <meta name="keywords" content="franchise expansion framework India, franchise consulting approach, franchise expansion strategy India, franchise business structuring, investor-ready franchise India" />
-      </Helmet>
+      <Seo
+        path="/our-approach"
+        title={"How XPAND Bharat Works - Franchise Expansion Process India"}
+        description={"See how XPAND Bharat takes brands from business understanding to structured investor matchmaking and deal closure. India's most commercially structured franchise expansion process."}
+        keywords={"franchise expansion framework India, franchise consulting approach, franchise expansion strategy India, franchise business structuring, investor-ready franchise India"}
+      />
       {/* HERO */}
       <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '100vh', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.55) 0%, rgba(7,15,35,0.32) 100%)' }} />

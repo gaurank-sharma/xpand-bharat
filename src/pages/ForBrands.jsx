@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
+import Seo from '../components/Seo';
 import { Link } from 'react-router-dom';
 import { useContent } from '../hooks/useContent';
 import LeadForm from '../components/LeadForm';
@@ -113,11 +113,12 @@ export default function ForBrands() {
 
   return (
     <div style={{ background: 'var(--cream-light)' }}>
-      <Helmet>
-        <title>For Brands — Franchise Expansion Consultants India | XPAND Bharat</title>
-        <meta name="description" content="XPAND Bharat helps brands expand across India through structured franchising, investor alignment, and execution-led growth. India's leading franchise expansion consultants helping brands scale city by city." />
-        <meta name="keywords" content="franchise expansion consultants India, franchise consulting company India, franchise lead generation, business expansion advisory India, franchise rollout strategy, franchise partner acquisition" />
-      </Helmet>
+      <Seo
+        path="/for-brands"
+        title={"Franchise Expansion Consultants India | Expand Your Brand | XPAND Bharat"}
+        description={"Expand your brand across India through structured franchising. XPAND Bharat provides franchise consulting, investor alignment, and end-to-end expansion support for growth-stage businesses."}
+        keywords={"franchise expansion consultants India, franchise consulting company India, franchise lead generation, business expansion advisory India, franchise rollout strategy, franchise partner acquisition"}
+      />
       {/* ── SPLIT HERO ── */}
       <div className="fb-hero">
         {/* Left content */}

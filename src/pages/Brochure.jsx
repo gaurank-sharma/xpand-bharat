@@ -1,13 +1,14 @@
-import { Helmet } from 'react-helmet';
+import Seo from '../components/Seo';
 import LeadForm from '../components/LeadForm';
 
 export default function Brochure() {
   return (
     <div style={{ background: 'var(--cream-light)', minHeight: '100vh', padding: '140px 20px 90px' }}>
-      <Helmet>
-        <title>Get the Brochure — XPAND Bharat</title>
-        <meta name="description" content="Download the XPAND Bharat franchise expansion & investment presentation. Share a few details and the brochure is yours instantly." />
-      </Helmet>
+      <Seo
+        path="/get-started"
+        title={"Get the Brochure — XPAND Bharat"}
+        description={"Download the XPAND Bharat franchise expansion & investment presentation. Share a few details and the brochure is yours instantly."}
+      />
 
       <div style={{ maxWidth: '760px', margin: '0 auto' }}>
         {/* Compact heading */}

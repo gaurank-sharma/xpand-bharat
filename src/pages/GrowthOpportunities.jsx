@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
+import Seo from '../components/Seo';
 import { Link } from 'react-router-dom';
 import { useContent } from '../hooks/useContent';
 
@@ -87,11 +87,12 @@ export default function GrowthOpportunities() {
 
   return (
     <div style={{ background: 'var(--cream-light)' }}>
-      <Helmet>
-        <title>Growth Opportunities — Franchise Investment Opportunities India | XPAND Bharat</title>
-        <meta name="description" content="Explore curated franchise investment opportunities across F&B, retail, lifestyle, and emerging sectors in India. XPAND Bharat connects serious investors with structured, expansion-ready franchise businesses." />
-        <meta name="keywords" content="franchise opportunities India, franchise investment opportunities India, food franchise India, retail franchise India, multi-unit franchise opportunities, franchise investor network India, best franchise investment India" />
-      </Helmet>
+      <Seo
+        path="/growth-opportunities"
+        title={"Growth Opportunities — Franchise Investment Opportunities India | XPAND Bharat"}
+        description={"Explore curated franchise investment opportunities across F&B, retail, lifestyle, and emerging sectors in India. XPAND Bharat connects serious investors with structured, expansion-ready franchise businesses."}
+        keywords={"franchise opportunities India, franchise investment opportunities India, food franchise India, retail franchise India, multi-unit franchise opportunities, franchise investor network India, best franchise investment India"}
+      />
       {/* HERO */}
       <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '100vh', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 150px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.55) 0%, rgba(7,15,35,0.32) 100%)' }} />

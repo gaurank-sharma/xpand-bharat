@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import Preloader from './components/Preloader';
+import Analytics from './components/Analytics';
 
 import Home from './pages/Home';
 import ForBrands from './pages/ForBrands';
@@ -20,17 +21,6 @@ import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Disclaimer from './pages/Disclaimer';
 
-import { AdminAuthProvider } from './context/AdminAuthContext';
-import ProtectedRoute from './components/admin/ProtectedRoute';
-import AdminLogin from './pages/admin/AdminLogin';
-import AdminLayout from './pages/admin/AdminLayout';
-import AdminDashboard from './pages/admin/AdminDashboard';
-import AdminContacts from './pages/admin/AdminContacts';
-import AdminInsights from './pages/admin/AdminInsights';
-import AdminPages from './pages/admin/AdminPages';
-import AdminMembers from './pages/admin/AdminMembers';
-import AdminSiteSettings from './pages/admin/AdminSiteSettings';
-
 function App() {
   const [loading, setLoading] = useState(
     () => !sessionStorage.getItem('xb-loaded')
@@ -42,26 +32,10 @@ function App() {
   }, []);
 
   return (
-    <AdminAuthProvider>
       <Router>
         <ScrollToTop />
+        <Analytics />
         <Routes>
-
-          {/* ── Admin routes (no Navbar/Footer) ── */}
-          <Route path="/admin/login" element={<AdminLogin />} />
-          <Route
-            path="/admin"
-            element={<ProtectedRoute><AdminLayout /></ProtectedRoute>}
-          >
-            <Route index element={<AdminDashboard />} />
-            <Route path="dashboard" element={<AdminDashboard />} />
-            <Route path="leads"     element={<AdminContacts view="business" />} />
-            <Route path="contacts"  element={<AdminContacts view="contact" />} />
-            <Route path="insights"  element={<AdminInsights />} />
-            <Route path="pages"     element={<AdminPages />} />
-            <Route path="members"   element={<AdminMembers />} />
-            <Route path="settings"  element={<AdminSiteSettings />} />
-          </Route>
 
           {/* ── Public routes (with Navbar/Footer) ── */}
           <Route
@@ -100,7 +74,6 @@ function App() {
           />
         </Routes>
       </Router>
-    </AdminAuthProvider>
   );
 }
 

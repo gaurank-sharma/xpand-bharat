@@ -1,6 +1,7 @@
 import { useRef, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { API } from '../hooks/useContent';
+import Seo from '../components/Seo';
 
 function FadeSection({ children, delay = 0, style = {} }) {
   const ref = useRef(null);
@@ -37,6 +38,12 @@ export default function Insights() {
 
   return (
     <div style={{ background: 'var(--cream-light)' }}>
+      <Seo
+        path="/insights"
+        title={"Franchise Insights & Expansion Strategy | XPAND Bharat"}
+        description={"Articles and insights on franchise expansion, investor alignment, and structured growth in India from XPAND Bharat's advisory team."}
+        keywords={"franchise insights India, franchise expansion strategy, franchise investment insights, franchise consulting blog India"}
+      />
 
       {/* HERO */}
       <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: 'url("/img/photo-1532012197267-da84d127e765.jpg")', backgroundSize: 'cover', backgroundPosition: 'center center', minHeight: '100vh', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>

@@ -1,5 +1,5 @@
 import { useRef, useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet';
+import Seo from '../components/Seo';
 import { Link } from 'react-router-dom';
 import { useContent } from '../hooks/useContent';
 import { Eye, Monitor, Globe, DollarSign, Activity, Layers } from 'lucide-react';
@@ -215,11 +215,12 @@ export default function Industries() {
 
   return (
     <div style={{ background: 'var(--cream-light)' }}>
-      <Helmet>
-        <title>Industries — Franchise Expansion Across F&B, Retail & Lifestyle | XPAND Bharat</title>
-        <meta name="description" content="XPAND Bharat helps businesses across F&B, electronics, salon, fashion, retail and emerging sectors scale through structured franchise expansion, investor alignment, and execution-led growth strategy across India." />
-        <meta name="keywords" content="food franchise India, retail franchise India, salon franchise India, fashion franchise India, franchise expansion India, franchise opportunities India, franchise investment advisory" />
-      </Helmet>
+      <Seo
+        path="/industries"
+        title={"Franchise Industries We Work With | F&B, Retail, Fashion | XPAND Bharat"}
+        description={"XPAND Bharat helps franchise businesses scale across F&B, electronics, fashion, retail, salon, and emerging consumer sectors through structured expansion and qualified investor alignment."}
+        keywords={"food franchise India, retail franchise India, salon franchise India, fashion franchise India, franchise expansion India, franchise opportunities India, franchise investment advisory"}
+      />
 
       {/* HERO */}
       <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '100vh', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>

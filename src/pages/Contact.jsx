@@ -1,6 +1,27 @@
 import { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import ContactForm from '../components/ContactForm';
+import Seo, { SITE_URL } from '../components/Seo';
+
+const LOCAL_BUSINESS_SCHEMA = {
+  '@context': 'https://schema.org',
+  '@type': 'ProfessionalService',
+  name: 'XPAND Bharat',
+  image: `${SITE_URL}/logo.png`,
+  url: SITE_URL,
+  telephone: '+91 77172 72838',
+  email: 'contact@xpandbharat.com',
+  priceRange: '$$',
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: 'Good Earth Business Bay 1, 6th Floor, Sector 58',
+    addressLocality: 'Gurugram',
+    addressRegion: 'Haryana',
+    addressCountry: 'IN',
+  },
+  areaServed: 'IN',
+  description: "India's leading franchise consulting and investment advisory platform, headquartered in Gurugram.",
+};
 
 const INFO = [
   { label: 'Email Address', value: 'contact@xpandbharat.com', href: 'mailto:contact@xpandbharat.com', icon: '✉' },
@@ -24,6 +45,13 @@ function FadeSection({ children, delay = 0, style = {} }) {
 export default function Contact() {
   return (
     <div style={{ background: 'var(--cream-light)' }}>
+      <Seo
+        path="/contact"
+        title={"Contact XPAND Bharat | Franchise Consulting & Investment Advisory"}
+        description={"Talk to XPAND Bharat about franchise expansion or investment. Headquartered in Gurugram, serving brands and investors across India. Email contact@xpandbharat.com."}
+        keywords={"contact XPAND Bharat, franchise consulting Gurugram, franchise advisory contact India"}
+        schema={LOCAL_BUSINESS_SCHEMA}
+      />
       {/* HERO */}
       <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: 'url("/contact.png")', backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '100vh', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.55) 0%, rgba(7,15,35,0.32) 100%)' }} />

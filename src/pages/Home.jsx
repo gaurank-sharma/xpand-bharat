@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'react';
-import { Helmet } from 'react-helmet';
+import Seo from '../components/Seo';
 import { useContent } from '../hooks/useContent';
 import { Link } from 'react-router-dom';
 
@@ -120,11 +120,12 @@ export default function Home() {
 
   return (
     <>
-      <Helmet>
-        <title>XPAND Bharat — India's Leading Franchise Expansion & Advisory Platform</title>
-        <meta name="description" content="XPAND Bharat is India's leading franchise consulting company helping brands expand through structured franchising, investor alignment, and execution-led growth. Connect with serious franchise investors across India." />
-        <meta name="keywords" content="franchise consulting company, franchise expansion consultants India, franchise investment advisory India, franchise lead generation, franchise investor network India, best franchise advisory India, franchise consulting firms India, business expansion advisory" />
-      </Helmet>
+      <Seo
+        path="/"
+        title={"XPAND Bharat - India's #1 Franchise Expansion and Investment Advisory"}
+        description={"XPAND Bharat helps growth-stage brands scale through structured franchising and connects qualified investors with franchise businesses across India. Because serious money deserves serious structure."}
+        keywords={"franchise consulting company, franchise expansion consultants India, franchise investment advisory India, franchise lead generation, franchise investor network India, best franchise advisory India, franchise consulting firms India, business expansion advisory"}
+      />
       {/* ─── HERO — full-screen video, EBG-style wordmark + content block ─── */}
       <div className="home-hero" style={{ background: 'var(--navy-dark)', minHeight: '100vh', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden' }}>
         <video

@@ -1,6 +1,9 @@
+import Seo from '../components/Seo';
+
 export default function Disclaimer() {
   return (
     <div style={{ background: 'var(--cream-light)', minHeight: '100vh', fontFamily: "'Inter', sans-serif" }}>
+      <Seo path="/disclaimer" title={"Disclaimer | XPAND Bharat"} description={"Important disclaimers regarding information and services provided by XPAND Bharat."} />
       <div style={{ background: 'var(--navy)', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)`, backgroundSize: '80px 80px' }} />
         <div style={{ maxWidth: '800px', margin: '0 auto', position: 'relative', zIndex: 1 }}>
