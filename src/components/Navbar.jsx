@@ -10,6 +10,7 @@ const NAV_LINKS = [
   { label: 'For Brands',            to: '/for-brands' },
   { label: 'About',                 to: '/about' },
   { label: 'Insights',              to: '/insights' },
+  { label: 'Contact',               to: '/contact' },
 ];
 
 export default function Navbar() {
@@ -57,7 +58,7 @@ export default function Navbar() {
 
           {/* Right side */}
           <div className="xb-header-right">
-            <Link to="/contact" className="xb-header-cta">
+            <Link to="/get-started" className="xb-header-cta">
               Schedule a Strategy Call
             </Link>
             <button
@@ -88,7 +89,7 @@ export default function Navbar() {
               {link.label}
             </Link>
           ))}
-          <Link to="/contact" className="xb-drawer-cta">Schedule a Strategy Call</Link>
+          <Link to="/get-started" className="xb-drawer-cta">Schedule a Strategy Call</Link>
         </nav>
       </div>
       {menuOpen && <div className="xb-overlay" onClick={() => setMenuOpen(false)} />}

@@ -1,6 +1,6 @@
 import { useRef, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import LeadForm from '../components/LeadForm';
+import ContactForm from '../components/ContactForm';
 
 const INFO = [
   { label: 'Email Address', value: 'contact@xpandbharat.com', href: 'mailto:contact@xpandbharat.com', icon: '✉' },
@@ -25,7 +25,7 @@ export default function Contact() {
   return (
     <div style={{ background: 'var(--cream-light)' }}>
       {/* HERO */}
-      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: 'url("/img/photo-1431576901776-e539bd916ba2.jpg")', backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '100vh', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
+      <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: 'url("/contact.png")', backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '100vh', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(135deg, rgba(7,15,35,0.55) 0%, rgba(7,15,35,0.32) 100%)' }} />
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)`, backgroundSize: '80px 80px' }} />
         <div style={{ position: 'absolute', bottom: '-10%', right: '10%', width: '500px', height: '500px', background: 'radial-gradient(circle,rgba(240,121,32,0.09) 0%,transparent 70%)', pointerEvents: 'none' }} />
@@ -84,10 +84,12 @@ export default function Contact() {
               ))}
             </div>
 
-            {/* Tagline */}
-            <div style={{ marginTop: '48px', padding: '32px', background: 'var(--navy)', borderRadius: '12px' }}>
-              <p style={{ fontFamily: "'Fraunces', serif", fontSize: '16px', color: '#fff', lineHeight: 1.6, margin: 0 }}>
-                Connect with us. India's Leading Franchise Expansion.
+            {/* Tagline callout */}
+            <div style={{ marginTop: '40px', padding: '32px 30px', background: 'var(--navy)', borderRadius: '14px', position: 'relative', overflow: 'hidden' }}>
+              <div style={{ position: 'absolute', top: '-30%', right: '-10%', width: '220px', height: '220px', background: 'radial-gradient(circle, rgba(240,121,32,0.14) 0%, transparent 70%)', pointerEvents: 'none' }} />
+              <div style={{ width: '40px', height: '3px', background: 'var(--orange)', borderRadius: '2px', marginBottom: '18px' }} />
+              <p style={{ fontFamily: "'Fraunces', serif", fontSize: '19px', fontWeight: 600, color: '#fff', lineHeight: 1.45, margin: 0, position: 'relative', zIndex: 1 }}>
+                Connect with us. <span style={{ color: 'var(--orange)' }}>India&apos;s leading franchise expansion partner.</span>
               </p>
             </div>
           </FadeSection>
@@ -95,49 +97,64 @@ export default function Contact() {
           {/* Form column */}
           <FadeSection delay={200}>
             <div style={{ marginBottom: '32px' }}>
-              <div className="section-label" style={{ marginBottom: '12px' }}>Tell us about your requirement</div>
-              <p style={{ color: 'var(--gray)', fontSize: '16px', lineHeight: 1.7 }}>
-                Our team will connect with you to discuss your business goals, expansion plans, or investment interests.
+              <div className="section-label" style={{ marginBottom: '14px' }}>Send a Message</div>
+              <h2 style={{ fontFamily: "'Fraunces', serif", fontWeight: 700, color: 'var(--navy)', lineHeight: 1.15, margin: '0 0 12px' }}>
+                How can we help you?
+              </h2>
+              <p style={{ color: 'var(--gray)', fontSize: '16px', lineHeight: 1.7, margin: 0 }}>
+                Share a few details and our team will get back to you to discuss your expansion, investment, or partnership goals.
               </p>
             </div>
             <div style={{ background: 'var(--white)', borderRadius: '16px', padding: '56px', border: '1px solid var(--border)' }}>
-              <LeadForm source="contact" submitLabel="Send Message" />
+              <ContactForm />
             </div>
           </FadeSection>
         </div>
       </div>
 
       {/* EXTENSION SECTION */}
-      <div className="ct-about-section" style={{ background: 'var(--navy)', padding: '100px 40px' }}>
-        <div className="ct-about-grid" style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1.4fr', gap: '80px', alignItems: 'start' }}>
+      <div className="ct-about-section" style={{ background: 'var(--navy)', padding: '110px 40px', position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.012) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.018) 1px,transparent 1px)`, backgroundSize: '80px 80px', pointerEvents: 'none' }} />
+        <div style={{ position: 'absolute', top: '-10%', left: '-5%', width: '520px', height: '520px', background: 'radial-gradient(circle, rgba(240,121,32,0.07) 0%, transparent 70%)', pointerEvents: 'none' }} />
+        <div className="ct-about-grid" style={{ maxWidth: '1320px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '72px', alignItems: 'center', position: 'relative', zIndex: 1 }}>
+          {/* Image + badge */}
           <FadeSection>
-            <div className="section-label" style={{ marginBottom: '20px' }}>About XPAND Bharat</div>
-            <div style={{ width: '40px', height: '2px', background: 'var(--orange)' }} />
+            <div style={{ position: 'relative', borderRadius: '18px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', boxShadow: '0 30px 70px rgba(0,0,0,0.35)' }}>
+              <img src="/image.png" alt="XPAND Bharat office" style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+              <div style={{ position: 'absolute', left: '18px', bottom: '18px', background: 'rgba(9,17,38,0.82)', backdropFilter: 'blur(8px)', WebkitBackdropFilter: 'blur(8px)', border: '1px solid rgba(240,121,32,0.4)', borderRadius: '12px', padding: '14px 20px', display: 'flex', alignItems: 'center', gap: '14px' }}>
+                <span style={{ fontFamily: "'Fraunces', serif", fontSize: '34px', fontWeight: 700, color: 'var(--orange)', lineHeight: 1 }}>25+</span>
+                <span style={{ color: 'rgba(255,255,255,0.82)', fontSize: '12px', lineHeight: 1.45 }}>Years of collective<br />industry experience</span>
+              </div>
+            </div>
           </FadeSection>
-          <FadeSection delay={150} style={{ display: 'flex', flexDirection: 'column', gap: '24px' }}>
-            <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '16px', lineHeight: 1.85, margin: 0 }}>
+
+          {/* Content */}
+          <FadeSection delay={150}>
+            <div className="section-label">About XPAND Bharat</div>
+            <h2 style={{ fontFamily: "'Fraunces', serif", fontWeight: 700, color: '#fff', lineHeight: 1.18, margin: '16px 0 22px' }}>
+              Built on <span style={{ color: 'var(--orange)' }}>structured support.</span>
+            </h2>
+            <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '16px', lineHeight: 1.85, margin: '0 0 18px' }}>
               Headquartered in Gurugram, XPAND Bharat brings 25+ years of collective experience across franchise consulting, investor advisory, expansion planning, and execution-led business growth.
             </p>
-            <p style={{ color: 'rgba(255,255,255,0.65)', fontSize: '16px', lineHeight: 1.85, margin: 0 }}>
+            <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '16px', lineHeight: 1.85, margin: '0 0 10px' }}>
               Businesses do not struggle because of lack of ambition. They struggle without structured support.
             </p>
-            <p style={{ fontFamily: "'Fraunces', serif", fontSize: '16px', fontWeight: 700, color: '#fff', margin: 0, lineHeight: 1.4 }}>
+            <p style={{ fontFamily: "'Fraunces', serif", fontSize: '19px', fontWeight: 700, color: '#fff', margin: '0 0 30px', lineHeight: 1.4 }}>
               That is where XPAND comes in.
             </p>
-            <div style={{ paddingTop: '8px' }}>
-              <Link to="/our-approach" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', color: 'var(--orange)', fontSize: '14px', fontWeight: 700, letterSpacing: '0.03em', textDecoration: 'none', border: '1px solid rgba(240,121,32,0.4)', borderRadius: '10px', padding: '12px 20px', transition: 'background 0.2s, border-color 0.2s' }}
-                onMouseEnter={e => { e.currentTarget.style.background = 'rgba(240,121,32,0.1)'; e.currentTarget.style.borderColor = 'var(--orange)'; }}
-                onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = 'rgba(240,121,32,0.4)'; }}
-              >
-                Understand our expansion framework <span style={{ fontSize: '16px' }}>→</span>
-              </Link>
-            </div>
+            <Link to="/our-approach" style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', color: 'var(--orange)', fontSize: '14px', fontWeight: 700, letterSpacing: '0.03em', textDecoration: 'none', border: '1px solid rgba(240,121,32,0.4)', borderRadius: '10px', padding: '13px 22px', transition: 'background 0.2s, border-color 0.2s' }}
+              onMouseEnter={e => { e.currentTarget.style.background = 'rgba(240,121,32,0.1)'; e.currentTarget.style.borderColor = 'var(--orange)'; }}
+              onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.borderColor = 'rgba(240,121,32,0.4)'; }}
+            >
+              Understand our expansion framework <span style={{ fontSize: '16px' }}>→</span>
+            </Link>
           </FadeSection>
         </div>
       </div>
       <style>{`
         @keyframes xbMarquee { from { transform: translateX(0); } to { transform: translateX(-50%); } }
-        .xb-marquee-track { display: flex; width: max-content; animation: xbMarquee 28s linear infinite; }
+        .xb-marquee-track { display: flex; width: max-content; animation: xbMarquee 55s linear infinite; }
         @media (max-width: 860px) {
           .ct-about-section { padding: 64px 24px !important; }
           .ct-about-grid { grid-template-columns: 1fr !important; gap: 28px !important; }

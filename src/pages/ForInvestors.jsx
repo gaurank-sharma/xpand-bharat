@@ -262,7 +262,7 @@ export default function ForInvestors() {
               </p>
             </div>
 
-            <Link to="/contact" className="btn-primary">Start a Conversation</Link>
+            <Link to="/contact" className="btn-primary">Contact Us</Link>
           </FadeSection>
 
           {/* Right — numbered cards */}

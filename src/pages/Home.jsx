@@ -589,7 +589,7 @@ export default function Home() {
                       <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '14px', lineHeight: 1.75, marginBottom: '32px' }}>
                         Our team will connect with you to discuss your business goals, expansion plans, or investment interests within 24 hours.
                       </p>
-                      <Link to="/contact" className="btn-primary" style={{ width: '100%', justifyContent: 'center', marginBottom: '16px' }}>Start a Conversation</Link>
+                      <Link to="/contact" className="btn-primary" style={{ width: '100%', justifyContent: 'center', marginBottom: '16px' }}>Contact Us</Link>
                       <p style={{ color: 'rgba(255,255,255,0.3)', fontSize: '12px', textAlign: 'center', margin: 0 }}>No commitment. Just clarity.</p>
                     </div>
                   </div>
@@ -661,7 +661,7 @@ export default function Home() {
         .xb-marquee-track {
           display: flex;
           width: max-content;
-          animation: xbMarquee 28s linear infinite;
+          animation: xbMarquee 55s linear infinite;
         }
         .xb-marquee-track:hover { animation-play-state: paused; }
         .xb-marquee-inner { display: flex; align-items: center; }

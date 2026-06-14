@@ -15,6 +15,7 @@ import About from './pages/About';
 import Insights from './pages/Insights';
 import InsightDetail from './pages/InsightDetail';
 import Contact from './pages/Contact';
+import Brochure from './pages/Brochure';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Disclaimer from './pages/Disclaimer';
@@ -83,6 +84,7 @@ function App() {
                       <Route path="/insights"              element={<Insights />} />
                       <Route path="/insights/:slug"        element={<InsightDetail />} />
                       <Route path="/contact"               element={<Contact />} />
+                      <Route path="/get-started"              element={<Brochure />} />
                       <Route path="/privacy"               element={<Privacy />} />
                       <Route path="/terms"                 element={<Terms />} />
                       <Route path="/disclaimer"            element={<Disclaimer />} />

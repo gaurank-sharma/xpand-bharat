@@ -212,7 +212,7 @@ export default function GrowthOpportunities() {
             <p style={{ color: 'rgba(255,255,255,0.52)', fontSize: '16px', lineHeight: 1.85, marginBottom: '48px', maxWidth: '360px' }}>
               Every opportunity on our platform passes through a structured screening process before it reaches a serious investor.
             </p>
-            <Link to="/contact" className="btn-primary">Start a Conversation</Link>
+            <Link to="/contact" className="btn-primary">Contact Us</Link>
           </FadeSection>
           <FadeSection delay={150} style={{ display: 'flex', flexDirection: 'column', gap: '14px' }}>
             {differentiators.map((item) => (

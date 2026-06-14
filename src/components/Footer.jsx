@@ -1,7 +1,5 @@
-import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useSettings } from '../hooks/useContent';
-import LeadForm from './LeadForm';
 
 const COLS = [
   {
@@ -19,7 +17,7 @@ const COLS = [
       { label: 'About Us', to: '/about' },
       { label: 'Our Approach', to: '/our-approach' },
       { label: 'Insights', to: '/insights' },
-      { label: 'Start a Conversation', to: '/contact' },
+      { label: 'Contact Us', to: '/contact' },
     ],
   },
   {
@@ -86,7 +84,6 @@ const telHref = (phone) => `tel:${(phone || '').replace(/[^\d+]/g, '')}`;
 
 export default function Footer() {
   const { pathname } = useLocation();
-  const [brochureOpen, setBrochureOpen] = useState(false);
   const settings = useSettings();
   const s = settings || {};
   const social = s.socialLinks || {};
@@ -104,8 +101,8 @@ export default function Footer() {
   return (
     <footer style={{ background: '#F5F2EC', borderTop: '1px solid #E5E2DC', fontFamily: "'Inter', sans-serif" }}>
 
-      {/* Top CTA strip — hidden on Contact page */}
-      {pathname !== '/contact' && (
+      {/* Top CTA strip — hidden on the dedicated form page */}
+      {pathname !== '/get-started' && (
       <div className="xb-footer-cta" style={{ borderBottom: '1px solid #E5E2DC', padding: '80px 40px' }}>
         <div style={{ maxWidth: '1440px', margin: '0 auto', display: 'flex', alignItems: 'center', justifyContent: 'space-between', flexWrap: 'wrap', gap: '32px' }}>
           <div>
@@ -114,9 +111,9 @@ export default function Footer() {
             </h2>
             <p style={{ color: 'var(--gray)', fontSize: '16px', margin: 0 }}>{footerTagline}</p>
           </div>
-          <button onClick={() => setBrochureOpen(true)} className="btn-primary" style={{ flexShrink: 0 }}>
+          <Link to="/get-started" className="btn-primary" style={{ flexShrink: 0 }}>
             Download Brochure ↓
-          </button>
+          </Link>
         </div>
       </div>
       )}
@@ -220,35 +217,6 @@ export default function Footer() {
           .xb-footer-grid { grid-template-columns: 1fr 1fr; gap: 32px; }
         }
       `}</style>
-
-      {/* ── BROCHURE MODAL (gated download) ── */}
-      {brochureOpen && (
-        <div
-          onClick={() => setBrochureOpen(false)}
-          style={{ position: 'fixed', inset: 0, zIndex: 2000, background: 'rgba(7,15,35,0.6)', backdropFilter: 'blur(4px)', WebkitBackdropFilter: 'blur(4px)', display: 'flex', alignItems: 'flex-start', justifyContent: 'center', padding: '40px 20px', overflowY: 'auto' }}
-        >
-          <div
-            onClick={e => e.stopPropagation()}
-            style={{ background: 'var(--white)', borderRadius: '18px', width: '100%', maxWidth: '720px', padding: '40px 40px 36px', position: 'relative', boxShadow: '0 30px 80px rgba(0,0,0,0.4)', margin: 'auto' }}
-          >
-            <button
-              onClick={() => setBrochureOpen(false)}
-              aria-label="Close"
-              style={{ position: 'absolute', top: '18px', right: '18px', width: '34px', height: '34px', borderRadius: '50%', border: '1px solid var(--border)', background: 'transparent', color: 'var(--gray)', fontSize: '16px', cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', lineHeight: 1 }}
-            >✕</button>
-            <div style={{ marginBottom: '24px', maxWidth: '90%' }}>
-              <div className="section-label">Get the Brochure</div>
-              <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(22px, 2.4vw, 30px)', fontWeight: 700, color: 'var(--navy)', lineHeight: 1.2, margin: '0 0 8px' }}>
-                A few details, then it's yours.
-              </h3>
-              <p style={{ color: 'var(--gray)', fontSize: '14.5px', lineHeight: 1.6, margin: 0 }}>
-                The XPAND Bharat presentation downloads instantly after you submit.
-              </p>
-            </div>
-            <LeadForm source="brochure-download" submitLabel="Download Brochure ↓" brochureUrl="/XpandBharat%20Presentation.pdf" />
-          </div>
-        </div>
-      )}
     </footer>
   );
 }
