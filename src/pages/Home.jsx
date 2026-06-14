@@ -141,7 +141,7 @@ export default function Home() {
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(160deg, rgba(7,15,35,0.62) 0%, rgba(7,15,35,0.18) 38%, rgba(7,15,35,0.86) 100%)' }} />
 
         {/* Full-height column: wordmark pinned top, content block pinned bottom */}
-        <div className="home-hero-inner" style={{ position: 'relative', zIndex: 2, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: '20px', maxWidth: '1440px', width: '100%', margin: '0 auto', padding: '84px 40px 44px', boxSizing: 'border-box' }}>
+        <div className="home-hero-inner" style={{ position: 'relative', zIndex: 2, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '30px', maxWidth: '1440px', width: '100%', margin: '0 auto', padding: '96px 40px 60px', boxSizing: 'border-box' }}>
 
           {/* Giant brand wordmark (EBG-style) */}
           <div className="home-hero-mark" style={{ pointerEvents: 'none' }}>
@@ -618,15 +618,16 @@ export default function Home() {
         .home-hero-card .xb-hero-cta .btn-primary,
         .home-hero-card .xb-hero-cta .btn-outline { flex: 1 1 200px; justify-content: center; text-align: center; font-size: 12px; padding: 12px 16px; }
         @media (max-width: 768px) {
-          .home-hero { min-height: 90vh; }
-          .home-hero-inner { padding: 96px 20px 40px !important; justify-content: flex-end !important; }
+          .home-hero { min-height: 88vh; }
+          .home-hero-inner { padding: 92px 20px 40px !important; justify-content: center !important; }
           .home-hero-mark { display: none; }
-          .home-hero-card { padding: 24px 20px !important; }
+          .home-hero-card { padding: 26px 22px !important; }
         }
-        @media (max-width: 480px) {
-          .home-hero-card .xb-hero-cta { flex-direction: column; }
+        @media (max-width: 600px) {
+          /* Stack CTAs as natural-height full-width buttons (flex-basis must not become a 200px height in a column) */
+          .home-hero-card .xb-hero-cta { flex-direction: column; gap: 12px; }
           .home-hero-card .xb-hero-cta .btn-primary,
-          .home-hero-card .xb-hero-cta .btn-outline { width: 100%; justify-content: center; text-align: center; }
+          .home-hero-card .xb-hero-cta .btn-outline { flex: 0 0 auto; width: 100%; padding: 14px 18px; font-size: 12px; }
         }
 
         /* ── Hero content ── */
