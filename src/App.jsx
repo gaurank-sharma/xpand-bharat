@@ -28,6 +28,7 @@ import AdminDashboard from './pages/admin/AdminDashboard';
 import AdminContacts from './pages/admin/AdminContacts';
 import AdminInsights from './pages/admin/AdminInsights';
 import AdminPages from './pages/admin/AdminPages';
+import AdminMembers from './pages/admin/AdminMembers';
 import AdminSiteSettings from './pages/admin/AdminSiteSettings';
 
 function App() {
@@ -58,6 +59,7 @@ function App() {
             <Route path="contacts"  element={<AdminContacts view="contact" />} />
             <Route path="insights"  element={<AdminInsights />} />
             <Route path="pages"     element={<AdminPages />} />
+            <Route path="members"   element={<AdminMembers />} />
             <Route path="settings"  element={<AdminSiteSettings />} />
           </Route>
 

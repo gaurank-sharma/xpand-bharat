@@ -100,22 +100,6 @@ export default function InsightDetail() {
         <div className="insight-prose" dangerouslySetInnerHTML={{ __html: post.content || '<p>Full article coming soon.</p>' }} />
       </div>
 
-      {/* CTA */}
-      <div style={{ maxWidth: '780px', margin: '0 auto', padding: '0 40px 80px' }}>
-        <div style={{ background: 'var(--navy)', borderRadius: '20px', padding: '48px 40px', textAlign: 'center', position: 'relative', overflow: 'hidden' }}>
-          <div style={{ position: 'absolute', bottom: '-40%', right: '-15%', width: '300px', height: '300px', background: 'radial-gradient(circle,rgba(240,121,32,0.14) 0%,transparent 70%)', pointerEvents: 'none' }} />
-          <div style={{ position: 'relative', zIndex: 1 }}>
-            <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(22px, 2.4vw, 30px)', fontWeight: 700, color: '#fff', marginBottom: '14px', lineHeight: 1.3 }}>
-              Ready to put this into action?
-            </h3>
-            <p style={{ color: 'rgba(255,255,255,0.55)', fontSize: '15px', lineHeight: 1.7, marginBottom: '28px', maxWidth: '460px', margin: '0 auto 28px' }}>
-              Get a personalised expansion report built around your business goals — delivered within 48 hours.
-            </p>
-            <Link to="/contact" className="btn-primary">Get Your Report →</Link>
-          </div>
-        </div>
-      </div>
-
       {/* CONTINUE READING */}
       {related.length > 0 && (
         <div style={{ background: 'var(--cream)', padding: '80px 40px', borderTop: '1px solid var(--border)' }}>

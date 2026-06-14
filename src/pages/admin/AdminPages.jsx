@@ -70,13 +70,13 @@ const Input = ({ label, value, onChange, placeholder, area }) =>
     <div>
       <label className="block text-gray-400 text-xs mb-1">{label}</label>
       <textarea value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder} rows={3}
-        className="w-full bg-[#1a1a1a] border border-[#2a2a2a] text-white placeholder-gray-600 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#f07920] resize-none" />
+        className="w-full bg-[#0b1430] border border-[#2a3a63] text-white placeholder-gray-600 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#f07920] resize-none" />
     </div>
   ) : (
     <div>
       <label className="block text-gray-400 text-xs mb-1">{label}</label>
       <input type="text" value={value} onChange={e => onChange(e.target.value)} placeholder={placeholder}
-        className="w-full bg-[#1a1a1a] border border-[#2a2a2a] text-white placeholder-gray-600 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#f07920]" />
+        className="w-full bg-[#0b1430] border border-[#2a3a63] text-white placeholder-gray-600 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#f07920]" />
     </div>
   );
 
@@ -211,13 +211,13 @@ export default function AdminPages() {
         <span className="text-gray-400 text-sm">Page:</span>
         <div className="relative">
           <select value={page} onChange={e => setPage(e.target.value)}
-            className="bg-[#0f0f0f] border border-[#1e1e1e] text-white rounded-lg pl-4 pr-10 py-2.5 text-sm focus:outline-none focus:border-[#f07920] appearance-none cursor-pointer">
+            className="bg-[#0d1730] border border-[#1e2c52] text-white rounded-lg pl-4 pr-10 py-2.5 text-sm focus:outline-none focus:border-[#f07920] appearance-none cursor-pointer">
             {PAGES.map(p => <option key={p.value} value={p.value}>{p.label}</option>)}
           </select>
           <ChevronDown size={14} className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" />
         </div>
         {/* Tabs */}
-        <div className="flex gap-1 ml-auto bg-[#0f0f0f] border border-[#1e1e1e] rounded-lg p-1">
+        <div className="flex gap-1 ml-auto bg-[#0d1730] border border-[#1e2c52] rounded-lg p-1">
           {['hero', 'content'].map(t => (
             <button key={t} onClick={() => setTab(t)} className={`px-4 py-1.5 rounded-md text-sm font-medium capitalize transition-all ${tab === t ? 'bg-[#f07920] text-white' : 'text-gray-400 hover:text-white'}`}>{t}</button>
           ))}
@@ -226,7 +226,7 @@ export default function AdminPages() {
 
       {/* ── HERO TAB ── */}
       {tab === 'hero' && hero && (
-        <div className="bg-[#0f0f0f] border border-[#1e1e1e] rounded-xl p-6 space-y-4">
+        <div className="bg-[#0d1730] border border-[#1e2c52] rounded-xl p-6 space-y-4">
           <h3 className="text-white font-medium text-sm mb-2">Hero Section — <span className="text-[#f07920]">{PAGES.find(p => p.value === page)?.label}</span></h3>
 
           <Input label="Label (small caps above title)" value={hero.label || ''} onChange={v => setHero(h => ({ ...h, label: v }))} placeholder="e.g. For Brands" />
@@ -243,7 +243,7 @@ export default function AdminPages() {
           {/* Background image */}
           <div>
             <label className="block text-gray-400 text-xs mb-2">Background Image</label>
-            <label className={`flex items-center justify-center border-2 border-dashed rounded-xl cursor-pointer h-40 transition-colors overflow-hidden ${heroImgPrev ? 'border-[#f07920]/30' : 'border-[#2a2a2a] hover:border-[#f07920]/30'}`}>
+            <label className={`flex items-center justify-center border-2 border-dashed rounded-xl cursor-pointer h-40 transition-colors overflow-hidden ${heroImgPrev ? 'border-[#f07920]/30' : 'border-[#2a3a63] hover:border-[#f07920]/30'}`}>
               {heroImgPrev
                 ? <img src={heroImgPrev} alt="hero bg" className="w-full h-full object-cover" />
                 : <><Upload size={20} className="text-gray-500 mr-2" /><span className="text-gray-500 text-sm">Upload image or enter URL below</span></>}
@@ -251,7 +251,7 @@ export default function AdminPages() {
             </label>
             <input type="text" value={!heroImg ? (hero.backgroundImage || '') : ''} onChange={e => { setHero(h => ({ ...h, backgroundImage: e.target.value })); setHeroImgPrev(e.target.value); setHeroImg(null); }}
               placeholder="Or paste image URL…"
-              className="w-full mt-2 bg-[#1a1a1a] border border-[#2a2a2a] text-white placeholder-gray-600 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#f07920]" />
+              className="w-full mt-2 bg-[#0b1430] border border-[#2a3a63] text-white placeholder-gray-600 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#f07920]" />
           </div>
 
           <button onClick={saveHero} disabled={saving} className="flex items-center gap-2 bg-[#f07920] hover:bg-[#d96b1a] text-white font-semibold px-5 py-2.5 rounded-lg text-sm transition-colors disabled:opacity-60">
@@ -267,7 +267,7 @@ export default function AdminPages() {
           <div className="flex items-center gap-3 flex-wrap">
             <div className="relative">
               <select value={section} onChange={e => setSection(e.target.value)}
-                className="bg-[#0f0f0f] border border-[#1e1e1e] text-white rounded-lg pl-4 pr-10 py-2 text-sm focus:outline-none focus:border-[#f07920] appearance-none cursor-pointer">
+                className="bg-[#0d1730] border border-[#1e2c52] text-white rounded-lg pl-4 pr-10 py-2 text-sm focus:outline-none focus:border-[#f07920] appearance-none cursor-pointer">
                 {sections.map(s => <option key={s} value={s}>{SECTION_LABELS[s] || s}</option>)}
                 {sections.length === 0 && <option value="">No sections yet</option>}
               </select>
@@ -280,14 +280,14 @@ export default function AdminPages() {
 
           {/* Items table */}
           {visibleItems.length === 0 ? (
-            <div className="text-center py-16 bg-[#0f0f0f] border border-[#1e1e1e] rounded-xl text-gray-500 text-sm">No items in this section.</div>
+            <div className="text-center py-16 bg-[#0d1730] border border-[#1e2c52] rounded-xl text-gray-500 text-sm">No items in this section.</div>
           ) : (
-            <div className="bg-[#0f0f0f] border border-[#1e1e1e] rounded-xl overflow-hidden">
-              <div className="px-4 py-2 border-b border-[#1e1e1e] flex items-center gap-2">
+            <div className="bg-[#0d1730] border border-[#1e2c52] rounded-xl overflow-hidden">
+              <div className="px-4 py-2 border-b border-[#1e2c52] flex items-center gap-2">
                 <span className="text-gray-500 text-xs">{activeCount} of {visibleItems.length} visible on site</span>
               </div>
               <table className="w-full text-sm">
-                <thead><tr className="border-b border-[#1e1e1e]">
+                <thead><tr className="border-b border-[#1e2c52]">
                   {['#', 'Image', 'Badge / Tag', 'Title', 'Visible', ''].map(h => (
                     <th key={h} className="text-left text-gray-500 text-xs px-4 py-3 font-medium">{h}</th>
                   ))}
@@ -301,7 +301,7 @@ export default function AdminPages() {
                         <td className="px-4 py-3">
                           {item.imageUrl
                             ? <img src={item.imageUrl} alt="" className="w-12 h-9 object-cover rounded" />
-                            : <div className="w-12 h-9 bg-[#1a1a1a] rounded flex items-center justify-center text-gray-600 text-xs">{item.badge || '—'}</div>}
+                            : <div className="w-12 h-9 bg-[#0b1430] rounded flex items-center justify-center text-gray-600 text-xs">{item.badge || '—'}</div>}
                         </td>
                         <td className="px-4 py-3">
                           {item.badge && <span className="text-[#f07920] text-xs font-mono block">{item.badge}</span>}
@@ -315,7 +315,7 @@ export default function AdminPages() {
                           <button
                             onClick={() => toggleActive(item)}
                             title={isOn ? 'Click to hide from site' : 'Click to show on site'}
-                            className={`flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full transition-all ${isOn ? 'bg-emerald-500/10 text-emerald-400 hover:bg-red-500/10 hover:text-red-400' : 'bg-[#1a1a1a] text-gray-500 hover:bg-emerald-500/10 hover:text-emerald-400'}`}
+                            className={`flex items-center gap-1.5 text-xs font-medium px-2.5 py-1 rounded-full transition-all ${isOn ? 'bg-emerald-500/10 text-emerald-400 hover:bg-red-500/10 hover:text-red-400' : 'bg-[#0b1430] text-gray-500 hover:bg-emerald-500/10 hover:text-emerald-400'}`}
                           >
                             {isOn ? <><Eye size={11} /> Visible</> : <><EyeOff size={11} /> Hidden</>}
                           </button>
@@ -339,8 +339,8 @@ export default function AdminPages() {
       {/* ── MODAL ── */}
       {modal && (
         <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
-          <div className="bg-[#0f0f0f] border border-[#1e1e1e] rounded-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
-            <div className="flex items-center justify-between px-6 py-4 border-b border-[#1e1e1e]">
+          <div className="bg-[#0d1730] border border-[#1e2c52] rounded-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-[#1e2c52]">
               <h3 className="text-white font-semibold">{editing ? 'Edit Item' : 'Add Item'} — <span className="text-[#f07920] text-sm">{SECTION_LABELS[section] || section}</span></h3>
               <button onClick={() => setModal(false)} className="text-gray-500 hover:text-white"><X size={18} /></button>
             </div>
@@ -375,7 +375,7 @@ export default function AdminPages() {
               {/* Image — upload goes to Cloudinary */}
               {shows(page,section,'image') && <div>
                 <label className="block text-gray-400 text-xs mb-2">Image <span className="text-gray-600">(uploads saved to Cloudinary permanently)</span></label>
-                <label className={`flex flex-col items-center justify-center border-2 border-dashed rounded-xl cursor-pointer h-28 transition-colors overflow-hidden ${imgPrev ? 'border-[#f07920]/30' : 'border-[#2a2a2a] hover:border-[#f07920]/30'}`}>
+                <label className={`flex flex-col items-center justify-center border-2 border-dashed rounded-xl cursor-pointer h-28 transition-colors overflow-hidden ${imgPrev ? 'border-[#f07920]/30' : 'border-[#2a3a63] hover:border-[#f07920]/30'}`}>
                   {imgPrev
                     ? <img src={imgPrev} alt="preview" className="w-full h-full object-cover" />
                     : <><Upload size={20} className="text-gray-500 mb-1" /><span className="text-gray-500 text-xs">Click to upload image</span><span className="text-gray-600 text-[10px]">JPG, PNG, WebP — max 5MB</span></>}
@@ -384,11 +384,11 @@ export default function AdminPages() {
                 {imgFile && <p className="text-[#f07920] text-xs mt-1">✓ {imgFile.name} — will upload to Cloudinary on save</p>}
                 <input type="text" value={!imgFile ? form.imageUrl : ''} onChange={e => { set('imageUrl', e.target.value); setImgPrev(e.target.value); setImgFile(null); }}
                   placeholder="Or paste existing image URL…"
-                  className="w-full mt-2 bg-[#1a1a1a] border border-[#2a2a2a] text-white placeholder-gray-600 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#f07920]" />
+                  className="w-full mt-2 bg-[#0b1430] border border-[#2a3a63] text-white placeholder-gray-600 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#f07920]" />
               </div>}
 
               <div className="flex gap-3 pt-2">
-                <button type="button" onClick={() => setModal(false)} className="flex-1 py-2.5 border border-[#2a2a2a] text-gray-400 rounded-lg text-sm hover:border-[#3a3a3a]">Cancel</button>
+                <button type="button" onClick={() => setModal(false)} className="flex-1 py-2.5 border border-[#2a3a63] text-gray-400 rounded-lg text-sm hover:border-[#3a3a3a]">Cancel</button>
                 <button type="submit" disabled={saving} className="flex-1 bg-[#f07920] hover:bg-[#d96b1a] text-white font-semibold py-2.5 rounded-lg text-sm disabled:opacity-60">
                   {saving ? 'Saving…' : editing ? 'Save Changes' : 'Add Item'}
                 </button>

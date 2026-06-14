@@ -121,13 +121,13 @@ export default function AdminInsights() {
       {loading ? (
         <div className="flex justify-center py-16"><div className="w-7 h-7 border-2 border-[#f07920] border-t-transparent rounded-full animate-spin" /></div>
       ) : insights.length === 0 ? (
-        <div className="text-center py-16 bg-[#0f0f0f] border border-[#1e1e1e] rounded-xl text-gray-500 text-sm">No insights yet. Create your first one.</div>
+        <div className="text-center py-16 bg-[#0d1730] border border-[#1e2c52] rounded-xl text-gray-500 text-sm">No insights yet. Create your first one.</div>
       ) : (
-        <div className="bg-[#0f0f0f] border border-[#1e1e1e] rounded-xl overflow-hidden">
+        <div className="bg-[#0d1730] border border-[#1e2c52] rounded-xl overflow-hidden">
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-[#1e1e1e]">
+                <tr className="border-b border-[#1e2c52]">
                   {['Image', 'Title', 'Tag', 'Date', 'Status', ''].map((h) => (
                     <th key={h} className="text-left text-gray-500 text-xs px-5 py-3 font-medium whitespace-nowrap">{h}</th>
                   ))}
@@ -139,7 +139,7 @@ export default function AdminInsights() {
                     <td className="px-5 py-3">
                       {ins.img
                         ? <img src={ins.img} alt="" className="w-14 h-10 object-cover rounded-lg" />
-                        : <div className="w-14 h-10 bg-[#1a1a1a] rounded-lg" />}
+                        : <div className="w-14 h-10 bg-[#0b1430] rounded-lg" />}
                     </td>
                     <td className="px-5 py-3 text-white font-medium max-w-[220px]">
                       <p className="truncate">{ins.title}</p>
@@ -170,8 +170,8 @@ export default function AdminInsights() {
       {/* Modal */}
       {modal && (
         <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
-          <div className="bg-[#0f0f0f] border border-[#1e1e1e] rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
-            <div className="flex items-center justify-between px-6 py-4 border-b border-[#1e1e1e]">
+          <div className="bg-[#0d1730] border border-[#1e2c52] rounded-2xl w-full max-w-2xl max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-[#1e2c52]">
               <h3 className="text-white font-semibold">{editing ? 'Edit Insight' : 'New Insight'}</h3>
               <button onClick={() => setModal(false)} className="text-gray-500 hover:text-white"><X size={18} /></button>
             </div>
@@ -180,7 +180,7 @@ export default function AdminInsights() {
               {/* Cover image */}
               <div>
                 <label className="block text-gray-400 text-xs mb-2">Cover Image</label>
-                <label className={`flex flex-col items-center justify-center border-2 border-dashed rounded-xl cursor-pointer transition-colors h-36 ${imgPreview ? 'border-[#f07920]/30 p-0 overflow-hidden' : 'border-[#2a2a2a] hover:border-[#f07920]/30'}`}>
+                <label className={`flex flex-col items-center justify-center border-2 border-dashed rounded-xl cursor-pointer transition-colors h-36 ${imgPreview ? 'border-[#f07920]/30 p-0 overflow-hidden' : 'border-[#2a3a63] hover:border-[#f07920]/30'}`}>
                   {imgPreview
                     ? <img src={imgPreview} alt="cover" className="w-full h-full object-cover" />
                     : <><Upload size={20} className="text-gray-500 mb-2" /><p className="text-gray-500 text-xs">Click to upload cover image</p></>}
@@ -192,7 +192,7 @@ export default function AdminInsights() {
               <div>
                 <label className="block text-gray-400 text-xs mb-1">Category / Tag *</label>
                 <select value={form.tag} onChange={(e) => setForm({ ...form, tag: e.target.value })}
-                  className="w-full bg-[#1a1a1a] border border-[#2a2a2a] text-white rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#f07920]">
+                  className="w-full bg-[#0b1430] border border-[#2a3a63] text-white rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#f07920]">
                   {TAGS.map((t) => <option key={t} value={t}>{t}</option>)}
                 </select>
               </div>
@@ -202,7 +202,7 @@ export default function AdminInsights() {
                 <label className="block text-gray-400 text-xs mb-1">Title *</label>
                 <input required value={form.title} onChange={(e) => setForm({ ...form, title: e.target.value })}
                   placeholder="Article title…"
-                  className="w-full bg-[#1a1a1a] border border-[#2a2a2a] text-white rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#f07920]" />
+                  className="w-full bg-[#0b1430] border border-[#2a3a63] text-white rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#f07920]" />
               </div>
 
               {/* Excerpt */}
@@ -210,7 +210,7 @@ export default function AdminInsights() {
                 <label className="block text-gray-400 text-xs mb-1">Excerpt *</label>
                 <textarea required rows={3} value={form.excerpt} onChange={(e) => setForm({ ...form, excerpt: e.target.value })}
                   placeholder="Short description shown on the card…"
-                  className="w-full bg-[#1a1a1a] border border-[#2a2a2a] text-white rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#f07920] resize-none" />
+                  className="w-full bg-[#0b1430] border border-[#2a3a63] text-white rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#f07920] resize-none" />
               </div>
 
               {/* Read time + Date */}
@@ -219,13 +219,13 @@ export default function AdminInsights() {
                   <label className="block text-gray-400 text-xs mb-1">Read Time</label>
                   <input value={form.readTime} onChange={(e) => setForm({ ...form, readTime: e.target.value })}
                     placeholder="5 min read"
-                    className="w-full bg-[#1a1a1a] border border-[#2a2a2a] text-white rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#f07920]" />
+                    className="w-full bg-[#0b1430] border border-[#2a3a63] text-white rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#f07920]" />
                 </div>
                 <div>
                   <label className="block text-gray-400 text-xs mb-1">Display Date</label>
                   <input value={form.displayDate} onChange={(e) => setForm({ ...form, displayDate: e.target.value })}
                     placeholder="May 2025"
-                    className="w-full bg-[#1a1a1a] border border-[#2a2a2a] text-white rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#f07920]" />
+                    className="w-full bg-[#0b1430] border border-[#2a3a63] text-white rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#f07920]" />
                 </div>
               </div>
 
@@ -234,7 +234,7 @@ export default function AdminInsights() {
                 <div>
                   <label className="block text-gray-400 text-xs mb-1">Status</label>
                   <select value={form.status} onChange={(e) => setForm({ ...form, status: e.target.value })}
-                    className="w-full bg-[#1a1a1a] border border-[#2a2a2a] text-white rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#f07920]">
+                    className="w-full bg-[#0b1430] border border-[#2a3a63] text-white rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#f07920]">
                     <option value="draft">Draft</option>
                     <option value="published">Published</option>
                   </select>
@@ -242,12 +242,12 @@ export default function AdminInsights() {
                 <div>
                   <label className="block text-gray-400 text-xs mb-1">Order (higher = first)</label>
                   <input type="number" value={form.order} onChange={(e) => setForm({ ...form, order: e.target.value })}
-                    className="w-full bg-[#1a1a1a] border border-[#2a2a2a] text-white rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#f07920]" />
+                    className="w-full bg-[#0b1430] border border-[#2a3a63] text-white rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-[#f07920]" />
                 </div>
               </div>
 
               <div className="flex gap-3 pt-2">
-                <button type="button" onClick={() => setModal(false)} className="flex-1 py-2.5 border border-[#2a2a2a] text-gray-400 rounded-lg text-sm hover:border-[#3a3a3a] transition-colors">Cancel</button>
+                <button type="button" onClick={() => setModal(false)} className="flex-1 py-2.5 border border-[#2a3a63] text-gray-400 rounded-lg text-sm hover:border-[#3a3a3a] transition-colors">Cancel</button>
                 <button type="submit" disabled={saving} className="flex-1 bg-[#f07920] hover:bg-[#d96b1a] text-white font-semibold py-2.5 rounded-lg text-sm transition-colors disabled:opacity-60">
                   {saving ? 'Saving…' : editing ? 'Save Changes' : 'Create Insight'}
                 </button>

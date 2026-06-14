@@ -16,8 +16,8 @@ const StatCard = ({ icon: Icon, label, value, color, sub, href }) => {
   return (
     <div
       onClick={() => href && navigate(href)}
-      className={`bg-[#0f0f0f] border border-[#1e1e1e] rounded-xl p-5 flex items-start gap-4 transition-all
-        ${href ? 'cursor-pointer hover:border-[#f07920]/40 hover:bg-[#f07920]/5' : 'hover:border-[#2a2a2a]'}`}
+      className={`bg-[#0d1730] border border-[#1e2c52] rounded-xl p-5 flex items-start gap-4 transition-all
+        ${href ? 'cursor-pointer hover:border-[#f07920]/40 hover:bg-[#f07920]/5' : 'hover:border-[#2a3a63]'}`}
     >
       <div className={`p-2.5 rounded-lg ${color}`}>
         <Icon size={20} className="text-white" />
@@ -75,8 +75,8 @@ export default function AdminDashboard() {
       </div>
 
       {/* Recent Contacts */}
-      <div className="bg-[#0f0f0f] border border-[#1e1e1e] rounded-xl overflow-hidden">
-        <div className="px-5 py-4 border-b border-[#1e1e1e] flex items-center justify-between">
+      <div className="bg-[#0d1730] border border-[#1e2c52] rounded-xl overflow-hidden">
+        <div className="px-5 py-4 border-b border-[#1e2c52] flex items-center justify-between">
           <h3 className="text-white font-medium">Recent Contact Submissions</h3>
           <a href="/admin/contacts" className="text-[#f07920] text-xs hover:underline">View all</a>
         </div>
@@ -86,7 +86,7 @@ export default function AdminDashboard() {
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-[#1e1e1e]">
+                <tr className="border-b border-[#1e2c52]">
                   {['Name', 'Email', 'Company', 'Status', 'Date'].map((h) => (
                     <th key={h} className="text-left text-gray-500 text-xs px-5 py-3 font-medium">{h}</th>
                   ))}
@@ -94,7 +94,7 @@ export default function AdminDashboard() {
               </thead>
               <tbody>
                 {contacts.map((c) => (
-                  <tr key={c._id} className="border-b border-[#1a1a1a] hover:bg-white/2 transition-colors">
+                  <tr key={c._id} className="border-b border-[#0b1430] hover:bg-white/2 transition-colors">
                     <td className="px-5 py-3 text-white font-medium">{c.name}</td>
                     <td className="px-5 py-3 text-gray-400">{c.email}</td>
                     <td className="px-5 py-3 text-gray-400">{c.company || '—'}</td>

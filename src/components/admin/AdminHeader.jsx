@@ -5,7 +5,7 @@ export default function AdminHeader({ onMenuClick, title }) {
   const { admin } = useAdminAuth();
 
   return (
-    <header className="h-16 bg-[#080808] border-b border-[#1e1e1e] flex items-center justify-between px-4 lg:px-6 sticky top-0 z-30">
+    <header className="h-16 bg-[#0b1430] border-b border-[#1e2c52] flex items-center justify-between px-4 lg:px-6 sticky top-0 z-30">
       <div className="flex items-center gap-4">
         <button onClick={onMenuClick} className="lg:hidden text-gray-400 hover:text-white p-1">
           <Menu size={22} />

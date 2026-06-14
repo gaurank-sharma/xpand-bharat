@@ -95,7 +95,7 @@ export default function AdminContacts({ view = 'business' }) {
     <div className="space-y-4">
       {/* Toast */}
       {toast && (
-        <div className="fixed bottom-6 right-6 bg-[#f07920] text-black px-4 py-2 rounded-lg text-sm font-medium z-50 shadow-lg">
+        <div className="fixed bottom-6 right-6 bg-[#f07920] text-white px-4 py-2 rounded-lg text-sm font-medium z-50 shadow-lg">
           {toast}
         </div>
       )}
@@ -107,7 +107,7 @@ export default function AdminContacts({ view = 'business' }) {
             key={s}
             onClick={() => setFilter(s)}
             className={`px-3 py-1.5 rounded-lg text-xs font-medium capitalize border transition-all
-              ${filter === s ? 'bg-[#f07920] text-black border-[#f07920]' : 'bg-[#111] text-gray-400 border-[#222] hover:border-[#f07920]/40'}`}
+              ${filter === s ? 'bg-[#f07920] text-white border-[#f07920]' : 'bg-[#0b1430] text-gray-400 border-[#1e2c52] hover:border-[#f07920]/40'}`}
           >
             {s} {s !== 'all' && stats[s] !== undefined ? `(${stats[s]})` : ''}
           </button>
@@ -123,7 +123,7 @@ export default function AdminContacts({ view = 'business' }) {
             placeholder="Search by name, email or company..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
-            className="w-full bg-[#0f0f0f] border border-[#1e1e1e] text-white placeholder-gray-600 rounded-lg pl-9 pr-4 py-2.5 text-sm focus:outline-none focus:border-[#f07920] transition-colors"
+            className="w-full bg-[#0d1730] border border-[#1e2c52] text-white placeholder-gray-600 rounded-lg pl-9 pr-4 py-2.5 text-sm focus:outline-none focus:border-[#f07920] transition-colors"
           />
         </div>
         <button
@@ -136,7 +136,7 @@ export default function AdminContacts({ view = 'business' }) {
       </div>
 
       {/* Table */}
-      <div className="bg-[#0f0f0f] border border-[#1e1e1e] rounded-xl overflow-hidden">
+      <div className="bg-[#0d1730] border border-[#1e2c52] rounded-xl overflow-hidden">
         {loading ? (
           <div className="flex justify-center py-16"><div className="w-7 h-7 border-2 border-[#f07920] border-t-transparent rounded-full animate-spin" /></div>
         ) : contacts.length === 0 ? (
@@ -145,7 +145,7 @@ export default function AdminContacts({ view = 'business' }) {
           <div className="overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
-                <tr className="border-b border-[#1e1e1e]">
+                <tr className="border-b border-[#1e2c52]">
                   {['Name', 'Email', 'Mobile', 'Requirement', 'Status', 'Date', ''].map((h) => (
                     <th key={h} className="text-left text-gray-500 text-xs px-5 py-3 font-medium whitespace-nowrap">{h}</th>
                   ))}
@@ -190,8 +190,8 @@ export default function AdminContacts({ view = 'business' }) {
       {/* Detail Modal */}
       {selected && (
         <div className="fixed inset-0 bg-black/70 z-50 flex items-center justify-center p-4 backdrop-blur-sm">
-          <div className="bg-[#0f0f0f] border border-[#1e1e1e] rounded-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
-            <div className="flex items-center justify-between px-6 py-4 border-b border-[#1e1e1e]">
+          <div className="bg-[#0d1730] border border-[#1e2c52] rounded-2xl w-full max-w-lg max-h-[90vh] overflow-y-auto">
+            <div className="flex items-center justify-between px-6 py-4 border-b border-[#1e2c52]">
               <h3 className="text-white font-semibold">Contact Details</h3>
               <button onClick={() => setSelected(null)} className="text-gray-500 hover:text-white"><X size={18} /></button>
             </div>
@@ -223,7 +223,7 @@ export default function AdminContacts({ view = 'business' }) {
                 </div>
               </div>
               {/* Call consent banner */}
-              <div className={`rounded-lg p-3 flex items-center gap-3 border ${selected.consentContact ? 'bg-green-500/10 border-green-500/25' : 'bg-[#1a1a1a] border-[#2a2a2a]'}`}>
+              <div className={`rounded-lg p-3 flex items-center gap-3 border ${selected.consentContact ? 'bg-green-500/10 border-green-500/25' : 'bg-[#0b1430] border-[#2a3a63]'}`}>
                 <PhoneCall size={16} className={selected.consentContact ? 'text-green-400' : 'text-gray-500'} />
                 <div>
                   <p className={`text-sm font-semibold ${selected.consentContact ? 'text-green-400' : 'text-gray-400'}`}>
@@ -237,7 +237,7 @@ export default function AdminContacts({ view = 'business' }) {
 
               {/* Inquiry selections */}
               {(selected.role || selected.primaryGoal || selected.sector || selected.geography || selected.budget || selected.timeline) && (
-                <div className="grid grid-cols-2 gap-3 bg-[#141414] rounded-lg p-3 border border-[#222]">
+                <div className="grid grid-cols-2 gap-3 bg-[#141414] rounded-lg p-3 border border-[#1e2c52]">
                   {[
                     ['I am a', selected.role],
                     ['Looking For', selected.primaryGoal],
@@ -269,7 +269,7 @@ export default function AdminContacts({ view = 'business' }) {
               {selected.message && (
                 <div>
                   <p className="text-gray-500 text-xs mb-1">Message</p>
-                  <p className="text-gray-300 text-sm leading-relaxed bg-[#1a1a1a] rounded-lg p-3">{selected.message}</p>
+                  <p className="text-gray-300 text-sm leading-relaxed bg-[#0b1430] rounded-lg p-3">{selected.message}</p>
                 </div>
               )}
               {selected.cvUrl && (
@@ -295,7 +295,7 @@ export default function AdminContacts({ view = 'business' }) {
                       onClick={() => updateStatus(selected._id, s)}
                       disabled={selected.status === s}
                       className={`px-3 py-1.5 rounded-lg text-xs capitalize border transition-all disabled:opacity-40
-                        ${statusColor[s] || 'border-[#2a2a2a] text-gray-400'}`}
+                        ${statusColor[s] || 'border-[#2a3a63] text-gray-400'}`}
                     >
                       {s}
                     </button>
@@ -306,7 +306,7 @@ export default function AdminContacts({ view = 'business' }) {
             <div className="px-6 pb-4 flex gap-2">
               <a
                 href={`mailto:${selected.email}`}
-                className="flex-1 bg-[#f07920] hover:bg-[#1a9fd8] text-black font-semibold py-2.5 rounded-lg text-sm text-center transition-colors"
+                className="flex-1 bg-[#f07920] hover:bg-[#d96b1a] text-white font-semibold py-2.5 rounded-lg text-sm text-center transition-colors"
               >
                 Reply via Email
               </a>

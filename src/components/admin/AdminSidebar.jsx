@@ -1,19 +1,23 @@
 import { NavLink, useNavigate } from 'react-router-dom';
 import { useAdminAuth } from '../../context/AdminAuthContext';
-import { LayoutDashboard, MessageSquare, Briefcase, BookOpen, Settings, FileText, LogOut, X, ChevronRight } from 'lucide-react';
+import { LayoutDashboard, MessageSquare, Briefcase, BookOpen, Settings, FileText, Users, LogOut, X, ChevronRight } from 'lucide-react';
 
 const links = [
-  { to: '/admin/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
-  { to: '/admin/pages',     icon: FileText,        label: 'Pages' },
-  { to: '/admin/insights',  icon: BookOpen,        label: 'Insights' },
-  { to: '/admin/leads',     icon: Briefcase,       label: 'Business Queries' },
-  { to: '/admin/contacts',  icon: MessageSquare,   label: 'Contact Queries' },
-  { to: '/admin/settings',  icon: Settings,        label: 'Site Settings' },
+  { to: '/admin/dashboard', icon: LayoutDashboard, label: 'Dashboard',        section: 'dashboard' },
+  { to: '/admin/pages',     icon: FileText,        label: 'Pages',            section: 'pages' },
+  { to: '/admin/insights',  icon: BookOpen,        label: 'Insights',         section: 'insights' },
+  { to: '/admin/leads',     icon: Briefcase,       label: 'Business Queries', section: 'leads' },
+  { to: '/admin/contacts',  icon: MessageSquare,   label: 'Contact Queries',  section: 'contacts' },
+  { to: '/admin/members',   icon: Users,           label: 'Members',          section: 'members' },
+  { to: '/admin/settings',  icon: Settings,        label: 'Site Settings',    section: 'settings' },
 ];
 
 export default function AdminSidebar({ open, onClose }) {
   const { admin, logout } = useAdminAuth();
   const navigate = useNavigate();
+
+  const perms = admin?.permissions || [];
+  const visibleLinks = links.filter((l) => perms.includes(l.section));
 
   const handleLogout = () => { logout(); navigate('/admin/login'); };
 
@@ -23,26 +27,20 @@ export default function AdminSidebar({ open, onClose }) {
         <div className="fixed inset-0 bg-black/60 z-40 lg:hidden backdrop-blur-sm" onClick={onClose} />
       )}
 
-      <aside className={`fixed top-0 left-0 h-full w-64 bg-[#080808] border-r border-[#1e1e1e] z-50 flex flex-col transition-transform duration-300
+      <aside className={`fixed top-0 left-0 h-full w-64 bg-[#0b1430] border-r border-white/10 z-50 flex flex-col transition-transform duration-300
         ${open ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0`}>
 
         {/* Logo */}
-        <div className="flex items-center justify-between px-6 py-5 border-b border-[#1e1e1e]">
-          <div className="flex items-center gap-3">
-            <div className="w-8 h-8 bg-[#f07920] rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-xs">XB</span>
-            </div>
-            <div>
-              <p className="text-white font-semibold text-sm leading-tight">Xpand Bharat</p>
-              <p className="text-[#f07920] text-[10px] uppercase tracking-widest">Admin Portal</p>
-            </div>
+        <div className="flex items-center justify-between px-5 py-5 border-b border-white/10">
+          <div className="bg-white rounded-lg px-3 py-2 flex items-center">
+            <img src="/logo.png" alt="Xpand Bharat" className="h-7 w-auto object-contain" />
           </div>
-          <button onClick={onClose} className="lg:hidden text-gray-500 hover:text-white"><X size={18} /></button>
+          <button onClick={onClose} className="lg:hidden text-gray-400 hover:text-white"><X size={18} /></button>
         </div>
 
         {/* Nav */}
         <nav className="flex-1 px-3 py-4 space-y-0.5 overflow-y-auto">
-          {links.map(({ to, icon: Icon, label }) => (
+          {visibleLinks.map(({ to, icon: Icon, label }) => (
             <NavLink
               key={to}
               to={to}
@@ -66,7 +64,7 @@ export default function AdminSidebar({ open, onClose }) {
         </nav>
 
         {/* Admin + Logout */}
-        <div className="px-3 pb-4 border-t border-[#1e1e1e] pt-4">
+        <div className="px-3 pb-4 border-t border-white/10 pt-4">
           <div className="flex items-center gap-3 px-3 py-2 mb-2">
             <div className="w-8 h-8 bg-[#f07920]/20 rounded-full flex items-center justify-center">
               <span className="text-[#f07920] text-xs font-bold">{admin?.name?.[0]?.toUpperCase() || 'A'}</span>
