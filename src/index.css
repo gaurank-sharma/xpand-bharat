@@ -350,8 +350,19 @@ textarea.form-input {
    Small labels/captions (eyebrows, stats, footer micro-copy)
    keep their own functional sizes and are not "body".
 ============================================ */
-h1 { font-size: clamp(32px, 4vw, 52px) !important; }
-h2 { font-size: clamp(25px, 3vw, 38px) !important; }
+/* Headings scale with BOTH width and viewport height — so short laptops (12–13") don't get
+   oversized headings that push hero content (CTAs) below the fold. */
+h1 { font-size: clamp(26px, min(4.4vw, 6.4vh), 52px) !important; }
+h2 { font-size: clamp(23px, min(3vw, 4.6vh), 38px) !important; }
+
+/* Short viewports — tighten the full-screen page heroes so all content fits one screen */
+@media (max-height: 820px) {
+  .page-hero-section { padding-top: 110px !important; padding-bottom: 56px !important; }
+}
+@media (max-height: 680px) {
+  .page-hero-section { padding-top: 94px !important; padding-bottom: 42px !important; }
+  .page-hero-section > div:last-child > p { font-size: 14.5px !important; line-height: 1.6 !important; margin-bottom: 22px !important; }
+}
 
 /* ============================================
    SHARED LAYOUT HELPERS
