@@ -56,7 +56,7 @@ const DIFFERENTIATORS = [
   { num: '05', title: 'Execution support included', desc: 'We stay involved after the match — from initial conversations to final commitment and rollout.' },
 ];
 
-function FadeSection({ children, delay = 0, style = {} }) {
+function FadeSection({ children, delay = 0, style = {}, className = '' }) {
   const ref = useRef(null);
   useEffect(() => {
     const el = ref.current;
@@ -66,7 +66,7 @@ function FadeSection({ children, delay = 0, style = {} }) {
     const obs = new IntersectionObserver(([e]) => { if (e.isIntersecting) { el.style.opacity = '1'; el.style.transform = 'translateY(0)'; obs.disconnect(); } }, { threshold: 0.1 });
     obs.observe(el); return () => obs.disconnect();
   }, [delay]);
-  return <div ref={ref} style={style}>{children}</div>;
+  return <div ref={ref} className={className} style={style}>{children}</div>;
 }
 
 export default function GrowthOpportunities() {
@@ -195,6 +195,9 @@ export default function GrowthOpportunities() {
           @media (max-width: 900px) and (min-width: 769px) {
             .go-grid-wrap { grid-template-columns: repeat(2, 1fr) !important; }
           }
+          @media (max-width: 768px) {
+            .go-diff-left { position: static !important; top: auto !important; }
+          }
         `}</style>
       </div>
 
@@ -204,7 +207,7 @@ export default function GrowthOpportunities() {
           <div style={{ position: 'absolute', right: '-40px', top: '50%', transform: 'translateY(-50%)', fontFamily: "'Fraunces', serif", fontSize: '300px', fontWeight: 700, color: 'rgba(255,255,255,0.02)', lineHeight: 1 }}>05</div>
         </div>
         <div className="xb-grid-2col" style={{ maxWidth: '1440px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1.2fr', gap: '72px', alignItems: 'start', position: 'relative', zIndex: 1 }}>
-          <FadeSection style={{ position: 'sticky', top: '100px' }}>
+          <FadeSection className="go-diff-left" style={{ position: 'sticky', top: '100px' }}>
             <div className="section-label">What Makes These Different</div>
             <h1 style={{ fontFamily: "'Fraunces', serif", fontWeight: 700, color: '#fff', marginBottom: '24px', lineHeight: 1.1 }}>
               Built for serious,<br /><span style={{ color: 'var(--orange)' }}>scalable growth.</span>
