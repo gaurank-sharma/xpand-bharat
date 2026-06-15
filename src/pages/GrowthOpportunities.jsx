@@ -163,13 +163,6 @@ export default function GrowthOpportunities() {
 
               {/* Bottom content */}
               <div style={{ position: 'absolute', bottom: '24px', left: '24px', right: '24px', zIndex: 2 }}>
-                {/* Investment range badge */}
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: '10px', marginBottom: '14px', background: 'rgba(7,15,35,0.75)', backdropFilter: 'blur(8px)', border: '1px solid rgba(240,121,32,0.55)', borderRadius: '4px', padding: '6px 14px' }}>
-                  <span style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.18em', textTransform: 'uppercase', color: 'rgba(255,255,255,0.75)' }}>Range</span>
-                  <span style={{ width: '1px', height: '12px', background: 'rgba(240,121,32,0.45)', flexShrink: 0 }} />
-                  <span style={{ fontSize: '13px', fontWeight: 700, color: 'var(--orange)', fontFamily: "'Inter', sans-serif", letterSpacing: '0.02em' }}>{cat.range}</span>
-                </div>
-
                 <div style={{ width: '20px', height: '1px', background: 'rgba(255,255,255,0.35)', marginBottom: '12px' }} />
 
                 <h3 style={{ fontFamily: "'Fraunces', serif", fontSize: 'clamp(20px, 1.8vw, 26px)', fontWeight: 600, fontStyle: 'italic', color: '#fff', margin: 0, lineHeight: 1.25 }}>

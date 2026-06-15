@@ -57,6 +57,17 @@ const SOCIAL_ICONS = {
       </svg>
     ),
   },
+  twitter: {
+    label: 'X',
+    fallback: 'https://x.com/xpandbharat',
+    brand: '#000000',
+    hoverBg: '#000000',
+    icon: (
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+      </svg>
+    ),
+  },
   facebook: {
     label: 'Facebook',
     fallback: 'https://www.facebook.com/share/1HFEiRkeXX/?mibextid=wwXIfr',
@@ -71,14 +82,19 @@ const SOCIAL_ICONS = {
 };
 
 const FB = {
-  description: "XPAND Bharat is India's leading franchise expansion and investment consulting company, backed by 25+ years of collective industry experience in franchise growth, investor alignment, and business expansion strategy.",
+  description: "XPAND Bharat, a venture by XPANDVERSE PVT. LTD., is India's leading franchise expansion and investment consulting company — backed by 25+ years of collective industry experience in franchise growth, investor alignment, and business expansion strategy.",
   email: 'contact@xpandbharat.com',
   phone: '+91 77172 72838',
-  address: 'Gurugram, Haryana, India',
+  address: 'Good Earth Business Bay 1, 6th Floor, Sector 58, Gurugram, Haryana',
   footerHeading: 'Ready to move',
   footerTagline: "Connect with us. India's Leading Franchise Expansion.",
-  copyrightText: 'XPANDBHARAT. All rights reserved.',
+  copyrightText: 'XPANDVERSE PVT. LTD. All rights reserved.',
 };
+
+// Google Maps query for the office — used by the footer map + directions link.
+const MAP_QUERY = 'Good Earth Business Bay 1, Sector 58, Gurugram, Haryana';
+const MAP_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MAP_QUERY)}`;
+const MAP_EMBED = `https://maps.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}&z=15&output=embed`;
 
 const telHref = (phone) => `tel:${(phone || '').replace(/[^\d+]/g, '')}`;
 
@@ -124,7 +140,7 @@ export default function Footer() {
 
           {/* Col 1 — Brand */}
           <div>
-            <img src="/logo.png" alt="Xpand Bharat" style={{ height: 'auto', width: '85%', objectFit: 'contain', marginBottom: '16px', display: 'block' }} />
+            <img src="/logo.png" alt="Xpand Bharat" style={{ height: '50px', width: 'auto', maxWidth: '80%', objectFit: 'contain', marginBottom: '18px', display: 'block' }} />
             <p style={{ color: 'var(--gray)', fontSize: '13px', lineHeight: 1.8, margin: 0 }}>
               {description}
             </p>
@@ -174,6 +190,21 @@ export default function Footer() {
             </div>
           </div>
         </div>
+
+        {/* Full-width office map — kept out of the columns so they stay balanced */}
+        <a href={MAP_LINK} target="_blank" rel="noreferrer" aria-label="Get directions to the XPAND Bharat office"
+          style={{ display: 'block', position: 'relative', marginBottom: '48px', borderRadius: '14px', overflow: 'hidden', border: '1px solid #E5E2DC', boxShadow: '0 8px 28px rgba(0,0,0,0.05)', textDecoration: 'none' }}>
+          <iframe
+            title="XPAND Bharat office location"
+            src={MAP_EMBED}
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            style={{ width: '100%', height: '180px', border: 0, display: 'block', pointerEvents: 'none', filter: 'grayscale(0.92) contrast(0.96)' }}
+          />
+          <span style={{ position: 'absolute', left: '18px', bottom: '18px', display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#fff', color: 'var(--navy)', padding: '10px 16px', borderRadius: '8px', fontSize: '13px', fontWeight: 600, boxShadow: '0 4px 14px rgba(0,0,0,0.12)' }}>
+            Good Earth Business Bay 1, Sector 58, Gurugram <span style={{ color: 'var(--orange)' }}>· Get Directions →</span>
+          </span>
+        </a>
 
         {/* Bottom bar */}
         <div style={{

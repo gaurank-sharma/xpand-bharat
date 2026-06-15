@@ -212,6 +212,14 @@ export default function ForBrands() {
           min-height: 480px;
         }
 
+        /* Short viewports (e.g. 12–13" laptops) — trim hero padding so the CTA stays on-screen */
+        @media (min-width: 901px) and (max-height: 820px) {
+          .fb-hero-left { padding-top: 120px; padding-bottom: 56px; }
+        }
+        @media (min-width: 901px) and (max-height: 700px) {
+          .fb-hero-left { padding-top: 96px; padding-bottom: 40px; }
+        }
+
         /* ── Pillars ── */
         .fb-pillars-grid {
           display: grid;

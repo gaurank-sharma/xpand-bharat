@@ -142,13 +142,7 @@ export default function Home() {
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(160deg, rgba(7,15,35,0.62) 0%, rgba(7,15,35,0.18) 38%, rgba(7,15,35,0.86) 100%)' }} />
 
         {/* Full-height column: wordmark pinned top, content block pinned bottom */}
-        <div className="home-hero-inner" style={{ position: 'relative', zIndex: 2, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: '30px', maxWidth: '1440px', width: '100%', margin: '0 auto', padding: '96px 40px 60px', boxSizing: 'border-box' }}>
-
-          {/* Giant brand wordmark (EBG-style) */}
-          <div className="home-hero-mark" style={{ pointerEvents: 'none' }}>
-            <span style={{ display: 'block', fontFamily: "'Fraunces', serif", fontWeight: 700, lineHeight: 0.9, letterSpacing: '-0.02em', color: 'rgba(255,255,255,0.94)' }}>XPAND</span>
-            <span style={{ display: 'block', fontFamily: "'Fraunces', serif", fontWeight: 700, lineHeight: 0.9, letterSpacing: '-0.02em', color: 'var(--orange)' }}>BHARAT</span>
-          </div>
+        <div className="home-hero-inner" style={{ position: 'relative', zIndex: 2, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', gap: '30px', maxWidth: '1440px', width: '100%', margin: '0 auto', padding: '120px 40px 88px', boxSizing: 'border-box' }}>
 
           {/* Content block (EBG-style frosted card) */}
           <div className="home-hero-card" style={{ maxWidth: '640px', background: 'rgba(9,17,38,0.5)', backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '20px', padding: '30px 38px' }}>

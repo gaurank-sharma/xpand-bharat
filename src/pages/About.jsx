@@ -58,7 +58,7 @@ export default function About() {
         keywords={"franchise consulting company India, franchise expansion India, franchise investment advisory India, business expansion advisory Gurugram, franchise consulting firms India"}
       />
       {/* HERO */}
-      <div className="page-hero-section" style={{ background: 'var(--navy-dark)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'auto 100%', backgroundRepeat: 'no-repeat', backgroundPosition: 'calc(100% + 130px) center', minHeight: '100vh', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 140px', position: 'relative', overflow: 'hidden' }}>
+      <div className="page-hero-section" style={{ background: 'var(--navy-dark)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'right center', minHeight: '100vh', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 140px', position: 'relative', overflow: 'hidden' }}>
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(7,15,35,0.9) 0%, rgba(7,15,35,0.72) 30%, rgba(7,15,35,0.38) 56%, rgba(7,15,35,0.1) 100%)' }} />
         <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(to top, rgba(7,15,35,0.6) 0%, transparent 45%)' }} />
         <div style={{ position: 'absolute', inset: 0, backgroundImage: `linear-gradient(rgba(255,255,255,0.015) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px)`, backgroundSize: '80px 80px' }} />
@@ -109,7 +109,7 @@ export default function About() {
             </FadeSection>
             <FadeSection delay={150}>
               <p style={{ color: 'var(--gray)', fontSize: '16px', lineHeight: 1.85, marginBottom: '20px' }}>
-                Headquartered in Gurugram, XPAND Bharat is a franchise consulting and business expansion platform built to help brands scale through structured franchising, qualified investor networks, and commercially disciplined growth strategies.
+                Headquartered in Gurugram, XPAND Bharat — a venture by XPANDVERSE PVT. LTD. — is a franchise consulting and business expansion platform built to help brands scale through structured franchising, qualified investor networks, and commercially disciplined growth strategies.
               </p>
               <p style={{ color: 'var(--gray)', fontSize: '16px', lineHeight: 1.85, marginBottom: '20px' }}>
                 With 25+ years of collective industry experience, we work alongside businesses across food, retail, electronics, fashion, and consumer sectors to create expansion models that are scalable, investable, and execution-ready.
