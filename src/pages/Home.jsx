@@ -124,7 +124,7 @@ export default function Home() {
         path="/"
         title={"XPAND Bharat - India's #1 Franchise Expansion and Investment Advisory"}
         description={"XPAND Bharat helps growth-stage brands scale through structured franchising and connects qualified investors with franchise businesses across India. Because serious money deserves serious structure."}
-        keywords={"franchise consulting company, franchise expansion consultants India, franchise investment advisory India, franchise lead generation, franchise investor network India, best franchise advisory India, franchise consulting firms India, business expansion advisory"}
+        keywords={"franchise consulting company, franchise expansion consultants India, franchise investment advisory India, franchise lead generation, franchise investor network India, best franchise advisory India, franchise consulting firms India, business expansion advisory, franchise consulting company India, franchise consulting firms, franchise consulting India, franchise consulting services India, franchise consultants India, top franchise consultants India, franchise advisory India, franchise advisory company India, franchise business consultants India, franchise partner India, structured franchise expansion, franchise growth strategy India, Indian franchise market, India franchise economy"}
       />
       {/* ─── HERO — full-screen video, EBG-style wordmark + content block ─── */}
       <div className="home-hero" style={{ background: 'var(--navy-dark)', minHeight: '100vh', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden' }}>

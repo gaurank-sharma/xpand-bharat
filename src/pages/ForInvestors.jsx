@@ -96,7 +96,7 @@ export default function ForInvestors() {
         path="/for-investors"
         title={"Franchise Investment Opportunities India | XPAND Bharat"}
         description={"Discover structured franchise investment opportunities across India. XPAND Bharat aligns serious investors with investor-ready franchise businesses in F&B, retail, electronics, fashion and more."}
-        keywords={"franchise investment India, franchise investment opportunities India, best franchise advisory India, investor alignment franchise, food franchise India, retail franchise India, connect with franchise investors"}
+        keywords={"franchise investment India, franchise investment opportunities India, best franchise advisory India, investor alignment franchise, food franchise India, retail franchise India, connect with franchise investors, franchise investor network India, franchise investment consultants India, franchise partner opportunities India, business investment opportunities India, profitable franchise business India, profitable franchise businesses India, franchise investor matchmaking India, investor-ready franchise business, passive income franchise India, best franchise to invest in India"}
       />
       {/* HERO */}
       <div className="page-hero-section" style={{ background: 'var(--navy-dark)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'auto 90%', backgroundRepeat: 'no-repeat', backgroundPosition: 'right bottom', minHeight: '100vh', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>

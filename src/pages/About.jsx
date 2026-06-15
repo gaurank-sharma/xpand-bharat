@@ -55,7 +55,7 @@ export default function About() {
         path="/about"
         title={"About XPAND Bharat - India's Leading Franchise Advisory Company"}
         description={"Headquartered in Gurugram, XPAND Bharat is India's leading franchise consulting and investment advisory platform. 25+ years of collective experience. Structured growth. Serious results."}
-        keywords={"franchise consulting company India, franchise expansion India, franchise investment advisory India, business expansion advisory Gurugram, franchise consulting firms India"}
+        keywords={"franchise consulting company India, franchise expansion India, franchise investment advisory India, business expansion advisory Gurugram, franchise consulting firms India, franchise advisory company India, best franchise advisory India, franchise business consultants India, franchise consultants in India, franchise consultants in Punjab, franchise advisory India, franchise consulting company"}
       />
       {/* HERO */}
       <div className="page-hero-section" style={{ background: 'var(--navy-dark)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'cover', backgroundRepeat: 'no-repeat', backgroundPosition: 'right center', minHeight: '100vh', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 140px', position: 'relative', overflow: 'hidden' }}>

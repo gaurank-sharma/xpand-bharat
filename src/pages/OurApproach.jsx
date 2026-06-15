@@ -115,7 +115,7 @@ export default function OurApproach() {
         path="/our-approach"
         title={"How XPAND Bharat Works - Franchise Expansion Process India"}
         description={"See how XPAND Bharat takes brands from business understanding to structured investor matchmaking and deal closure. India's most commercially structured franchise expansion process."}
-        keywords={"franchise expansion framework India, franchise consulting approach, franchise expansion strategy India, franchise business structuring, investor-ready franchise India"}
+        keywords={"franchise expansion framework India, franchise consulting approach, franchise expansion strategy India, franchise business structuring, investor-ready franchise India, franchise expansion process India, franchise counseling services, franchise sales consultants India, franchise strategy India, franchise business plan India, franchise agreement India, franchise legal compliance India, franchise operations manual, franchise onboarding process, franchise territory mapping India, franchise model development India"}
       />
       {/* HERO */}
       <div className="page-hero-section" style={{ background: 'var(--navy)', backgroundImage: `url("${heroImg}")`, backgroundSize: 'cover', backgroundPosition: 'center top', minHeight: '100vh', display: 'flex', alignItems: 'flex-end', padding: '160px 40px 80px', position: 'relative', overflow: 'hidden' }}>

@@ -42,7 +42,7 @@ export default function Insights() {
         path="/insights"
         title={"Franchise Insights & Expansion Strategy | XPAND Bharat"}
         description={"Articles and insights on franchise expansion, investor alignment, and structured growth in India from XPAND Bharat's advisory team."}
-        keywords={"franchise insights India, franchise expansion strategy, franchise investment insights, franchise consulting blog India"}
+        keywords={"franchise insights India, franchise expansion strategy, franchise investment insights, franchise consulting blog India, franchise strategy India, franchise business plan India"}
       />
 
       {/* HERO */}

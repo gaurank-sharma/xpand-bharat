@@ -219,7 +219,7 @@ export default function Industries() {
         path="/industries"
         title={"Franchise Industries We Work With | F&B, Retail, Fashion | XPAND Bharat"}
         description={"XPAND Bharat helps franchise businesses scale across F&B, electronics, fashion, retail, salon, and emerging consumer sectors through structured expansion and qualified investor alignment."}
-        keywords={"food franchise India, retail franchise India, salon franchise India, fashion franchise India, franchise expansion India, franchise opportunities India, franchise investment advisory"}
+        keywords={"food franchise India, retail franchise India, salon franchise India, fashion franchise India, franchise expansion India, franchise opportunities India, franchise investment advisory, electronics franchise India, franchise industries India, franchise services India, multi-location franchise India"}
       />
 
       {/* HERO */}

@@ -117,7 +117,7 @@ export default function ForBrands() {
         path="/for-brands"
         title={"Franchise Expansion Consultants India | Expand Your Brand | XPAND Bharat"}
         description={"Expand your brand across India through structured franchising. XPAND Bharat provides franchise consulting, investor alignment, and end-to-end expansion support for growth-stage businesses."}
-        keywords={"franchise expansion consultants India, franchise consulting company India, franchise lead generation, business expansion advisory India, franchise rollout strategy, franchise partner acquisition"}
+        keywords={"franchise expansion consultants India, franchise consulting company India, franchise lead generation, business expansion advisory India, franchise rollout strategy, franchise partner acquisition, franchise expansion consultant India, franchise expansion company India, franchise expansion India, franchise business expansion India, franchise model development India, expand business through franchising, how to expand business through franchise, scaling businesses through franchising, franchise expansion planning, franchise recruitment India, franchisee recruitment services India, multi-location franchise India, multi-city franchise expansion, pan-India franchise expansion, Tier-1 and Tier-2 cities, brand expansion"}
       />
       {/* ── SPLIT HERO ── */}
       <div className="fb-hero">

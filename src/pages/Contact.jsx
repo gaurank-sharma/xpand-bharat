@@ -54,7 +54,7 @@ export default function Contact() {
         path="/contact"
         title={"Contact XPAND Bharat | Franchise Consulting & Investment Advisory"}
         description={"Talk to XPAND Bharat about franchise expansion or investment. Headquartered in Gurugram, serving brands and investors across India. Email contact@xpandbharat.com."}
-        keywords={"contact XPAND Bharat, franchise consulting Gurugram, franchise advisory contact India"}
+        keywords={"contact XPAND Bharat, franchise consulting Gurugram, franchise advisory contact India, franchise consultants Gurugram, franchise advisory Gurugram"}
         schema={LOCAL_BUSINESS_SCHEMA}
       />
       {/* HERO */}
