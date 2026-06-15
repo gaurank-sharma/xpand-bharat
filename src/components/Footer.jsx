@@ -199,7 +199,7 @@ export default function Footer() {
             src={MAP_EMBED}
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
-            style={{ width: '100%', height: '180px', border: 0, display: 'block', pointerEvents: 'none', filter: 'grayscale(0.92) contrast(0.96)' }}
+            style={{ width: '100%', height: '180px', border: 0, display: 'block', pointerEvents: 'none' }}
           />
           <span style={{ position: 'absolute', left: '18px', bottom: '18px', display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#fff', color: 'var(--navy)', padding: '10px 16px', borderRadius: '8px', fontSize: '13px', fontWeight: 600, boxShadow: '0 4px 14px rgba(0,0,0,0.12)' }}>
             Good Earth Business Bay 1, Sector 58, Gurugram <span style={{ color: 'var(--orange)' }}>· Get Directions →</span>
