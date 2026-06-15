@@ -18,6 +18,7 @@ const LOCAL_BUSINESS_SCHEMA = {
     streetAddress: 'Good Earth Business Bay 1, 6th Floor, Sector 58',
     addressLocality: 'Gurugram',
     addressRegion: 'Haryana',
+    postalCode: '122011',
     addressCountry: 'IN',
   },
   areaServed: 'IN',
