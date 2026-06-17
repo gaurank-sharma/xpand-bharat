@@ -25,10 +25,6 @@ const LOCAL_BUSINESS_SCHEMA = {
   description: "India's leading franchise consulting and investment advisory platform, headquartered in Gurugram.",
 };
 
-const MAP_QUERY = 'Good Earth Business Bay 1, Sector 58, Gurugram, Haryana';
-const MAP_LINK = `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(MAP_QUERY)}`;
-const MAP_EMBED = `https://maps.google.com/maps?q=${encodeURIComponent(MAP_QUERY)}&z=15&output=embed`;
-
 const INFO = [
   { label: 'Email Address', value: 'contact@xpandbharat.com', href: 'mailto:contact@xpandbharat.com', icon: '✉' },
   { label: 'WhatsApp / Phone', value: '+91 77172 72838', href: 'tel:+917717272838', icon: '✆' },
@@ -144,26 +140,6 @@ export default function Contact() {
               <ContactForm />
             </div>
           </FadeSection>
-        </div>
-      </div>
-
-      {/* VISIT US — full-width office map */}
-      <div style={{ padding: '0 40px 100px', background: 'var(--cream-light)' }}>
-        <div style={{ maxWidth: '1440px', margin: '0 auto' }}>
-          <div className="section-label" style={{ marginBottom: '18px' }}>Visit Us</div>
-          <a href={MAP_LINK} target="_blank" rel="noreferrer" aria-label="Get directions to the XPAND Bharat office"
-            style={{ display: 'block', position: 'relative', borderRadius: '20px', overflow: 'hidden', border: '1px solid var(--border)', boxShadow: '0 16px 44px rgba(0,0,0,0.07)', textDecoration: 'none' }}>
-            <iframe
-              title="XPAND Bharat office location"
-              src={MAP_EMBED}
-              loading="lazy"
-              referrerPolicy="no-referrer-when-downgrade"
-              style={{ width: '100%', height: '380px', border: 0, display: 'block', pointerEvents: 'none' }}
-            />
-            <span style={{ position: 'absolute', left: '22px', bottom: '22px', display: 'inline-flex', alignItems: 'center', gap: '8px', background: '#fff', color: 'var(--navy)', padding: '12px 18px', borderRadius: '10px', fontSize: '14px', fontWeight: 600, boxShadow: '0 6px 18px rgba(0,0,0,0.14)' }}>
-              Good Earth Business Bay 1, 6th Floor, Sector 58, Gurugram <span style={{ color: 'var(--orange)' }}>· Get Directions →</span>
-            </span>
-          </a>
         </div>
       </div>
 
