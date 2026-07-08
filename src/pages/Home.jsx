@@ -3,6 +3,8 @@ import Seo from '../components/Seo';
 import { useContent } from '../hooks/useContent';
 import { Link } from 'react-router-dom';
 
+const HERO_ROTATING_WORDS = ['Investors', 'Structure', 'Execution', 'Clarity', 'Governance'];
+
 const PILLARS = [
   { label: 'Diagnose', desc: 'Before businesses scale, they need clarity.' },
   { label: 'Structure', desc: 'Good businesses often fail at expansion because they are not structured for franchising.' },
@@ -68,8 +70,7 @@ function FadeSection({ children, delay = 0, style = {}, className = '' }) {
 }
 
 export default function Home() {
-  const { hero, section } = useContent('home');
-  const heroSubtitle = hero?.subtitle || 'XPAND helps brands become investor-ready, scale through structured franchising, and align with commercially serious investors looking for profitable franchise opportunities in India.';
+  const { section } = useContent('home');
   const pillars = section('pillars', PILLARS).map(p => ({
     label: p.title || p.label,
     desc: p.description || p.desc,
@@ -81,6 +82,17 @@ export default function Home() {
     img: c.imageUrl || c.img,
     to: c.link || c.to,
   }));
+  // Rotating hero word — swaps the rendered word every 2.2s. Each new word
+  // re-mounts (via the changing key) so a fresh slide-in animation plays.
+  const [heroWordIndex, setHeroWordIndex] = useState(0);
+  useEffect(() => {
+    const id = setInterval(
+      () => setHeroWordIndex((i) => (i + 1) % HERO_ROTATING_WORDS.length),
+      2200
+    );
+    return () => clearInterval(id);
+  }, []);
+
   // Auto-slide testimonials on mobile (the slider only scrolls horizontally ≤900px)
   const testimonialsRef = useRef(null);
   useEffect(() => {
@@ -126,36 +138,35 @@ export default function Home() {
         description={"XPAND Bharat helps growth-stage brands scale through structured franchising and connects qualified investors with franchise businesses across India. Because serious money deserves serious structure."}
         keywords={"franchise consulting company, franchise expansion consultants India, franchise investment advisory India, franchise lead generation, franchise investor network India, best franchise advisory India, franchise consulting firms India, business expansion advisory, franchise consulting company India, franchise consulting firms, franchise consulting India, franchise consulting services India, franchise consultants India, top franchise consultants India, franchise advisory India, franchise advisory company India, franchise business consultants India, franchise partner India, structured franchise expansion, franchise growth strategy India, Indian franchise market, India franchise economy"}
       />
-      {/* ─── HERO — full-screen video, EBG-style wordmark + content block ─── */}
+      {/* ─── HERO — full-screen video, centered content (no card) ─── */}
       <div className="home-hero" style={{ background: 'var(--navy-dark)', minHeight: '100vh', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden' }}>
         <video
-          autoPlay muted loop playsInline
-          onLoadedMetadata={(e) => { e.currentTarget.playbackRate = 1.5; }}
-          poster="https://images.pexels.com/videos/12731888/cityscape-downtown-downtown-minneapolis-minneapolis-12731888.jpeg?auto=compress&cs=tinysrgb&w=1600"
+          autoPlay muted loop playsInline preload="auto"
           style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.92 }}
         >
-          {/* Self-hosted free aerial clip — no people (Pexels, royalty-free). Lives in /public/video/hero.mp4 */}
-          <source src="/video/hero.mp4" type="video/mp4" />
+          {/* Self-hosted brand hero clip. Lives in /public/video/Xpand bharat-1.mp4 */}
+          <source src="/video/Xpand%20bharat-1.mp4" type="video/mp4" />
         </video>
 
-        {/* Readability wash — darker top-left (wordmark) and bottom (content block) */}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(160deg, rgba(7,15,35,0.62) 0%, rgba(7,15,35,0.18) 38%, rgba(7,15,35,0.86) 100%)' }} />
+        {/* Readability wash — even dark overlay so centered text reads cleanly over the video */}
+        <div style={{ position: 'absolute', inset: 0, background: 'radial-gradient(120% 90% at 50% 45%, rgba(7,15,35,0.35) 0%, rgba(7,15,35,0.62) 55%, rgba(7,15,35,0.82) 100%)' }} />
 
-        {/* Full-height column: wordmark pinned top, content block pinned bottom */}
-        <div className="home-hero-inner" style={{ position: 'relative', zIndex: 2, flex: 1, display: 'flex', flexDirection: 'column', justifyContent: 'flex-end', gap: '30px', maxWidth: '1440px', width: '100%', margin: '0 auto', padding: '120px 40px 88px', boxSizing: 'border-box' }}>
+        {/* Centered content column */}
+        <div className="home-hero-inner" style={{ position: 'relative', zIndex: 2, flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', textAlign: 'center', maxWidth: '1000px', width: '100%', margin: '0 auto', padding: '120px 40px 96px', boxSizing: 'border-box' }}>
 
-          {/* Content block (EBG-style frosted card) */}
-          <div className="home-hero-card" style={{ maxWidth: '640px', background: 'rgba(9,17,38,0.5)', backdropFilter: 'blur(14px)', WebkitBackdropFilter: 'blur(14px)', border: '1px solid rgba(255,255,255,0.12)', borderRadius: '20px', padding: '30px 38px' }}>
-            <div className="section-label" style={{ marginBottom: '14px' }}>India's Leading Franchise Expansion &amp; Advisory Platform</div>
-            <h1 style={{ fontFamily: "'Fraunces', serif", fontWeight: 700, lineHeight: 1.08, margin: '0 0 14px', letterSpacing: '-0.01em' }}>
-              <span style={{ color: '#fff' }}>Good businesses deserve </span>
-              <span style={{ color: 'var(--orange)' }}>more than random expansion.</span>
-            </h1>
-            <p style={{ color: 'rgba(255,255,255,0.72)', fontSize: '15px', lineHeight: 1.6, margin: '0 0 22px' }}>{heroSubtitle}</p>
-            <div className="xb-hero-cta">
-              <Link to="/get-started" className="btn-primary">Discuss Your Requirement</Link>
-              <Link to="/growth-opportunities" className="btn-outline">Explore Opportunities</Link>
-            </div>
+          <div className="section-label" style={{ justifyContent: 'center', marginBottom: '22px' }}>India's Leading Franchise Expansion &amp; Advisory Platform</div>
+          <h1 style={{ fontFamily: "'Fraunces', serif", fontWeight: 700, lineHeight: 1.12, margin: '0 0 20px', letterSpacing: '-0.01em' }}>
+            <span className="hero-lead" style={{ color: '#fff', display: 'block' }}>Pan-India Expansion Runs on</span>
+            <span className="hero-rotator">
+              <span key={heroWordIndex} className="hero-rotator-word">
+                {HERO_ROTATING_WORDS[heroWordIndex]}
+              </span>
+            </span>
+          </h1>
+          <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: '18px', fontWeight: 500, lineHeight: 1.6, margin: '0 0 34px' }}>Brands expand. Investors align.</p>
+          <div className="xb-hero-cta" style={{ justifyContent: 'center' }}>
+            <Link to="/get-started" className="btn-primary">Discuss Your Requirement</Link>
+            <Link to="/growth-opportunities" className="btn-outline">Explore Opportunities</Link>
           </div>
         </div>
       </div>
@@ -602,27 +613,58 @@ export default function Home() {
           50% { opacity: 1; transform: scaleY(0.6); }
         }
 
-        /* ── Full-screen home hero (EBG-style wordmark + content block) ── */
-        .home-hero { min-height: 100vh; }
-        .home-hero-inner { padding: 84px 40px 44px; }
-        .home-hero-mark span { font-size: clamp(36px, 4.8vw, 68px); }
-        /* Keep the card compact so it fits one viewport (and stays robust to browser zoom) */
-        .home-hero-card h1 { font-size: clamp(26px, 3vw, 42px) !important; }
-        /* Equal-width hero CTAs — compact so they sit on one line and don't push the card past the fold */
-        .home-hero-card .xb-hero-cta { gap: 12px; }
-        .home-hero-card .xb-hero-cta .btn-primary,
-        .home-hero-card .xb-hero-cta .btn-outline { flex: 1 1 200px; justify-content: center; text-align: center; font-size: 12px; padding: 12px 16px; }
-        @media (max-width: 768px) {
-          .home-hero { min-height: 88vh; }
-          .home-hero-inner { padding: 92px 20px 40px !important; justify-content: center !important; }
-          .home-hero-mark { display: none; }
-          .home-hero-card { padding: 26px 22px !important; }
+        /* ── Rotating hero word — centered, slide-in on each swap ── */
+        .home-hero-inner .hero-lead { color: #fff; }
+        .home-hero-inner .hero-rotator {
+          display: block;
+          overflow: hidden;
+          font-size: 1.42em;      /* larger than the lead-in for hierarchy */
+          line-height: 1.18;
+          height: 1.18em;         /* exactly one word tall — clips the slide-in */
+          margin-top: 8px;
         }
+        .home-hero-inner .hero-rotator-word {
+          display: inline-block;
+          color: var(--orange);
+          font-weight: 700;
+          white-space: nowrap;
+          animation: heroWordSlide 0.5s cubic-bezier(0.16, 1, 0.3, 1) both;
+        }
+        @keyframes heroWordSlide {
+          0%   { opacity: 0; transform: translateY(100%); }
+          100% { opacity: 1; transform: translateY(0); }
+        }
+        @media (prefers-reduced-motion: reduce) {
+          .home-hero-inner .hero-rotator-word { animation: none; }
+        }
+
+        /* ── Full-screen centered home hero ── */
+        .home-hero { min-height: 100vh; min-height: 100svh; }
+        .home-hero-inner h1 { font-size: clamp(30px, 4.4vw, 58px) !important; }
+        .home-hero-inner .section-label { flex-wrap: wrap; }
+        .home-hero-inner .xb-hero-cta { gap: 14px; }
+        .home-hero-inner .xb-hero-cta .btn-primary,
+        .home-hero-inner .xb-hero-cta .btn-outline { justify-content: center; text-align: center; }
+
+        /* Tablet */
+        @media (max-width: 768px) {
+          .home-hero { min-height: 88vh; min-height: 88svh; }
+          .home-hero-inner { padding: 96px 22px 56px !important; }
+          .home-hero-inner .section-label { font-size: 10px; letter-spacing: 0.14em; margin-bottom: 16px !important; }
+          .home-hero-inner p { font-size: 16px !important; margin-bottom: 28px !important; }
+        }
+        /* Phone */
         @media (max-width: 600px) {
-          /* Stack CTAs as natural-height full-width buttons (flex-basis must not become a 200px height in a column) */
-          .home-hero-card .xb-hero-cta { flex-direction: column; gap: 12px; }
-          .home-hero-card .xb-hero-cta .btn-primary,
-          .home-hero-card .xb-hero-cta .btn-outline { flex: 0 0 auto; width: 100%; padding: 14px 18px; font-size: 12px; }
+          .home-hero-inner { padding: 88px 18px 48px !important; }
+          /* Drop the leading dash so the long eyebrow centres cleanly when it wraps */
+          .home-hero-inner .section-label::before { display: none; }
+          .home-hero-inner .section-label { font-size: 9.5px; letter-spacing: 0.12em; line-height: 1.5; }
+          .home-hero-inner h1 { line-height: 1.16 !important; }
+          .home-hero-inner .hero-rotator { margin-top: 4px; }
+          /* Stack CTAs as natural-height full-width buttons */
+          .home-hero-inner .xb-hero-cta { flex-direction: column; gap: 12px; width: 100%; max-width: 340px; }
+          .home-hero-inner .xb-hero-cta .btn-primary,
+          .home-hero-inner .xb-hero-cta .btn-outline { width: 100%; padding: 14px 18px; }
         }
 
         /* ── Hero content ── */
