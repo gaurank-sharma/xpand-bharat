@@ -138,8 +138,7 @@ export default function Home() {
         description={"XPAND Bharat helps growth-stage brands scale through structured franchising and connects qualified investors with franchise businesses across India. Because serious money deserves serious structure."}
         keywords={"franchise consulting company, franchise expansion consultants India, franchise investment advisory India, franchise lead generation, franchise investor network India, best franchise advisory India, franchise consulting firms India, business expansion advisory, franchise consulting company India, franchise consulting firms, franchise consulting India, franchise consulting services India, franchise consultants India, top franchise consultants India, franchise advisory India, franchise advisory company India, franchise business consultants India, franchise partner India, structured franchise expansion, franchise growth strategy India, Indian franchise market, India franchise economy"}
       />
-      {/* ─── CURRENT HERO (DISABLED) — re-enable this block and delete the NEW HERO below to revert ─── */}
-      {false && (
+      {/* ─── HERO — full-screen video, centered content (no card) ─── */}
       <div className="home-hero" style={{ background: 'var(--navy-dark)', minHeight: '100vh', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden' }}>
         <video
           autoPlay muted loop playsInline preload="auto"
@@ -164,36 +163,8 @@ export default function Home() {
               </span>
             </span>
           </h1>
-          <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: '18px', fontWeight: 500, lineHeight: 1.6, margin: '0 0 34px' }}>Brands expand. Investors align.</p>
+          <p style={{ color: 'rgba(255,255,255,0.82)', fontSize: '18px', fontWeight: 500, lineHeight: 1.6, margin: '0 0 34px' }}>Partnering Brands. Aligning Investors.</p>
           <div className="xb-hero-cta" style={{ justifyContent: 'center' }}>
-            <Link to="/get-started" className="btn-primary">Discuss Your Requirement</Link>
-            <Link to="/growth-opportunities" className="btn-outline">Explore Opportunities</Link>
-          </div>
-        </div>
-      </div>
-      )}
-
-      {/* ─── NEW HERO — same video bg, left-aligned single-line headline (mock style) ─── */}
-      <div className="home-hero home-hero2" style={{ background: 'var(--navy-dark)', display: 'flex', flexDirection: 'column', position: 'relative', overflow: 'hidden' }}>
-        <video
-          autoPlay muted loop playsInline preload="auto"
-          style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', objectFit: 'cover', opacity: 0.92 }}
-        >
-          <source src="/video/Xpand%20bharat-1.mp4" type="video/mp4" />
-        </video>
-
-        {/* Blue wash — heavier on the left so the left-aligned headline stays legible */}
-        <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(90deg, rgba(7,15,35,0.86) 0%, rgba(7,15,35,0.55) 45%, rgba(9,22,52,0.5) 100%)' }} />
-
-        {/* Left-aligned, vertically-centered content */}
-        <div className="home-hero2-inner" style={{ position: 'relative', zIndex: 2, flex: 1, display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', width: '100%', maxWidth: '1440px', margin: '0 auto', padding: '120px 48px 96px', boxSizing: 'border-box' }}>
-          <h1 className="hero-img-title" style={{ fontFamily: "'Fraunces', serif", fontWeight: 700, color: '#fff', lineHeight: 1.12, letterSpacing: '-0.01em', margin: 0, maxWidth: '1150px', textAlign: 'center' }}>
-            Pan-India Expansion Runs on{' '}
-            <span className="hero-img-rotator">
-              <span key={heroWordIndex} className="word">{HERO_ROTATING_WORDS[heroWordIndex]}</span>
-            </span>
-          </h1>
-          <div className="xb-hero-cta">
             <Link to="/get-started" className="btn-primary">Discuss Your Requirement</Link>
             <Link to="/growth-opportunities" className="btn-outline">Explore Opportunities</Link>
           </div>
@@ -665,27 +636,6 @@ export default function Home() {
         }
         @media (prefers-reduced-motion: reduce) {
           .home-hero-inner .hero-rotator-word { animation: none; }
-        }
-
-        /* ── NEW HERO (image-mock style: left-aligned, single-line, inline rotator) ── */
-        .home-hero2 { min-height: 100vh; min-height: 100svh; }
-        .home-hero2 .hero-img-title { font-size: clamp(30px, 5vw, 64px); }
-        /* Headline stays vertically centered; CTAs anchored lower for the big gap */
-        .home-hero2 .xb-hero-cta { position: absolute; left: 48px; bottom: 24%; margin: 0; }
-        .home-hero2 .hero-img-rotator { color: var(--orange); text-transform: uppercase; display: inline-block; white-space: nowrap; }
-        .home-hero2 .hero-img-rotator .word { display: inline-block; animation: heroWordFade 0.5s cubic-bezier(0.16, 1, 0.3, 1) both; }
-        @keyframes heroWordFade { 0% { opacity: 0; transform: translateY(0.28em); } 100% { opacity: 1; transform: translateY(0); } }
-        @media (prefers-reduced-motion: reduce) { .home-hero2 .hero-img-rotator .word { animation: none; } }
-        @media (max-width: 768px) {
-          .home-hero2 { min-height: 88vh; min-height: 88svh; }
-          .home-hero2-inner { padding: 100px 22px 64px !important; }
-          .home-hero2 .xb-hero-cta { left: 22px; bottom: 12%; }
-        }
-        @media (max-width: 600px) {
-          /* On small screens flow the CTAs normally under the headline (no overlap) */
-          .home-hero2 .xb-hero-cta { position: static; margin-top: 40px; flex-direction: column; gap: 12px; width: 100%; max-width: 340px; }
-          .home-hero2 .xb-hero-cta .btn-primary,
-          .home-hero2 .xb-hero-cta .btn-outline { width: 100%; padding: 14px 18px; justify-content: center; text-align: center; }
         }
 
         /* ── Full-screen centered home hero ── */
